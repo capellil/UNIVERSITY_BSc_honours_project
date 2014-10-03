@@ -4,8 +4,6 @@
 #include <stdlib.h> // malloc | free
 #include <string.h> // memset
 #include <unistd.h> // sleep | read
-#include <errno.h>
-#include <pthread.h>
 
 static void* run(void* generic_process)
 {
