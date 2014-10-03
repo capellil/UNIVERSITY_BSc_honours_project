@@ -4,8 +4,7 @@
 #include "console_process_int.h"
 #include "processes_list.h"
 
-#include <stdlib.h> // NULL
-#include <pthread.h> // pthread_t
+#include <stdlib.h> // NULL | EXIT_SUCCESS
 
 int main(int argc, char* argv[])
 {
