@@ -2,7 +2,7 @@
 #include "number_generator_process.h"
 #include "multi_console_process.h"
 #include "processes_list.h"
-#include "delayer_process.h"
+#include "delay_process.h"
 
 #include <stdlib.h> // NULL
 
