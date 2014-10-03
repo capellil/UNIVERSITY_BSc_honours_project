@@ -5,7 +5,6 @@
 #include "delayer_process.h"
 
 #include <stdlib.h> // NULL
-#include <pthread.h> // pthread_t
 
 int main(int argc, char* argv[])
 {
