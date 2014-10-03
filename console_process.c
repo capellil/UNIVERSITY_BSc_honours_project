@@ -17,7 +17,7 @@ static void* run(void* generic_process)
 	read_from(channel_input_end, &buffer, &buffer_length);
 	while(buffer_length != 0)
 	{	
-		printf("%s%s%s\n", console_process->prefix, *(char*)buffer), console_process->suffix); fflush(stdout);
+		printf("%s%s%s\n", console_process->prefix, (char*)buffer, console_process->suffix); fflush(stdout);
 		free(buffer);
 		read_from(channel_input_end, &buffer, &buffer_length);
 	}
