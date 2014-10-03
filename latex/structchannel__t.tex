@@ -1,0 +1,41 @@
+\hypertarget{structchannel__t}{\section{channel\-\_\-t Struct Reference}
+\label{structchannel__t}\index{channel\-\_\-t@{channel\-\_\-t}}
+}
+
+
+Unbuffered unidirectional communication mean.  
+
+
+
+
+{\ttfamily \#include $<$channel.\-h$>$}
+
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{structchannel__t_acb326b036437bd885a9e966b46438428}{char \hyperlink{structchannel__t_acb326b036437bd885a9e966b46438428}{am\-\_\-\-I\-\_\-first}}\label{structchannel__t_acb326b036437bd885a9e966b46438428}
+
+\begin{DoxyCompactList}\small\item\em I\-\_\-\-A\-M\-\_\-\-F\-I\-R\-S\-T if you are the first process, R\-E\-A\-D\-\_\-\-I\-S\-\_\-\-F\-I\-R\-S\-T if the read is the first process and W\-R\-I\-T\-E\-\_\-\-I\-S\-\_\-\-F\-I\-R\-S\-T if it the write process which is first. \end{DoxyCompactList}\item 
+\hypertarget{structchannel__t_af5fb25d8c1f0ec6bc2f96d62deff8637}{pthread\-\_\-mutex\-\_\-t $\ast$ \hyperlink{structchannel__t_af5fb25d8c1f0ec6bc2f96d62deff8637}{mutex}}\label{structchannel__t_af5fb25d8c1f0ec6bc2f96d62deff8637}
+
+\begin{DoxyCompactList}\small\item\em Operation mutex. \end{DoxyCompactList}\item 
+\hypertarget{structchannel__t_a58027f2090783f2de6c65745358ff616}{pthread\-\_\-cond\-\_\-t $\ast$ \hyperlink{structchannel__t_a58027f2090783f2de6c65745358ff616}{data\-\_\-available}}\label{structchannel__t_a58027f2090783f2de6c65745358ff616}
+
+\begin{DoxyCompactList}\small\item\em Indicates if the partner process is done with the data. \end{DoxyCompactList}\item 
+\hypertarget{structchannel__t_ac6aab74984cd67d665c019103ad7268d}{pthread\-\_\-cond\-\_\-t $\ast$ \hyperlink{structchannel__t_ac6aab74984cd67d665c019103ad7268d}{process\-\_\-finished}}\label{structchannel__t_ac6aab74984cd67d665c019103ad7268d}
+
+\begin{DoxyCompactList}\small\item\em Indicates if the partner process has finished. \end{DoxyCompactList}\item 
+\hypertarget{structchannel__t_a74cdeb703c27a61b90a0dc435cddec29}{unsigned int \hyperlink{structchannel__t_a74cdeb703c27a61b90a0dc435cddec29}{buffer\-\_\-length}}\label{structchannel__t_a74cdeb703c27a61b90a0dc435cddec29}
+
+\begin{DoxyCompactList}\small\item\em Size of the pointed buffer area. \end{DoxyCompactList}\item 
+\hypertarget{structchannel__t_a2aa54fcb1c2ef0675bb3b9b1b775b39e}{void $\ast$ \hyperlink{structchannel__t_a2aa54fcb1c2ef0675bb3b9b1b775b39e}{buffer}}\label{structchannel__t_a2aa54fcb1c2ef0675bb3b9b1b775b39e}
+
+\begin{DoxyCompactList}\small\item\em Pointer on the buffer area. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Unbuffered unidirectional communication mean. 
+
+The documentation for this struct was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{channel_8h}{channel.\-h}\end{DoxyCompactItemize}

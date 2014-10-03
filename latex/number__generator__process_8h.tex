@@ -1,0 +1,59 @@
+\hypertarget{number__generator__process_8h}{\section{number\-\_\-generator\-\_\-process.\-h File Reference}
+\label{number__generator__process_8h}\index{number\-\_\-generator\-\_\-process.\-h@{number\-\_\-generator\-\_\-process.\-h}}
+}
+{\ttfamily \#include \char`\"{}channel.\-h\char`\"{}}\\*
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structnumber__generator__process}{number\-\_\-generator\-\_\-process}
+\begin{DoxyCompactList}\small\item\em Generates number from the given min value to the given max value, the generated numbers will be incremented by the given incrementation and written to the given channel output. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structnumber__generator__process}{number\-\_\-generator\-\_\-process} $\ast$ \hyperlink{number__generator__process_8h_a48ce9a8e29cb963e568af21fd0742055}{create\-\_\-number\-\_\-generator\-\_\-process} (int min, int max, int incrementation, struct \hyperlink{structchannel__output__end__t}{channel\-\_\-output\-\_\-end\-\_\-t} $\ast$channel\-\_\-output\-\_\-end)
+\begin{DoxyCompactList}\small\item\em Creates the number generator process. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Capelli Ludovic 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\-0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+15/09/2014 
+\end{DoxyDate}
+
+
+\subsection{Function Documentation}
+\hypertarget{number__generator__process_8h_a48ce9a8e29cb963e568af21fd0742055}{\index{number\-\_\-generator\-\_\-process.\-h@{number\-\_\-generator\-\_\-process.\-h}!create\-\_\-number\-\_\-generator\-\_\-process@{create\-\_\-number\-\_\-generator\-\_\-process}}
+\index{create\-\_\-number\-\_\-generator\-\_\-process@{create\-\_\-number\-\_\-generator\-\_\-process}!number_generator_process.h@{number\-\_\-generator\-\_\-process.\-h}}
+\subsubsection[{create\-\_\-number\-\_\-generator\-\_\-process}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf number\-\_\-generator\-\_\-process}$\ast$ create\-\_\-number\-\_\-generator\-\_\-process (
+\begin{DoxyParamCaption}
+\item[{int}]{min, }
+\item[{int}]{max, }
+\item[{int}]{incrementation, }
+\item[{struct {\bf channel\-\_\-output\-\_\-end\-\_\-t} $\ast$}]{channel\-\_\-output\-\_\-end}
+\end{DoxyParamCaption}
+)}}\label{number__generator__process_8h_a48ce9a8e29cb963e568af21fd0742055}
+
+
+Creates the number generator process. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em min\mbox{[}in\mbox{]}} & -\/ The value to start the generation from \\
+\hline
+{\em max\mbox{[}in\mbox{]}} & -\/ The value to stop the generation at \\
+\hline
+{\em incrementation\mbox{[}in\mbox{]}} & -\/ The value to add each time \\
+\hline
+{\em channel\-\_\-output\-\_\-end\mbox{[}in\mbox{]}} & -\/ The channel output to generate the numbers on \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\begin{DoxyItemize}
+\item A pointer on the created number generator process. \item N\-U\-L\-L if it failed. \end{DoxyItemize}
+
+\end{DoxyReturn}

@@ -1,0 +1,37 @@
+\hypertarget{structconsole__process}{\section{console\-\_\-process Struct Reference}
+\label{structconsole__process}\index{console\-\_\-process@{console\-\_\-process}}
+}
+
+
+Console process structure.  
+
+
+
+
+{\ttfamily \#include $<$console\-\_\-process.\-h$>$}
+
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{structconsole__process_ab1a78dd31864c1aa1ea92772ae82d160}{char $\ast$ \hyperlink{structconsole__process_ab1a78dd31864c1aa1ea92772ae82d160}{prefix}}\label{structconsole__process_ab1a78dd31864c1aa1ea92772ae82d160}
+
+\begin{DoxyCompactList}\small\item\em Message to prepend. \end{DoxyCompactList}\item 
+\hypertarget{structconsole__process_a9cd2f30aaa307341040e152081c9f331}{char $\ast$ \hyperlink{structconsole__process_a9cd2f30aaa307341040e152081c9f331}{suffix}}\label{structconsole__process_a9cd2f30aaa307341040e152081c9f331}
+
+\begin{DoxyCompactList}\small\item\em Message to append. \end{DoxyCompactList}\item 
+\hypertarget{structconsole__process_ac78570f952325bc79f4c99d37ed2de1f}{struct \hyperlink{structchannel__input__end__t}{channel\-\_\-input\-\_\-end\-\_\-t} $\ast$ \hyperlink{structconsole__process_ac78570f952325bc79f4c99d37ed2de1f}{channel\-\_\-input\-\_\-end}}\label{structconsole__process_ac78570f952325bc79f4c99d37ed2de1f}
+
+\begin{DoxyCompactList}\small\item\em Channel to read data from. \end{DoxyCompactList}\item 
+\hypertarget{structconsole__process_ac05ffc910ea48ec6fc9499f0bcefee86}{void $\ast$($\ast$ \hyperlink{structconsole__process_ac05ffc910ea48ec6fc9499f0bcefee86}{run} )(void $\ast$)}\label{structconsole__process_ac05ffc910ea48ec6fc9499f0bcefee86}
+
+\begin{DoxyCompactList}\small\item\em Method to call to execute the process. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Console process structure. 
+
+A console process has a channel input it reads data from, it then displays it on the standard output (e.\-g \-: console). User can choose a prefix and a suffix to respectively prepend and append to the displayed message. I\-M\-P\-O\-R\-T\-A\-N\-T \-: prefix and suffix must have the '\textbackslash{}0' terminating character. 
+
+The documentation for this struct was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{console__process_8h}{console\-\_\-process.\-h}\end{DoxyCompactItemize}
