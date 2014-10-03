@@ -1,0 +1,56 @@
+\hypertarget{delay__process_8h}{\section{delay\-\_\-process.\-h File Reference}
+\label{delay__process_8h}\index{delay\-\_\-process.\-h@{delay\-\_\-process.\-h}}
+}
+{\ttfamily \#include \char`\"{}channel.\-h\char`\"{}}\\*
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structdelay__process}{delay\-\_\-process}
+\begin{DoxyCompactList}\small\item\em Delays data transmission from the given channel input to the given channel output. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structdelay__process}{delay\-\_\-process} $\ast$ \hyperlink{delay__process_8h_a78df03464da66013e81539a881cd1526}{create\-\_\-delay\-\_\-process} (unsigned int delay, struct \hyperlink{structchannel__input__end__t}{channel\-\_\-input\-\_\-end\-\_\-t} $\ast$channel\-\_\-input\-\_\-end, struct \hyperlink{structchannel__output__end__t}{channel\-\_\-output\-\_\-end\-\_\-t} $\ast$channel\-\_\-output\-\_\-end)
+\begin{DoxyCompactList}\small\item\em Creates a delay process. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Capelli Ludovic 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\-0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+15/09/2014 
+\end{DoxyDate}
+
+
+\subsection{Function Documentation}
+\hypertarget{delay__process_8h_a78df03464da66013e81539a881cd1526}{\index{delay\-\_\-process.\-h@{delay\-\_\-process.\-h}!create\-\_\-delay\-\_\-process@{create\-\_\-delay\-\_\-process}}
+\index{create\-\_\-delay\-\_\-process@{create\-\_\-delay\-\_\-process}!delay_process.h@{delay\-\_\-process.\-h}}
+\subsubsection[{create\-\_\-delay\-\_\-process}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf delay\-\_\-process}$\ast$ create\-\_\-delay\-\_\-process (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{delay, }
+\item[{struct {\bf channel\-\_\-input\-\_\-end\-\_\-t} $\ast$}]{channel\-\_\-input\-\_\-end, }
+\item[{struct {\bf channel\-\_\-output\-\_\-end\-\_\-t} $\ast$}]{channel\-\_\-output\-\_\-end}
+\end{DoxyParamCaption}
+)}}\label{delay__process_8h_a78df03464da66013e81539a881cd1526}
+
+
+Creates a delay process. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em delay\mbox{[}in\mbox{]}} & -\/ The delay to assign to the data transmission in microseconds. \\
+\hline
+{\em channel\-\_\-input\-\_\-end\mbox{[}in\mbox{]}} & -\/ The channel to read data from. \\
+\hline
+{\em channel\-\_\-output\-\_\-end\mbox{[}in\mbox{]}} & -\/ The channel to write data to. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\begin{DoxyItemize}
+\item A pointer on the created delay process. \item N\-U\-L\-L if it failed. \end{DoxyItemize}
+
+\end{DoxyReturn}

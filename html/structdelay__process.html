@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>My Project: console_process_int.h File Reference</title>
+<title>My Project: delay_process Struct Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -38,8 +38,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
-      <li><a href="annotated.html"><span>Classes</span></a></li>
-      <li class="current"><a href="files.html"><span>Files</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
+      <li><a href="files.html"><span>Files</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
@@ -60,8 +60,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   </div>
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
-      <li><a href="files.html"><span>File&#160;List</span></a></li>
-      <li><a href="globals.html"><span>File&#160;Members</span></a></li>
+      <li><a href="annotated.html"><span>Class&#160;List</span></a></li>
+      <li><a href="classes.html"><span>Class&#160;Index</span></a></li>
+      <li><a href="functions.html"><span>Class&#160;Members</span></a></li>
     </ul>
   </div>
 <!-- window showing the filter options -->
@@ -81,80 +82,42 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Classes</a> &#124;
-<a href="#func-members">Functions</a>  </div>
+<a href="#pub-attribs">Public Attributes</a> &#124;
+<a href="structdelay__process-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">console_process_int.h File Reference</div>  </div>
+<div class="title">delay_process Struct Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &quot;<a class="el" href="channel_8h_source.html">channel.h</a>&quot;</code><br/>
-</div>
-<p><a href="console__process__int_8h_source.html">Go to the source code of this file.</a></p>
+
+<p>Delays data transmission from the given channel input to the given channel output.  
+ <a href="structdelay__process.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="delay__process_8h_source.html">delay_process.h</a>&gt;</code></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
-Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structconsole__process__int.html">console_process_int</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Console process structure that deals with integers.  <a href="structconsole__process__int.html#details">More...</a><br/></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
-Functions</h2></td></tr>
-<tr class="memitem:ab024b6ce887006ae913560e44e0436c9"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structconsole__process__int.html">console_process_int</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="console__process__int_8h.html#ab024b6ce887006ae913560e44e0436c9">create_console_process_int</a> (char *prefix, char *suffix, struct <a class="el" href="structchannel__input__end__t.html">channel_input_end_t</a> *channel_input_end)</td></tr>
-<tr class="memdesc:ab024b6ce887006ae913560e44e0436c9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a console process.  <a href="#ab024b6ce887006ae913560e44e0436c9">More...</a><br/></td></tr>
-<tr class="separator:ab024b6ce887006ae913560e44e0436c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
+Public Attributes</h2></td></tr>
+<tr class="memitem:a66f20e8d528fb97c0f0cde25108e6f0e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a66f20e8d528fb97c0f0cde25108e6f0e"></a>
+unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structdelay__process.html#a66f20e8d528fb97c0f0cde25108e6f0e">delay</a></td></tr>
+<tr class="memdesc:a66f20e8d528fb97c0f0cde25108e6f0e"><td class="mdescLeft">&#160;</td><td class="mdescRight">The delay to assign to the data transmission (in microseconds);. <br/></td></tr>
+<tr class="separator:a66f20e8d528fb97c0f0cde25108e6f0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a11a263b2389c39129372f143123eb79d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a11a263b2389c39129372f143123eb79d"></a>
+struct <a class="el" href="structchannel__input__end__t.html">channel_input_end_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structdelay__process.html#a11a263b2389c39129372f143123eb79d">channel_input_end</a></td></tr>
+<tr class="memdesc:a11a263b2389c39129372f143123eb79d"><td class="mdescLeft">&#160;</td><td class="mdescRight">The channel to read data from. <br/></td></tr>
+<tr class="separator:a11a263b2389c39129372f143123eb79d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6a7bb9f06e179157cf7ba10e0f5a2e93"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6a7bb9f06e179157cf7ba10e0f5a2e93"></a>
+struct <a class="el" href="structchannel__output__end__t.html">channel_output_end_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structdelay__process.html#a6a7bb9f06e179157cf7ba10e0f5a2e93">channel_output_end</a></td></tr>
+<tr class="memdesc:a6a7bb9f06e179157cf7ba10e0f5a2e93"><td class="mdescLeft">&#160;</td><td class="mdescRight">The channel to write data to. <br/></td></tr>
+<tr class="separator:a6a7bb9f06e179157cf7ba10e0f5a2e93"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3f571ea29b9817b258af799acf206de8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3f571ea29b9817b258af799acf206de8"></a>
+void *(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structdelay__process.html#a3f571ea29b9817b258af799acf206de8">run</a> )(void *)</td></tr>
+<tr class="memdesc:a3f571ea29b9817b258af799acf206de8"><td class="mdescLeft">&#160;</td><td class="mdescRight">The function to call to execute the process. <br/></td></tr>
+<tr class="separator:a3f571ea29b9817b258af799acf206de8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><dl class="section author"><dt>Author</dt><dd>Capelli Ludovic </dd></dl>
-<dl class="section version"><dt>Version</dt><dd>1.0 </dd></dl>
-<dl class="section date"><dt>Date</dt><dd>15/09/2014 </dd></dl>
-</div><h2 class="groupheader">Function Documentation</h2>
-<a class="anchor" id="ab024b6ce887006ae913560e44e0436c9"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">struct <a class="el" href="structconsole__process__int.html">console_process_int</a>* create_console_process_int </td>
-          <td>(</td>
-          <td class="paramtype">char *&#160;</td>
-          <td class="paramname"><em>prefix</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">char *&#160;</td>
-          <td class="paramname"><em>suffix</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">struct <a class="el" href="structchannel__input__end__t.html">channel_input_end_t</a> *&#160;</td>
-          <td class="paramname"><em>channel_input_end</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Creates a console process. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">prefix[in]</td><td>- Message to prepend. </td></tr>
-    <tr><td class="paramname">suffix[in]</td><td>- Message to append. </td></tr>
-    <tr><td class="paramname">channel_input_end[in]</td><td>- The channel to read the data from. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd><ul>
-<li>A pointer on the created console process. </li>
-<li>NULL if it failed. </li>
+<div class="textblock"><p>Delays data transmission from the given channel input to the given channel output. </p>
+</div><hr/>The documentation for this struct was generated from the following file:<ul>
+<li><a class="el" href="delay__process_8h_source.html">delay_process.h</a></li>
 </ul>
-</dd></dl>
-
-</div>
-</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
