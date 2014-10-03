@@ -9,7 +9,7 @@
 
 int main(int argc, char* argv[])
 {
-	int result = EXIT_SUCCESS;
+	int result = EXIT_FAILURE;
 	
 	// Creation of the channel between the number generator and the copy channel
 	struct one_2_one_channel_t* number_to_copy_channel = create_one_2_one_channel();
@@ -51,6 +51,8 @@ int main(int argc, char* argv[])
 									insert_processes_list(processes_list, console_process_int_2, console_process_int_2->run);
 		
 									run_in_parallel(processes_list);
+									
+									result = EXIT_SUCCESS;
 								}	
 								else
 								{
