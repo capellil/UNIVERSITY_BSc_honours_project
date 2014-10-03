@@ -8,6 +8,8 @@
 
 int main(int argc, char* argv[])
 {
+	int result = EXIT_FAILURE;
+	
 	// Creation of the channel between the number generator and the console
 	struct one_2_one_channel_t* number_to_console = create_one_2_one_channel();
 	if(number_to_console)
@@ -29,6 +31,8 @@ int main(int argc, char* argv[])
 					insert_processes_list(processes_list, console_process_int, console_process_int->run);
 	
 					run_in_parallel(processes_list);
+					
+					result = EXIT_SUCCESS;
 				}
 				else
 				{
@@ -50,5 +54,5 @@ int main(int argc, char* argv[])
 		printf("FATAL ERROR : Impossible to create the channel between the number generator output to the console input.\n");
 	}
 	
-	return EXIT_SUCCESS;
+	return result;
 }
