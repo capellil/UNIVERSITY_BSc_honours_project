@@ -1,4 +1,4 @@
-#include "delayer_process.h"
+#include "delay_process.h"
 
 #include <stdio.h> // NULL
 #include <stdlib.h> // malloc | free
@@ -8,11 +8,11 @@
 
 static void* run(void* genericProcess)
 {
-	struct delayer_process* delayer_process = (struct delayer_process*)genericProcess;
-	struct channel_input_end_t* channel_input_end = delayer_process->channel_input_end;
-	struct channel_output_end_t* channel_output_end = delayer_process->channel_output_end;
+	struct delay_process* delay_process = (struct delay_process*)genericProcess;
+	struct channel_input_end_t* channel_input_end = delay_process->channel_input_end;
+	struct channel_output_end_t* channel_output_end = delay_process->channel_output_end;
 
-	unsigned int delay = delayer_process->delay;
+	unsigned int delay = delay_process->delay;
 
 	unsigned int buffer_length;	
 	void* buffer = NULL;
@@ -31,21 +31,21 @@ static void* run(void* genericProcess)
 	return NULL;
 }
 
-struct delayer_process* create_delayer_process(unsigned int delay, struct channel_input_end_t* channel_input_end, struct channel_output_end_t* channel_output_end)
+struct delay_process* create_delay_process(unsigned int delay, struct channel_input_end_t* channel_input_end, struct channel_output_end_t* channel_output_end)
 {
-	struct delayer_process* delayer_process = (struct delayer_process*)malloc(sizeof(struct delayer_process));
+	struct delay_process* delay_process = (struct delay_process*)malloc(sizeof(struct delay_process));
 
-	if(delayer_process != NULL)
+	if(delay_process != NULL)
 	{
-		delayer_process->delay = delay;
-		delayer_process->channel_input_end = channel_input_end;
-		delayer_process->channel_output_end = channel_output_end;
-		delayer_process->run = &run;
+		delay_process->delay = delay;
+		delay_process->channel_input_end = channel_input_end;
+		delay_process->channel_output_end = channel_output_end;
+		delay_process->run = &run;
 	}
 	else
 	{
-		delayer_process = NULL;
+		delay_process = NULL;
 	}
 
-	return delayer_process;
+	return delay_process;
 }
