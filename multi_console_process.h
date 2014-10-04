@@ -5,6 +5,9 @@
  * @date 26/09/2014
  **/
 
+#ifndef MULTI_CONSOLE_INCLUDED
+#define MULTI_CONSOLE_INCLUDED
+
 #include "alternative.h"
 
 /**
@@ -33,3 +36,5 @@ struct multi_console_process
  * @return The created multi console process. NULL if it failed.
  **/
 struct multi_console_process* create_multi_console_process(char* prefix, char* suffix, size_t initial_alternative_size);
+
+#endif // MULTI_CONSOLE_INCLUDED INCLUDED
