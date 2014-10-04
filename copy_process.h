@@ -5,8 +5,8 @@
  * @date _15/09/_20_14
  **/
 
-#ifndef COPIER_INCLUDED
-#define COPIER_INCLUDED
+#ifndef COPY_INCLUDED
+#define COPY_INCLUDED
 
 #include "channel.h"
 
@@ -40,4 +40,4 @@ struct copy_process
  **/
 struct copy_process* create_copy_process(struct channel_input_end_t* channel_input_end, struct channel_output_end_t* channel_output_end_1, struct channel_output_end_t* channel_output_end_2);
 
-#endif // COPIER_INCLUDED
+#endif // COPY_INCLUDED
