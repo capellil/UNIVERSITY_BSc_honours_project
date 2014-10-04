@@ -5,6 +5,9 @@
  * @date 26/09/2014
  **/
 
+#ifndef PROCESSES_LIST_INCLUDED
+#define PROCESSES_LIST_INCLUDED
+
 #include <stdio.h> // NULL
 #include <stdlib.h> // free | malloc
 
@@ -67,3 +70,5 @@ void free_processes_list(struct processes_list_t* processes_list) ;
  * @post \li processes_list processes are run in a thread for each.
  **/
 void run_in_parallel(struct processes_list_t* processes);
+
+#endif // PROCESSES_LIST_INCLUDED INCLUDED
