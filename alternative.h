@@ -5,6 +5,9 @@
  * @date 26/09/2014
  **/
 
+#ifndef ALTERNATIVE_INCLUDED
+#define ALTERNATIVE_INCLUDED
+
 #include "channel.h"
 
 #include <stdlib.h> // malloc | realloc | free
@@ -51,3 +54,5 @@ size_t add_to_alternative(struct channel_end_generic_t* channel_end_generic, str
  * @post \li The channel end at the returned index is ready.
  **/
 size_t pri_select(struct alternative_t* alternative);
+
+#endif // ALTERNATIVE_INCLUDED INCLUDED
