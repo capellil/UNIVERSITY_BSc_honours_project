@@ -8,7 +8,7 @@
 #ifndef THD_SOCKET_INCLUDED
 #define THD_SOCKET_INCLUDED
 
-#define THD_LOCALHOST_IPV4 0x7F000001
+#define THD_DEFAULT_PORT 3000
 
 #include <sys/types.h> // Compulsory for AF_INET, SOCK_STREAM...
 #include <sys/socket.h> // Obvious...
@@ -27,38 +27,48 @@ struct net2_socket_t
 
 /**
  * @brief Prints out the information on the given net2_socket : its file descriptor, address and port.
+ * @param heading - The message to be displayed as a heading.
  * @param socket - The socket the be printed out.
  * @pre socket != NULL
  **/
-void print_net2_socket(struct net2_socket_t* net2_socket);
+void print_net2_socket(char* heading, struct net2_socket_t* net2_socket);
 
 /**
  * @brief Creates a socket used for communication with a remote machine. Uses TCP/IP.
  * @return <ul>
     	       <li>SUCCESS : Non negative number that is the socket descriptor
- 		       <li>FAILED : -1, errno is set approprietaly
+ 		       <li>FAILED : -1, errno is set appropriately
 	       </ul>
  **/
 int create_socket();
 
 /**
- * @brief Creates a socket at the given address with the given port.
- * @param address - The address to be used.
+ * @brief Creates a socket.
+ * @param net2_socket - A pointer to store the created net2 socket in.
+ * @return <ul>
+ 		       <li>SUCCESS : 0
+               <li>FAILED : Negative number, errno is set appropriately
+           </ul>
+ **/
+int create_net2_socket(struct net2_socket_t* net2_socket);
+
+/**
+ * @brief Creates a socket and binds it with the given port.
  * @param port - The port to be used.
  * @param net2_socket - A pointer to store the created net2 socket in.
  * @return <ul>
  		       <li>SUCCESS : 0
-               <li>FAILED : Negative number, errno is set approprietaly
+               <li>FAILED : Negative number, errno is set appropriately
            </ul>
  **/
-int create_net2_socket(int address, unsigned short port, struct net2_socket_t* net2_socket);
+int create_and_bind_net2_socket(unsigned short port, struct net2_socket_t* net2_socket);
 
 /**
  * @brief Listens from the given socket.
  * @param socket - The socket to listen on.
  * @return <ul>
                <li>SUCCESS : 0
-		       <li>FAILED : different from 0, errno is set approprietaly
+		       <li>FAILED : different from 0, errno is set appropriately
 	       </ul>
  **/
 int listen_on_socket(int socket);
@@ -69,7 +79,7 @@ int listen_on_socket(int socket);
  * @param client - A pointer to store data in.
  * @return <ul>
                <li>SUCCESS : Non-negative number that is the accepted socket descriptor
- 		       <li>FAILED : -1, errno is set approprietaly
+ 		       <li>FAILED : -1, errno is set appropriately
 	       </ul>
  * @pre (server != NULL) AND (client != NULL)
  **/
@@ -94,7 +104,7 @@ int connect_to_socket(struct net2_socket_t* net2_socket, unsigned int address, u
  * @param data_length - The data length.
  * @return <ul>
  		       <li>SUCCESS : Non-negative number that is he amount of byte written
-               <li>FAILED : -1, errno is set approprietaly
+               <li>FAILED : -1, errno is set appropriately
            </ul>
  **/
 int write_to_socket(int socket, char* data, unsigned int data_length);
@@ -108,9 +118,19 @@ int write_to_socket(int socket, char* data, unsigned int data_length);
  * @return <ul>
  			   <li>SUCCESS : Non-negative and non-null number that is the number of read bytes
                <li>SUCCESS : 0 if the peer has performed an orderly shutdown
-               <li>FAILED : -1, errno is set approprietaly
+               <li>FAILED : -1, errno is set appropriately
            </ul>
  **/
 int read_from_socket(int socket, char* data, unsigned int data_length);
+
+/**
+ * @brief Closes the socket (both for transmission and reception).
+ * @param socket - the socket to be shutdown.
+ * @return <ul>     
+ 	   	  	   <li> SUCCESS : 0
+ 		       <li> FAILURE : -1
+	       </ul>
+ **/
+int close_socket(int socket);
 
 #endif

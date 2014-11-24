@@ -26,24 +26,27 @@ int main(int argc, char* argv[])
 {
 	int programme_return = EXIT_SUCCESS;
 	
-	int address = THD_LOCALHOST_IPV4;
 	unsigned short port = THD_DEFAULT_PORT;
 	struct net2_socket_t server, client;
-	int result = create_net2_socket(address, port, &server); 
+	int result = create_and_bind_net2_socket(port, &server); 
 	
 	if(!result)
 	{
 		printf("SERVER CREATED AND STARTS TO LISTEN\n");
-		if(listen_on_socket(server._socket) == -1)
+		print_net2_socket("Server socket", &server);
+		
+		if(listen_on_socket(server._socket) != -1)
 		{
 			printf("SERVER IS LISTENING, WAITING A CONNECTION TO ACCEPT IT\n");
-			if(accept_from_socket(&server, &client) == -1)
+			result = accept_from_socket(&server, &client);
+			
+			if(result != -1)
 			{
 				printf("HAS ACCEPTED A CONNECTION\n");
 			}
 			else
-			{
-				perror("ACCEPTING A CONNECTION");
+			{				
+				perror("ACCEPTING A CONNECTION");				
 				programme_return = EXIT_FAILURE;
 			}
 		}
@@ -58,6 +61,8 @@ int main(int argc, char* argv[])
 		perror("CREATING SERVER");
 		programme_return = EXIT_FAILURE;
 	}
+	
+	close_socket(server._socket);
 	
 	return programme_return;
 }
