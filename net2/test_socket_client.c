@@ -52,7 +52,7 @@ int main(int argc, char* argv[])
 	}
 	else
 	{
-		perror("CREATING SERVER");
+		perror("CREATING CLIENT");
 		programme_return = EXIT_FAILURE;
 	}
 	
