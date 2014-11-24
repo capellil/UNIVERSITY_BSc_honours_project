@@ -39,7 +39,7 @@ int main(int argc, char* argv[])
 		print_net2_socket("Client socket", &client);
 		
 		printf("TRIES TO CONNECT TO THE SERVER\n");
-		if(!connect_to_socket(&client, 1844854179, THD_DEFAULT_PORT))
+		if(!connect_to_socket(&client, 1844854179, THD_DEFAULT_PORT)) // 1844854179 = "109.246.61.103", it is my ip address. Hard-coded for the moment
 		{
 			printf("HAS CONNECTED\n");
 		}
