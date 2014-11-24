@@ -58,13 +58,15 @@ int listen_on_socket(int socket)
 	return listen(socket, 1);
 }
 
-void accept_from_socket(struct net2_socket_t* server, struct net2_socket_t* client)
+int accept_from_socket(struct net2_socket_t* server, struct net2_socket_t* client)
 {
 	struct sockaddr_in address;
 	socklen_t address_length;
 	int socket = accept(server->_socket, (struct sockaddr*)&address, &address_length);
 	client->_socket = socket;
 	client->_address = address;
+	
+	return socket;
 }
 
 int connect_to_socket(struct net2_socket_t* net2_socket, unsigned int address, unsigned short port)
