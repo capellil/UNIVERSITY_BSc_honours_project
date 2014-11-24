@@ -1,7 +1,7 @@
 #include "socket.h"
 
-#include <stdlib.h>
-#include <stdio.h>
+#include <stdio.h> // printf
+#include <stdlib.h> // NULL
 
 void print_net2_socket(struct net2_socket_t* net2_socket)
 {
@@ -80,7 +80,7 @@ int connect_to_socket(struct net2_socket_t* net2_socket, unsigned int address, u
 	return connect(net2_socket->_socket, (struct sockaddr*)&server, server_length);
 }
 
-int write_to_socket(int socket, char* data, unsigned int dataLength)
+int write_to_socket(int socket, char* data, unsigned int data_length)
 {
-	return send(socket, data, dataLength, 0);
+	return send(socket, data, data_length, 0);
 }
