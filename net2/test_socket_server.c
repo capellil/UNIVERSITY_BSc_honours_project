@@ -14,7 +14,7 @@
  * @brief Creates a server socket with :
  	      <ul> 
  	          <li>IPv4 address (THD_LOCALHOST_IPV4 + 1)
- 	          <li>port 3001
+ 	          <li>port THD_DEFAULT_PORT
       	  </ul> 
 		  The socket then listens and accepts a connection
  * @return <ul>
@@ -27,7 +27,7 @@ int main(int argc, char* argv[])
 	int programme_return = EXIT_SUCCESS;
 	
 	int address = THD_LOCALHOST_IPV4;
-	unsigned short port = 3000;
+	unsigned short port = THD_DEFAULT_PORT;
 	struct net2_socket_t server, client;
 	int result = create_net2_socket(address, port, &server); 
 	
