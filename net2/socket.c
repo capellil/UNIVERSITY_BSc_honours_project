@@ -24,7 +24,15 @@ void print_net2_socket(char* heading, struct net2_socket_t* net2_socket)
 	}
 										  
 	unsigned short port = ntohs(net2_socket->_address.sin_port);
-	printf("\t- Port : %d\n", port);
+	switch(port)
+	{
+		case 0 :
+			printf("\t- Port : ANY_PORT\n");
+			break;
+		default:
+			printf("\t- Port : %d\n", port);
+			break;
+	}
 	
 	char* family;
 	switch(net2_socket->_address.sin_family)
@@ -51,6 +59,9 @@ int create_net2_socket(struct net2_socket_t* net2_socket)
 {
 	int result = 0;
 	int socket = create_socket();
+	int optval = 1;
+	setsockopt(socket, SOL_SOCKET, SO_REUSEADDR, &optval, sizeof(int));
+	
 	if(socket != -1)
 	{
 		net2_socket->_socket = socket;
@@ -135,4 +146,9 @@ int read_from_socket(int socket, char* data, unsigned int data_length)
 int close_socket(int socket)
 {
 	return close(socket);
+}
+
+int get_ip_of_socket(struct net2_socket_t* socket)
+{
+	return ntohl(socket->_address.sin_addr.s_addr);
 }

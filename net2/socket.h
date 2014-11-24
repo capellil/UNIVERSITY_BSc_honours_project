@@ -133,4 +133,11 @@ int read_from_socket(int socket, char* data, unsigned int data_length);
  **/
 int close_socket(int socket);
 
+/**
+ * @brief Returns the ip address of the given net2 socket.
+ * @param net2_socket - The socket to be parsed.
+ * @return The IP address of the given socket in integer format (host byte order).
+ **/
+int get_ip_of_socket(struct net2_socket_t* socket);
+
 #endif
