@@ -139,6 +139,9 @@ Functions</h2></td></tr>
 <tr class="memitem:aea78623d136ea67fb8080f1d21b83928"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="socket_8h.html#aea78623d136ea67fb8080f1d21b83928">close_socket</a> (int socket)</td></tr>
 <tr class="memdesc:aea78623d136ea67fb8080f1d21b83928"><td class="mdescLeft">&#160;</td><td class="mdescRight">Closes the socket (both for transmission and reception).  <a href="#aea78623d136ea67fb8080f1d21b83928">More...</a><br/></td></tr>
 <tr class="separator:aea78623d136ea67fb8080f1d21b83928"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afeae3dfda6cedf8fea9a15be1cfdf916"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="socket_8h.html#afeae3dfda6cedf8fea9a15be1cfdf916">get_ip_of_socket</a> (struct <a class="el" href="structnet2__socket__t.html">net2_socket_t</a> *socket)</td></tr>
+<tr class="memdesc:afeae3dfda6cedf8fea9a15be1cfdf916"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the ip address of the given net2 socket.  <a href="#afeae3dfda6cedf8fea9a15be1cfdf916">More...</a><br/></td></tr>
+<tr class="separator:afeae3dfda6cedf8fea9a15be1cfdf916"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><dl class="section author"><dt>Author</dt><dd>Capelli Ludovic </dd></dl>
@@ -365,6 +368,31 @@ FAILED : -1, errno is set appropriately </li>
 
 </div>
 </div>
+<a class="anchor" id="afeae3dfda6cedf8fea9a15be1cfdf916"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int get_ip_of_socket </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structnet2__socket__t.html">net2_socket_t</a> *&#160;</td>
+          <td class="paramname"><em>socket</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the ip address of the given net2 socket. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">net2_socket</td><td>- The socket to be parsed. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The IP address of the given socket in integer format (host byte order). </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="a0d092afdcb43bff019d842f6cb683289"></a>
 <div class="memitem">
 <div class="memproto">
@@ -536,7 +564,7 @@ FAILED : -1, errno is set appropriately </li>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Nov 24 2014 16:50:38 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Nov 27 2014 09:44:48 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

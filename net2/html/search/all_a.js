@@ -1,8 +1,7 @@
 var searchData=
 [
-  ['test_5fsocket_5fclient_2ec',['test_socket_client.c',['../test__socket__client_8c.html',1,'']]],
-  ['test_5fsocket_5fclient_5fbidirectional_2ec',['test_socket_client_bidirectional.c',['../test__socket__client__bidirectional_8c.html',1,'']]],
-  ['test_5fsocket_5fserver_2ec',['test_socket_server.c',['../test__socket__server_8c.html',1,'']]],
-  ['test_5fsocket_5fserver_5fbidirectional_2ec',['test_socket_server_bidirectional.c',['../test__socket__server__bidirectional_8c.html',1,'']]],
-  ['type',['type',['../structchannelMessageSend.html#a1334c6190bd3c077a96d23f862cded10',1,'channelMessageSend::type()'],['../structchannelMessageAck.html#a2e7a55ee3537df3d38e9171016dac405',1,'channelMessageAck::type()'],['../structchannelMessageReject.html#a9d67abef573ef8aaa652e58ffd25709c',1,'channelMessageReject::type()'],['../structchannelMessagePoison.html#af7d024aa6afcf05bc939f4280d2b6149',1,'channelMessagePoison::type()'],['../structchannelMessageLinkLost.html#a02aebaccb67e32fa4b5df28248b0e794',1,'channelMessageLinkLost::type()'],['../structchannelMessageAsyncSend.html#a5f2677d46fdd86e3a421bf9c8ff48c80',1,'channelMessageAsyncSend::type()']]]
+  ['socket_2eh',['socket.h',['../socket_8h.html',1,'']]],
+  ['source',['source',['../structchannelMessageSend.html#ac59ec2b7b44efb45da8ff8866f5f5b34',1,'channelMessageSend::source()'],['../structchannelMessageAsyncSend.html#a3522df4ddca98ef49cdfa2241b8b8146',1,'channelMessageAsyncSend::source()'],['../structnetChannelInput.html#a83a5a72ba4dd59822aa28f8aad5925f1',1,'netChannelInput::source()']]],
+  ['state',['state',['../structnetChannelInputDataStructure.html#a046979d7e1529ce7bc9c5d1032742635',1,'netChannelInputDataStructure::state()'],['../structnetChannelOutputDataStructure.html#a88c5314d897197da81501eaad776bb39',1,'netChannelOutputDataStructure::state()']]],
+  ['strength',['strength',['../structchannelMessagePoison.html#adba2ff18b018b071fd31eb0648b76317',1,'channelMessagePoison']]]
 ];

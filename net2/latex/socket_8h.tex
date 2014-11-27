@@ -38,7 +38,9 @@ int \hyperlink{socket_8h_a93e73837c3f3a55d1c79c878d5acada9}{write\-\_\-to\-\_\-s
 int \hyperlink{socket_8h_a4145cf47301c57d1fc8362075b6b7d1c}{read\-\_\-from\-\_\-socket} (int socket, char $\ast$data, unsigned int data\-\_\-length)
 \begin{DoxyCompactList}\small\item\em Reads from the given socket $<$data\-\_\-length$>$ bytes and store it into the space pointed by $<$data$>$. \end{DoxyCompactList}\item 
 int \hyperlink{socket_8h_aea78623d136ea67fb8080f1d21b83928}{close\-\_\-socket} (int socket)
-\begin{DoxyCompactList}\small\item\em Closes the socket (both for transmission and reception). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Closes the socket (both for transmission and reception). \end{DoxyCompactList}\item 
+int \hyperlink{socket_8h_afeae3dfda6cedf8fea9a15be1cfdf916}{get\-\_\-ip\-\_\-of\-\_\-socket} (struct \hyperlink{structnet2__socket__t}{net2\-\_\-socket\-\_\-t} $\ast$socket)
+\begin{DoxyCompactList}\small\item\em Returns the ip address of the given net2 socket. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
@@ -201,6 +203,25 @@ Creates a socket used for communication with a remote machine. Uses T\-C\-P/\-I\
 \item S\-U\-C\-C\-E\-S\-S \-: Non negative number that is the socket descriptor 
 \item F\-A\-I\-L\-E\-D \-: -\/1, errno is set appropriately 
 \end{DoxyItemize}
+\end{DoxyReturn}
+\hypertarget{socket_8h_afeae3dfda6cedf8fea9a15be1cfdf916}{\index{socket.\-h@{socket.\-h}!get\-\_\-ip\-\_\-of\-\_\-socket@{get\-\_\-ip\-\_\-of\-\_\-socket}}
+\index{get\-\_\-ip\-\_\-of\-\_\-socket@{get\-\_\-ip\-\_\-of\-\_\-socket}!socket.h@{socket.\-h}}
+\subsubsection[{get\-\_\-ip\-\_\-of\-\_\-socket}]{\setlength{\rightskip}{0pt plus 5cm}int get\-\_\-ip\-\_\-of\-\_\-socket (
+\begin{DoxyParamCaption}
+\item[{struct {\bf net2\-\_\-socket\-\_\-t} $\ast$}]{socket}
+\end{DoxyParamCaption}
+)}}\label{socket_8h_afeae3dfda6cedf8fea9a15be1cfdf916}
+
+
+Returns the ip address of the given net2 socket. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em net2\-\_\-socket} & -\/ The socket to be parsed. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The I\-P address of the given socket in integer format (host byte order). 
 \end{DoxyReturn}
 \hypertarget{socket_8h_a0d092afdcb43bff019d842f6cb683289}{\index{socket.\-h@{socket.\-h}!listen\-\_\-on\-\_\-socket@{listen\-\_\-on\-\_\-socket}}
 \index{listen\-\_\-on\-\_\-socket@{listen\-\_\-on\-\_\-socket}!socket.h@{socket.\-h}}

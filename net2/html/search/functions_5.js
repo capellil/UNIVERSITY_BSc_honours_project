@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['read_5ffrom_5fsocket',['read_from_socket',['../socket_8h.html#a4145cf47301c57d1fc8362075b6b7d1c',1,'socket.c']]]
+  ['print_5fnet2_5fsocket',['print_net2_socket',['../socket_8h.html#a4030e4053fec45b59c0fb408e19a7b81',1,'socket.c']]]
 ];

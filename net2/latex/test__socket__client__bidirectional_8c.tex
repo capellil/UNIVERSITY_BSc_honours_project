@@ -39,18 +39,18 @@ Here is the configuration to set \-:
 
  Creates the client reception socket with \-: 
 \begin{DoxyItemize}
-\item I\-Pv4 address (T\-H\-D\-\_\-\-L\-O\-C\-A\-L\-H\-O\-S\-T\-\_\-\-I\-P\-V4 + 1) 
+\item I\-Pv4 address (I\-P\-\_\-\-C\-L\-I\-E\-N\-T) 
 \item port (T\-H\-D\-\_\-\-D\-E\-F\-A\-U\-L\-T\-\_\-\-P\-O\-R\-T + 1)\par
  
 \end{DoxyItemize}Creates the client transmission socket with \-: 
 \begin{DoxyItemize}
-\item I\-Pv4 address (T\-H\-D\-\_\-\-L\-O\-C\-A\-L\-H\-O\-S\-T\-\_\-\-I\-P\-V4 + 2) 
+\item I\-Pv4 address (I\-P\-\_\-\-C\-L\-I\-E\-N\-T) 
 \item port (T\-H\-D\-\_\-\-D\-E\-F\-A\-U\-L\-T\-\_\-\-P\-O\-R\-T + 2)\par
  
 \end{DoxyItemize}The client transmission socket is then connected to the server at \-:\par
  
 \begin{DoxyItemize}
-\item I\-Pv4 address T\-H\-D\-\_\-\-L\-O\-C\-A\-L\-H\-O\-S\-T\-\_\-\-I\-P\-V4 
+\item I\-Pv4 address I\-P\-\_\-\-S\-E\-R\-V\-E\-R 
 \item port T\-H\-D\-\_\-\-D\-E\-F\-A\-U\-L\-T\-\_\-\-P\-O\-R\-T 
 \end{DoxyItemize}Next, the client reception socket location is sent to the server reception socket. Finally, the client reception socket listens and accept the server's transmission socket connection. \begin{DoxyReturn}{Returns}
 
