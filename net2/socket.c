@@ -59,11 +59,9 @@ int create_net2_socket(struct net2_socket_t* net2_socket)
 {
 	int result = 0;
 	int socket = create_socket();
-	int optval = 1;
-	setsockopt(socket, SOL_SOCKET, SO_REUSEADDR, &optval, sizeof(int));
 	
 	if(socket != -1)
-	{
+	{	    
 		net2_socket->_socket = socket;
 	}
 	else
@@ -85,6 +83,9 @@ int create_and_bind_net2_socket(unsigned short port, struct net2_socket_t* net2_
 		socket_address.sin_family = AF_INET; // IPv4 Internet Protocol
 		socket_address.sin_addr.s_addr = INADDR_ANY; // All interfaces
 		socket_address.sin_port = htons(port);
+		
+		int optval = 1;
+	    setsockopt(socket, SOL_SOCKET, SO_REUSEADDR, &optval, sizeof(int));
 		
 		if(!bind(socket, (struct sockaddr*)&socket_address, sizeof(socket_address)))
 		{
