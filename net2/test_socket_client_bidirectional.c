@@ -38,98 +38,114 @@
 int main(int argc, char* argv[])
 {
 	int programme_return = EXIT_SUCCESS;
-	
-	// We create the client reception socket (THD_DEFAULT_PORT + 1)
-	unsigned short client_reception_port = THD_DEFAULT_PORT + 1;
-	struct net2_socket_t client_reception_socket;
-	int result = create_and_bind_net2_socket(client_reception_port, &client_reception_socket); 
-	
-	if(!result)
+
+	if(argc == 5)
 	{
-		printf("CLIENT RECEPTION SOCKET CREATED\n");
-		print_net2_socket("Client reception socket", &client_reception_socket);
-			
-		// We create the client transmission socket
-		struct net2_socket_t client_transmission_socket;
-		result = create_net2_socket(&client_transmission_socket); 
+		unsigned int server_reception_address = 0;
+		for(unsigned int i = 1; i < 5; i++)	
+		{
+			server_reception_address <<= 8;
+			server_reception_address += atoi(argv[i]);
+		} 
 	
+		// We create the client reception socket (THD_DEFAULT_PORT + 1)
+		unsigned short client_reception_port = THD_DEFAULT_PORT + 1;
+		struct net2_socket_t client_reception_socket;
+		int result = create_and_bind_net2_socket(client_reception_port, &client_reception_socket); 
+		
 		if(!result)
 		{
-			printf("CLIENT TRANSMISSION SOCKET CREATED\n");
-			print_net2_socket("Client transmission socket", &client_transmission_socket);
-			
-			printf("TRIES TO CONNECT TO THE SERVER RECEPTION SOCKET\n");
-			result = connect_to_socket(&client_transmission_socket, 1844854189, THD_DEFAULT_PORT);
-			
+			printf("CLIENT RECEPTION SOCKET CREATED\n");
+			print_net2_socket("Client reception socket", &client_reception_socket);
+				
+			// We create the client transmission socket
+			struct net2_socket_t client_transmission_socket;
+			result = create_net2_socket(&client_transmission_socket); 
+		
 			if(!result)
 			{
-				printf("HAS CONNECTED TO THE SERVER RECEPTION SOCKET\n");
-			
-				// The length of the data : address (= int) + port (= short)
-				const int data_length = sizeof(short);
-				char data[data_length];
-				memcpy(data, &client_reception_port, sizeof(short));
+				printf("CLIENT TRANSMISSION SOCKET CREATED\n");
+				print_net2_socket("Client transmission socket", &client_transmission_socket);
 				
-				// The client's reception socket location is sent to the server's reception socket
-				write_to_socket(client_transmission_socket._socket, data, data_length);
+				printf("TRIES TO CONNECT TO THE SERVER RECEPTION SOCKET\n");
+				result = connect_to_socket(&client_transmission_socket, server_reception_address, THD_DEFAULT_PORT);
 				
-				// The client now listens to accept the server's transmission socket connection
-				if(!listen_on_socket(client_reception_socket._socket))
+				if(!result)
 				{
-					printf("IS LISTENING ON CLIENT RECEPTION SOCKET\n");
-					
-					struct net2_socket_t server_transmission_socket;
-					result = accept_from_socket(&client_reception_socket, &server_transmission_socket);
-					
-					if(result != -1)
+					printf("HAS CONNECTED TO THE SERVER RECEPTION SOCKET\n");
+				
+					// The client now listens to accept the server's transmission socket connection
+					if(!listen_on_socket(client_reception_socket._socket))
 					{
-						printf("SERVER TRANSMISSION SOCKET ACCEPTED ON CLIENT RECEPTION SOCKET\n");
+						printf("IS LISTENING ON CLIENT RECEPTION SOCKET\n");
 						
-						char message_buffer;
+						// The length of the data : address (= int) + port (= short)
+						const int data_length = sizeof(short);
+						char data[data_length];
+						memcpy(data, &client_reception_port, sizeof(short));
+					
+						// The client's reception socket location is sent to the server's reception socket
+						write_to_socket(client_transmission_socket._socket, data, data_length);
+					
+						struct net2_socket_t server_transmission_socket;
+						result = accept_from_socket(&client_reception_socket, &server_transmission_socket);
 						
-						for(int i = 48; i < 58; i++)
+						if(result != -1)
 						{
-						    message_buffer = i;
-						    printf("SENDS MESSAGE AS A NUMBER \"%c\"... ", message_buffer);
-						    write_to_socket(client_transmission_socket._socket, &message_buffer, sizeof(char));
-						    printf("DONE.\n");
-						
-						    printf("READS THE FIRST NUMBER FROM CLIENT... ");
-						    read_from_socket(server_transmission_socket._socket, &message_buffer, sizeof(char));
-					        printf("DONE => \"%c\".\n", message_buffer);
-					    }
+							printf("SERVER TRANSMISSION SOCKET ACCEPTED ON CLIENT RECEPTION SOCKET\n");
+							
+							char message_buffer;
+							
+							for(int i = 48; i < 58; i++)
+							{
+							    message_buffer = i;
+							    printf("SENDS MESSAGE AS A NUMBER \"%c\"... ", message_buffer);
+							    write_to_socket(client_transmission_socket._socket, &message_buffer, sizeof(char));
+							    printf("DONE.\n");
+							
+							    printf("READS THE FIRST NUMBER FROM CLIENT... ");
+							    read_from_socket(server_transmission_socket._socket, &message_buffer, sizeof(char));
+						        printf("DONE => \"%c\".\n", message_buffer);
+						    }
+						}
+						else
+						{
+							perror("ACCEPTING SERVER TRANSMISSION SOCKET ON CLIENT RECEPTION SOCKET");
+							programme_return = EXIT_FAILURE;
+						}
 					}
 					else
 					{
-						perror("ACCEPTING SERVER TRANSMISSION SOCKET ON CLIENT RECEPTION SOCKET");
+						perror("LISTENING ON CLIENT RECEPTION SOCKET");
 						programme_return = EXIT_FAILURE;
 					}
 				}
 				else
 				{
-					perror("LISTENING ON CLIENT RECEPTION SOCKET");
+					perror("CONNECTION TO SERVER RECEPTION SOCKET");
 					programme_return = EXIT_FAILURE;
 				}
 			}
 			else
 			{
-				perror("CONNECTION TO SERVER RECEPTION SOCKET");
+				perror("CREATING CLIENT TRANSMISSION SOCKET");
 				programme_return = EXIT_FAILURE;
 			}
 		}
 		else
 		{
-			perror("CREATING CLIENT TRANSMISSION SOCKET");
+			perror("CREATING CLIENT RECEPTION SOCKET");
 			programme_return = EXIT_FAILURE;
 		}
+
+		close_socket(client_reception_socket._socket);
 	}
 	else
 	{
-		perror("CREATING CLIENT RECEPTION SOCKET");
+		printf("INCORRECT NUMBER OF PARAMETERS : Expected 5 got %d.\n", argc);
 		programme_return = EXIT_FAILURE;
 	}
-	
-	close_socket(client_reception_socket._socket);
-	
+		
+		
 	return programme_return;
 }
