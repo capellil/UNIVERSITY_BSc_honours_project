@@ -82,6 +82,21 @@ int main(int argc, char* argv[])
 						if(!result)
 						{
 							printf("SERVER TRANSMISSION SOCKET CONNECTED TO CLIENT RECEPTION SOCKET\n");
+						
+							char message_buffer;
+						
+						    for(int i = 48; i < 58; i++)
+						    {
+						        message_buffer = i;
+						        
+							    printf("READS THE FIRST NUMBER FROM CLIENT... ");
+						        read_from_socket(client_transmission_socket._socket, &message_buffer, sizeof(char));
+						        printf("DONE => \"%c\".\n", message_buffer);
+						        
+						        printf("SENDS REPLY AS A NUMBER \"%c\"... ", message_buffer);
+						        write_to_socket(server_transmission_socket._socket, &message_buffer, sizeof(char));
+						        printf("DONE.\n");
+					        }
 						}
 						else
 						{

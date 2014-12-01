@@ -9,7 +9,7 @@
 
 #include <stdio.h> // printf
 #include <stdlib.h> // EXIT_SUCCESS | EXIT_FAILURE
-#include <string.h> // memcpy
+#include <string.h> // memcpy | strlen
 
 /**
  * @brief Here is the configuration to set : @image html client_server_bidirectional.png <br>
@@ -59,7 +59,7 @@ int main(int argc, char* argv[])
 			print_net2_socket("Client transmission socket", &client_transmission_socket);
 			
 			printf("TRIES TO CONNECT TO THE SERVER RECEPTION SOCKET\n");
-			result = connect_to_socket(&client_transmission_socket, 1844854179, THD_DEFAULT_PORT);
+			result = connect_to_socket(&client_transmission_socket, 1844854189, THD_DEFAULT_PORT);
 			
 			if(!result)
 			{
@@ -84,6 +84,20 @@ int main(int argc, char* argv[])
 					if(result != -1)
 					{
 						printf("SERVER TRANSMISSION SOCKET ACCEPTED ON CLIENT RECEPTION SOCKET\n");
+						
+						char message_buffer;
+						
+						for(int i = 48; i < 58; i++)
+						{
+						    message_buffer = i;
+						    printf("SENDS MESSAGE AS A NUMBER \"%c\"... ", message_buffer);
+						    write_to_socket(client_transmission_socket._socket, &message_buffer, sizeof(char));
+						    printf("DONE.\n");
+						
+						    printf("READS THE FIRST NUMBER FROM CLIENT... ");
+						    read_from_socket(server_transmission_socket._socket, &message_buffer, sizeof(char));
+					        printf("DONE => \"%c\".\n", message_buffer);
+					    }
 					}
 					else
 					{
