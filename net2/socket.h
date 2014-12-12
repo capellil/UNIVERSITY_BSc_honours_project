@@ -31,26 +31,26 @@ struct net2_socket_t
  * @param socket - The socket the be printed out.
  * @pre socket != NULL
  **/
-void print_net2_socket(char* heading, struct net2_socket_t* net2_socket);
+void net2_print_socket(char* heading, struct net2_socket_t* net2_socket);
 
 /**
- * @brief Creates a socket used for communication with a remote machine. Uses TCP/IP.
+ * @brief Creates a socket used for communication with a remote machine, initialised to streaming data (suitable for TCP protocol).
  * @return <ul>
     	       <li>SUCCESS : Non negative number that is the socket descriptor
  		       <li>FAILED : -1, errno is set appropriately
 	       </ul>
  **/
-int create_socket();
+int net2_create_socket();
 
 /**
- * @brief Creates a socket.
+ * @brief Creates a socket used for communication with a remote machine. Uses TCP/IP. If the given pointer is not NULL, the different parameters are stored into the pointed memory location.
  * @param net2_socket - A pointer to store the created net2 socket in.
  * @return <ul>
  		       <li>SUCCESS : 0
                <li>FAILED : Negative number, errno is set appropriately
            </ul>
  **/
-int create_net2_socket(struct net2_socket_t* net2_socket);
+int net2_create_and_store_socket(struct net2_socket_t* net2_socket);
 
 /**
  * @brief Creates a socket and binds it with the given port.
@@ -61,7 +61,7 @@ int create_net2_socket(struct net2_socket_t* net2_socket);
                <li>FAILED : Negative number, errno is set appropriately
            </ul>
  **/
-int create_and_bind_net2_socket(unsigned short port, struct net2_socket_t* net2_socket);
+int net2_create_and_bind_socket(unsigned short port, struct net2_socket_t* net2_socket);
 
 /**
  * @brief Listens from the given socket.
@@ -71,7 +71,7 @@ int create_and_bind_net2_socket(unsigned short port, struct net2_socket_t* net2_
 		       <li>FAILED : different from 0, errno is set appropriately
 	       </ul>
  **/
-int listen_on_socket(int socket);
+int net2_listen_on_socket(int socket);
 
 /**
  * @brief Accept a connection from a client to the given server.
@@ -83,7 +83,7 @@ int listen_on_socket(int socket);
 	       </ul>
  * @pre (server != NULL) AND (client != NULL)
  **/
-int accept_from_socket(struct net2_socket_t* server, struct net2_socket_t* client);
+int net2_accept_from_socket(struct net2_socket_t* server, struct net2_socket_t* client);
 
 /**
  * @brief Connects the given socket to the provided address and port.
@@ -95,7 +95,7 @@ int accept_from_socket(struct net2_socket_t* server, struct net2_socket_t* clien
                <li>FAILED : -1
            </ul>
  **/
-int connect_to_socket(struct net2_socket_t* net2_socket, unsigned int address, unsigned short port);
+int net2_connect_to_socket(struct net2_socket_t* net2_socket, unsigned int address, unsigned short port);
 
 /**
  * @brief Writes the given data to the given socket.
@@ -103,11 +103,11 @@ int connect_to_socket(struct net2_socket_t* net2_socket, unsigned int address, u
  * @param data - The data to be transmitted.
  * @param data_length - The data length.
  * @return <ul>
- 		       <li>SUCCESS : Non-negative number that is he amount of byte written
+ 		       <li>SUCCESS : Non-negative number that is the amount of byte written
                <li>FAILED : -1, errno is set appropriately
            </ul>
  **/
-int write_to_socket(int socket, char* data, unsigned int data_length);
+int net2_write_to_socket(int socket, char* data, unsigned int data_length);
 
 /**
  * @brief Reads from the given socket <data_length> bytes and store it into the space pointed by <data>.
@@ -121,7 +121,7 @@ int write_to_socket(int socket, char* data, unsigned int data_length);
                <li>FAILED : -1, errno is set appropriately
            </ul>
  **/
-int read_from_socket(int socket, char* data, unsigned int data_length);
+int net2_read_from_socket(int socket, char* data, unsigned int data_length);
 
 /**
  * @brief Closes the socket (both for transmission and reception).
@@ -131,13 +131,13 @@ int read_from_socket(int socket, char* data, unsigned int data_length);
  		       <li> FAILURE : -1
 	       </ul>
  **/
-int close_socket(int socket);
+int net2_close_socket(int socket);
 
 /**
  * @brief Returns the ip address of the given net2 socket.
  * @param net2_socket - The socket to be parsed.
  * @return The IP address of the given socket in integer format (host byte order).
  **/
-int get_ip_of_socket(struct net2_socket_t* socket);
+int net2_get_ip_of_socket(struct net2_socket_t* socket);
 
 #endif

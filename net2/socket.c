@@ -4,7 +4,7 @@
 #include <stdlib.h> // NULL
 #include <unistd.h> // close
 
-void print_net2_socket(char* heading, struct net2_socket_t* net2_socket)
+void net2_print_socket(char* heading, struct net2_socket_t* net2_socket)
 {
 	printf("%s\n", heading);
 	printf("\t- File descriptor : %d\n", net2_socket->_socket);
@@ -50,33 +50,27 @@ void print_net2_socket(char* heading, struct net2_socket_t* net2_socket)
 	printf("\t- Family : %s\n", family);
 }
 
-int create_socket()
+int net2_create_socket()
 {
-	return socket(AF_INET, SOCK_STREAM, 0);
+    return socket(AF_UNIX, SOCK_STREAM, 0);
 }
 
-int create_net2_socket(struct net2_socket_t* net2_socket)
+int net2_create_and_store_socket(struct net2_socket_t* net2_socket)
 {
-	int result = 0;
-	int socket = create_socket();
+	int socket = net2_create_socket();
 	
-	if(socket != -1)
+	if(socket != -1 && net2_socket)
 	{	    
 		net2_socket->_socket = socket;
 	}
-	else
-	{
-		net2_socket = NULL;
-		result = -1;
-	}
 	
-	return result;
+	return socket;
 }
 
-int create_and_bind_net2_socket(unsigned short port, struct net2_socket_t* net2_socket)
+int net2_create_and_bind_socket(unsigned short port, struct net2_socket_t* net2_socket)
 {
 	int result = 0;
-	int socket = create_socket();
+	int socket = net2_create_socket();
 	if(socket != -1)
 	{
 		struct sockaddr_in socket_address;
@@ -107,12 +101,12 @@ int create_and_bind_net2_socket(unsigned short port, struct net2_socket_t* net2_
 	return result;
 }
 
-int listen_on_socket(int socket)
+int net2_listen_on_socket(int socket)
 {
 	return listen(socket, 1);
 }
 
-int accept_from_socket(struct net2_socket_t* server, struct net2_socket_t* client)
+int net2_accept_from_socket(struct net2_socket_t* server, struct net2_socket_t* client)
 {
 	struct sockaddr_in address;
 	socklen_t address_length = sizeof(struct sockaddr_in);
@@ -123,7 +117,7 @@ int accept_from_socket(struct net2_socket_t* server, struct net2_socket_t* clien
 	return socket;
 }
 
-int connect_to_socket(struct net2_socket_t* net2_socket, unsigned int address, unsigned short port)
+int net2_connect_to_socket(struct net2_socket_t* net2_socket, unsigned int address, unsigned short port)
 {
 	struct sockaddr_in server;
 	server.sin_family = AF_INET; // IPv4 Internet Protocol
@@ -134,22 +128,22 @@ int connect_to_socket(struct net2_socket_t* net2_socket, unsigned int address, u
 	return connect(net2_socket->_socket, (struct sockaddr*)&server, server_length);
 }
 
-int write_to_socket(int socket, char* data, unsigned int data_length)
+int net2_write_to_socket(int socket, char* data, unsigned int data_length)
 {
 	return send(socket, data, data_length, 0);
 }
 
-int read_from_socket(int socket, char* data, unsigned int data_length)
+int net2_read_from_socket(int socket, char* data, unsigned int data_length)
 {
 	return recv(socket, data, data_length, 0);
 }
 
-int close_socket(int socket)
+int net2_close_socket(int socket)
 {
 	return close(socket);
 }
 
-int get_ip_of_socket(struct net2_socket_t* socket)
+int net2_get_ip_of_socket(struct net2_socket_t* socket)
 {
 	return ntohl(socket->_address.sin_addr.s_addr);
 }
