@@ -42,42 +42,42 @@ int main(int argc, char* argv[])
 	// We create the server reception socket (THD_DEFAULT_PORT)
 	unsigned short server_reception_port = THD_DEFAULT_PORT;
 	struct net2_socket_t server_reception_socket;
-	int result = create_and_bind_net2_socket(server_reception_port, &server_reception_socket); 
+	int result = net2_create_and_bind_socket(server_reception_port, &server_reception_socket); 
 	
 	if(!result)
 	{
 		printf("SERVER RECEPTION SOCKET CREATED\n");
-		print_net2_socket("Server reception socket", &server_reception_socket);
+		net2_print_socket("Server reception socket", &server_reception_socket);
 		
 		// We listen on the server reception socket
-		if(!listen_on_socket(server_reception_socket._socket))
+		if(!net2_listen_on_socket(server_reception_socket._socket))
 		{
 			printf("IS LISTENING ON CLIENT RECEPTION SOCKET\n");
 			
 			struct net2_socket_t client_transmission_socket;
-			result = accept_from_socket(&server_reception_socket, &client_transmission_socket);
+			result = net2_accept_from_socket(&server_reception_socket, &client_transmission_socket);
 			
 			if(result != -1)
 			{
 				printf("CLIENT TRANSMISSION SOCKET ACCEPTED ON SERVER RECEPTION SOCKET\n");
-				print_net2_socket("Client transmission socket", &client_transmission_socket);
+				net2_print_socket("Client transmission socket", &client_transmission_socket);
 				
 				const unsigned int buffer_length = sizeof(short);
 				char buffer[buffer_length];
-				if(read_from_socket(client_transmission_socket._socket, buffer, buffer_length) > 0)
+				if(net2_read_from_socket(client_transmission_socket._socket, buffer, buffer_length) > 0)
 				{
 					unsigned short client_reception_port;
 					memcpy(&client_reception_port, buffer, sizeof(short));
 					
 					struct net2_socket_t server_transmission_socket;
-					result = create_net2_socket(&server_transmission_socket); 
+					result = net2_create_and_store_socket(&server_transmission_socket); 
 	
 					if(!result)
 					{
 						printf("SERVER TRANSMISSION SOCKET CREATED\n");
 						printf("TRIES TO CONNECT TO THE CLIENT RECEPTION SOCKET\n");
 						
-						result = connect_to_socket(&server_transmission_socket, get_ip_of_socket(&client_transmission_socket), client_reception_port);
+						result = net2_connect_to_socket(&server_transmission_socket, net2_get_ip_of_socket(&client_transmission_socket), client_reception_port);
 						
 						if(!result)
 						{
@@ -90,11 +90,11 @@ int main(int argc, char* argv[])
 						        message_buffer = i;
 						        
 							    printf("READS THE FIRST NUMBER FROM CLIENT... ");
-						        read_from_socket(client_transmission_socket._socket, &message_buffer, sizeof(char));
+						        net2_read_from_socket(client_transmission_socket._socket, &message_buffer, sizeof(char));
 						        printf("DONE => \"%c\".\n", message_buffer);
 						        
 						        printf("SENDS REPLY AS A NUMBER \"%c\"... ", message_buffer);
-						        write_to_socket(server_transmission_socket._socket, &message_buffer, sizeof(char));
+						        net2_write_to_socket(server_transmission_socket._socket, &message_buffer, sizeof(char));
 						        printf("DONE.\n");
 					        }
 						}
@@ -134,7 +134,7 @@ int main(int argc, char* argv[])
 		programme_return = EXIT_FAILURE;
 	}
 	
-	close_socket(server_reception_socket._socket);
+	net2_close_socket(server_reception_socket._socket);
 	
 	return programme_return;
 }

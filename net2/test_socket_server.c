@@ -28,17 +28,17 @@ int main(int argc, char* argv[])
 	
 	unsigned short port = THD_DEFAULT_PORT;
 	struct net2_socket_t server, client;
-	int result = create_and_bind_net2_socket(port, &server); 
+	int result = net2_create_and_bind_socket(port, &server); 
 	
 	if(!result)
 	{
 		printf("SERVER CREATED AND STARTS TO LISTEN\n");
-		print_net2_socket("Server socket", &server);
+		net2_print_socket("Server socket", &server);
 		
-		if(listen_on_socket(server._socket) != -1)
+		if(net2_listen_on_socket(server._socket) != -1)
 		{
 			printf("SERVER IS LISTENING, WAITING A CONNECTION TO ACCEPT IT\n");
-			result = accept_from_socket(&server, &client);
+			result = net2_accept_from_socket(&server, &client);
 			
 			if(result != -1)
 			{
@@ -62,7 +62,7 @@ int main(int argc, char* argv[])
 		programme_return = EXIT_FAILURE;
 	}
 	
-	close_socket(server._socket);
+	net2_close_socket(server._socket);
 	
 	return programme_return;
 }
