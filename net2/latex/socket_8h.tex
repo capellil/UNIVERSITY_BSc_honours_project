@@ -19,27 +19,27 @@ class \hyperlink{structnet2__socket__t}{net2\-\_\-socket\-\_\-t}
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-void \hyperlink{socket_8h_a4030e4053fec45b59c0fb408e19a7b81}{print\-\_\-net2\-\_\-socket} (char $\ast$heading, struct \hyperlink{structnet2__socket__t}{net2\-\_\-socket\-\_\-t} $\ast$net2\-\_\-socket)
+void \hyperlink{socket_8h_a6709a86111a8a3bce8af1cffbbb3fc08}{net2\-\_\-print\-\_\-socket} (char $\ast$heading, struct \hyperlink{structnet2__socket__t}{net2\-\_\-socket\-\_\-t} $\ast$net2\-\_\-socket)
 \begin{DoxyCompactList}\small\item\em Prints out the information on the given net2\-\_\-socket \-: its file descriptor, address and port. \end{DoxyCompactList}\item 
-int \hyperlink{socket_8h_ab536f93bd2337174415004500c3b0a5d}{create\-\_\-socket} ()
-\begin{DoxyCompactList}\small\item\em Creates a socket used for communication with a remote machine. Uses T\-C\-P/\-I\-P. \end{DoxyCompactList}\item 
-int \hyperlink{socket_8h_a23720811695adc7da8f975687ea32cea}{create\-\_\-net2\-\_\-socket} (struct \hyperlink{structnet2__socket__t}{net2\-\_\-socket\-\_\-t} $\ast$net2\-\_\-socket)
-\begin{DoxyCompactList}\small\item\em Creates a socket. \end{DoxyCompactList}\item 
-int \hyperlink{socket_8h_a00f97d1f0d76ffcbfdaf3ba63f3f1c5b}{create\-\_\-and\-\_\-bind\-\_\-net2\-\_\-socket} (unsigned short port, struct \hyperlink{structnet2__socket__t}{net2\-\_\-socket\-\_\-t} $\ast$net2\-\_\-socket)
+int \hyperlink{socket_8h_a361a9f2371a48e120e4b89e311de8ca2}{net2\-\_\-create\-\_\-socket} ()
+\begin{DoxyCompactList}\small\item\em Creates a socket used for communication with a remote machine, initialised to streaming data (suitable for T\-C\-P protocol). \end{DoxyCompactList}\item 
+int \hyperlink{socket_8h_a87b966bfbb0061dae04e26d0397c88a6}{net2\-\_\-create\-\_\-and\-\_\-store\-\_\-socket} (struct \hyperlink{structnet2__socket__t}{net2\-\_\-socket\-\_\-t} $\ast$net2\-\_\-socket)
+\begin{DoxyCompactList}\small\item\em Creates a socket used for communication with a remote machine. Uses T\-C\-P/\-I\-P. If the given pointer is not N\-U\-L\-L, the different parameters are stored into the pointed memory location. \end{DoxyCompactList}\item 
+int \hyperlink{socket_8h_aed28d66e1d6a3d4230e5891b4c044f6d}{net2\-\_\-create\-\_\-and\-\_\-bind\-\_\-socket} (unsigned short port, struct \hyperlink{structnet2__socket__t}{net2\-\_\-socket\-\_\-t} $\ast$net2\-\_\-socket)
 \begin{DoxyCompactList}\small\item\em Creates a socket and binds it with the given port. \end{DoxyCompactList}\item 
-int \hyperlink{socket_8h_a0d092afdcb43bff019d842f6cb683289}{listen\-\_\-on\-\_\-socket} (int socket)
+int \hyperlink{socket_8h_aece07f3ac0a1db2e20fbade32185b5df}{net2\-\_\-listen\-\_\-on\-\_\-socket} (int socket)
 \begin{DoxyCompactList}\small\item\em Listens from the given socket. \end{DoxyCompactList}\item 
-int \hyperlink{socket_8h_ab991deaaf54b0505eeed8a81c2b2a9df}{accept\-\_\-from\-\_\-socket} (struct \hyperlink{structnet2__socket__t}{net2\-\_\-socket\-\_\-t} $\ast$server, struct \hyperlink{structnet2__socket__t}{net2\-\_\-socket\-\_\-t} $\ast$client)
+int \hyperlink{socket_8h_ae30d2d353f769adc052df97f103c079b}{net2\-\_\-accept\-\_\-from\-\_\-socket} (struct \hyperlink{structnet2__socket__t}{net2\-\_\-socket\-\_\-t} $\ast$server, struct \hyperlink{structnet2__socket__t}{net2\-\_\-socket\-\_\-t} $\ast$client)
 \begin{DoxyCompactList}\small\item\em Accept a connection from a client to the given server. \end{DoxyCompactList}\item 
-int \hyperlink{socket_8h_a1fd1911972e312e209f75db902e12ff5}{connect\-\_\-to\-\_\-socket} (struct \hyperlink{structnet2__socket__t}{net2\-\_\-socket\-\_\-t} $\ast$net2\-\_\-socket, unsigned int address, unsigned short port)
+int \hyperlink{socket_8h_a7cd13e8e9096aba98565f64e8a54081a}{net2\-\_\-connect\-\_\-to\-\_\-socket} (struct \hyperlink{structnet2__socket__t}{net2\-\_\-socket\-\_\-t} $\ast$net2\-\_\-socket, unsigned int address, unsigned short port)
 \begin{DoxyCompactList}\small\item\em Connects the given socket to the provided address and port. \end{DoxyCompactList}\item 
-int \hyperlink{socket_8h_a93e73837c3f3a55d1c79c878d5acada9}{write\-\_\-to\-\_\-socket} (int socket, char $\ast$data, unsigned int data\-\_\-length)
+int \hyperlink{socket_8h_a3ff8173918bcfab760691be1e1fb1507}{net2\-\_\-write\-\_\-to\-\_\-socket} (int socket, char $\ast$data, unsigned int data\-\_\-length)
 \begin{DoxyCompactList}\small\item\em Writes the given data to the given socket. \end{DoxyCompactList}\item 
-int \hyperlink{socket_8h_a4145cf47301c57d1fc8362075b6b7d1c}{read\-\_\-from\-\_\-socket} (int socket, char $\ast$data, unsigned int data\-\_\-length)
+int \hyperlink{socket_8h_a99d47b84891eff4f92e6014f92bf92b2}{net2\-\_\-read\-\_\-from\-\_\-socket} (int socket, char $\ast$data, unsigned int data\-\_\-length)
 \begin{DoxyCompactList}\small\item\em Reads from the given socket $<$data\-\_\-length$>$ bytes and store it into the space pointed by $<$data$>$. \end{DoxyCompactList}\item 
-int \hyperlink{socket_8h_aea78623d136ea67fb8080f1d21b83928}{close\-\_\-socket} (int socket)
+int \hyperlink{socket_8h_aa49c67881422ce8693b055bf91878d9d}{net2\-\_\-close\-\_\-socket} (int socket)
 \begin{DoxyCompactList}\small\item\em Closes the socket (both for transmission and reception). \end{DoxyCompactList}\item 
-int \hyperlink{socket_8h_afeae3dfda6cedf8fea9a15be1cfdf916}{get\-\_\-ip\-\_\-of\-\_\-socket} (struct \hyperlink{structnet2__socket__t}{net2\-\_\-socket\-\_\-t} $\ast$socket)
+int \hyperlink{socket_8h_af6ee7f0cbe3af8bee4d42b2fccd0f335}{net2\-\_\-get\-\_\-ip\-\_\-of\-\_\-socket} (struct \hyperlink{structnet2__socket__t}{net2\-\_\-socket\-\_\-t} $\ast$socket)
 \begin{DoxyCompactList}\small\item\em Returns the ip address of the given net2 socket. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
@@ -56,14 +56,14 @@ Capelli Ludovic
 
 
 \subsection{Function Documentation}
-\hypertarget{socket_8h_ab991deaaf54b0505eeed8a81c2b2a9df}{\index{socket.\-h@{socket.\-h}!accept\-\_\-from\-\_\-socket@{accept\-\_\-from\-\_\-socket}}
-\index{accept\-\_\-from\-\_\-socket@{accept\-\_\-from\-\_\-socket}!socket.h@{socket.\-h}}
-\subsubsection[{accept\-\_\-from\-\_\-socket}]{\setlength{\rightskip}{0pt plus 5cm}int accept\-\_\-from\-\_\-socket (
+\hypertarget{socket_8h_ae30d2d353f769adc052df97f103c079b}{\index{socket.\-h@{socket.\-h}!net2\-\_\-accept\-\_\-from\-\_\-socket@{net2\-\_\-accept\-\_\-from\-\_\-socket}}
+\index{net2\-\_\-accept\-\_\-from\-\_\-socket@{net2\-\_\-accept\-\_\-from\-\_\-socket}!socket.h@{socket.\-h}}
+\subsubsection[{net2\-\_\-accept\-\_\-from\-\_\-socket}]{\setlength{\rightskip}{0pt plus 5cm}int net2\-\_\-accept\-\_\-from\-\_\-socket (
 \begin{DoxyParamCaption}
 \item[{struct {\bf net2\-\_\-socket\-\_\-t} $\ast$}]{server, }
 \item[{struct {\bf net2\-\_\-socket\-\_\-t} $\ast$}]{client}
 \end{DoxyParamCaption}
-)}}\label{socket_8h_ab991deaaf54b0505eeed8a81c2b2a9df}
+)}}\label{socket_8h_ae30d2d353f769adc052df97f103c079b}
 
 
 Accept a connection from a client to the given server. 
@@ -85,13 +85,13 @@ Accept a connection from a client to the given server.
 \begin{DoxyPrecond}{Precondition}
 (server != N\-U\-L\-L) A\-N\-D (client != N\-U\-L\-L) 
 \end{DoxyPrecond}
-\hypertarget{socket_8h_aea78623d136ea67fb8080f1d21b83928}{\index{socket.\-h@{socket.\-h}!close\-\_\-socket@{close\-\_\-socket}}
-\index{close\-\_\-socket@{close\-\_\-socket}!socket.h@{socket.\-h}}
-\subsubsection[{close\-\_\-socket}]{\setlength{\rightskip}{0pt plus 5cm}int close\-\_\-socket (
+\hypertarget{socket_8h_aa49c67881422ce8693b055bf91878d9d}{\index{socket.\-h@{socket.\-h}!net2\-\_\-close\-\_\-socket@{net2\-\_\-close\-\_\-socket}}
+\index{net2\-\_\-close\-\_\-socket@{net2\-\_\-close\-\_\-socket}!socket.h@{socket.\-h}}
+\subsubsection[{net2\-\_\-close\-\_\-socket}]{\setlength{\rightskip}{0pt plus 5cm}int net2\-\_\-close\-\_\-socket (
 \begin{DoxyParamCaption}
 \item[{int}]{socket}
 \end{DoxyParamCaption}
-)}}\label{socket_8h_aea78623d136ea67fb8080f1d21b83928}
+)}}\label{socket_8h_aa49c67881422ce8693b055bf91878d9d}
 
 
 Closes the socket (both for transmission and reception). 
@@ -108,15 +108,15 @@ Closes the socket (both for transmission and reception).
 \item F\-A\-I\-L\-U\-R\-E \-: -\/1 
 \end{DoxyItemize}
 \end{DoxyReturn}
-\hypertarget{socket_8h_a1fd1911972e312e209f75db902e12ff5}{\index{socket.\-h@{socket.\-h}!connect\-\_\-to\-\_\-socket@{connect\-\_\-to\-\_\-socket}}
-\index{connect\-\_\-to\-\_\-socket@{connect\-\_\-to\-\_\-socket}!socket.h@{socket.\-h}}
-\subsubsection[{connect\-\_\-to\-\_\-socket}]{\setlength{\rightskip}{0pt plus 5cm}int connect\-\_\-to\-\_\-socket (
+\hypertarget{socket_8h_a7cd13e8e9096aba98565f64e8a54081a}{\index{socket.\-h@{socket.\-h}!net2\-\_\-connect\-\_\-to\-\_\-socket@{net2\-\_\-connect\-\_\-to\-\_\-socket}}
+\index{net2\-\_\-connect\-\_\-to\-\_\-socket@{net2\-\_\-connect\-\_\-to\-\_\-socket}!socket.h@{socket.\-h}}
+\subsubsection[{net2\-\_\-connect\-\_\-to\-\_\-socket}]{\setlength{\rightskip}{0pt plus 5cm}int net2\-\_\-connect\-\_\-to\-\_\-socket (
 \begin{DoxyParamCaption}
 \item[{struct {\bf net2\-\_\-socket\-\_\-t} $\ast$}]{net2\-\_\-socket, }
 \item[{unsigned int}]{address, }
 \item[{unsigned short}]{port}
 \end{DoxyParamCaption}
-)}}\label{socket_8h_a1fd1911972e312e209f75db902e12ff5}
+)}}\label{socket_8h_a7cd13e8e9096aba98565f64e8a54081a}
 
 
 Connects the given socket to the provided address and port. 
@@ -137,14 +137,14 @@ Connects the given socket to the provided address and port.
 \item F\-A\-I\-L\-E\-D \-: -\/1 
 \end{DoxyItemize}
 \end{DoxyReturn}
-\hypertarget{socket_8h_a00f97d1f0d76ffcbfdaf3ba63f3f1c5b}{\index{socket.\-h@{socket.\-h}!create\-\_\-and\-\_\-bind\-\_\-net2\-\_\-socket@{create\-\_\-and\-\_\-bind\-\_\-net2\-\_\-socket}}
-\index{create\-\_\-and\-\_\-bind\-\_\-net2\-\_\-socket@{create\-\_\-and\-\_\-bind\-\_\-net2\-\_\-socket}!socket.h@{socket.\-h}}
-\subsubsection[{create\-\_\-and\-\_\-bind\-\_\-net2\-\_\-socket}]{\setlength{\rightskip}{0pt plus 5cm}int create\-\_\-and\-\_\-bind\-\_\-net2\-\_\-socket (
+\hypertarget{socket_8h_aed28d66e1d6a3d4230e5891b4c044f6d}{\index{socket.\-h@{socket.\-h}!net2\-\_\-create\-\_\-and\-\_\-bind\-\_\-socket@{net2\-\_\-create\-\_\-and\-\_\-bind\-\_\-socket}}
+\index{net2\-\_\-create\-\_\-and\-\_\-bind\-\_\-socket@{net2\-\_\-create\-\_\-and\-\_\-bind\-\_\-socket}!socket.h@{socket.\-h}}
+\subsubsection[{net2\-\_\-create\-\_\-and\-\_\-bind\-\_\-socket}]{\setlength{\rightskip}{0pt plus 5cm}int net2\-\_\-create\-\_\-and\-\_\-bind\-\_\-socket (
 \begin{DoxyParamCaption}
 \item[{unsigned short}]{port, }
 \item[{struct {\bf net2\-\_\-socket\-\_\-t} $\ast$}]{net2\-\_\-socket}
 \end{DoxyParamCaption}
-)}}\label{socket_8h_a00f97d1f0d76ffcbfdaf3ba63f3f1c5b}
+)}}\label{socket_8h_aed28d66e1d6a3d4230e5891b4c044f6d}
 
 
 Creates a socket and binds it with the given port. 
@@ -163,16 +163,16 @@ Creates a socket and binds it with the given port.
 \item F\-A\-I\-L\-E\-D \-: Negative number, errno is set appropriately 
 \end{DoxyItemize}
 \end{DoxyReturn}
-\hypertarget{socket_8h_a23720811695adc7da8f975687ea32cea}{\index{socket.\-h@{socket.\-h}!create\-\_\-net2\-\_\-socket@{create\-\_\-net2\-\_\-socket}}
-\index{create\-\_\-net2\-\_\-socket@{create\-\_\-net2\-\_\-socket}!socket.h@{socket.\-h}}
-\subsubsection[{create\-\_\-net2\-\_\-socket}]{\setlength{\rightskip}{0pt plus 5cm}int create\-\_\-net2\-\_\-socket (
+\hypertarget{socket_8h_a87b966bfbb0061dae04e26d0397c88a6}{\index{socket.\-h@{socket.\-h}!net2\-\_\-create\-\_\-and\-\_\-store\-\_\-socket@{net2\-\_\-create\-\_\-and\-\_\-store\-\_\-socket}}
+\index{net2\-\_\-create\-\_\-and\-\_\-store\-\_\-socket@{net2\-\_\-create\-\_\-and\-\_\-store\-\_\-socket}!socket.h@{socket.\-h}}
+\subsubsection[{net2\-\_\-create\-\_\-and\-\_\-store\-\_\-socket}]{\setlength{\rightskip}{0pt plus 5cm}int net2\-\_\-create\-\_\-and\-\_\-store\-\_\-socket (
 \begin{DoxyParamCaption}
 \item[{struct {\bf net2\-\_\-socket\-\_\-t} $\ast$}]{net2\-\_\-socket}
 \end{DoxyParamCaption}
-)}}\label{socket_8h_a23720811695adc7da8f975687ea32cea}
+)}}\label{socket_8h_a87b966bfbb0061dae04e26d0397c88a6}
 
 
-Creates a socket. 
+Creates a socket used for communication with a remote machine. Uses T\-C\-P/\-I\-P. If the given pointer is not N\-U\-L\-L, the different parameters are stored into the pointed memory location. 
 
 
 \begin{DoxyParams}{Parameters}
@@ -186,16 +186,16 @@ Creates a socket.
 \item F\-A\-I\-L\-E\-D \-: Negative number, errno is set appropriately 
 \end{DoxyItemize}
 \end{DoxyReturn}
-\hypertarget{socket_8h_ab536f93bd2337174415004500c3b0a5d}{\index{socket.\-h@{socket.\-h}!create\-\_\-socket@{create\-\_\-socket}}
-\index{create\-\_\-socket@{create\-\_\-socket}!socket.h@{socket.\-h}}
-\subsubsection[{create\-\_\-socket}]{\setlength{\rightskip}{0pt plus 5cm}int create\-\_\-socket (
+\hypertarget{socket_8h_a361a9f2371a48e120e4b89e311de8ca2}{\index{socket.\-h@{socket.\-h}!net2\-\_\-create\-\_\-socket@{net2\-\_\-create\-\_\-socket}}
+\index{net2\-\_\-create\-\_\-socket@{net2\-\_\-create\-\_\-socket}!socket.h@{socket.\-h}}
+\subsubsection[{net2\-\_\-create\-\_\-socket}]{\setlength{\rightskip}{0pt plus 5cm}int net2\-\_\-create\-\_\-socket (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)}}\label{socket_8h_ab536f93bd2337174415004500c3b0a5d}
+)}}\label{socket_8h_a361a9f2371a48e120e4b89e311de8ca2}
 
 
-Creates a socket used for communication with a remote machine. Uses T\-C\-P/\-I\-P. 
+Creates a socket used for communication with a remote machine, initialised to streaming data (suitable for T\-C\-P protocol). 
 
 \begin{DoxyReturn}{Returns}
 
@@ -204,13 +204,13 @@ Creates a socket used for communication with a remote machine. Uses T\-C\-P/\-I\
 \item F\-A\-I\-L\-E\-D \-: -\/1, errno is set appropriately 
 \end{DoxyItemize}
 \end{DoxyReturn}
-\hypertarget{socket_8h_afeae3dfda6cedf8fea9a15be1cfdf916}{\index{socket.\-h@{socket.\-h}!get\-\_\-ip\-\_\-of\-\_\-socket@{get\-\_\-ip\-\_\-of\-\_\-socket}}
-\index{get\-\_\-ip\-\_\-of\-\_\-socket@{get\-\_\-ip\-\_\-of\-\_\-socket}!socket.h@{socket.\-h}}
-\subsubsection[{get\-\_\-ip\-\_\-of\-\_\-socket}]{\setlength{\rightskip}{0pt plus 5cm}int get\-\_\-ip\-\_\-of\-\_\-socket (
+\hypertarget{socket_8h_af6ee7f0cbe3af8bee4d42b2fccd0f335}{\index{socket.\-h@{socket.\-h}!net2\-\_\-get\-\_\-ip\-\_\-of\-\_\-socket@{net2\-\_\-get\-\_\-ip\-\_\-of\-\_\-socket}}
+\index{net2\-\_\-get\-\_\-ip\-\_\-of\-\_\-socket@{net2\-\_\-get\-\_\-ip\-\_\-of\-\_\-socket}!socket.h@{socket.\-h}}
+\subsubsection[{net2\-\_\-get\-\_\-ip\-\_\-of\-\_\-socket}]{\setlength{\rightskip}{0pt plus 5cm}int net2\-\_\-get\-\_\-ip\-\_\-of\-\_\-socket (
 \begin{DoxyParamCaption}
 \item[{struct {\bf net2\-\_\-socket\-\_\-t} $\ast$}]{socket}
 \end{DoxyParamCaption}
-)}}\label{socket_8h_afeae3dfda6cedf8fea9a15be1cfdf916}
+)}}\label{socket_8h_af6ee7f0cbe3af8bee4d42b2fccd0f335}
 
 
 Returns the ip address of the given net2 socket. 
@@ -223,13 +223,13 @@ Returns the ip address of the given net2 socket.
 \begin{DoxyReturn}{Returns}
 The I\-P address of the given socket in integer format (host byte order). 
 \end{DoxyReturn}
-\hypertarget{socket_8h_a0d092afdcb43bff019d842f6cb683289}{\index{socket.\-h@{socket.\-h}!listen\-\_\-on\-\_\-socket@{listen\-\_\-on\-\_\-socket}}
-\index{listen\-\_\-on\-\_\-socket@{listen\-\_\-on\-\_\-socket}!socket.h@{socket.\-h}}
-\subsubsection[{listen\-\_\-on\-\_\-socket}]{\setlength{\rightskip}{0pt plus 5cm}int listen\-\_\-on\-\_\-socket (
+\hypertarget{socket_8h_aece07f3ac0a1db2e20fbade32185b5df}{\index{socket.\-h@{socket.\-h}!net2\-\_\-listen\-\_\-on\-\_\-socket@{net2\-\_\-listen\-\_\-on\-\_\-socket}}
+\index{net2\-\_\-listen\-\_\-on\-\_\-socket@{net2\-\_\-listen\-\_\-on\-\_\-socket}!socket.h@{socket.\-h}}
+\subsubsection[{net2\-\_\-listen\-\_\-on\-\_\-socket}]{\setlength{\rightskip}{0pt plus 5cm}int net2\-\_\-listen\-\_\-on\-\_\-socket (
 \begin{DoxyParamCaption}
 \item[{int}]{socket}
 \end{DoxyParamCaption}
-)}}\label{socket_8h_a0d092afdcb43bff019d842f6cb683289}
+)}}\label{socket_8h_aece07f3ac0a1db2e20fbade32185b5df}
 
 
 Listens from the given socket. 
@@ -246,14 +246,14 @@ Listens from the given socket.
 \item F\-A\-I\-L\-E\-D \-: different from 0, errno is set appropriately 
 \end{DoxyItemize}
 \end{DoxyReturn}
-\hypertarget{socket_8h_a4030e4053fec45b59c0fb408e19a7b81}{\index{socket.\-h@{socket.\-h}!print\-\_\-net2\-\_\-socket@{print\-\_\-net2\-\_\-socket}}
-\index{print\-\_\-net2\-\_\-socket@{print\-\_\-net2\-\_\-socket}!socket.h@{socket.\-h}}
-\subsubsection[{print\-\_\-net2\-\_\-socket}]{\setlength{\rightskip}{0pt plus 5cm}void print\-\_\-net2\-\_\-socket (
+\hypertarget{socket_8h_a6709a86111a8a3bce8af1cffbbb3fc08}{\index{socket.\-h@{socket.\-h}!net2\-\_\-print\-\_\-socket@{net2\-\_\-print\-\_\-socket}}
+\index{net2\-\_\-print\-\_\-socket@{net2\-\_\-print\-\_\-socket}!socket.h@{socket.\-h}}
+\subsubsection[{net2\-\_\-print\-\_\-socket}]{\setlength{\rightskip}{0pt plus 5cm}void net2\-\_\-print\-\_\-socket (
 \begin{DoxyParamCaption}
 \item[{char $\ast$}]{heading, }
 \item[{struct {\bf net2\-\_\-socket\-\_\-t} $\ast$}]{net2\-\_\-socket}
 \end{DoxyParamCaption}
-)}}\label{socket_8h_a4030e4053fec45b59c0fb408e19a7b81}
+)}}\label{socket_8h_a6709a86111a8a3bce8af1cffbbb3fc08}
 
 
 Prints out the information on the given net2\-\_\-socket \-: its file descriptor, address and port. 
@@ -268,15 +268,15 @@ Prints out the information on the given net2\-\_\-socket \-: its file descriptor
 \begin{DoxyPrecond}{Precondition}
 socket != N\-U\-L\-L 
 \end{DoxyPrecond}
-\hypertarget{socket_8h_a4145cf47301c57d1fc8362075b6b7d1c}{\index{socket.\-h@{socket.\-h}!read\-\_\-from\-\_\-socket@{read\-\_\-from\-\_\-socket}}
-\index{read\-\_\-from\-\_\-socket@{read\-\_\-from\-\_\-socket}!socket.h@{socket.\-h}}
-\subsubsection[{read\-\_\-from\-\_\-socket}]{\setlength{\rightskip}{0pt plus 5cm}int read\-\_\-from\-\_\-socket (
+\hypertarget{socket_8h_a99d47b84891eff4f92e6014f92bf92b2}{\index{socket.\-h@{socket.\-h}!net2\-\_\-read\-\_\-from\-\_\-socket@{net2\-\_\-read\-\_\-from\-\_\-socket}}
+\index{net2\-\_\-read\-\_\-from\-\_\-socket@{net2\-\_\-read\-\_\-from\-\_\-socket}!socket.h@{socket.\-h}}
+\subsubsection[{net2\-\_\-read\-\_\-from\-\_\-socket}]{\setlength{\rightskip}{0pt plus 5cm}int net2\-\_\-read\-\_\-from\-\_\-socket (
 \begin{DoxyParamCaption}
 \item[{int}]{socket, }
 \item[{char $\ast$}]{data, }
 \item[{unsigned int}]{data\-\_\-length}
 \end{DoxyParamCaption}
-)}}\label{socket_8h_a4145cf47301c57d1fc8362075b6b7d1c}
+)}}\label{socket_8h_a99d47b84891eff4f92e6014f92bf92b2}
 
 
 Reads from the given socket $<$data\-\_\-length$>$ bytes and store it into the space pointed by $<$data$>$. 
@@ -301,15 +301,15 @@ data\-\_\-length is less than the size of allocated area pointed by data.
 \item F\-A\-I\-L\-E\-D \-: -\/1, errno is set appropriately 
 \end{DoxyItemize}
 \end{DoxyReturn}
-\hypertarget{socket_8h_a93e73837c3f3a55d1c79c878d5acada9}{\index{socket.\-h@{socket.\-h}!write\-\_\-to\-\_\-socket@{write\-\_\-to\-\_\-socket}}
-\index{write\-\_\-to\-\_\-socket@{write\-\_\-to\-\_\-socket}!socket.h@{socket.\-h}}
-\subsubsection[{write\-\_\-to\-\_\-socket}]{\setlength{\rightskip}{0pt plus 5cm}int write\-\_\-to\-\_\-socket (
+\hypertarget{socket_8h_a3ff8173918bcfab760691be1e1fb1507}{\index{socket.\-h@{socket.\-h}!net2\-\_\-write\-\_\-to\-\_\-socket@{net2\-\_\-write\-\_\-to\-\_\-socket}}
+\index{net2\-\_\-write\-\_\-to\-\_\-socket@{net2\-\_\-write\-\_\-to\-\_\-socket}!socket.h@{socket.\-h}}
+\subsubsection[{net2\-\_\-write\-\_\-to\-\_\-socket}]{\setlength{\rightskip}{0pt plus 5cm}int net2\-\_\-write\-\_\-to\-\_\-socket (
 \begin{DoxyParamCaption}
 \item[{int}]{socket, }
 \item[{char $\ast$}]{data, }
 \item[{unsigned int}]{data\-\_\-length}
 \end{DoxyParamCaption}
-)}}\label{socket_8h_a93e73837c3f3a55d1c79c878d5acada9}
+)}}\label{socket_8h_a3ff8173918bcfab760691be1e1fb1507}
 
 
 Writes the given data to the given socket. 
@@ -326,7 +326,7 @@ Writes the given data to the given socket.
 \begin{DoxyReturn}{Returns}
 
 \begin{DoxyItemize}
-\item S\-U\-C\-C\-E\-S\-S \-: Non-\/negative number that is he amount of byte written 
+\item S\-U\-C\-C\-E\-S\-S \-: Non-\/negative number that is the amount of byte written 
 \item F\-A\-I\-L\-E\-D \-: -\/1, errno is set appropriately 
 \end{DoxyItemize}
 \end{DoxyReturn}

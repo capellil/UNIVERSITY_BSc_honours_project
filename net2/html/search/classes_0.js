@@ -1,9 +1,4 @@
 var searchData=
 [
-  ['channelmessageack',['channelMessageAck',['../structchannelMessageAck.html',1,'']]],
-  ['channelmessageasyncsend',['channelMessageAsyncSend',['../structchannelMessageAsyncSend.html',1,'']]],
-  ['channelmessagelinklost',['channelMessageLinkLost',['../structchannelMessageLinkLost.html',1,'']]],
-  ['channelmessagepoison',['channelMessagePoison',['../structchannelMessagePoison.html',1,'']]],
-  ['channelmessagereject',['channelMessageReject',['../structchannelMessageReject.html',1,'']]],
-  ['channelmessagesend',['channelMessageSend',['../structchannelMessageSend.html',1,'']]]
+  ['net2_5fsocket_5ft',['net2_socket_t',['../structnet2__socket__t.html',1,'']]]
 ];

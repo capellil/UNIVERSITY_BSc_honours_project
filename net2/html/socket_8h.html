@@ -109,51 +109,51 @@ Macros</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a4030e4053fec45b59c0fb408e19a7b81"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="socket_8h.html#a4030e4053fec45b59c0fb408e19a7b81">print_net2_socket</a> (char *heading, struct <a class="el" href="structnet2__socket__t.html">net2_socket_t</a> *net2_socket)</td></tr>
-<tr class="memdesc:a4030e4053fec45b59c0fb408e19a7b81"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints out the information on the given net2_socket : its file descriptor, address and port.  <a href="#a4030e4053fec45b59c0fb408e19a7b81">More...</a><br/></td></tr>
-<tr class="separator:a4030e4053fec45b59c0fb408e19a7b81"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab536f93bd2337174415004500c3b0a5d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="socket_8h.html#ab536f93bd2337174415004500c3b0a5d">create_socket</a> ()</td></tr>
-<tr class="memdesc:ab536f93bd2337174415004500c3b0a5d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a socket used for communication with a remote machine. Uses TCP/IP.  <a href="#ab536f93bd2337174415004500c3b0a5d">More...</a><br/></td></tr>
-<tr class="separator:ab536f93bd2337174415004500c3b0a5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a23720811695adc7da8f975687ea32cea"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="socket_8h.html#a23720811695adc7da8f975687ea32cea">create_net2_socket</a> (struct <a class="el" href="structnet2__socket__t.html">net2_socket_t</a> *net2_socket)</td></tr>
-<tr class="memdesc:a23720811695adc7da8f975687ea32cea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a socket.  <a href="#a23720811695adc7da8f975687ea32cea">More...</a><br/></td></tr>
-<tr class="separator:a23720811695adc7da8f975687ea32cea"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a00f97d1f0d76ffcbfdaf3ba63f3f1c5b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="socket_8h.html#a00f97d1f0d76ffcbfdaf3ba63f3f1c5b">create_and_bind_net2_socket</a> (unsigned short port, struct <a class="el" href="structnet2__socket__t.html">net2_socket_t</a> *net2_socket)</td></tr>
-<tr class="memdesc:a00f97d1f0d76ffcbfdaf3ba63f3f1c5b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a socket and binds it with the given port.  <a href="#a00f97d1f0d76ffcbfdaf3ba63f3f1c5b">More...</a><br/></td></tr>
-<tr class="separator:a00f97d1f0d76ffcbfdaf3ba63f3f1c5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0d092afdcb43bff019d842f6cb683289"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="socket_8h.html#a0d092afdcb43bff019d842f6cb683289">listen_on_socket</a> (int socket)</td></tr>
-<tr class="memdesc:a0d092afdcb43bff019d842f6cb683289"><td class="mdescLeft">&#160;</td><td class="mdescRight">Listens from the given socket.  <a href="#a0d092afdcb43bff019d842f6cb683289">More...</a><br/></td></tr>
-<tr class="separator:a0d092afdcb43bff019d842f6cb683289"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab991deaaf54b0505eeed8a81c2b2a9df"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="socket_8h.html#ab991deaaf54b0505eeed8a81c2b2a9df">accept_from_socket</a> (struct <a class="el" href="structnet2__socket__t.html">net2_socket_t</a> *server, struct <a class="el" href="structnet2__socket__t.html">net2_socket_t</a> *client)</td></tr>
-<tr class="memdesc:ab991deaaf54b0505eeed8a81c2b2a9df"><td class="mdescLeft">&#160;</td><td class="mdescRight">Accept a connection from a client to the given server.  <a href="#ab991deaaf54b0505eeed8a81c2b2a9df">More...</a><br/></td></tr>
-<tr class="separator:ab991deaaf54b0505eeed8a81c2b2a9df"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1fd1911972e312e209f75db902e12ff5"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="socket_8h.html#a1fd1911972e312e209f75db902e12ff5">connect_to_socket</a> (struct <a class="el" href="structnet2__socket__t.html">net2_socket_t</a> *net2_socket, unsigned int address, unsigned short port)</td></tr>
-<tr class="memdesc:a1fd1911972e312e209f75db902e12ff5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Connects the given socket to the provided address and port.  <a href="#a1fd1911972e312e209f75db902e12ff5">More...</a><br/></td></tr>
-<tr class="separator:a1fd1911972e312e209f75db902e12ff5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a93e73837c3f3a55d1c79c878d5acada9"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="socket_8h.html#a93e73837c3f3a55d1c79c878d5acada9">write_to_socket</a> (int socket, char *data, unsigned int data_length)</td></tr>
-<tr class="memdesc:a93e73837c3f3a55d1c79c878d5acada9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes the given data to the given socket.  <a href="#a93e73837c3f3a55d1c79c878d5acada9">More...</a><br/></td></tr>
-<tr class="separator:a93e73837c3f3a55d1c79c878d5acada9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4145cf47301c57d1fc8362075b6b7d1c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="socket_8h.html#a4145cf47301c57d1fc8362075b6b7d1c">read_from_socket</a> (int socket, char *data, unsigned int data_length)</td></tr>
-<tr class="memdesc:a4145cf47301c57d1fc8362075b6b7d1c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads from the given socket &lt;data_length&gt; bytes and store it into the space pointed by &lt;data&gt;.  <a href="#a4145cf47301c57d1fc8362075b6b7d1c">More...</a><br/></td></tr>
-<tr class="separator:a4145cf47301c57d1fc8362075b6b7d1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aea78623d136ea67fb8080f1d21b83928"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="socket_8h.html#aea78623d136ea67fb8080f1d21b83928">close_socket</a> (int socket)</td></tr>
-<tr class="memdesc:aea78623d136ea67fb8080f1d21b83928"><td class="mdescLeft">&#160;</td><td class="mdescRight">Closes the socket (both for transmission and reception).  <a href="#aea78623d136ea67fb8080f1d21b83928">More...</a><br/></td></tr>
-<tr class="separator:aea78623d136ea67fb8080f1d21b83928"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afeae3dfda6cedf8fea9a15be1cfdf916"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="socket_8h.html#afeae3dfda6cedf8fea9a15be1cfdf916">get_ip_of_socket</a> (struct <a class="el" href="structnet2__socket__t.html">net2_socket_t</a> *socket)</td></tr>
-<tr class="memdesc:afeae3dfda6cedf8fea9a15be1cfdf916"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the ip address of the given net2 socket.  <a href="#afeae3dfda6cedf8fea9a15be1cfdf916">More...</a><br/></td></tr>
-<tr class="separator:afeae3dfda6cedf8fea9a15be1cfdf916"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6709a86111a8a3bce8af1cffbbb3fc08"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="socket_8h.html#a6709a86111a8a3bce8af1cffbbb3fc08">net2_print_socket</a> (char *heading, struct <a class="el" href="structnet2__socket__t.html">net2_socket_t</a> *net2_socket)</td></tr>
+<tr class="memdesc:a6709a86111a8a3bce8af1cffbbb3fc08"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints out the information on the given net2_socket : its file descriptor, address and port.  <a href="#a6709a86111a8a3bce8af1cffbbb3fc08">More...</a><br/></td></tr>
+<tr class="separator:a6709a86111a8a3bce8af1cffbbb3fc08"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a361a9f2371a48e120e4b89e311de8ca2"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="socket_8h.html#a361a9f2371a48e120e4b89e311de8ca2">net2_create_socket</a> ()</td></tr>
+<tr class="memdesc:a361a9f2371a48e120e4b89e311de8ca2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a socket used for communication with a remote machine, initialised to streaming data (suitable for TCP protocol).  <a href="#a361a9f2371a48e120e4b89e311de8ca2">More...</a><br/></td></tr>
+<tr class="separator:a361a9f2371a48e120e4b89e311de8ca2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a87b966bfbb0061dae04e26d0397c88a6"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="socket_8h.html#a87b966bfbb0061dae04e26d0397c88a6">net2_create_and_store_socket</a> (struct <a class="el" href="structnet2__socket__t.html">net2_socket_t</a> *net2_socket)</td></tr>
+<tr class="memdesc:a87b966bfbb0061dae04e26d0397c88a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a socket used for communication with a remote machine. Uses TCP/IP. If the given pointer is not NULL, the different parameters are stored into the pointed memory location.  <a href="#a87b966bfbb0061dae04e26d0397c88a6">More...</a><br/></td></tr>
+<tr class="separator:a87b966bfbb0061dae04e26d0397c88a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aed28d66e1d6a3d4230e5891b4c044f6d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="socket_8h.html#aed28d66e1d6a3d4230e5891b4c044f6d">net2_create_and_bind_socket</a> (unsigned short port, struct <a class="el" href="structnet2__socket__t.html">net2_socket_t</a> *net2_socket)</td></tr>
+<tr class="memdesc:aed28d66e1d6a3d4230e5891b4c044f6d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a socket and binds it with the given port.  <a href="#aed28d66e1d6a3d4230e5891b4c044f6d">More...</a><br/></td></tr>
+<tr class="separator:aed28d66e1d6a3d4230e5891b4c044f6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aece07f3ac0a1db2e20fbade32185b5df"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="socket_8h.html#aece07f3ac0a1db2e20fbade32185b5df">net2_listen_on_socket</a> (int socket)</td></tr>
+<tr class="memdesc:aece07f3ac0a1db2e20fbade32185b5df"><td class="mdescLeft">&#160;</td><td class="mdescRight">Listens from the given socket.  <a href="#aece07f3ac0a1db2e20fbade32185b5df">More...</a><br/></td></tr>
+<tr class="separator:aece07f3ac0a1db2e20fbade32185b5df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae30d2d353f769adc052df97f103c079b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="socket_8h.html#ae30d2d353f769adc052df97f103c079b">net2_accept_from_socket</a> (struct <a class="el" href="structnet2__socket__t.html">net2_socket_t</a> *server, struct <a class="el" href="structnet2__socket__t.html">net2_socket_t</a> *client)</td></tr>
+<tr class="memdesc:ae30d2d353f769adc052df97f103c079b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Accept a connection from a client to the given server.  <a href="#ae30d2d353f769adc052df97f103c079b">More...</a><br/></td></tr>
+<tr class="separator:ae30d2d353f769adc052df97f103c079b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7cd13e8e9096aba98565f64e8a54081a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="socket_8h.html#a7cd13e8e9096aba98565f64e8a54081a">net2_connect_to_socket</a> (struct <a class="el" href="structnet2__socket__t.html">net2_socket_t</a> *net2_socket, unsigned int address, unsigned short port)</td></tr>
+<tr class="memdesc:a7cd13e8e9096aba98565f64e8a54081a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Connects the given socket to the provided address and port.  <a href="#a7cd13e8e9096aba98565f64e8a54081a">More...</a><br/></td></tr>
+<tr class="separator:a7cd13e8e9096aba98565f64e8a54081a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3ff8173918bcfab760691be1e1fb1507"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="socket_8h.html#a3ff8173918bcfab760691be1e1fb1507">net2_write_to_socket</a> (int socket, char *data, unsigned int data_length)</td></tr>
+<tr class="memdesc:a3ff8173918bcfab760691be1e1fb1507"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes the given data to the given socket.  <a href="#a3ff8173918bcfab760691be1e1fb1507">More...</a><br/></td></tr>
+<tr class="separator:a3ff8173918bcfab760691be1e1fb1507"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a99d47b84891eff4f92e6014f92bf92b2"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="socket_8h.html#a99d47b84891eff4f92e6014f92bf92b2">net2_read_from_socket</a> (int socket, char *data, unsigned int data_length)</td></tr>
+<tr class="memdesc:a99d47b84891eff4f92e6014f92bf92b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads from the given socket &lt;data_length&gt; bytes and store it into the space pointed by &lt;data&gt;.  <a href="#a99d47b84891eff4f92e6014f92bf92b2">More...</a><br/></td></tr>
+<tr class="separator:a99d47b84891eff4f92e6014f92bf92b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa49c67881422ce8693b055bf91878d9d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="socket_8h.html#aa49c67881422ce8693b055bf91878d9d">net2_close_socket</a> (int socket)</td></tr>
+<tr class="memdesc:aa49c67881422ce8693b055bf91878d9d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Closes the socket (both for transmission and reception).  <a href="#aa49c67881422ce8693b055bf91878d9d">More...</a><br/></td></tr>
+<tr class="separator:aa49c67881422ce8693b055bf91878d9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af6ee7f0cbe3af8bee4d42b2fccd0f335"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="socket_8h.html#af6ee7f0cbe3af8bee4d42b2fccd0f335">net2_get_ip_of_socket</a> (struct <a class="el" href="structnet2__socket__t.html">net2_socket_t</a> *socket)</td></tr>
+<tr class="memdesc:af6ee7f0cbe3af8bee4d42b2fccd0f335"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the ip address of the given net2 socket.  <a href="#af6ee7f0cbe3af8bee4d42b2fccd0f335">More...</a><br/></td></tr>
+<tr class="separator:af6ee7f0cbe3af8bee4d42b2fccd0f335"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><dl class="section author"><dt>Author</dt><dd>Capelli Ludovic </dd></dl>
 <dl class="section version"><dt>Version</dt><dd>1.0 </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>15/09/2014 </dd></dl>
 </div><h2 class="groupheader">Function Documentation</h2>
-<a class="anchor" id="ab991deaaf54b0505eeed8a81c2b2a9df"></a>
+<a class="anchor" id="ae30d2d353f769adc052df97f103c079b"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int accept_from_socket </td>
+          <td class="memname">int net2_accept_from_socket </td>
           <td>(</td>
           <td class="paramtype">struct <a class="el" href="structnet2__socket__t.html">net2_socket_t</a> *&#160;</td>
           <td class="paramname"><em>server</em>, </td>
@@ -191,12 +191,12 @@ FAILED : -1, errno is set appropriately </li>
 
 </div>
 </div>
-<a class="anchor" id="aea78623d136ea67fb8080f1d21b83928"></a>
+<a class="anchor" id="aa49c67881422ce8693b055bf91878d9d"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int close_socket </td>
+          <td class="memname">int net2_close_socket </td>
           <td>(</td>
           <td class="paramtype">int&#160;</td>
           <td class="paramname"><em>socket</em></td><td>)</td>
@@ -222,12 +222,12 @@ FAILURE : -1 </li>
 
 </div>
 </div>
-<a class="anchor" id="a1fd1911972e312e209f75db902e12ff5"></a>
+<a class="anchor" id="a7cd13e8e9096aba98565f64e8a54081a"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int connect_to_socket </td>
+          <td class="memname">int net2_connect_to_socket </td>
           <td>(</td>
           <td class="paramtype">struct <a class="el" href="structnet2__socket__t.html">net2_socket_t</a> *&#160;</td>
           <td class="paramname"><em>net2_socket</em>, </td>
@@ -271,12 +271,12 @@ FAILED : -1 </li>
 
 </div>
 </div>
-<a class="anchor" id="a00f97d1f0d76ffcbfdaf3ba63f3f1c5b"></a>
+<a class="anchor" id="aed28d66e1d6a3d4230e5891b4c044f6d"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int create_and_bind_net2_socket </td>
+          <td class="memname">int net2_create_and_bind_socket </td>
           <td>(</td>
           <td class="paramtype">unsigned short&#160;</td>
           <td class="paramname"><em>port</em>, </td>
@@ -313,12 +313,12 @@ FAILED : Negative number, errno is set appropriately </li>
 
 </div>
 </div>
-<a class="anchor" id="a23720811695adc7da8f975687ea32cea"></a>
+<a class="anchor" id="a87b966bfbb0061dae04e26d0397c88a6"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int create_net2_socket </td>
+          <td class="memname">int net2_create_and_store_socket </td>
           <td>(</td>
           <td class="paramtype">struct <a class="el" href="structnet2__socket__t.html">net2_socket_t</a> *&#160;</td>
           <td class="paramname"><em>net2_socket</em></td><td>)</td>
@@ -327,7 +327,7 @@ FAILED : Negative number, errno is set appropriately </li>
       </table>
 </div><div class="memdoc">
 
-<p>Creates a socket. </p>
+<p>Creates a socket used for communication with a remote machine. Uses TCP/IP. If the given pointer is not NULL, the different parameters are stored into the pointed memory location. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">net2_socket</td><td>- A pointer to store the created net2 socket in. </td></tr>
@@ -344,12 +344,12 @@ FAILED : Negative number, errno is set appropriately </li>
 
 </div>
 </div>
-<a class="anchor" id="ab536f93bd2337174415004500c3b0a5d"></a>
+<a class="anchor" id="a361a9f2371a48e120e4b89e311de8ca2"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int create_socket </td>
+          <td class="memname">int net2_create_socket </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -357,7 +357,7 @@ FAILED : Negative number, errno is set appropriately </li>
       </table>
 </div><div class="memdoc">
 
-<p>Creates a socket used for communication with a remote machine. Uses TCP/IP. </p>
+<p>Creates a socket used for communication with a remote machine, initialised to streaming data (suitable for TCP protocol). </p>
 <dl class="section return"><dt>Returns</dt><dd><ul>
 <li>
 SUCCESS : Non negative number that is the socket descriptor </li>
@@ -368,12 +368,12 @@ FAILED : -1, errno is set appropriately </li>
 
 </div>
 </div>
-<a class="anchor" id="afeae3dfda6cedf8fea9a15be1cfdf916"></a>
+<a class="anchor" id="af6ee7f0cbe3af8bee4d42b2fccd0f335"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int get_ip_of_socket </td>
+          <td class="memname">int net2_get_ip_of_socket </td>
           <td>(</td>
           <td class="paramtype">struct <a class="el" href="structnet2__socket__t.html">net2_socket_t</a> *&#160;</td>
           <td class="paramname"><em>socket</em></td><td>)</td>
@@ -393,12 +393,12 @@ FAILED : -1, errno is set appropriately </li>
 
 </div>
 </div>
-<a class="anchor" id="a0d092afdcb43bff019d842f6cb683289"></a>
+<a class="anchor" id="aece07f3ac0a1db2e20fbade32185b5df"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int listen_on_socket </td>
+          <td class="memname">int net2_listen_on_socket </td>
           <td>(</td>
           <td class="paramtype">int&#160;</td>
           <td class="paramname"><em>socket</em></td><td>)</td>
@@ -424,12 +424,12 @@ FAILED : different from 0, errno is set appropriately </li>
 
 </div>
 </div>
-<a class="anchor" id="a4030e4053fec45b59c0fb408e19a7b81"></a>
+<a class="anchor" id="a6709a86111a8a3bce8af1cffbbb3fc08"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void print_net2_socket </td>
+          <td class="memname">void net2_print_socket </td>
           <td>(</td>
           <td class="paramtype">char *&#160;</td>
           <td class="paramname"><em>heading</em>, </td>
@@ -460,12 +460,12 @@ FAILED : different from 0, errno is set appropriately </li>
 
 </div>
 </div>
-<a class="anchor" id="a4145cf47301c57d1fc8362075b6b7d1c"></a>
+<a class="anchor" id="a99d47b84891eff4f92e6014f92bf92b2"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int read_from_socket </td>
+          <td class="memname">int net2_read_from_socket </td>
           <td>(</td>
           <td class="paramtype">int&#160;</td>
           <td class="paramname"><em>socket</em>, </td>
@@ -512,12 +512,12 @@ FAILED : -1, errno is set appropriately </li>
 
 </div>
 </div>
-<a class="anchor" id="a93e73837c3f3a55d1c79c878d5acada9"></a>
+<a class="anchor" id="a3ff8173918bcfab760691be1e1fb1507"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int write_to_socket </td>
+          <td class="memname">int net2_write_to_socket </td>
           <td>(</td>
           <td class="paramtype">int&#160;</td>
           <td class="paramname"><em>socket</em>, </td>
@@ -553,7 +553,7 @@ FAILED : -1, errno is set appropriately </li>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><ul>
 <li>
-SUCCESS : Non-negative number that is he amount of byte written </li>
+SUCCESS : Non-negative number that is the amount of byte written </li>
 <li>
 FAILED : -1, errno is set appropriately </li>
 </ul>
@@ -564,7 +564,7 @@ FAILED : -1, errno is set appropriately </li>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Nov 27 2014 09:44:48 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Dec 12 2014 21:55:47 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

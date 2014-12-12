@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['accept_5ffrom_5fsocket',['accept_from_socket',['../socket_8h.html#ab991deaaf54b0505eeed8a81c2b2a9df',1,'socket.c']]]
+  ['main',['main',['../test__socket__client_8c.html#a0ddf1224851353fc92bfbff6f499fa97',1,'main(int argc, char *argv[]):&#160;test_socket_client.c'],['../test__socket__client__bidirectional_8c.html#a0ddf1224851353fc92bfbff6f499fa97',1,'main(int argc, char *argv[]):&#160;test_socket_client_bidirectional.c'],['../test__socket__server_8c.html#a0ddf1224851353fc92bfbff6f499fa97',1,'main(int argc, char *argv[]):&#160;test_socket_server.c'],['../test__socket__server__bidirectional_8c.html#a0ddf1224851353fc92bfbff6f499fa97',1,'main(int argc, char *argv[]):&#160;test_socket_server_bidirectional.c']]]
 ];
