@@ -50,7 +50,7 @@ int main(int argc, char* argv[])
 		net2_print_socket("Server reception socket", &server_reception_socket);
 		
 		// We listen on the server reception socket
-		if(!net2_listen_on_socket(server_reception_socket._socket))
+		if(!net2_listen_on_socket(&server_reception_socket))
 		{
 			printf("IS LISTENING ON CLIENT RECEPTION SOCKET\n");
 			
@@ -64,7 +64,7 @@ int main(int argc, char* argv[])
 				
 				const unsigned int buffer_length = sizeof(short);
 				char buffer[buffer_length];
-				if(net2_read_from_socket(client_transmission_socket._socket, buffer, buffer_length) > 0)
+				if(net2_read_from_socket(&client_transmission_socket, buffer, buffer_length) > 0)
 				{
 					unsigned short client_reception_port;
 					memcpy(&client_reception_port, buffer, sizeof(short));
@@ -90,11 +90,11 @@ int main(int argc, char* argv[])
 						        message_buffer = i;
 						        
 							    printf("READS THE FIRST NUMBER FROM CLIENT... ");
-						        net2_read_from_socket(client_transmission_socket._socket, &message_buffer, sizeof(char));
+						        net2_read_from_socket(&client_transmission_socket, &message_buffer, sizeof(char));
 						        printf("DONE => \"%c\".\n", message_buffer);
 						        
 						        printf("SENDS REPLY AS A NUMBER \"%c\"... ", message_buffer);
-						        net2_write_to_socket(server_transmission_socket._socket, &message_buffer, sizeof(char));
+						        net2_write_to_socket(&server_transmission_socket, &message_buffer, sizeof(char));
 						        printf("DONE.\n");
 					        }
 						}
@@ -134,7 +134,7 @@ int main(int argc, char* argv[])
 		programme_return = EXIT_FAILURE;
 	}
 	
-	net2_close_socket(server_reception_socket._socket);
+	net2_close_socket(&server_reception_socket);
 	
 	return programme_return;
 }

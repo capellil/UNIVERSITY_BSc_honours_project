@@ -60,7 +60,7 @@ int main(int argc, char* argv[])
 				
 			// We create the client transmission socket
 			struct net2_socket_t client_transmission_socket;
-			result = net2_create_socket(&client_transmission_socket); 
+			result = net2_create_and_store_socket(&client_transmission_socket); 
 		
 			if(!result)
 			{
@@ -75,7 +75,7 @@ int main(int argc, char* argv[])
 					printf("HAS CONNECTED TO THE SERVER RECEPTION SOCKET\n");
 				
 					// The client now listens to accept the server's transmission socket connection
-					if(!net2_listen_on_socket(client_reception_socket._socket))
+					if(!net2_listen_on_socket(&client_reception_socket))
 					{
 						printf("IS LISTENING ON CLIENT RECEPTION SOCKET\n");
 						
@@ -85,7 +85,7 @@ int main(int argc, char* argv[])
 						memcpy(data, &client_reception_port, sizeof(short));
 					
 						// The client's reception socket location is sent to the server's reception socket
-						net2_write_to_socket(client_transmission_socket._socket, data, data_length);
+						net2_write_to_socket(&client_transmission_socket, data, data_length);
 					
 						struct net2_socket_t server_transmission_socket;
 						result = net2_accept_from_socket(&client_reception_socket, &server_transmission_socket);
@@ -100,11 +100,11 @@ int main(int argc, char* argv[])
 							{
 							    message_buffer = i;
 							    printf("SENDS MESSAGE AS A NUMBER \"%c\"... ", message_buffer);
-							    net2_write_to_socket(client_transmission_socket._socket, &message_buffer, sizeof(char));
+							    net2_write_to_socket(&client_transmission_socket, &message_buffer, sizeof(char));
 							    printf("DONE.\n");
 							
 							    printf("READS THE FIRST NUMBER FROM CLIENT... ");
-							    net2_read_from_socket(server_transmission_socket._socket, &message_buffer, sizeof(char));
+							    net2_read_from_socket(&server_transmission_socket, &message_buffer, sizeof(char));
 						        printf("DONE => \"%c\".\n", message_buffer);
 						    }
 						}
@@ -138,7 +138,7 @@ int main(int argc, char* argv[])
 			programme_return = EXIT_FAILURE;
 		}
 
-		net2_close_socket(client_reception_socket._socket);
+		net2_close_socket(&client_reception_socket);
 	}
 	else
 	{

@@ -4,6 +4,18 @@
 #include <stdlib.h> // NULL
 #include <unistd.h> // close
 
+/**
+ * @brief Creates a socket used for communication with a remote machine, initialised to streaming data (suitable for TCP protocol).
+ * @return <ul>
+    	       <li>SUCCESS : Non negative number that is the socket descriptor
+ 		       <li>FAILED : -1, errno is set appropriately
+	       </ul>
+ **/
+static int create_socket()
+{
+    return socket(AF_UNIX, SOCK_STREAM, 0);
+}
+ 
 void net2_print_socket(char* heading, struct net2_socket_t* net2_socket)
 {
 	printf("%s\n", heading);
@@ -50,14 +62,9 @@ void net2_print_socket(char* heading, struct net2_socket_t* net2_socket)
 	printf("\t- Family : %s\n", family);
 }
 
-int net2_create_socket()
-{
-    return socket(AF_UNIX, SOCK_STREAM, 0);
-}
-
 int net2_create_and_store_socket(struct net2_socket_t* net2_socket)
 {
-	int socket = net2_create_socket();
+	int socket = create_socket();
 	
 	if(socket != -1 && net2_socket)
 	{	    
@@ -70,7 +77,7 @@ int net2_create_and_store_socket(struct net2_socket_t* net2_socket)
 int net2_create_and_bind_socket(unsigned short port, struct net2_socket_t* net2_socket)
 {
 	int result = 0;
-	int socket = net2_create_socket();
+	int socket = create_socket();
 	if(socket != -1)
 	{
 		struct sockaddr_in socket_address;
@@ -101,9 +108,9 @@ int net2_create_and_bind_socket(unsigned short port, struct net2_socket_t* net2_
 	return result;
 }
 
-int net2_listen_on_socket(int socket)
+int net2_listen_on_socket(struct net2_socket_t* net2_socket)
 {
-	return listen(socket, 1);
+	return listen(net2_socket->_socket, 1);
 }
 
 int net2_accept_from_socket(struct net2_socket_t* server, struct net2_socket_t* client)
@@ -128,19 +135,19 @@ int net2_connect_to_socket(struct net2_socket_t* net2_socket, unsigned int addre
 	return connect(net2_socket->_socket, (struct sockaddr*)&server, server_length);
 }
 
-int net2_write_to_socket(int socket, char* data, unsigned int data_length)
+int net2_write_to_socket(struct net2_socket_t* net2_socket, void* data, unsigned int data_length)
 {
-	return send(socket, data, data_length, 0);
+	return send(net2_socket->_socket, data, data_length, 0);
 }
 
-int net2_read_from_socket(int socket, char* data, unsigned int data_length)
+int net2_read_from_socket(struct net2_socket_t* net2_socket, void* data, unsigned int data_length)
 {
-	return recv(socket, data, data_length, 0);
+	return recv(net2_socket->_socket, data, data_length, 0);
 }
 
-int net2_close_socket(int socket)
+int net2_close_socket(struct net2_socket_t* net2_socket)
 {
-	return close(socket);
+	return close(net2_socket->_socket);
 }
 
 int net2_get_ip_of_socket(struct net2_socket_t* socket)

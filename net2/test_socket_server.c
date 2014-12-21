@@ -35,7 +35,7 @@ int main(int argc, char* argv[])
 		printf("SERVER CREATED AND STARTS TO LISTEN\n");
 		net2_print_socket("Server socket", &server);
 		
-		if(net2_listen_on_socket(server._socket) != -1)
+		if(net2_listen_on_socket(&server) != -1)
 		{
 			printf("SERVER IS LISTENING, WAITING A CONNECTION TO ACCEPT IT\n");
 			result = net2_accept_from_socket(&server, &client);
@@ -62,7 +62,7 @@ int main(int argc, char* argv[])
 		programme_return = EXIT_FAILURE;
 	}
 	
-	net2_close_socket(server._socket);
+	net2_close_socket(&server);
 	
 	return programme_return;
 }

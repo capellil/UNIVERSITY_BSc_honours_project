@@ -34,15 +34,6 @@ struct net2_socket_t
 void net2_print_socket(char* heading, struct net2_socket_t* net2_socket);
 
 /**
- * @brief Creates a socket used for communication with a remote machine, initialised to streaming data (suitable for TCP protocol).
- * @return <ul>
-    	       <li>SUCCESS : Non negative number that is the socket descriptor
- 		       <li>FAILED : -1, errno is set appropriately
-	       </ul>
- **/
-int net2_create_socket();
-
-/**
  * @brief Creates a socket used for communication with a remote machine. Uses TCP/IP. If the given pointer is not NULL, the different parameters are stored into the pointed memory location.
  * @param net2_socket - A pointer to store the created net2 socket in.
  * @return <ul>
@@ -65,13 +56,13 @@ int net2_create_and_bind_socket(unsigned short port, struct net2_socket_t* net2_
 
 /**
  * @brief Listens from the given socket.
- * @param socket - The socket to listen on.
+ * @param net2_socket - The net2 socket to listen on.
  * @return <ul>
                <li>SUCCESS : 0
 		       <li>FAILED : different from 0, errno is set appropriately
 	       </ul>
  **/
-int net2_listen_on_socket(int socket);
+int net2_listen_on_socket(struct net2_socket_t* net2_socket);
 
 /**
  * @brief Accept a connection from a client to the given server.
@@ -99,7 +90,7 @@ int net2_connect_to_socket(struct net2_socket_t* net2_socket, unsigned int addre
 
 /**
  * @brief Writes the given data to the given socket.
- * @param socket - The socket to write to.
+ * @param net2_socket - The net2 socket to write to.
  * @param data - The data to be transmitted.
  * @param data_length - The data length.
  * @return <ul>
@@ -107,31 +98,31 @@ int net2_connect_to_socket(struct net2_socket_t* net2_socket, unsigned int addre
                <li>FAILED : -1, errno is set appropriately
            </ul>
  **/
-int net2_write_to_socket(int socket, char* data, unsigned int data_length);
+int net2_write_to_socket(struct net2_socket_t* net2_socket, void* data, unsigned int data_length);
 
 /**
  * @brief Reads from the given socket <data_length> bytes and store it into the space pointed by <data>.
- * @param socket - The socket to read from.
+ * @param net2_socket - The net2 socket to read from.
  * @param data - A pointer on the data allocated space.
  * @param data_length - The number of bytes to read from the socket.
- * @pre data_length is less than the size of allocated area pointed by data.
  * @return <ul>
  			   <li>SUCCESS : Non-negative and non-null number that is the number of read bytes
                <li>SUCCESS : 0 if the peer has performed an orderly shutdown
                <li>FAILED : -1, errno is set appropriately
            </ul>
+ * @pre data_length is less than the size of allocated area pointed by data.
  **/
-int net2_read_from_socket(int socket, char* data, unsigned int data_length);
+int net2_read_from_socket(struct net2_socket_t* net2_socket, void* data, unsigned int data_length);
 
 /**
  * @brief Closes the socket (both for transmission and reception).
- * @param socket - the socket to be shutdown.
+ * @param net2_socket - the net2 socket to be shutdown.
  * @return <ul>     
  	   	  	   <li> SUCCESS : 0
  		       <li> FAILURE : -1
 	       </ul>
  **/
-int net2_close_socket(int socket);
+int net2_close_socket(struct net2_socket_t* net2_socket);
 
 /**
  * @brief Returns the ip address of the given net2 socket.
