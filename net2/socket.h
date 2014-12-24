@@ -37,8 +37,8 @@ void net2_print_socket(char* heading, struct net2_socket_t* net2_socket);
  * @brief Creates a socket used for communication with a remote machine. Uses TCP/IP. If the given pointer is not NULL, the different parameters are stored into the pointed memory location.
  * @param net2_socket - A pointer to store the created net2 socket in.
  * @return <ul>
- 		       <li>SUCCESS : 0
-               <li>FAILED : Negative number, errno is set appropriately
+ 		       <li>SUCCESS : != -1
+               <li>FAILED : -1, errno is set appropriately
            </ul>
  **/
 int net2_create_and_store_socket(struct net2_socket_t* net2_socket);
@@ -51,6 +51,7 @@ int net2_create_and_store_socket(struct net2_socket_t* net2_socket);
  		       <li>SUCCESS : 0
                <li>FAILED : Negative number, errno is set appropriately
            </ul>
+ * @pre net2_socket points to an allocated memory area.
  **/
 int net2_create_and_bind_socket(unsigned short port, struct net2_socket_t* net2_socket);
 
