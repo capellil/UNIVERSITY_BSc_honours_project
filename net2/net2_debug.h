@@ -1,6 +1,25 @@
+#ifndef THD_NET2_DEBUG_INCLUDED
+#define THD_NET2_DEBUG_INCLUDED
+
 #include <stdio.h>
 #include <stdbool.h>
 
+/**
+ * @brief Displays the name of the function that has been successfully executed.
+ * @param function_name The function name to be displayed.
+ **/
 void net2_debug_success(char* function_name);
+
+/**
+ * @brief Displays the name of the function and a message explaining what error has been encountered during the function execution. The message returned by perror is also displayed.
+ * @param function_name The function name to be displayed.
+ * @param message Error message to be displayed.
+ **/
 void net2_debug_failure(char* function_name, char* message);
+
+/**
+ * @brief Useful when inserting some checkpoints in the code. It displays the given message to show if a specific point in the code has been reached or not.
+ **/
 void spy(char* message);
+
+#endif
