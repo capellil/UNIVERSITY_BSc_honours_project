@@ -8,8 +8,6 @@
 #ifndef THD_SOCKET_INCLUDED
 #define THD_SOCKET_INCLUDED
 
-#define THD_DEFAULT_PORT 3000
-
 #include <sys/types.h> // Compulsory for AF_INET, SOCK_STREAM...
 #include <sys/socket.h> // Obvious...
 #include <netinet/in.h> // sockaddr_in | IPPROTO_TCP | IPPROTO_UDP
