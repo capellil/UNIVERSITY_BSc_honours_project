@@ -22,7 +22,11 @@ static int create_socket()
  
 void net2_print_socket(char* heading, struct net2_socket_t* net2_socket)
 {
-	printf("%s\n", heading);
+	if(heading)
+	{
+	    printf("%s\n", heading);   
+    }
+    
 	printf("\t- File descriptor : %d\n", net2_socket->_socket);
 	
 	int address = ntohl(net2_socket->_address.sin_addr.s_addr);
@@ -186,7 +190,7 @@ int net2_close_socket(struct net2_socket_t* net2_socket)
 	return close(net2_socket->_socket);
 }
 
-int net2_get_ip_of_socket(struct net2_socket_t* socket)
+unsigned int net2_get_ip_of_socket(struct net2_socket_t* net2_socket)
 {
 	return ntohl(socket->_address.sin_addr.s_addr);
 }
