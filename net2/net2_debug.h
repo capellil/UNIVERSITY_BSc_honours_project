@@ -1,6 +1,13 @@
 #ifndef THD_NET2_DEBUG_INCLUDED
 #define THD_NET2_DEBUG_INCLUDED
 
+/**
+ * @file net2_debug.h
+ * @author Ludovic Capelli
+ * @version 1.0
+ * @date 25/12/2014
+ **/
+
 #include <stdio.h>
 #include <stdbool.h>
 
