@@ -26,6 +26,7 @@ void net2_debug_failure(char* function_name, char* message);
 
 /**
  * @brief Useful when inserting some checkpoints in the code. It displays the given message to show if a specific point in the code has been reached or not.
+ * @param message Message to be displayed.
  **/
 void spy(char* message);
 
