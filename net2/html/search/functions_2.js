@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['get_5fip_5fof_5fsocket',['get_ip_of_socket',['../socket_8h.html#afeae3dfda6cedf8fea9a15be1cfdf916',1,'socket.c']]]
+  ['spy',['spy',['../net2__debug_8h.html#a4c7fbf008ce9e539a10ad5dc486c255e',1,'net2_debug.c']]]
 ];

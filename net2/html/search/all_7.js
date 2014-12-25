@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['print_5fnet2_5fsocket',['print_net2_socket',['../socket_8h.html#a4030e4053fec45b59c0fb408e19a7b81',1,'socket.c']]]
+  ['write',['write',['../structnet2__link__tx__t.html#a96b3cabed416576fad4bbaa17caf043e',1,'net2_link_tx_t::write()'],['../structnet2__link__t.html#ac1513cd0177b78d51e564224be84ef01',1,'net2_link_t::write()']]]
 ];

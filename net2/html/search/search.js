@@ -7,11 +7,11 @@
 
 var indexSectionsWithContent =
 {
-  0: "_mnrst",
+  0: "_lmnrstw",
   1: "n",
-  2: "st",
-  3: "mn",
-  4: "_",
+  2: "lnst",
+  3: "mns",
+  4: "_rw",
   5: "r"
 };
 

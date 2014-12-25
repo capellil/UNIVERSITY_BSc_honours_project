@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['channel',['channel',['../structnetChannelInputDataStructure.html#aa5fa3ce8a850ff4bc923108fc1d4d1c0',1,'netChannelInputDataStructure::channel()'],['../structnetChannelOutputDataStructure.html#a3f40e388c701fbfcf254083306093dc8',1,'netChannelOutputDataStructure::channel()']]]
+  ['read',['read',['../structnet2__link__rx__t.html#a481aaf6a6a6923c582c1e4f5e67d4333',1,'net2_link_rx_t::read()'],['../structnet2__link__t.html#a4a95768a698152d1be5dc2b416581a49',1,'net2_link_t::read()']]]
 ];
