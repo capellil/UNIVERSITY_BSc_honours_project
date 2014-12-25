@@ -64,7 +64,7 @@ int net2_create_link_rx(struct net2_link_rx_t* net2_link_rx, unsigned short port
 int net2_create_link_tx(struct net2_link_tx_t* net2_link_tx)
 {
     int result = 0;
-    // "net2_socket" dynamical allocation
+    // "net2_socket" dynamic allocation
     struct net2_socket_t* net2_socket = (struct net2_socket_t*)malloc(sizeof(struct net2_socket_t));
     
     // TEST : Is "net2_socket" dynamic allocation OK ?
@@ -75,7 +75,7 @@ int net2_create_link_tx(struct net2_link_tx_t* net2_link_tx)
         result = net2_create_and_store_socket(net2_socket);
         
         // TEST : Is net2_socket creation OK ?
-        if(result != -1)
+        if(result >= 0)
         {
             // net2_socket creation OK
             net2_link_tx->_net2_socket = net2_socket;
