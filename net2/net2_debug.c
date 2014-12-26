@@ -1,3 +1,5 @@
+#include <stdio.h>
+
 #include "net2_debug.h"
 
 void net2_debug_success(char* function_name)
