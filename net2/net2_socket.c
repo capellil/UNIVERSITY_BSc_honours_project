@@ -1,9 +1,8 @@
-#include "socket.h"
-
 #include <stdio.h> // printf
 #include <stdlib.h> // NULL
 #include <unistd.h> // close
 
+#include "net2_socket.h"
 #ifdef NET2_DEBUG
     #include "net2_debug.h"
 #endif

@@ -2,17 +2,17 @@
 #define THD_LINK_INCLUDED
 
 /**
- * @file link.h
+ * @file net2_link.h
  * @author Ludovic Capelli
  * @version 1.0
  * @date 20/12/2014
  **/
 
-#include "socket.h"
+#include "net2_socket.h"
 
 /**
  * @class net2_link_rx_t
- * @brief Link layer reception unit. It contains the net2 socket to communicate through as well as we the write function.
+ * @brief Link layer reception unit. It contains the net2 socket to listen and accept on as well as the partner socket to read from. Finally, it also contains the read function.
  **/
 struct net2_link_rx_t
 {
@@ -32,16 +32,20 @@ struct net2_link_tx_t
 };
 
 /**
- * @brief Creates a link RX by creating its socket and binding it to the given port. Does not start listening or accepting process.
- * @param net2_link_rx A pointer to an allocated memory area to store in the created link RX.
- * @param port The port of the partner link RX.
+ * @brief Creates a link RX by creating its socket and binding it to the given port. Does not start listening nor accepting process.
+ * @param net2_link_rx A pointer to an already allocated memory area to store in the created link RX.
+ * @param port The port to listen and accept on.
  * @return <ul>
                <li>SUCCESS : 0.
-               <li>FAILURE : -1.
+               <li>FAILURE : Negative number, errno is set appropriately.
            </ul>
- * @pre net2_link_rx points to an allocated memory area.
+ * @pre net2_link_rx points to an already allocated memory area.
  * @post <ul>
-             <li>SUCCESS : net2_link_rx->_net2_socket created and binded to the port "port". net2_link_rx->read = &net2_read_from_link_rx.
+             <li>SUCCESS : <ul>
+                               <li>net2_link_rx->_net2_socket created and binded to the port "port". 
+                               <li>net2_link_rx->_partner_socket = NULL
+                               <li>net2_link_rx->read = &net2_read_from_link_rx.
+                           </ul>
              <li>FAILURE : net2_link_rx unchanged.
          </ul>
  **/
@@ -49,7 +53,7 @@ int net2_create_link_rx(struct net2_link_rx_t* net2_link_rx, unsigned short port
 
 /**
  * @brief Creates a link TX. Does not start the connection process.
- * @param net2_link_tx A pointer to an allocated memory area to store in the created link TX.
+ * @param net2_link_tx A pointer to an already allocated memory area to store in the created link TX.
  * @return <ul>
                <li>SUCCESS : 0.
                <li>FAILURE : -1.

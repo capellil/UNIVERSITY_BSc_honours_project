@@ -1,5 +1,5 @@
 /**
- * @file socket.h
+ * @file net2_socket.h
  * @author Capelli Ludovic
  * @version 1.0
  * @date 15/09/2014

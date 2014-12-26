@@ -5,7 +5,7 @@
     #include "net2_debug.h"
 #endif
 
-#include "link.h"
+#include "net2_link.h"
 
 int net2_read_from_link_rx(struct net2_link_rx_t* net2_link_rx, void* data, unsigned int data_length)
 {
