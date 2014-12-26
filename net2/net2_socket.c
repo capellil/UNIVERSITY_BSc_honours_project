@@ -191,5 +191,5 @@ int net2_close_socket(struct net2_socket_t* net2_socket)
 
 unsigned int net2_get_ip_of_socket(struct net2_socket_t* net2_socket)
 {
-	return ntohl(socket->_address.sin_addr.s_addr);
+	return ntohl(net2_socket->_address.sin_addr.s_addr);
 }
