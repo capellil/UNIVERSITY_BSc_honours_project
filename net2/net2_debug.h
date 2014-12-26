@@ -8,9 +8,6 @@
  * @date 25/12/2014
  **/
 
-#include <stdio.h>
-#include <stdbool.h>
-
 /**
  * @brief Displays the name of the function that has been successfully executed.
  * @param function_name The function name to be displayed.
