@@ -126,7 +126,10 @@ int net2_write_to_link(struct net2_link_t* net2_link, void* data, unsigned int d
  * @param client_port The port of the link RX, to receive communications on.
  * @param server_address The address of the partner (e.g : server).
  * @param server_port The port of the partner (e.g : server).
- * @return /TODO Fill this field
+ * @return <ul>
+               <li>SUCCESS : >= 0
+               <li>FAILURE : < 0
+           </ul>
  * @pre net2_link points to an allocated memory area.
  **/
 int net2_create_client_link(struct net2_link_t* net2_link, unsigned short client_port, unsigned int server_address, unsigned short server_port);
@@ -135,7 +138,10 @@ int net2_create_client_link(struct net2_link_t* net2_link, unsigned short client
  * @brief Creates a server link : the one receiving packets.
  * @param net2_link A pointer to an allocated memory to store in the created link.
  * @param server_port The port of the link RX, to receive communications on.
- * @return /TODO Fill this field
+ * @return <ul>
+               <li>SUCCESS : >= 0
+               <li>FAILURE : < 0
+           </ul>
  * @pre net2_link points to an allocated memory area.
  **/
 int net2_create_server_link(struct net2_link_t* net2_link, unsigned short server_port);
