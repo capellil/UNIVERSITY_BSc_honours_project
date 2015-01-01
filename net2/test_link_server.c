@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-#include "link.h"
+#include "net2_link.h"
 
 int main(int argc, char* argv[])
 {
