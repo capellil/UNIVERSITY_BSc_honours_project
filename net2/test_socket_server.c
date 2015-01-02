@@ -5,7 +5,7 @@
  * @date 24/11/2014
  **/
 
-#include "socket.h"
+#include "net2_socket.h"
 
 #include <stdio.h> // printf
 #include <stdlib.h> // EXIT_SUCCESS | EXIT_FAILURE
@@ -14,7 +14,7 @@
  * @brief Creates a server socket with :
  	      <ul> 
  	          <li>IPv4 address (THD_LOCALHOST_IPV4 + 1)
- 	          <li>port THD_DEFAULT_PORT
+ 	          <li>port 3000
       	  </ul> 
 		  The socket then listens and accepts a connection
  * @return <ul>
@@ -26,7 +26,7 @@ int main(int argc, char* argv[])
 {
 	int programme_return = EXIT_SUCCESS;
 	
-	unsigned short port = THD_DEFAULT_PORT;
+	unsigned short port = 3000;
 	struct net2_socket_t server, client;
 	int result = net2_create_and_bind_socket(port, &server); 
 	

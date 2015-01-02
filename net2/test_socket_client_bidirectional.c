@@ -79,7 +79,7 @@ int main(int argc, char* argv[])
 					{
 						printf("IS LISTENING ON CLIENT RECEPTION SOCKET\n");
 						
-						// The length of the data : address (= int) + port (= short)
+						// The length of the data : port (= short)
 						const int data_length = sizeof(short);
 						char data[data_length];
 						memcpy(data, &client_reception_port, sizeof(short));
