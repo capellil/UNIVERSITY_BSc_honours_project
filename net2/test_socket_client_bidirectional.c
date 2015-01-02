@@ -5,7 +5,7 @@
  * @date 24/11/2014
  **/
 
-#include "socket.h"
+#include "net2_socket.h"
 
 #include <stdio.h> // printf
 #include <stdlib.h> // EXIT_SUCCESS | EXIT_FAILURE
@@ -16,17 +16,17 @@
           Creates the client reception socket with :
  		  <ul>
  	          <li>IPv4 address (IP_CLIENT)
- 	          <li>port (THD_DEFAULT_PORT + 1)<br>
+ 	          <li>port 3001
 		  </ul>
 		  Creates the client transmission socket with :
  		  <ul>
  	          <li>IPv4 address (IP_CLIENT)
- 	          <li>port (THD_DEFAULT_PORT + 2)<br>
+ 	          <li>port 3002
 		  </ul>
 		  The client transmission socket is then connected to the server at :<br>
 		  <ul>
 		      <li>IPv4 address IP_SERVER
-		      <li>port THD_DEFAULT_PORT
+		      <li>port 3000
 	      </ul>
 	      Next, the client reception socket location is sent to the server reception socket.
 	      Finally, the client reception socket listens and accept the server's transmission socket connection.
@@ -48,8 +48,8 @@ int main(int argc, char* argv[])
 			server_reception_address += atoi(argv[i]);
 		} 
 	
-		// We create the client reception socket (THD_DEFAULT_PORT + 1)
-		unsigned short client_reception_port = THD_DEFAULT_PORT + 1;
+		// We create the client reception socket (3001)
+		unsigned short client_reception_port = 3001;
 		struct net2_socket_t client_reception_socket;
 		int result = net2_create_and_bind_socket(client_reception_port, &client_reception_socket); 
 		
@@ -62,13 +62,13 @@ int main(int argc, char* argv[])
 			struct net2_socket_t client_transmission_socket;
 			result = net2_create_and_store_socket(&client_transmission_socket); 
 		
-			if(!result)
+			if(result >= 0)
 			{
 				printf("CLIENT TRANSMISSION SOCKET CREATED\n");
 				net2_print_socket("Client transmission socket", &client_transmission_socket);
 				
 				printf("TRIES TO CONNECT TO THE SERVER RECEPTION SOCKET\n");
-				result = net2_connect_to_socket(&client_transmission_socket, server_reception_address, THD_DEFAULT_PORT);
+				result = net2_connect_to_socket(&client_transmission_socket, server_reception_address, 3000);
 				
 				if(!result)
 				{

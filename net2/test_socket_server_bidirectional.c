@@ -5,7 +5,7 @@
  * @date 24/11/2014
  **/
 
-#include "socket.h"
+#include "net2_socket.h"
 
 #include <stdio.h> // printf
 #include <stdlib.h> // EXIT_SUCCESS | EXIT_FAILURE
@@ -15,20 +15,20 @@
  * @brief Here is the configuration to set : @image html client_server_bidirectional.png <br>
           Creates the server reception socket with :
  		  <ul>
- 	          <li>IPv4 address (IP_SERVER)
- 	          <li>port (THD_DEFAULT_PORT)<br>
+ 	          <li>The given IPv4 address
+ 	          <li>port 3000
 		  </ul>
 		  Next, the server reception socket listens and accept the client's transmission socket connection.
 		  Then, the server reads the message containing the client's reception socket location.
 		  Creates the server transmission socket with :
  		  <ul>
  	          <li>IPv4 address (IP_SERVER)
- 	          <li>port (THD_DEFAULT_PORT + 3)<br>
+ 	          <li>port 3003
 		  </ul>
 		  The server transmission socket is then connected to the client's reception socket from what has been read. In theory :<br>
 		  <ul>
 		      <li>IPv4 address IP_CLIENT
-		      <li>port THD_DEFAULT_PORT + 1
+		      <li>port 3001
 	      </ul>
  * @return <ul>
  		       <li>SUCCESS : EXIT_SUCCESS
@@ -39,8 +39,8 @@ int main(int argc, char* argv[])
 {
 	int programme_return = EXIT_SUCCESS;
 	
-	// We create the server reception socket (THD_DEFAULT_PORT)
-	unsigned short server_reception_port = THD_DEFAULT_PORT;
+	// We create the server reception socket (3000)
+	unsigned short server_reception_port = 3000;
 	struct net2_socket_t server_reception_socket;
 	int result = net2_create_and_bind_socket(server_reception_port, &server_reception_socket); 
 	
@@ -72,7 +72,7 @@ int main(int argc, char* argv[])
 					struct net2_socket_t server_transmission_socket;
 					result = net2_create_and_store_socket(&server_transmission_socket); 
 	
-					if(!result)
+					if(result >= 0)
 					{
 						printf("SERVER TRANSMISSION SOCKET CREATED\n");
 						printf("TRIES TO CONNECT TO THE CLIENT RECEPTION SOCKET\n");
