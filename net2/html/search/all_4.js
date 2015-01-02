@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['readme',['README',['../md_README.html',1,'']]],
-  ['read',['read',['../structnet2__link__rx__t.html#a481aaf6a6a6923c582c1e4f5e67d4333',1,'net2_link_rx_t::read()'],['../structnet2__link__t.html#a4a95768a698152d1be5dc2b416581a49',1,'net2_link_t::read()']]]
+  ['spy',['spy',['../net2__debug_8h.html#a4c7fbf008ce9e539a10ad5dc486c255e',1,'net2_debug.c']]]
 ];

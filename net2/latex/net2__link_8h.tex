@@ -1,0 +1,291 @@
+\hypertarget{net2__link_8h}{\section{net2\-\_\-link.\-h File Reference}
+\label{net2__link_8h}\index{net2\-\_\-link.\-h@{net2\-\_\-link.\-h}}
+}
+{\ttfamily \#include \char`\"{}net2\-\_\-socket.\-h\char`\"{}}\\*
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{structnet2__link__rx__t}{net2\-\_\-link\-\_\-rx\-\_\-t}
+\begin{DoxyCompactList}\small\item\em Link layer reception unit. It contains the net2 socket to listen and accept on as well as the partner socket to read from. Finally, it also contains the read function. \end{DoxyCompactList}\item 
+class \hyperlink{structnet2__link__tx__t}{net2\-\_\-link\-\_\-tx\-\_\-t}
+\begin{DoxyCompactList}\small\item\em Link layer transmission unit. It contains the net2 socket to communicate through as well as we the write function. \end{DoxyCompactList}\item 
+class \hyperlink{structnet2__link__t}{net2\-\_\-link\-\_\-t}
+\begin{DoxyCompactList}\small\item\em Contains the two links to send and receive data as well as the two function to deal with both. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{net2__link_8h_a2ec08d23b8a3d237fe779e7d9d72b5ee}{net2\-\_\-create\-\_\-link\-\_\-rx} (struct \hyperlink{structnet2__link__rx__t}{net2\-\_\-link\-\_\-rx\-\_\-t} $\ast$net2\-\_\-link\-\_\-rx, unsigned short port)
+\begin{DoxyCompactList}\small\item\em Creates a link R\-X by creating its socket and binding it to the given port. Does not start listening nor accepting process. \end{DoxyCompactList}\item 
+int \hyperlink{net2__link_8h_a50da7dc2f12027c205ebaaa4e863d8e4}{net2\-\_\-create\-\_\-link\-\_\-tx} (struct \hyperlink{structnet2__link__tx__t}{net2\-\_\-link\-\_\-tx\-\_\-t} $\ast$net2\-\_\-link\-\_\-tx)
+\begin{DoxyCompactList}\small\item\em Creates a link T\-X. Does not start the connection process. \end{DoxyCompactList}\item 
+int \hyperlink{net2__link_8h_ae0e9da7fe57f903237cf795cd63ee10c}{net2\-\_\-read\-\_\-from\-\_\-link\-\_\-rx} (struct \hyperlink{structnet2__link__rx__t}{net2\-\_\-link\-\_\-rx\-\_\-t} $\ast$net2\-\_\-link\-\_\-rx, void $\ast$data, unsigned int data\-\_\-length)
+\begin{DoxyCompactList}\small\item\em Reads from a link R\-X. \end{DoxyCompactList}\item 
+int \hyperlink{net2__link_8h_a0dd827c2b784360248d4dbb2f3dd2fb3}{net2\-\_\-write\-\_\-to\-\_\-link\-\_\-tx} (struct \hyperlink{structnet2__link__tx__t}{net2\-\_\-link\-\_\-tx\-\_\-t} $\ast$net2\-\_\-link\-\_\-tx, void $\ast$data, unsigned int data\-\_\-length)
+\begin{DoxyCompactList}\small\item\em Writes to a link T\-X. \end{DoxyCompactList}\item 
+int \hyperlink{net2__link_8h_ae66311fc3aa578fbf580480b20e8f8d5}{net2\-\_\-read\-\_\-from\-\_\-link} (struct \hyperlink{structnet2__link__t}{net2\-\_\-link\-\_\-t} $\ast$net2\-\_\-link, void $\ast$data, unsigned int data\-\_\-length)
+\begin{DoxyCompactList}\small\item\em Reads from a link. \end{DoxyCompactList}\item 
+int \hyperlink{net2__link_8h_aa52421e4889fb5ef07a633d55bc8e862}{net2\-\_\-write\-\_\-to\-\_\-link} (struct \hyperlink{structnet2__link__t}{net2\-\_\-link\-\_\-t} $\ast$net2\-\_\-link, void $\ast$data, unsigned int data\-\_\-length)
+\begin{DoxyCompactList}\small\item\em Writes to a link. \end{DoxyCompactList}\item 
+int \hyperlink{net2__link_8h_a34f5ed0894ae73e2665f99f6adcef439}{net2\-\_\-create\-\_\-client\-\_\-link} (struct \hyperlink{structnet2__link__t}{net2\-\_\-link\-\_\-t} $\ast$net2\-\_\-link, unsigned short client\-\_\-port, unsigned int server\-\_\-address, unsigned short server\-\_\-port)
+\begin{DoxyCompactList}\small\item\em Creates a client link \-: the one sending packets. \end{DoxyCompactList}\item 
+int \hyperlink{net2__link_8h_ae48632b347fd9adad446c38992bb616f}{net2\-\_\-create\-\_\-server\-\_\-link} (struct \hyperlink{structnet2__link__t}{net2\-\_\-link\-\_\-t} $\ast$net2\-\_\-link, unsigned short server\-\_\-port)
+\begin{DoxyCompactList}\small\item\em Creates a server link \-: the one receiving packets. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Ludovic Capelli 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\-0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+20/12/2014 
+\end{DoxyDate}
+
+
+\subsection{Function Documentation}
+\hypertarget{net2__link_8h_a34f5ed0894ae73e2665f99f6adcef439}{\index{net2\-\_\-link.\-h@{net2\-\_\-link.\-h}!net2\-\_\-create\-\_\-client\-\_\-link@{net2\-\_\-create\-\_\-client\-\_\-link}}
+\index{net2\-\_\-create\-\_\-client\-\_\-link@{net2\-\_\-create\-\_\-client\-\_\-link}!net2_link.h@{net2\-\_\-link.\-h}}
+\subsubsection[{net2\-\_\-create\-\_\-client\-\_\-link}]{\setlength{\rightskip}{0pt plus 5cm}int net2\-\_\-create\-\_\-client\-\_\-link (
+\begin{DoxyParamCaption}
+\item[{struct {\bf net2\-\_\-link\-\_\-t} $\ast$}]{net2\-\_\-link, }
+\item[{unsigned short}]{client\-\_\-port, }
+\item[{unsigned int}]{server\-\_\-address, }
+\item[{unsigned short}]{server\-\_\-port}
+\end{DoxyParamCaption}
+)}}\label{net2__link_8h_a34f5ed0894ae73e2665f99f6adcef439}
+
+
+Creates a client link \-: the one sending packets. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em net2\-\_\-link} & A pointer to an allocated memory to store in the created link. \\
+\hline
+{\em client\-\_\-port} & The port of the link R\-X, to receive communications on. \\
+\hline
+{\em server\-\_\-address} & The address of the partner (e.\-g \-: server). \\
+\hline
+{\em server\-\_\-port} & The port of the partner (e.\-g \-: server). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\begin{DoxyItemize}
+\item S\-U\-C\-C\-E\-S\-S \-: $>$= 0 
+\item F\-A\-I\-L\-U\-R\-E \-: $<$ 0 
+\end{DoxyItemize}
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondition}
+net2\-\_\-link points to an allocated memory area. 
+\end{DoxyPrecond}
+\hypertarget{net2__link_8h_a2ec08d23b8a3d237fe779e7d9d72b5ee}{\index{net2\-\_\-link.\-h@{net2\-\_\-link.\-h}!net2\-\_\-create\-\_\-link\-\_\-rx@{net2\-\_\-create\-\_\-link\-\_\-rx}}
+\index{net2\-\_\-create\-\_\-link\-\_\-rx@{net2\-\_\-create\-\_\-link\-\_\-rx}!net2_link.h@{net2\-\_\-link.\-h}}
+\subsubsection[{net2\-\_\-create\-\_\-link\-\_\-rx}]{\setlength{\rightskip}{0pt plus 5cm}int net2\-\_\-create\-\_\-link\-\_\-rx (
+\begin{DoxyParamCaption}
+\item[{struct {\bf net2\-\_\-link\-\_\-rx\-\_\-t} $\ast$}]{net2\-\_\-link\-\_\-rx, }
+\item[{unsigned short}]{port}
+\end{DoxyParamCaption}
+)}}\label{net2__link_8h_a2ec08d23b8a3d237fe779e7d9d72b5ee}
+
+
+Creates a link R\-X by creating its socket and binding it to the given port. Does not start listening nor accepting process. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em net2\-\_\-link\-\_\-rx} & A pointer to an already allocated memory area to store in the created link R\-X. \\
+\hline
+{\em port} & The port to listen and accept on. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\begin{DoxyItemize}
+\item S\-U\-C\-C\-E\-S\-S \-: 0. 
+\item F\-A\-I\-L\-U\-R\-E \-: Negative number, errno is set appropriately. 
+\end{DoxyItemize}
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondition}
+net2\-\_\-link\-\_\-rx points to an already allocated memory area. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+
+\begin{DoxyItemize}
+\item S\-U\-C\-C\-E\-S\-S \-: 
+\begin{DoxyItemize}
+\item net2\-\_\-link\-\_\-rx-\/$>$\-\_\-net2\-\_\-socket created and binded to the port \char`\"{}port\char`\"{}. 
+\item net2\-\_\-link\-\_\-rx-\/$>$\-\_\-partner\-\_\-socket = N\-U\-L\-L 
+\item net2\-\_\-link\-\_\-rx-\/$>$read = \&net2\-\_\-read\-\_\-from\-\_\-link\-\_\-rx. 
+\end{DoxyItemize}
+\item F\-A\-I\-L\-U\-R\-E \-: net2\-\_\-link\-\_\-rx unchanged. 
+\end{DoxyItemize}
+\end{DoxyPostcond}
+\hypertarget{net2__link_8h_a50da7dc2f12027c205ebaaa4e863d8e4}{\index{net2\-\_\-link.\-h@{net2\-\_\-link.\-h}!net2\-\_\-create\-\_\-link\-\_\-tx@{net2\-\_\-create\-\_\-link\-\_\-tx}}
+\index{net2\-\_\-create\-\_\-link\-\_\-tx@{net2\-\_\-create\-\_\-link\-\_\-tx}!net2_link.h@{net2\-\_\-link.\-h}}
+\subsubsection[{net2\-\_\-create\-\_\-link\-\_\-tx}]{\setlength{\rightskip}{0pt plus 5cm}int net2\-\_\-create\-\_\-link\-\_\-tx (
+\begin{DoxyParamCaption}
+\item[{struct {\bf net2\-\_\-link\-\_\-tx\-\_\-t} $\ast$}]{net2\-\_\-link\-\_\-tx}
+\end{DoxyParamCaption}
+)}}\label{net2__link_8h_a50da7dc2f12027c205ebaaa4e863d8e4}
+
+
+Creates a link T\-X. Does not start the connection process. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em net2\-\_\-link\-\_\-tx} & A pointer to an already allocated memory area to store in the created link T\-X. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\begin{DoxyItemize}
+\item S\-U\-C\-C\-E\-S\-S \-: 0. 
+\item F\-A\-I\-L\-U\-R\-E \-: -\/1. 
+\end{DoxyItemize}
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondition}
+net2\-\_\-link\-\_\-tx points to an allocated memory area. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+
+\begin{DoxyItemize}
+\item S\-U\-C\-C\-E\-S\-S \-: net2\-\_\-link\-\_\-tx-\/$>$\-\_\-net2\-\_\-socket created and net2\-\_\-link\-\_\-tx-\/$>$write = \&net2\-\_\-write\-\_\-to\-\_\-link\-\_\-tx. 
+\item F\-A\-I\-L\-U\-R\-E \-: net2\-\_\-link\-\_\-tx unchanged. 
+\end{DoxyItemize}
+\end{DoxyPostcond}
+\hypertarget{net2__link_8h_ae48632b347fd9adad446c38992bb616f}{\index{net2\-\_\-link.\-h@{net2\-\_\-link.\-h}!net2\-\_\-create\-\_\-server\-\_\-link@{net2\-\_\-create\-\_\-server\-\_\-link}}
+\index{net2\-\_\-create\-\_\-server\-\_\-link@{net2\-\_\-create\-\_\-server\-\_\-link}!net2_link.h@{net2\-\_\-link.\-h}}
+\subsubsection[{net2\-\_\-create\-\_\-server\-\_\-link}]{\setlength{\rightskip}{0pt plus 5cm}int net2\-\_\-create\-\_\-server\-\_\-link (
+\begin{DoxyParamCaption}
+\item[{struct {\bf net2\-\_\-link\-\_\-t} $\ast$}]{net2\-\_\-link, }
+\item[{unsigned short}]{server\-\_\-port}
+\end{DoxyParamCaption}
+)}}\label{net2__link_8h_ae48632b347fd9adad446c38992bb616f}
+
+
+Creates a server link \-: the one receiving packets. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em net2\-\_\-link} & A pointer to an allocated memory to store in the created link. \\
+\hline
+{\em server\-\_\-port} & The port of the link R\-X, to receive communications on. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\begin{DoxyItemize}
+\item S\-U\-C\-C\-E\-S\-S \-: $>$= 0 
+\item F\-A\-I\-L\-U\-R\-E \-: $<$ 0 
+\end{DoxyItemize}
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondition}
+net2\-\_\-link points to an allocated memory area. 
+\end{DoxyPrecond}
+\hypertarget{net2__link_8h_ae66311fc3aa578fbf580480b20e8f8d5}{\index{net2\-\_\-link.\-h@{net2\-\_\-link.\-h}!net2\-\_\-read\-\_\-from\-\_\-link@{net2\-\_\-read\-\_\-from\-\_\-link}}
+\index{net2\-\_\-read\-\_\-from\-\_\-link@{net2\-\_\-read\-\_\-from\-\_\-link}!net2_link.h@{net2\-\_\-link.\-h}}
+\subsubsection[{net2\-\_\-read\-\_\-from\-\_\-link}]{\setlength{\rightskip}{0pt plus 5cm}int net2\-\_\-read\-\_\-from\-\_\-link (
+\begin{DoxyParamCaption}
+\item[{struct {\bf net2\-\_\-link\-\_\-t} $\ast$}]{net2\-\_\-link, }
+\item[{void $\ast$}]{data, }
+\item[{unsigned int}]{data\-\_\-length}
+\end{DoxyParamCaption}
+)}}\label{net2__link_8h_ae66311fc3aa578fbf580480b20e8f8d5}
+
+
+Reads from a link. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em net2\-\_\-link} & The link to read from. \\
+\hline
+{\em data} & A pointer on the buffer to fill from reading. \\
+\hline
+{\em data\-\_\-length} & The number of bytes to read. \\
+\hline
+\end{DoxyParams}
+\hypertarget{net2__link_8h_ae0e9da7fe57f903237cf795cd63ee10c}{\index{net2\-\_\-link.\-h@{net2\-\_\-link.\-h}!net2\-\_\-read\-\_\-from\-\_\-link\-\_\-rx@{net2\-\_\-read\-\_\-from\-\_\-link\-\_\-rx}}
+\index{net2\-\_\-read\-\_\-from\-\_\-link\-\_\-rx@{net2\-\_\-read\-\_\-from\-\_\-link\-\_\-rx}!net2_link.h@{net2\-\_\-link.\-h}}
+\subsubsection[{net2\-\_\-read\-\_\-from\-\_\-link\-\_\-rx}]{\setlength{\rightskip}{0pt plus 5cm}int net2\-\_\-read\-\_\-from\-\_\-link\-\_\-rx (
+\begin{DoxyParamCaption}
+\item[{struct {\bf net2\-\_\-link\-\_\-rx\-\_\-t} $\ast$}]{net2\-\_\-link\-\_\-rx, }
+\item[{void $\ast$}]{data, }
+\item[{unsigned int}]{data\-\_\-length}
+\end{DoxyParamCaption}
+)}}\label{net2__link_8h_ae0e9da7fe57f903237cf795cd63ee10c}
+
+
+Reads from a link R\-X. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em net2\-\_\-link\-\_\-rx} & The link R\-X to read from. \\
+\hline
+{\em data} & A pointer on the buffer to fill from reading. \\
+\hline
+{\em data\-\_\-length} & The number of bytes to read. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\begin{DoxyItemize}
+\item S\-U\-C\-C\-E\-S\-S \-: Non-\/negative and non-\/null number that is the number of read bytes. 
+\item S\-U\-C\-C\-E\-S\-S \-: 0 if the peer has performed an orderly shutdown. 
+\item F\-A\-I\-L\-E\-D \-: -\/1, errno is set appropriately. 
+\end{DoxyItemize}
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondition}
+net2\-\_\-link\-\_\-rx != N\-U\-L\-L 
+\end{DoxyPrecond}
+\hypertarget{net2__link_8h_aa52421e4889fb5ef07a633d55bc8e862}{\index{net2\-\_\-link.\-h@{net2\-\_\-link.\-h}!net2\-\_\-write\-\_\-to\-\_\-link@{net2\-\_\-write\-\_\-to\-\_\-link}}
+\index{net2\-\_\-write\-\_\-to\-\_\-link@{net2\-\_\-write\-\_\-to\-\_\-link}!net2_link.h@{net2\-\_\-link.\-h}}
+\subsubsection[{net2\-\_\-write\-\_\-to\-\_\-link}]{\setlength{\rightskip}{0pt plus 5cm}int net2\-\_\-write\-\_\-to\-\_\-link (
+\begin{DoxyParamCaption}
+\item[{struct {\bf net2\-\_\-link\-\_\-t} $\ast$}]{net2\-\_\-link, }
+\item[{void $\ast$}]{data, }
+\item[{unsigned int}]{data\-\_\-length}
+\end{DoxyParamCaption}
+)}}\label{net2__link_8h_aa52421e4889fb5ef07a633d55bc8e862}
+
+
+Writes to a link. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em net2\-\_\-link} & The link to write to. \\
+\hline
+{\em data} & A pointer on the buffer to be written. \\
+\hline
+{\em data\-\_\-length} & The number of bytes to write. \\
+\hline
+\end{DoxyParams}
+\hypertarget{net2__link_8h_a0dd827c2b784360248d4dbb2f3dd2fb3}{\index{net2\-\_\-link.\-h@{net2\-\_\-link.\-h}!net2\-\_\-write\-\_\-to\-\_\-link\-\_\-tx@{net2\-\_\-write\-\_\-to\-\_\-link\-\_\-tx}}
+\index{net2\-\_\-write\-\_\-to\-\_\-link\-\_\-tx@{net2\-\_\-write\-\_\-to\-\_\-link\-\_\-tx}!net2_link.h@{net2\-\_\-link.\-h}}
+\subsubsection[{net2\-\_\-write\-\_\-to\-\_\-link\-\_\-tx}]{\setlength{\rightskip}{0pt plus 5cm}int net2\-\_\-write\-\_\-to\-\_\-link\-\_\-tx (
+\begin{DoxyParamCaption}
+\item[{struct {\bf net2\-\_\-link\-\_\-tx\-\_\-t} $\ast$}]{net2\-\_\-link\-\_\-tx, }
+\item[{void $\ast$}]{data, }
+\item[{unsigned int}]{data\-\_\-length}
+\end{DoxyParamCaption}
+)}}\label{net2__link_8h_a0dd827c2b784360248d4dbb2f3dd2fb3}
+
+
+Writes to a link T\-X. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em net2\-\_\-link\-\_\-tx} & The link T\-X to write to. \\
+\hline
+{\em data} & A pointer on the buffer to be written. \\
+\hline
+{\em data\-\_\-length} & The number of bytes to write. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\begin{DoxyItemize}
+\item S\-U\-C\-C\-E\-S\-S \-: Non-\/negative number that is the amount of byte written. 
+\item F\-A\-I\-L\-E\-D \-: -\/1, errno is set appropriately. 
+\end{DoxyItemize}
+\end{DoxyReturn}
