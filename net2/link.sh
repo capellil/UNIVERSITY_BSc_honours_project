@@ -29,5 +29,5 @@ function thd_LINK
 
 clear
 
-files_to_LINK=`find -maxdepth 1 -name "*.o" | grep -v net2 | cut -f1 -d .`
+files_to_LINK=`find -maxdepth 1 -name "*.o" | grep -v net2 | cut -f2 -d / | cut -f1 -d .`
 thd_LINK $files_to_LINK
