@@ -6,7 +6,7 @@ int main(int argc, char* argv[])
 {
     struct net2_link_t link;
 
-    if(!net2_create_server_link(&link, 3001))
+    if(net2_create_server_link(&link, 3001) >= 0)
     {
         printf("Connection succeeded.\n");
     }
