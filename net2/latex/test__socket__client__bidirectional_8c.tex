@@ -1,7 +1,7 @@
 \hypertarget{test__socket__client__bidirectional_8c}{\section{test\-\_\-socket\-\_\-client\-\_\-bidirectional.\-c File Reference}
 \label{test__socket__client__bidirectional_8c}\index{test\-\_\-socket\-\_\-client\-\_\-bidirectional.\-c@{test\-\_\-socket\-\_\-client\-\_\-bidirectional.\-c}}
 }
-{\ttfamily \#include \char`\"{}socket.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}net2\-\_\-socket.\-h\char`\"{}}\\*
 {\ttfamily \#include $<$stdio.\-h$>$}\\*
 {\ttfamily \#include $<$stdlib.\-h$>$}\\*
 {\ttfamily \#include $<$string.\-h$>$}\\*
@@ -40,18 +40,16 @@ Here is the configuration to set \-:
  Creates the client reception socket with \-: 
 \begin{DoxyItemize}
 \item I\-Pv4 address (I\-P\-\_\-\-C\-L\-I\-E\-N\-T) 
-\item port (T\-H\-D\-\_\-\-D\-E\-F\-A\-U\-L\-T\-\_\-\-P\-O\-R\-T + 1)\par
- 
+\item port 3001 
 \end{DoxyItemize}Creates the client transmission socket with \-: 
 \begin{DoxyItemize}
 \item I\-Pv4 address (I\-P\-\_\-\-C\-L\-I\-E\-N\-T) 
-\item port (T\-H\-D\-\_\-\-D\-E\-F\-A\-U\-L\-T\-\_\-\-P\-O\-R\-T + 2)\par
- 
+\item port 3002 
 \end{DoxyItemize}The client transmission socket is then connected to the server at \-:\par
  
 \begin{DoxyItemize}
 \item I\-Pv4 address I\-P\-\_\-\-S\-E\-R\-V\-E\-R 
-\item port T\-H\-D\-\_\-\-D\-E\-F\-A\-U\-L\-T\-\_\-\-P\-O\-R\-T 
+\item port 3000 
 \end{DoxyItemize}Next, the client reception socket location is sent to the server reception socket. Finally, the client reception socket listens and accept the server's transmission socket connection. \begin{DoxyReturn}{Returns}
 
 \begin{DoxyItemize}

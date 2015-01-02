@@ -86,7 +86,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">test_socket_server_bidirectional.c File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &quot;socket.h&quot;</code><br/>
+<div class="textblock"><code>#include &quot;<a class="el" href="net2__socket_8h_source.html">net2_socket.h</a>&quot;</code><br/>
 <code>#include &lt;stdio.h&gt;</code><br/>
 <code>#include &lt;stdlib.h&gt;</code><br/>
 <code>#include &lt;string.h&gt;</code><br/>
@@ -133,18 +133,16 @@ Functions</h2></td></tr>
 <p> Creates the server reception socket with : </p>
 <ul>
 <li>
-IPv4 address (IP_SERVER) </li>
+The given IPv4 address </li>
 <li>
-port (THD_DEFAULT_PORT)<br/>
- </li>
+port 3000 </li>
 </ul>
 <p>Next, the server reception socket listens and accept the client's transmission socket connection. Then, the server reads the message containing the client's reception socket location. Creates the server transmission socket with : </p>
 <ul>
 <li>
 IPv4 address (IP_SERVER) </li>
 <li>
-port (THD_DEFAULT_PORT + 3)<br/>
- </li>
+port 3003 </li>
 </ul>
 <p>The server transmission socket is then connected to the client's reception socket from what has been read. In theory :<br/>
  </p>
@@ -152,7 +150,7 @@ port (THD_DEFAULT_PORT + 3)<br/>
 <li>
 IPv4 address IP_CLIENT </li>
 <li>
-port THD_DEFAULT_PORT + 1 </li>
+port 3001 </li>
 </ul>
 <dl class="section return"><dt>Returns</dt><dd><ul>
 <li>
@@ -167,7 +165,7 @@ FAILURE : EXIT_FAILURE </li>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Jan 2 2015 02:15:34 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Jan 2 2015 02:52:37 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>
