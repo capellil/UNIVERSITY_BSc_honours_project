@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['number_5fgenerator_5fprocess',['number_generator_process',['../structnumber__generator__process.html',1,'']]],
-  ['number_5fgenerator_5fprocess_2eh',['number_generator_process.h',['../number__generator__process_8h.html',1,'']]]
+  ['one_5f2_5fone_5fchannel_5ft',['one_2_one_channel_t',['../structone__2__one__channel__t.html',1,'']]]
 ];

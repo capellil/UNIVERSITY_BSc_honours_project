@@ -37,7 +37,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -70,7 +69,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -85,8 +84,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 <a href="copy__process_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#ifndef COPIER_INCLUDED</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define COPIER_INCLUDED</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#ifndef COPY_INCLUDED</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define COPY_INCLUDED</span></div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor"></span></div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="channel_8h.html">channel.h</a>&quot;</span></div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div>
@@ -103,7 +102,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="keyword">struct </span><a class="code" href="structcopy__process.html">copy_process</a>* <a class="code" href="copy__process_8h.html#a1e56f466490033de5263c10d6d26101e">create_copy_process</a>(<span class="keyword">struct</span> <a class="code" href="structchannel__input__end__t.html">channel_input_end_t</a>* <a class="code" href="structcopy__process.html#ab2acb8c5b1038b57c7e18f979433a0ca">channel_input_end</a>, <span class="keyword">struct</span> <a class="code" href="structchannel__output__end__t.html">channel_output_end_t</a>* <a class="code" href="structcopy__process.html#a67b6ca0d2b183efaa8cb516637aacdec">channel_output_end_1</a>, <span class="keyword">struct</span> <a class="code" href="structchannel__output__end__t.html">channel_output_end_t</a>* <a class="code" href="structcopy__process.html#a60a2af05b62c6c23b4be7257ca29fa46">channel_output_end_2</a>);</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor">#endif // COPIER_INCLUDED</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor">#endif // COPY_INCLUDED</span></div>
 <div class="ttc" id="copy__process_8h_html_a1e56f466490033de5263c10d6d26101e"><div class="ttname"><a href="copy__process_8h.html#a1e56f466490033de5263c10d6d26101e">create_copy_process</a></div><div class="ttdeci">struct copy_process * create_copy_process(struct channel_input_end_t *channel_input_end, struct channel_output_end_t *channel_output_end_1, struct channel_output_end_t *channel_output_end_2)</div><div class="ttdoc">Creates a copier process with the given channel input and channel outputs. </div><div class="ttdef"><b>Definition:</b> copy_process.c:57</div></div>
 <div class="ttc" id="structcopy__process_html_a60a2af05b62c6c23b4be7257ca29fa46"><div class="ttname"><a href="structcopy__process.html#a60a2af05b62c6c23b4be7257ca29fa46">copy_process::channel_output_end_2</a></div><div class="ttdeci">struct channel_output_end_t * channel_output_end_2</div><div class="ttdoc">The other channel to copy the data to. </div><div class="ttdef"><b>Definition:</b> copy_process.h:27</div></div>
 <div class="ttc" id="structcopy__process_html_ab2acb8c5b1038b57c7e18f979433a0ca"><div class="ttname"><a href="structcopy__process.html#ab2acb8c5b1038b57c7e18f979433a0ca">copy_process::channel_input_end</a></div><div class="ttdeci">struct channel_input_end_t * channel_input_end</div><div class="ttdoc">The channel to read the data from. </div><div class="ttdef"><b>Definition:</b> copy_process.h:21</div></div>
@@ -115,7 +114,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Oct 4 2014 00:49:41 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Jan 2 2015 03:28:26 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>
