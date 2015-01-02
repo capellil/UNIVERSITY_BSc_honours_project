@@ -1,6 +1,6 @@
 #include "channel.h"
 #include "number_generator_process.h"
-#include "delayer_process.h"
+#include "delay_process.h"
 #include "console_process_int.h"
 #include "processes_list.h"
 
@@ -11,21 +11,21 @@ int main(int argc, char* argv[])
 {
 	int result = EXIT_FAILURE;
 	
-	// Creation of the channel between the number generator process and the delayer process
-	struct one_2_one_channel_t* number_to_delayer = create_one_2_one_channel();
-	if(number_to_delayer)
+	// Creation of the channel between the number generator process and the delay process
+	struct one_2_one_channel_t* number_to_delay = create_one_2_one_channel();
+	if(number_to_delay)
 	{
-		// Creation of the channel between the delayer process and the console process
+		// Creation of the channel between the delay process and the console process
 		struct one_2_one_channel_t* delay_to_console = create_one_2_one_channel();
 		if(delay_to_console)
 		{
 			// Creation of the process generating numbers
-			struct number_generator_process* number_generator_process = create_number_generator_process(0, 100, 1, number_to_delayer->channel_output_end);
+			struct number_generator_process* number_generator_process = create_number_generator_process(0, 100, 1, number_to_delay->channel_output_end);
 			if(number_generator_process)
 			{
 				// Creation of the process delaying transmission
-				struct delayer_process* delayer_process = create_delayer_process(200000, number_to_delayer->channel_input_end, delay_to_console->channel_output_end);
-				if(delayer_process)
+				struct delay_process* delay_process = create_delay_process(200000, number_to_delay->channel_input_end, delay_to_console->channel_output_end);
+				if(delay_process)
 				{
 					// Creation of the process displaying what it receives
 					char prefix[] = "Received from number generator process : \"";
@@ -37,7 +37,7 @@ int main(int argc, char* argv[])
 						if(processes_list != NULL)
 						{
 							insert_processes_list(processes_list, number_generator_process, number_generator_process->run);
-							insert_processes_list(processes_list, delayer_process, delayer_process->run);
+							insert_processes_list(processes_list, delay_process, delay_process->run);
 							insert_processes_list(processes_list, console_process_int, console_process_int->run);
 		
 							run_in_parallel(processes_list);
