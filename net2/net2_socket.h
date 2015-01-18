@@ -5,8 +5,8 @@
  * @date 15/09/2014
  **/
 
-#ifndef THD_SOCKET_INCLUDED
-#define THD_SOCKET_INCLUDED
+#ifndef NET2_SOCKET_INCLUDED
+#define NET2_SOCKET_INCLUDED
 
 #include <sys/types.h> // Compulsory for AF_INET, SOCK_STREAM...
 #include <sys/socket.h> // Obvious...
@@ -145,11 +145,19 @@ int net2_read_from_socket(struct net2_socket_t* net2_socket, void* data, unsigne
 int net2_close_socket(struct net2_socket_t* net2_socket);
 
 /**
- * @brief Returns the ip address of the given net2 socket (host order_.
+ * @brief Returns the ip address of the given net2 socket (host order).
  * @param net2_socket The socket to extract the ip from.
  * @return The IP address of the given socket in unsigned integer format (host byte order).
  * @pre net2_socket points to an already allocated memory area.
  **/
 unsigned int net2_get_ip_of_socket(struct net2_socket_t* net2_socket);
 
-#endif
+/**
+ * @brief Returns the port of the given net2 socket (host order).
+ * @param net2_socket The socket to extract the ip from.
+ * @return The port of the given socket in unsigned integer format (host byte order).
+ * @pre net2_socket points to an already allocated memory area.
+ **/
+unsigned short net2_get_port_of_socket(struct net2_socket_t* net2_socket);
+
+#endif // NET2_SOCKET_INCLUDED INCLUDED
