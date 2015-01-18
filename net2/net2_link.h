@@ -146,4 +146,35 @@ int net2_create_client_link(struct net2_link_t* net2_link, unsigned short client
  **/
 int net2_create_server_link(struct net2_link_t* net2_link, unsigned short server_port);
 
+/**
+ * @brief Compares the given net2_link with the given address + port to determine if there is already a link to the same address and port. A link will be duplicated if is instanced twice from the same sender (e.g from the same address + port).
+ * @param net2_link The link to be compared.
+ * @param ip_address The IP address to be tested.
+ * @param port The port to be tested.
+ * @return <ul>
+               <li>IDENTICAL : != 0
+               <li>DIFFERENT : 0
+ **/
+int net2_link_compare_to_address_and_port(struct net2_link_t* net2_link, unsigned int ip_address, unsigned short port);
+
+/**
+ * @brief Compares the given link and sockets to check if they are communicating to the same address and port. A link will be duplicated if is instanced twice from the same sender (e.g from the same address + port).
+ * @param net2_link The link to be compared.
+ * @param net2_socket The socket to be compared.
+ * @return <ul>
+               <li>IDENTICAL : != 0
+               <li>DIFFERENT : 0
+ **/
+int net2_link_compare_to_socket(struct net2_link_t* net2_link, struct net2_socket_t* net2_socket);
+
+/**
+ * @brief Compares both net2_links to determine if they are going to clash by communicating to the same address and port. A link will be duplicated if is instanced twice from the same sender (e.g from the same address + port).
+ * @param net2_link_a The link to be compared 1.
+ * @param net2_link_b The link to be compared 2.
+ * @return <ul>
+               <li>IDENTICAL : != 0
+               <li>DIFFERENT : 0
+ **/
+int net2_link_compare_to_link(struct net2_link_t* net2_link_a, struct net2_link_t* net2_link_b);
+
 #endif
