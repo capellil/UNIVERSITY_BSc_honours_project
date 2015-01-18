@@ -1,5 +1,5 @@
-#ifndef THD_NET2_DEBUG_INCLUDED
-#define THD_NET2_DEBUG_INCLUDED
+#ifndef NET2_DEBUG_INCLUDED
+#define NET2_DEBUG_INCLUDED
 
 /**
  * @file net2_debug.h
