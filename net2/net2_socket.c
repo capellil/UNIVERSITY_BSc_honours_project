@@ -193,3 +193,8 @@ unsigned int net2_get_ip_of_socket(struct net2_socket_t* net2_socket)
 {
 	return ntohl(net2_socket->_address.sin_addr.s_addr);
 }
+
+unsigned short net2_get_port_of_socket(struct net2_socket_t* net2_socket)
+{
+    return ntohs(net2_socket->_address.sin_port);
+}
