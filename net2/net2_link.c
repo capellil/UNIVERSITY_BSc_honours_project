@@ -496,3 +496,19 @@ int net2_create_server_link(struct net2_link_t* net2_link, unsigned short server
     
     return result;
 }
+
+int net2_link_compare_to_address_and_port(struct net2_link_t* net2_link, unsigned int ip_address, unsigned short port)
+{    
+    return (net2_link->_net2_link_tx->_net2_socket->_address.sin_addr.s_addr == htonl(ip_address) &&
+            net2_link->_net2_link_tx->_net2_socket->_address.sin_port == htons(port));
+}
+
+int net2_link_compare_to_socket(struct net2_link_t* net2_link, struct net2_socket_t* net2_socket)
+{
+    return net2_link_compare_to_address_and_port(net2_link, net2_get_ip_of_socket(net2_socket), net2_get_port_of_socket(net2_socket));
+}
+
+int net2_link_compare_to_link(struct net2_link_t* net2_link_a, struct net2_link_t* net2_link_b)
+{
+    return net2_link_compare_to_socket(net2_link_a, net2_link_b->_net2_link_tx->_net2_socket);
+}
