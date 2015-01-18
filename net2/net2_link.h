@@ -1,5 +1,5 @@
-#ifndef THD_LINK_INCLUDED
-#define THD_LINK_INCLUDED
+#ifndef NET2_LINK_INCLUDED
+#define NET2_LINK_INCLUDED
 
 /**
  * @file net2_link.h
@@ -177,4 +177,4 @@ int net2_link_compare_to_socket(struct net2_link_t* net2_link, struct net2_socke
  **/
 int net2_link_compare_to_link(struct net2_link_t* net2_link_a, struct net2_link_t* net2_link_b);
 
-#endif
+#endif // NET2_LINK_INCLUDED INCLUDED

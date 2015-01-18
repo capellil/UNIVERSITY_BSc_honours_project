@@ -27,4 +27,4 @@ void net2_debug_failure(char* function_name, char* message);
  **/
 void spy(char* message);
 
-#endif
+#endif // NET2_DEBUG_INCLUDED INCLUDED
