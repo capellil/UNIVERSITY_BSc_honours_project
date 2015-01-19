@@ -6,34 +6,93 @@
 
 int main(int argc, char* argv[])
 {
-    unsigned int result = EXIT_FAILURE;
+    unsigned int programme_return = EXIT_SUCCESS;
     
-    if(argc == 2)
+    printf("Checking the number of arguments. Is there the right number of arguments...");
+    if(argc == 3)
     {
+        printf("yes.\n");
         struct sockaddr_in ip_address;
+        
+        printf("Checking the IP address. Is \"%s\" a valid IP address...", argv[1]);
         if(inet_pton(AF_INET, argv[1], &ip_address) > 0)
         {
-            struct net2_link_t link;
-    
-            if(net2_create_client_link(&link, 3002, ip_address.sin_addr.s_addr, 3001) >= 0)
+            printf("yes.\n");
+            
+            printf("Checking the port. Is %d a valid port...", atoi(argv[2]));
+            if(atoi(argv[2]) >= 0 && atoi(argv[2]) < 65536)
             {
-                printf("Connection succeeded.\n");
-                result = EXIT_SUCCESS;
+                printf("yes.\n");            
+                struct net2_socket_t socket;
+                
+                printf("Checking the socket creation. Did the socket creation succeed...");
+                if(net2_socket_create(&socket) >= 0)
+                {
+                    printf("yes.\n");
+                    
+                    printf("Check the socket connection. Did the socket connection succeed...");
+                    if(!net2_socket_connect(&socket, ip_address.sin_addr.s_addr, atoi(argv[2])))
+                    {
+                        printf("yes.\n");
+                        printf("The client is now connected to the server.\n");
+                        
+                        struct net2_link_t client;
+                        net2_link_create(&client, &socket);                        
+			            
+	                    char data[13] = "Hello server\0";
+	                    unsigned int data_length = 13;
+	                    
+	                    printf("Test the connection by sending \"%s\" to the server. Has the message been correctly sent...", data);
+	                    if(net2_link_write(&client, (void*)data, data_length) != -1)
+	                    {
+	                        printf("yes.\n");
+	                        printf("Waits for the feedback from the server. Has the feedback been well received...");
+	                        if(net2_link_read(&client, (void*)data, data_length) >= 0)
+	                        {
+	                            printf("yes.\n");
+	                            printf("The server says : \"%s\".\n", data);
+	                        }
+	                        else
+	                        {
+	                            printf("no.\n");
+    			                programme_return = EXIT_FAILURE;
+	                        }
+	                    }
+	                    else
+	                    {
+	                        printf("no.\n");
+    			            programme_return = EXIT_FAILURE;
+	                    }	
+                    }
+                    else
+                    {
+                        printf("no.\n");
+                        programme_return = EXIT_FAILURE;
+                    }
+                }
+                else
+                {
+                    printf("no.\n");
+                    programme_return = EXIT_FAILURE;
+                }
             }
             else
             {
-                perror("Connection");
+                printf("no.\n");
+                programme_return = EXIT_FAILURE;
             }
         }
         else
         {
-            perror("IP address conversion from string to number");
+            printf("no.\n");
+            programme_return = EXIT_FAILURE;
         }
     }
     else
     {
-        printf("HOW TO USE THIS PROGRAM : \"./%s a.b.c.d\" with \"a.b.c.d\" the IPv4 address to use.\n", argv[0]);
+        printf("no.\n");
+        programme_return = EXIT_FAILURE;
     }
 
-    return result;
+    return programme_return;
 }
