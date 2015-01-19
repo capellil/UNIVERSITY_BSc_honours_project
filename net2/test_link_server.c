@@ -5,6 +5,12 @@
 
 #include "net2_link.h"
 
+/**
+ * @brief Creates a link behaving as the server : it accepts the connection from the client on the given port. It first creates a socket and binds it to the port, it then listens on it and finally accept the client connection in a socket. After that, the socket is wrapped in a link.
+ * 
+ * Argument 0 : the name of the programme. (hidden)<br>
+ * Argument 1 : The port to listen on.
+ **/
 int main(int argc, char* argv[])
 {
     unsigned int programme_return = EXIT_SUCCESS;

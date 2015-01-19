@@ -4,6 +4,13 @@
 
 #include "net2_link.h"
 
+/**
+ * @brief Creates a link behaving as the client : it connects to the given server (e.g : ip address and port). First, it creates the corresponding socket and the wraps it into a link.
+ * 
+ * Argument 0 : the name of the programme. (hidden)<br>
+ * Argument 1 : The IP address to use.<br>
+ * Argument 2 : The port to use.
+ **/
 int main(int argc, char* argv[])
 {
     unsigned int programme_return = EXIT_SUCCESS;
