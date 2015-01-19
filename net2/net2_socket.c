@@ -19,7 +19,7 @@ static int create_socket()
     return socket(AF_INET, SOCK_STREAM, 0);
 }
  
-void net2_print_socket(char* heading, struct net2_socket_t* net2_socket)
+void net2_socket_print(char* heading, struct net2_socket_t* net2_socket)
 {
 	if(heading)
 	{
@@ -69,7 +69,7 @@ void net2_print_socket(char* heading, struct net2_socket_t* net2_socket)
 	printf("\t- Family : %s\n", family);
 }
 
-int net2_create_and_store_socket(struct net2_socket_t* net2_socket)
+int net2_socket_create(struct net2_socket_t* net2_socket)
 {
 	int socket = create_socket();
 	
@@ -79,21 +79,21 @@ int net2_create_and_store_socket(struct net2_socket_t* net2_socket)
 	    // Socket successfully created.
 		net2_socket->_socket = socket;
 		#ifdef NET2_DEBUG
-		    net2_debug_success("net2_create_and_store_socket");
+		    net2_debug_success("net2_socket_create");
 		#endif
 	}
 	else
 	{
 	    // Socket creation failed.
 	    #ifdef NET2_DEBUG
-		    net2_debug_failure("net2_create_and_store_socket", "Socket creation failed");
+		    net2_debug_failure("net2_socket_create", "Socket creation failed");
 		#endif
 	}
 	
 	return socket;
 }
 
-int net2_create_and_bind_socket(unsigned short port, struct net2_socket_t* net2_socket)
+int net2_socket_create_and_bind(struct net2_socket_t* net2_socket, unsigned short port)
 {
 	int result = 0;
 	int socket = create_socket();
@@ -118,7 +118,7 @@ int net2_create_and_bind_socket(unsigned short port, struct net2_socket_t* net2_
 			    net2_socket->_socket = socket;
 			    net2_socket->_address = socket_address;
 			    #ifdef NET2_DEBUG
-		             net2_debug_success("net2_create_and_bind_socket");
+		             net2_debug_success("net2_socket_create_and_bind");
 		        #endif
 		    }
 		    else
@@ -128,7 +128,7 @@ int net2_create_and_bind_socket(unsigned short port, struct net2_socket_t* net2_
 			    #ifdef NET2_DEBUG
 			        char message[128]; 
 			        sprintf(message, "Socket binding failed when trying with port \"%d\", net2_socket pointer is %p", port, net2_socket);
-		            net2_debug_failure("net2_create_and_bind_socket", message);
+		            net2_debug_failure("net2_socket_create_and_bind", message);
 		        #endif
 		    }
 	    }
@@ -140,19 +140,19 @@ int net2_create_and_bind_socket(unsigned short port, struct net2_socket_t* net2_
 	{
 		result = -1;
 		#ifdef NET2_DEBUG
-		     net2_debug_failure("net2_create_and_bind_socket", "Socket creation failed");
+		     net2_debug_failure("net2_socket_create_and_bind", "Socket creation failed");
 		#endif
 	}
 	
 	return result;
 }
 
-int net2_listen_on_socket(struct net2_socket_t* net2_socket)
+int net2_socket_listen(struct net2_socket_t* net2_socket)
 {
 	return listen(net2_socket->_socket, 1);
 }
 
-int net2_accept_from_socket(struct net2_socket_t* server, struct net2_socket_t* client)
+int net2_socket_accept(struct net2_socket_t* server, struct net2_socket_t* client)
 {
 	struct sockaddr_in address;
 	socklen_t address_length = sizeof(struct sockaddr_in);
@@ -163,7 +163,7 @@ int net2_accept_from_socket(struct net2_socket_t* server, struct net2_socket_t* 
 	return socket;
 }
 
-int net2_connect_to_socket(struct net2_socket_t* net2_socket, unsigned int address, unsigned short port)
+int net2_socket_connect(struct net2_socket_t* net2_socket, unsigned int address, unsigned short port)
 {
 	struct sockaddr_in server;
 	server.sin_family = AF_INET; // IPv4 Internet Protocol
@@ -174,27 +174,27 @@ int net2_connect_to_socket(struct net2_socket_t* net2_socket, unsigned int addre
 	return connect(net2_socket->_socket, (struct sockaddr*)&server, server_length);
 }
 
-int net2_write_to_socket(struct net2_socket_t* net2_socket, void* data, unsigned int data_length)
+int net2_socket_write(struct net2_socket_t* net2_socket, void* data, unsigned int data_length)
 {
 	return send(net2_socket->_socket, data, data_length, 0);
 }
 
-int net2_read_from_socket(struct net2_socket_t* net2_socket, void* data, unsigned int data_length)
+int net2_socket_read(struct net2_socket_t* net2_socket, void* data, unsigned int data_length)
 {
 	return recv(net2_socket->_socket, data, data_length, 0);
 }
 
-int net2_close_socket(struct net2_socket_t* net2_socket)
+int net2_socket_close(struct net2_socket_t* net2_socket)
 {
 	return close(net2_socket->_socket);
 }
 
-unsigned int net2_get_ip_of_socket(struct net2_socket_t* net2_socket)
+unsigned int net2_socket_get_ip(struct net2_socket_t* net2_socket)
 {
 	return ntohl(net2_socket->_address.sin_addr.s_addr);
 }
 
-unsigned short net2_get_port_of_socket(struct net2_socket_t* net2_socket)
+unsigned short net2_socket_get_port(struct net2_socket_t* net2_socket)
 {
     return ntohs(net2_socket->_address.sin_port);
 }
