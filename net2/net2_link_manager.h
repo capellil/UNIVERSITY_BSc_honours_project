@@ -1,12 +1,12 @@
-#ifndef NET2_LINK_MANAGER_INCLUDED
-#define NET2_LINK_MANAGER_INCLUDED
-
 /**
  * @file net2_link_manager.h
  * @author Ludovic Capelli
  * @version 1.0
  * @date 05/01/2015
  **/
+
+#ifndef NET2_LINK_MANAGER_INCLUDED
+#define NET2_LINK_MANAGER_INCLUDED
 
 #include <stdlib.h> // NULL | malloc
 #include <stdbool.h> // bool
@@ -59,6 +59,18 @@ int net2_link_manager_get_instance(struct net2_link_manager_t** net2_link_manage
         </ul>
  **/
 int net2_link_manager_register_link(struct net2_link_t* net2_link);
+
+/**
+ * @brief Checks if the given IP address + port exist in the link manager links. (e.g If another link already communicate to this address + port)
+ * @param address The IP address to check.
+ * @param port The port to check.
+ * @param found A pointer on a boolean to store the comparison result in.
+ * @return <ul>
+               <li>SUCCESS : 0
+               <li>FAILURE : -1
+           </ul>
+ **/
+int net2_link_manager_check_address_and_port(unsigned int address, unsigned short port, bool* found);
 
 /**
  * @brief Checks if the given socket exists in the link manager links.

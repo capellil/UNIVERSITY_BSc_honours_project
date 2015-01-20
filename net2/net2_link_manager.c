@@ -138,7 +138,7 @@ int net2_link_manager_register_link(struct net2_link_t* net2_link)
     return result;
 }
 
-int net2_link_manager_check_socket(struct net2_socket_t* net2_socket, bool* found)
+int net2_link_manager_check_address_and_port(unsigned int address, unsigned short port, bool* found)
 {
     int result = 0;
     
@@ -155,12 +155,12 @@ int net2_link_manager_check_socket(struct net2_socket_t* net2_socket, bool* foun
         {
             // Yes, the link manager has at least one link.
             // Parse the link manager linked list of links.
-            while(!net2_link_compare_to_socket(temp->_my_link, net2_socket) && temp->_next_link)
+            while(!net2_link_compare_to_address_and_port(temp->_my_link, address, port) && temp->_next_link)
             {
                 temp = temp->_next_link;
             }
             
-            *found = (net2_link_compare_to_socket(temp->_my_link, net2_socket));
+            *found = (net2_link_compare_to_address_and_port(temp->_my_link, address, port));
             #ifdef NET2_DEBUG
                 net2_debug_success("net2_link_manager_check_socket");
             #endif
@@ -182,4 +182,9 @@ int net2_link_manager_check_socket(struct net2_socket_t* net2_socket, bool* foun
     }
     
     return result;
+}
+
+int net2_link_manager_check_socket(struct net2_socket_t* net2_socket, bool* found)
+{
+    return net2_link_manager_check_address_and_port(net2_socket_get_ip(net2_socket), net2_socket_get_port(net2_socket), found);
 }

@@ -5,109 +5,132 @@
 #include "net2_link_manager.h"
 
 /**
- * @brief This application tests the link manager.<br>
-   It first consists in instanciating the link manager singleton through net2_link_manager_get_instance function.<br>
-   Then it creates a link, connected with the test_link_manager_client programme one. This application will check the functions net2_link_manager_check_socket and net2_link_manager_register_link before and after the link gets registered.
+ * @brief This application tests the link manager.
+ *
+ * It first consists in instanciating the link manager singleton through net2_link_manager_get_instance function.<br>
+ * Then it creates a link, connected with the test_link_manager_client programme one. This application will check the functions net2_link_manager_check_socket and net2_link_manager_register_link before and after the link gets registered.
+ * Argument 0 : the application name. (hidden)
+ * Argument 1 : the port to use.
  **/
 int main(int argc, char* argv[])
 {
-    struct net2_link_manager_t* link_manager = NULL;
+    int programme_return = EXIT_SUCCESS;
+    printf("Checks the number of parameters. Is there the right number of parameters...");
     
-    // TEST : Did the link manager get instance succeed ?
-    if(!net2_link_manager_get_instance(&link_manager))
+    if(argc == 2)
     {
-        // Yes, the link manager get instance succeed.
-        printf("Link manager ok.\n");
+        printf("yes.\n");
+        struct sockaddr_in ip_address;        
+        printf("Checking the port number : is %d a valid port number...", atoi(argv[1]));
         
-        struct net2_link_t link;
-        
-        // TEST : Did the server link creation succeed ?
-        if(net2_create_server_link(&link, 3001) >= 0)
+        if(atoi(argv[1]) >= 0 && atoi(argv[1]) < 65536)
         {
-            // Yes, the server link has been correctly created.
-            printf("The connection has been created but link NOT REGISTERED => the socket and the link should NOT be findable in the link manager links.\n");
-            
-            bool socket_check_result = false;
-            
-            // TEST : Did the research into the link manager succeed ?
-            if(!net2_link_manager_check_socket((&link)->_net2_link_tx->_net2_socket, &socket_check_result))
+            printf("yes.\n");
+            struct net2_link_manager_t* link_manager = NULL;
+            printf("Checks the link manager instance obtained. Did the function succeed...");
+        
+            if(!net2_link_manager_get_instance(&link_manager))
             {
-                // Yes, the research into the link manager succeed.
-                // TEST : Is the link socket already present in the link manager links ? (SHOULD NOT)
-                if(!socket_check_result)
+                printf("yes.\n");
+                bool found = false;
+                printf("Calls the link manager method to check if an address and port are already used by a link. Did the function succeed...");
+                
+                if(!net2_link_manager_check_address_and_port(ip_address.sin_addr.s_addr, atoi(argv[1]), &found))
                 {
-                    // No, the link socket is not already present in the link manager links.
-                    printf("The socket has not been found in the link manager AS EXPECTED.\n");
+                    printf("yes.\n");                
+                    struct net2_socket_t socket;
+                    printf("Checks if an occurence has been found. Is this address and port available so far...");
                     
-                    // TEST : Did the link registration succeed ?
-                    if(!net2_link_manager_register_link(&link))
+                    if(!found)
                     {
-                        // Yes, the link registration succeed.
-                        printf("The link is now REGISTERED => the socket and the link should now be both findable in the link manager links.\n");
+                        printf("yes.\n");
+                        printf("Checks the socket creation. Did the socket creation succeed...");
                         
-                        // TEST : Did the research into the link manager succeed ?
-                        if(!net2_link_manager_check_socket((&link)->_net2_link_tx->_net2_socket, &socket_check_result))
+                        if(!net2_socket_create_and_bind(&socket, atoi(argv[1])))
                         {
-                            // Yes, the research into the link manager succeed.
-                            // TEST : Is the link socket already present in the link manager links ? (SHOULD)
-                            if(socket_check_result)
+                            printf("yes.\n");
+                            printf("Checks the socket listening. Did the socket listening succeed...");
+                            
+                            if(!net2_socket_listen(&socket))
                             {
-                                // Yes, the socket is already present in the link manager links.
-                                printf("The socket has been found in the link manager AS EXPECTED.\n");
-                                
-                                // TEST : Did the link registration again succeed ? (SHOULD NOT)
-                                if(net2_link_manager_register_link(&link))
+                                printf("yes.\n");
+                                printf("Tries to accept the client connection. Did the client connection acceptation succeed...");
+                                struct net2_socket_t client_socket;
+                                if(net2_socket_accept(&socket, &client_socket) >= 0)
                                 {
-                                    // No, the link registration failed.
-                                    printf("The link registration failed AS EXPECTED.\n");
+                                    printf("yes.\n");
+                                    struct net2_link_t link;
+                                    net2_link_create(&link, &client_socket);
+                                    printf("Calls the link manager method to check if an address and port are already used by a link. Did the function succeed...");
+                                    
+                                    if(!net2_link_manager_check_address_and_port(ip_address.sin_addr.s_addr, atoi(argv[1]), &found))
+                                    {
+                                        printf("yes.\n");                
+                                        printf("Checks if an occurence has been found. Is this address and port busy...");
+                                        
+                                        if(!found)
+                                        {
+                                            printf("yes.\n");
+                                        }
+                                        else
+                                        {
+                                            printf("no.\n");
+                                            programme_return = EXIT_FAILURE;
+                                        }
+                                    }
+                                    else
+                                    {
+                                        printf("no.\n");
+                                        programme_return = EXIT_FAILURE;
+                                    }
                                 }
                                 else
                                 {
-                                    // Yes, it succeeded again but it is not the right behaviour.
-                                    printf("The link registration succeeded but should have failed.\n");
-                                }   
+                                    printf("no.\n");
+                                    programme_return = EXIT_FAILURE;
+                                }
                             }
                             else
                             {
-                                // No, the link socket is not already present in the link manager links.
-                                printf("The socket is not present in the link manager, but should have been.\n");
+                                printf("no.\n");
+                                programme_return = EXIT_FAILURE;
                             }
                         }
                         else
                         {
-                            // No, the link socket is not already present in the link manager links.
-                            printf("The socket has not been found in the link manager but should have been.\n");
+                            printf("no.\n");
+                            programme_return = EXIT_FAILURE;
                         }
                     }
                     else
                     {
-                        // No, the link registration failed.
-                        printf("The link registration failed.\n");
+                        printf("no.\n");
+                        programme_return = EXIT_FAILURE;
                     }
                 }
                 else
                 {
-                    // Yes, the socket is already present in the link manager links.
-                    printf("The socket has been found in the link manager but should not have.\n");
+                    printf("no.\n");
+                    programme_return = EXIT_FAILURE;
                 }
             }
             else
             {
-                // No, the research in the link manager links failed.
-                printf("The research in the link manager links failed.\n");
+                printf("no.\n");
+                programme_return = EXIT_FAILURE;
             }
         }
         else
         {
-            // No, the server link creation failed.
-            printf("The connection has failed.\n");
+            printf("no.\n");
+            programme_return = EXIT_FAILURE;
         }
     }
     else
     {
-        // No, the link manager get instance failed.
-        printf("Link manager get instance failed.\n");
+        printf("no.\n");
+        programme_return = EXIT_FAILURE;
     }
 
-    return EXIT_SUCCESS;
+    return programme_return;
 }
