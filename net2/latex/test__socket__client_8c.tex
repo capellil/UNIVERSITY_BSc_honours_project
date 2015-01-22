@@ -1,25 +1,26 @@
 \hypertarget{test__socket__client_8c}{\section{test\-\_\-socket\-\_\-client.\-c File Reference}
 \label{test__socket__client_8c}\index{test\-\_\-socket\-\_\-client.\-c@{test\-\_\-socket\-\_\-client.\-c}}
 }
-{\ttfamily \#include \char`\"{}net2\-\_\-socket.\-h\char`\"{}}\\*
 {\ttfamily \#include $<$stdio.\-h$>$}\\*
 {\ttfamily \#include $<$stdlib.\-h$>$}\\*
+{\ttfamily \#include $<$string.\-h$>$}\\*
+{\ttfamily \#include \char`\"{}net2\-\_\-socket.\-h\char`\"{}}\\*
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
 int \hyperlink{test__socket__client_8c_a0ddf1224851353fc92bfbff6f499fa97}{main} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
-\begin{DoxyCompactList}\small\item\em Creates a client socket with \-: \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Creates a socket and connects it to the given address and port. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
 \begin{DoxyAuthor}{Author}
-Capelli Ludovic 
+Capelli, Ludovic 
 \end{DoxyAuthor}
 \begin{DoxyVersion}{Version}
-1.\-0 
+2.\-0 
 \end{DoxyVersion}
 \begin{DoxyDate}{Date}
-24/11/2014 
+18/01/2015 
 \end{DoxyDate}
 
 
@@ -34,17 +35,13 @@ Capelli Ludovic
 )}}\label{test__socket__client_8c_a0ddf1224851353fc92bfbff6f499fa97}
 
 
-Creates a client socket with \-: 
+Creates a socket and connects it to the given address and port. 
 
 
 \begin{DoxyItemize}
-\item port 3001\par
- 
-\end{DoxyItemize}The socket is then connected to the server at \-:\par
- 
-\begin{DoxyItemize}
-\item The given I\-Pv4 address 
-\item port 3000 
+\item The argument 0 \-: the name of the programme. (hidden from the user input) 
+\item The argument 1 \-: the I\-Pv4 address to connect on. 
+\item The argument 2 \-: the port to connect on. 
 \end{DoxyItemize}\begin{DoxyReturn}{Returns}
 
 \begin{DoxyItemize}

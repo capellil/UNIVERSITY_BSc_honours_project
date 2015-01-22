@@ -87,16 +87,19 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="contents">
 <div class="textblock">Here are the classes, structs, unions and interfaces with brief descriptions:</div><div class="directory">
 <table class="directory">
-<tr id="row_0_" class="even"><td class="entry"><img src="ftv2node.png" alt="o" width="16" height="22" /><img src="ftv2cl.png" alt="C" width="24" height="22" /><a class="el" href="structnet2__link__rx__t.html" target="_self">net2_link_rx_t</a></td><td class="desc">Link layer reception unit. It contains the net2 socket to listen and accept on as well as the partner socket to read from. Finally, it also contains the read function </td></tr>
-<tr id="row_1_"><td class="entry"><img src="ftv2node.png" alt="o" width="16" height="22" /><img src="ftv2cl.png" alt="C" width="24" height="22" /><a class="el" href="structnet2__link__t.html" target="_self">net2_link_t</a></td><td class="desc">Contains the two links to send and receive data as well as the two function to deal with both </td></tr>
-<tr id="row_2_" class="even"><td class="entry"><img src="ftv2node.png" alt="o" width="16" height="22" /><img src="ftv2cl.png" alt="C" width="24" height="22" /><a class="el" href="structnet2__link__tx__t.html" target="_self">net2_link_tx_t</a></td><td class="desc">Link layer transmission unit. It contains the net2 socket to communicate through as well as we the write function </td></tr>
-<tr id="row_3_"><td class="entry"><img src="ftv2lastnode.png" alt="\" width="16" height="22" /><img src="ftv2cl.png" alt="C" width="24" height="22" /><a class="el" href="structnet2__socket__t.html" target="_self">net2_socket_t</a></td><td class="desc">Structure containing the socket and its address structure </td></tr>
+<tr id="row_0_" class="even"><td class="entry"><img src="ftv2node.png" alt="o" width="16" height="22" /><img src="ftv2cl.png" alt="C" width="24" height="22" /><a class="el" href="structnet2__link__linked__element__t.html" target="_self">net2_link_linked_element_t</a></td><td class="desc">A linked element containing a net2 link, forming a linked list when chained. They are used in the link manager for dynamically growing structure </td></tr>
+<tr id="row_1_"><td class="entry"><img src="ftv2node.png" alt="o" width="16" height="22" /><img src="ftv2cl.png" alt="C" width="24" height="22" /><a class="el" href="structnet2__link__manager__t.html" target="_self">net2_link_manager_t</a></td><td class="desc">The link manager structure. It contains a collection of links and ensures that one a link is registered per node </td></tr>
+<tr id="row_2_" class="even"><td class="entry"><img src="ftv2node.png" alt="o" width="16" height="22" /><img src="ftv2cl.png" alt="C" width="24" height="22" /><a class="el" href="structnet2__link__rx__t.html" target="_self">net2_link_rx_t</a></td><td class="desc">Link layer reception unit. It has a function to read from the given socket </td></tr>
+<tr id="row_3_"><td class="entry"><img src="ftv2node.png" alt="o" width="16" height="22" /><img src="ftv2cl.png" alt="C" width="24" height="22" /><a class="el" href="structnet2__link__server__t.html" target="_self">net2_link_server_t</a></td><td class="desc">The link server is in charge of handling incoming connections requests from remote nodes which want to create a communication between one of their channel and on of its channel. It therefore checks from the link manager than those channels are not already connected with a net2 link </td></tr>
+<tr id="row_4_" class="even"><td class="entry"><img src="ftv2node.png" alt="o" width="16" height="22" /><img src="ftv2cl.png" alt="C" width="24" height="22" /><a class="el" href="structnet2__link__t.html" target="_self">net2_link_t</a></td><td class="desc">Contains the two links to send and receive data as well as the two function to deal with both </td></tr>
+<tr id="row_5_"><td class="entry"><img src="ftv2node.png" alt="o" width="16" height="22" /><img src="ftv2cl.png" alt="C" width="24" height="22" /><a class="el" href="structnet2__link__tx__t.html" target="_self">net2_link_tx_t</a></td><td class="desc">Link layer transmission unit. It has a function to write to the given socket </td></tr>
+<tr id="row_6_" class="even"><td class="entry"><img src="ftv2lastnode.png" alt="\" width="16" height="22" /><img src="ftv2cl.png" alt="C" width="24" height="22" /><a class="el" href="structnet2__socket__t.html" target="_self">net2_socket_t</a></td><td class="desc">Structure containing the socket and its address structure </td></tr>
 </table>
 </div><!-- directory -->
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Jan 2 2015 02:52:37 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Jan 22 2015 01:11:41 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

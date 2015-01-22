@@ -89,35 +89,27 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 
-<p>Link layer reception unit. It contains the net2 socket to listen and accept on as well as the partner socket to read from. Finally, it also contains the read function.  
+<p>Link layer reception unit. It has a function to read from the given socket.  
  <a href="structnet2__link__rx__t.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="net2__link_8h_source.html">net2_link.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a83d0d9ea37e3eadaf8e33583c58b2b09"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a83d0d9ea37e3eadaf8e33583c58b2b09"></a>
-struct <a class="el" href="structnet2__socket__t.html">net2_socket_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structnet2__link__rx__t.html#a83d0d9ea37e3eadaf8e33583c58b2b09">_net2_socket</a></td></tr>
-<tr class="memdesc:a83d0d9ea37e3eadaf8e33583c58b2b09"><td class="mdescLeft">&#160;</td><td class="mdescRight">The net2 socket to accept connections from. <br/></td></tr>
-<tr class="separator:a83d0d9ea37e3eadaf8e33583c58b2b09"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa8720342c7b6c92c5d3b1b23ffa8af8f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa8720342c7b6c92c5d3b1b23ffa8af8f"></a>
-struct <a class="el" href="structnet2__socket__t.html">net2_socket_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structnet2__link__rx__t.html#aa8720342c7b6c92c5d3b1b23ffa8af8f">_net2_partner_socket</a></td></tr>
-<tr class="memdesc:aa8720342c7b6c92c5d3b1b23ffa8af8f"><td class="mdescLeft">&#160;</td><td class="mdescRight">The net2 socket to read from. <br/></td></tr>
-<tr class="separator:aa8720342c7b6c92c5d3b1b23ffa8af8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a481aaf6a6a6923c582c1e4f5e67d4333"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a481aaf6a6a6923c582c1e4f5e67d4333"></a>
-int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structnet2__link__rx__t.html#a481aaf6a6a6923c582c1e4f5e67d4333">read</a> )(struct <a class="el" href="structnet2__link__rx__t.html">net2_link_rx_t</a> *net2_link_rx, void *data, unsigned int data_length)</td></tr>
-<tr class="memdesc:a481aaf6a6a6923c582c1e4f5e67d4333"><td class="mdescLeft">&#160;</td><td class="mdescRight">The function to read from the link. <br/></td></tr>
-<tr class="separator:a481aaf6a6a6923c582c1e4f5e67d4333"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4cf71287a067a11d18e3e8deb7fd5f9d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4cf71287a067a11d18e3e8deb7fd5f9d"></a>
+int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structnet2__link__rx__t.html#a4cf71287a067a11d18e3e8deb7fd5f9d">read</a> )(struct <a class="el" href="structnet2__socket__t.html">net2_socket_t</a> *, void *data, unsigned int data_length)</td></tr>
+<tr class="memdesc:a4cf71287a067a11d18e3e8deb7fd5f9d"><td class="mdescLeft">&#160;</td><td class="mdescRight">The function to read from the link. <br/></td></tr>
+<tr class="separator:a4cf71287a067a11d18e3e8deb7fd5f9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Link layer reception unit. It contains the net2 socket to listen and accept on as well as the partner socket to read from. Finally, it also contains the read function. </p>
+<div class="textblock"><p>Link layer reception unit. It has a function to read from the given socket. </p>
 </div><hr/>The documentation for this class was generated from the following file:<ul>
 <li><a class="el" href="net2__link_8h_source.html">net2_link.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Jan 2 2015 02:52:37 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Jan 22 2015 01:11:41 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

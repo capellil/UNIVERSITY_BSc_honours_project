@@ -1,0 +1,41 @@
+\hypertarget{test__link__manager__server_8c}{\section{test\-\_\-link\-\_\-manager\-\_\-server.\-c File Reference}
+\label{test__link__manager__server_8c}\index{test\-\_\-link\-\_\-manager\-\_\-server.\-c@{test\-\_\-link\-\_\-manager\-\_\-server.\-c}}
+}
+{\ttfamily \#include $<$stdio.\-h$>$}\\*
+{\ttfamily \#include $<$stdlib.\-h$>$}\\*
+{\ttfamily \#include $<$stdbool.\-h$>$}\\*
+{\ttfamily \#include \char`\"{}net2\-\_\-link\-\_\-manager.\-h\char`\"{}}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{test__link__manager__server_8c_a0ddf1224851353fc92bfbff6f499fa97}{main} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em This application tests the link manager. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Capelli, Ludovic 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+2.\-0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+22/01/2015 
+\end{DoxyDate}
+
+
+\subsection{Function Documentation}
+\hypertarget{test__link__manager__server_8c_a0ddf1224851353fc92bfbff6f499fa97}{\index{test\-\_\-link\-\_\-manager\-\_\-server.\-c@{test\-\_\-link\-\_\-manager\-\_\-server.\-c}!main@{main}}
+\index{main@{main}!test_link_manager_server.c@{test\-\_\-link\-\_\-manager\-\_\-server.\-c}}
+\subsubsection[{main}]{\setlength{\rightskip}{0pt plus 5cm}int main (
+\begin{DoxyParamCaption}
+\item[{int}]{argc, }
+\item[{char $\ast$}]{argv\mbox{[}$\,$\mbox{]}}
+\end{DoxyParamCaption}
+)}}\label{test__link__manager__server_8c_a0ddf1224851353fc92bfbff6f499fa97}
+
+
+This application tests the link manager. 
+
+It first consists in instanciating the link manager singleton through net2\-\_\-link\-\_\-manager\-\_\-get\-\_\-instance function.\par
+ Then it creates a link, connected with the test\-\_\-link\-\_\-manager\-\_\-client programme one. This application will check the functions net2\-\_\-link\-\_\-manager\-\_\-check\-\_\-socket and net2\-\_\-link\-\_\-manager\-\_\-register\-\_\-link before and after the link gets registered. Argument 0 \-: the application name. (hidden) Argument 1 \-: the port to use. 
