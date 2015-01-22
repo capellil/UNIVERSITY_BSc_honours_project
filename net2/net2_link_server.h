@@ -30,12 +30,10 @@ struct net2_link_server_t** net2_link_server_get_instance(void);
 
 /**
  * @brief Instances the net2 link server singleton.
- * @param net2_link_server A pointer to copy the address of the link server singleton instance that will be created. 
  * @param port The port to listen on.
  * @return <ul>
 			   <li>SUCCESS : 0
 			   <li>FAILURE : -1
-			   <li>ALREADY INSTANCED : -2
 		   </ul>
  **/
 int net2_link_server_create(unsigned short port);
@@ -46,6 +44,7 @@ int net2_link_server_create(unsigned short port);
  * @return <ul>
 			   <li>SUCCESS : 0
 			   <li>FAILURE : -1
+			   <li>ALREADY INSTANCED : -2
 		   </ul>
  **/
 int net2_link_server_init(unsigned short port);
