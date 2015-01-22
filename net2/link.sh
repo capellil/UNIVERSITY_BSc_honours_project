@@ -1,6 +1,6 @@
 #!/bin/bash
 
-flags="-Wall -std=c99"
+flags="-Wall -std=c99 -pthread"
 
 function thd_LINK
 {
