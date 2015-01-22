@@ -72,6 +72,11 @@ struct net2_link_t
  * @param net2_link The link to read from.
  * @param data A pointer on the buffer to fill from reading.
  * @param data_length The number of bytes to read.
+ * @return <ul>
+ 			   <li>SUCCESS : Non-negative and non-null number that is the number of read bytes.
+               <li>SUCCESS : 0 if the peer has performed an orderly shutdown.
+               <li>FAILED : -1, errno is set appropriately.
+           </ul>
  **/
 int net2_link_read(struct net2_link_t* net2_link, void* data, unsigned int data_length);
 
@@ -80,6 +85,10 @@ int net2_link_read(struct net2_link_t* net2_link, void* data, unsigned int data_
  * @param net2_link The link to write to.
  * @param data A pointer on the buffer to be written.
  * @param data_length The number of bytes to write.
+ * @return <ul>
+ 		       <li>SUCCESS : Non-negative number that is the amount of byte written.
+               <li>FAILED : -1, errno is set appropriately.
+           </ul>
  **/
 int net2_link_write(struct net2_link_t* net2_link, void* data, unsigned int data_length);
 
@@ -102,6 +111,7 @@ void net2_link_create(struct net2_link_t* net2_link, struct net2_socket_t* net2_
  * @return <ul>
                <li>IDENTICAL : != 0
                <li>DIFFERENT : 0
+           </ul>
  **/
 int net2_link_compare_to_address_and_port(struct net2_link_t* net2_link, unsigned int ip_address, unsigned short port);
 
@@ -112,6 +122,7 @@ int net2_link_compare_to_address_and_port(struct net2_link_t* net2_link, unsigne
  * @return <ul>
                <li>IDENTICAL : != 0
                <li>DIFFERENT : 0
+           </ul>
  **/
 int net2_link_compare_to_socket(struct net2_link_t* net2_link, struct net2_socket_t* net2_socket);
 
@@ -122,6 +133,7 @@ int net2_link_compare_to_socket(struct net2_link_t* net2_link, struct net2_socke
  * @return <ul>
                <li>IDENTICAL : != 0
                <li>DIFFERENT : 0
+           </ul>
  **/
 int net2_link_compare_to_link(struct net2_link_t* net2_link_a, struct net2_link_t* net2_link_b);
 
