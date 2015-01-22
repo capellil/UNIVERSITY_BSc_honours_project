@@ -1,6 +1,6 @@
 #!/bin/bash
 
-flags="-Wall -std=c99"
+flags="-Wall -std=c99" #add -DNET2_DEBUG option to enable debug messages to be displayed
 
 function thd_compile
 {
