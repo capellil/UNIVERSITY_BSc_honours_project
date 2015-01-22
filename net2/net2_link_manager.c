@@ -1,43 +1,73 @@
 #include "net2_link_manager.h"
 
-int net2_link_manager_get_instance(struct net2_link_manager_t** net2_link_manager)
+struct net2_link_manager_t** net2_link_manager_get_instance(void)
 {
-    // The pointer on the uniq instance of link_manager.
+    // The pointer on the unique instance of link_manager.
     static struct net2_link_manager_t* link_manager = NULL;
     
-    // The function result
+    return &link_manager;
+}
+
+int net2_link_manager_create()
+{
+    // Function result
     int result = 0;
     
-    // TEST : Is the link manager NULL
-    if(!link_manager)
+    // We dynamically allocate the link manager
+    struct net2_link_manager_t** link_manager = net2_link_manager_get_instance();
+    *link_manager = (struct net2_link_manager_t*)malloc(sizeof(struct net2_link_manager_t));
+    
+    // TEST : Is link manager dynamic allocation OK ?
+    if(*link_manager)
     {
-        // Yes the link manager is NULL (e.g : not instanced yet)
-        // We create its instance
-        link_manager = (struct net2_link_manager_t*)malloc(sizeof(struct net2_link_manager_t));
+        // Yes, the link manager dynamic allocation is OK
+        (*link_manager)->_net2_links = NULL;
+        #ifdef NET2_DEBUG
+            net2_debug_success("net2_link_manager_create");
+        #endif
+    }
+    else
+    {
+        // No, the link manager dynamic allocation failed.
+        result = -1;
+        #ifdef NET2_DEBUG
+            net2_debug_failure("net2_link_manager_create", "Link manager dynamic allocation");
+        #endif
+    }
+    
+    return result;
+}
+
+int net2_link_manager_init()
+{   
+    int result = 0;
+    
+    // TEST : Is the link manager not instanced yet ?
+    if(!*(net2_link_manager_get_instance()))
+    {
+        // Yes, the link manager can be instanced.
+        result = net2_link_manager_create(); 
         
-        // TEST : Is link manager dynamic allocation OK ?
-        if(link_manager)
+        // TEST : Did the link manager creation succeed ?
+        if(!result)
         {
-            // Yes, the link manager dynamic allocation is OK
-            link_manager->_net2_links = NULL;
-            *net2_link_manager = link_manager;
+            // Yes, the link manager creation succeeded.
             #ifdef NET2_DEBUG
-                net2_debug_success("net2_link_manager_get_instance");
+                net2_debug_success("net2_link_manager_init");
             #endif
         }
         else
         {
-            // No, the link manager dynamic allocation failed.
-            result = -1;
+            // No, the link manager creation failed.
             #ifdef NET2_DEBUG
-                net2_debug_failure("net2_link_manager_get_instance", "Link manager dynamic allocation");
+                net2_debug_failure("net2_link_manager_init", "Link manager creation failed.");
             #endif
         }
     }
     else
     {
-        // No, the link manager is already instanced. Nothing to do.
-        *net2_link_manager = link_manager;
+        // No, the link manager is already instanced.
+        result = -2;
     }
     
     return result;
@@ -48,13 +78,13 @@ int net2_link_manager_register_link(struct net2_link_t* net2_link)
     // The function result
     int result = 0;
     
-    struct net2_link_manager_t* net2_link_manager = NULL;
+    struct net2_link_manager_t** net2_link_manager = net2_link_manager_get_instance();
     
-    // TEST : Did we get the link manager instance without any problem ?
-    if(!net2_link_manager_get_instance(&net2_link_manager))
+    // TEST : Is the link manager already instanced ?
+    if(*net2_link_manager)
     {        
-        // Yes, we got the link manager instance without any problem.
-        struct net2_link_linked_element_t* temp = net2_link_manager->_net2_links;
+        // Yes, the link manager is already instanced.
+        struct net2_link_linked_element_t* temp = (*net2_link_manager)->_net2_links;
         
         // TEST : Has the link manager some links registered already ?
         if(temp)
@@ -111,7 +141,7 @@ int net2_link_manager_register_link(struct net2_link_t* net2_link)
             {
                 // Yes, the new link element dynamic allocation succeeded.
                 new_linked_element->_my_link = net2_link;
-                net2_link_manager->_net2_links = new_linked_element;
+                (*net2_link_manager)->_net2_links = new_linked_element;
                 #ifdef NET2_DEBUG
                     net2_debug_success("net2_link_manager_register_link");
                 #endif
@@ -128,10 +158,10 @@ int net2_link_manager_register_link(struct net2_link_t* net2_link)
     }
     else
     {
-        // No, we had problems getting the link manager instance.
+        // No, the link manager is not already instanced.
         result = -1;
         #ifdef NET2_DEBUG
-            net2_debug_failure("net2_link_manager_register_link", "We had problems getting the link manager instance.");
+            net2_debug_failure("net2_link_manager_register_link", "The link manager is not already instanced.");
         #endif
     }
     
@@ -142,13 +172,13 @@ int net2_link_manager_check_address_and_port(unsigned int address, unsigned shor
 {
     int result = 0;
     
-    struct net2_link_manager_t* net2_link_manager = NULL;
+    struct net2_link_manager_t** net2_link_manager = net2_link_manager_get_instance();
     
-    // TEST : Did we get the link manager instance without any problem ?
-    if(!net2_link_manager_get_instance(&net2_link_manager))
+    // TEST : Is the link manager already instanced ?
+    if(*net2_link_manager)
     {
-        // Yes, we got the link manager instance without any problem.
-        struct net2_link_linked_element_t* temp = net2_link_manager->_net2_links;
+        // Yes, the link manager is already instanced.
+        struct net2_link_linked_element_t* temp = (*net2_link_manager)->_net2_links;
         
         // TEST : Has the link manager at least one link ?
         if(temp)
@@ -169,15 +199,18 @@ int net2_link_manager_check_address_and_port(unsigned int address, unsigned shor
         {
             // No, the link manager does not have any link yet.
             *found = false;
+            #ifdef NET2_DEBUG
+                net2_debug_success("net2_link_manager_check_socket");
+            #endif
         }
     }
     else
     {
-        // No, we had problems getting the link manager instance.
+        // No, the link manager is not already instanced.
         *found = false;
         result = -1;
         #ifdef NET2_DEBUG
-            net2_debug_failure("net2_link_manager_check_socket", "We had problems getting the link manager instance.");
+            net2_debug_failure("net2_link_manager_check_socket", "The link manager is not already instanced.");
         #endif
     }
     

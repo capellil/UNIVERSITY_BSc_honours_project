@@ -37,14 +37,29 @@ struct net2_link_manager_t
 };
 
 /**
- * @brief Returns the link manager instance. Follows the singleton pattern; only one instance can be created at a time.
- * @param net2_link_manager A pointer to store in the net2 link manager instance.
- * @return <ul>
-               <li>SUCCESS : 0
-               <li>FAILURE : -1
-           </ul>
+ * @brief Returns a pointer on the link manager (which is itself a pointer on the singleton instance, hence "**").
+ * @return A pointer on the link manager.
  **/
-int net2_link_manager_get_instance(struct net2_link_manager_t** net2_link_manager);
+struct net2_link_manager_t** net2_link_manager_get_instance(void);
+
+/**
+ * @brief Instances the net2 link manager singleton.
+ * @return <ul>
+			   <li>SUCCESS : 0
+			   <li>FAILURE : -1
+		   </ul>
+ **/
+int net2_link_manager_create();
+
+/**
+ * @brief Inits the link manager : if the link server singleton has not been instanced yet, it is instanced with a NULL list of links.
+ * @return <ul>
+			   <li>SUCCESS : 0
+			   <li>FAILURE : -1
+			   <li>ALREADY INSTANCED : -2
+		   </ul>
+ **/
+int net2_link_manager_init();
 
 /**
  * @brief Registers the given link into the net2 link manager's links collection. It will check first that no link related to the same node already exists.

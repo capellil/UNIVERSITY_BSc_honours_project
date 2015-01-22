@@ -33,10 +33,8 @@ int main(int argc, char* argv[])
         if(atoi(argv[1]) >= 0 && atoi(argv[1]) < 65536)
         {
             printf("yes.\n");
-            struct net2_link_manager_t* link_manager = NULL;
-            printf("Checks the link manager instance obtained. Did the function succeed...");
-        
-            if(!net2_link_manager_get_instance(&link_manager))
+            printf("Did the link manager initialisation succeed...");
+            if(!net2_link_manager_init())
             {
                 printf("yes.\n");
                 bool found = false;
