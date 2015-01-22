@@ -10,7 +10,6 @@
 #include "net2_link_server.h"
 #include "net2_link_manager.h"
 #include "net2_link.h"
-#include "net2_protocol.h"
 
 struct net2_link_server_t** net2_link_server_get_instance(void)
 {
