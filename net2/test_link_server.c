@@ -1,3 +1,10 @@
+/**
+ * @file test_link_server.c
+ * @author Capelli, Ludovic
+ * @version 2.0
+ * @date 22/01/2015
+ **/
+ 
 #include <stdio.h> // printf
 #include <stdlib.h> // EXIT_SUCCESS | EXIT_FAILURE
 #include <netinet/in.h> // sockaddr_in | IPPROTO_TCP | IPPROTO_UDP

@@ -1,3 +1,10 @@
+/**
+ * @file test_link_server_server.c
+ * @author Capelli, Ludovic
+ * @version 2.0
+ * @date 22/01/2015
+ **/
+
 #include <stdio.h> // printf
 #include <stdlib.h> // atoi | NULL
 #include <pthread.h> // pthread_join

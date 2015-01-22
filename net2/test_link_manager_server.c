@@ -1,3 +1,10 @@
+/**
+ * @file test_link_manager_server.c
+ * @author Capelli, Ludovic
+ * @version 2.0
+ * @date 22/01/2015
+ **/
+ 
 #include <stdio.h> // printf
 #include <stdlib.h> // EXIT_SUCCESS
 #include <stdbool.h> // bool
