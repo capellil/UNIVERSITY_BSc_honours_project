@@ -87,51 +87,75 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">net2_node.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;time.h&gt;</code><br/>
-<code>#include &quot;<a class="el" href="net2__socket_8h_source.html">net2_socket.h</a>&quot;</code><br/>
+<div class="textblock"><code>#include &quot;<a class="el" href="net2__socket_8h_source.html">net2_socket.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="net2__link_8h_source.html">net2_link.h</a>&quot;</code><br/>
 </div>
 <p><a href="net2__node_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structnet2__node__id__t.html">net2_node_id_t</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Structure used to identify a node with information having a very low chance to be redundant.  <a href="structnet2__node__id__t.html#details">More...</a><br/></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Structure used to identify a node : IP address + port (because scope : TCP / IP only).  <a href="structnet2__node__id__t.html#details">More...</a><br/></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structnet2__node__t.html">net2_node_t</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a49e58bfa9671e54141fe07e5d6dbc684"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="net2__node_8h.html#a49e58bfa9671e54141fe07e5d6dbc684">net2_node_create</a> (struct <a class="el" href="structnet2__node__t.html">net2_node_t</a> *net2_node)</td></tr>
-<tr class="memdesc:a49e58bfa9671e54141fe07e5d6dbc684"><td class="mdescLeft">&#160;</td><td class="mdescRight">If the net2 node singleton has not been instanced yet, it is created. Then the singleton is stored into the given pointer.  <a href="#a49e58bfa9671e54141fe07e5d6dbc684">More...</a><br/></td></tr>
-<tr class="separator:a49e58bfa9671e54141fe07e5d6dbc684"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae44139d37c8274a62aec6ebdcdd31d0f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae44139d37c8274a62aec6ebdcdd31d0f"></a>
-struct <a class="el" href="structnet2__node__t.html">net2_node_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>net2_node_get_instance</b> (void)</td></tr>
-<tr class="separator:ae44139d37c8274a62aec6ebdcdd31d0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0a97fc79964936cab4d97af1204dd3b3"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structnet2__node__t.html">net2_node_t</a> **&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="net2__node_8h.html#a0a97fc79964936cab4d97af1204dd3b3">net2_node_get_instance</a> (void)</td></tr>
+<tr class="memdesc:a0a97fc79964936cab4d97af1204dd3b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a pointer on the node (which is itself a pointer on the singleton instance, hence "**").  <a href="#a0a97fc79964936cab4d97af1204dd3b3">More...</a><br/></td></tr>
+<tr class="separator:a0a97fc79964936cab4d97af1204dd3b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1bbc7a6857fc1e4665142d73cbac1786"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="net2__node_8h.html#a1bbc7a6857fc1e4665142d73cbac1786">net2_node_create</a> (unsigned short port)</td></tr>
+<tr class="memdesc:a1bbc7a6857fc1e4665142d73cbac1786"><td class="mdescLeft">&#160;</td><td class="mdescRight">If the net2 node singleton has not been instanced yet, it is created. That means it instances the link manager, also the link server on the given port.  <a href="#a1bbc7a6857fc1e4665142d73cbac1786">More...</a><br/></td></tr>
+<tr class="separator:a1bbc7a6857fc1e4665142d73cbac1786"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a27dd8d200cd218537c2af076d5d53a61"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="net2__node_8h.html#a27dd8d200cd218537c2af076d5d53a61">net2_node_init</a> (unsigned short port)</td></tr>
+<tr class="memdesc:a27dd8d200cd218537c2af076d5d53a61"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inits the node : if the node singleton has not been instanced yet, it is instanced.  <a href="#a27dd8d200cd218537c2af076d5d53a61">More...</a><br/></td></tr>
+<tr class="separator:a27dd8d200cd218537c2af076d5d53a61"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a957a986824f3f8f379a5153c6c358438"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="net2__node_8h.html#a957a986824f3f8f379a5153c6c358438">net2_node_connect</a> (struct <a class="el" href="structnet2__link__t.html">net2_link_t</a> *net2_link, unsigned int ip_address, unsigned short port)</td></tr>
+<tr class="memdesc:a957a986824f3f8f379a5153c6c358438"><td class="mdescLeft">&#160;</td><td class="mdescRight">Connects the node to the remote node at the given ip address and port.  <a href="#a957a986824f3f8f379a5153c6c358438">More...</a><br/></td></tr>
+<tr class="separator:a957a986824f3f8f379a5153c6c358438"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><dl class="section author"><dt>Author</dt><dd>Ludovic Capelli </dd></dl>
-<dl class="section version"><dt>Version</dt><dd>1.0 </dd></dl>
-<dl class="section date"><dt>Date</dt><dd>08/01/2015 </dd></dl>
+<div class="textblock"><dl class="section author"><dt>Author</dt><dd>Capelli, Ludovic </dd></dl>
+<dl class="section version"><dt>Version</dt><dd>2.0 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>22/01/2015 </dd></dl>
 </div><h2 class="groupheader">Function Documentation</h2>
-<a class="anchor" id="a49e58bfa9671e54141fe07e5d6dbc684"></a>
+<a class="anchor" id="a957a986824f3f8f379a5153c6c358438"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int net2_node_create </td>
+          <td class="memname">int net2_node_connect </td>
           <td>(</td>
-          <td class="paramtype">struct <a class="el" href="structnet2__node__t.html">net2_node_t</a> *&#160;</td>
-          <td class="paramname"><em>net2_node</em></td><td>)</td>
+          <td class="paramtype">struct <a class="el" href="structnet2__link__t.html">net2_link_t</a> *&#160;</td>
+          <td class="paramname"><em>net2_link</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>ip_address</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned short&#160;</td>
+          <td class="paramname"><em>port</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>If the net2 node singleton has not been instanced yet, it is created. Then the singleton is stored into the given pointer. </p>
+<p>Connects the node to the remote node at the given ip address and port. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">net2_node</td><td>A pointer to store the net2 node singleton </td></tr>
+    <tr><td class="paramname">net2_link</td><td>A pointer on a link to store the corresponding socket. </td></tr>
+    <tr><td class="paramname">ip_address</td><td>The IPv4 address of the remote node. </td></tr>
+    <tr><td class="paramname">port</td><td>The port of the remote node. </td></tr>
   </table>
   </dd>
 </dl>
@@ -145,10 +169,93 @@ FAILURE : -1 </li>
 
 </div>
 </div>
+<a class="anchor" id="a1bbc7a6857fc1e4665142d73cbac1786"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int net2_node_create </td>
+          <td>(</td>
+          <td class="paramtype">unsigned short&#160;</td>
+          <td class="paramname"><em>port</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>If the net2 node singleton has not been instanced yet, it is created. That means it instances the link manager, also the link server on the given port. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">port</td><td>The port to be used to instance the link server (e.g the port to listen on). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><ul>
+<li>
+SUCCESS : 0 </li>
+<li>
+FAILURE : -1 </li>
+</ul>
+</dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a0a97fc79964936cab4d97af1204dd3b3"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct <a class="el" href="structnet2__node__t.html">net2_node_t</a>** net2_node_get_instance </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns a pointer on the node (which is itself a pointer on the singleton instance, hence "**"). </p>
+<dl class="section return"><dt>Returns</dt><dd>A pointer on the node. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a27dd8d200cd218537c2af076d5d53a61"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int net2_node_init </td>
+          <td>(</td>
+          <td class="paramtype">unsigned short&#160;</td>
+          <td class="paramname"><em>port</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Inits the node : if the node singleton has not been instanced yet, it is instanced. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">port</td><td>The port to be used to instance the link server (e.g the port to listen on). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><ul>
+<li>
+SUCCESS : 0 </li>
+<li>
+FAILURE : -1 </li>
+<li>
+ALREADY INSTANCED : -2 </li>
+</ul>
+</dd></dl>
+
+</div>
+</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Jan 14 2015 21:48:42 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Jan 24 2015 05:06:05 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

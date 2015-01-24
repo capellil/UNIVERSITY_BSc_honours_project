@@ -88,6 +88,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &quot;<a class="el" href="net2__socket_8h_source.html">net2_socket.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="net2__protocol_8h_source.html">net2_protocol.h</a>&quot;</code><br/>
 </div>
 <p><a href="net2__link_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -117,6 +118,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a30dc7efe75a03bab92e0beae8dd1fcc8"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="net2__link_8h.html#a30dc7efe75a03bab92e0beae8dd1fcc8">net2_link_write</a> (struct <a class="el" href="structnet2__link__t.html">net2_link_t</a> *net2_link, void *data, unsigned int data_length)</td></tr>
 <tr class="memdesc:a30dc7efe75a03bab92e0beae8dd1fcc8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes to a link.  <a href="#a30dc7efe75a03bab92e0beae8dd1fcc8">More...</a><br/></td></tr>
 <tr class="separator:a30dc7efe75a03bab92e0beae8dd1fcc8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a97f7c3ae331de194349d1d0278b3d851"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="net2__link_8h.html#a97f7c3ae331de194349d1d0278b3d851">net2_link_send</a> (struct <a class="el" href="structnet2__link__t.html">net2_link_t</a> *net2_link, struct <a class="el" href="structnet2__message__t.html">net2_message_t</a> *net2_message)</td></tr>
+<tr class="memdesc:a97f7c3ae331de194349d1d0278b3d851"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts the given net2 message into raw bytes and write them to the link through net2_link_write function.  <a href="#a97f7c3ae331de194349d1d0278b3d851">More...</a><br/></td></tr>
+<tr class="separator:a97f7c3ae331de194349d1d0278b3d851"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa28459abf4463b360b9264873ec0350a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="net2__link_8h.html#aa28459abf4463b360b9264873ec0350a">net2_link_create</a> (struct <a class="el" href="structnet2__link__t.html">net2_link_t</a> *net2_link, struct <a class="el" href="structnet2__socket__t.html">net2_socket_t</a> *net2_socket)</td></tr>
 <tr class="memdesc:aa28459abf4463b360b9264873ec0350a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a link : stores the given net2 socket in the link and assigns all function pointers on the link as well as on its link RX and TX.  <a href="#aa28459abf4463b360b9264873ec0350a">More...</a><br/></td></tr>
 <tr class="separator:aa28459abf4463b360b9264873ec0350a"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -129,6 +133,9 @@ Functions</h2></td></tr>
 <tr class="memitem:aa1d8cc642353654d5e82f9ffdb152509"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="net2__link_8h.html#aa1d8cc642353654d5e82f9ffdb152509">net2_link_compare_to_link</a> (struct <a class="el" href="structnet2__link__t.html">net2_link_t</a> *net2_link_a, struct <a class="el" href="structnet2__link__t.html">net2_link_t</a> *net2_link_b)</td></tr>
 <tr class="memdesc:aa1d8cc642353654d5e82f9ffdb152509"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compares both net2_links to determine if they are going to clash by communicating to the same address and port. A link will be duplicated if is instanced twice from the same sender (e.g from the same address + port).  <a href="#aa1d8cc642353654d5e82f9ffdb152509">More...</a><br/></td></tr>
 <tr class="separator:aa1d8cc642353654d5e82f9ffdb152509"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6b7c1e152239f3f9d1f5e8691b4e68e6"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="net2__link_8h.html#a6b7c1e152239f3f9d1f5e8691b4e68e6">net2_link_run</a> (void *net2_link_to_run)</td></tr>
+<tr class="memdesc:a6b7c1e152239f3f9d1f5e8691b4e68e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Runs a link : reads indefinitely to accept connections with channels for example.  <a href="#a6b7c1e152239f3f9d1f5e8691b4e68e6">More...</a><br/></td></tr>
+<tr class="separator:a6b7c1e152239f3f9d1f5e8691b4e68e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><dl class="section author"><dt>Author</dt><dd>Capelli, Ludovic </dd></dl>
@@ -361,6 +368,38 @@ FAILED : -1, errno is set appropriately. </li>
 
 </div>
 </div>
+<a class="anchor" id="a6b7c1e152239f3f9d1f5e8691b4e68e6"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void* net2_link_run </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>net2_link_to_run</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Runs a link : reads indefinitely to accept connections with channels for example. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">net2_link_to_run</td><td>The net2 link to run. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><ul>
+<li>
+SUCCESS : net2_link_to_run </li>
+<li>
+FAILURE : NULL </li>
+</ul>
+</dd></dl>
+<dl class="section pre"><dt>Precondition</dt><dd>net2_link_to_run != NULL </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="a5281a194034a7bdaed1e4f7810e70c08"></a>
 <div class="memitem">
 <div class="memproto">
@@ -410,6 +449,48 @@ FAILED : -1, errno is set appropriately. </li>
 </ul>
 </dd></dl>
 <dl class="section pre"><dt>Precondition</dt><dd>net2_link_rx != NULL </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a97f7c3ae331de194349d1d0278b3d851"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int net2_link_send </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structnet2__link__t.html">net2_link_t</a> *&#160;</td>
+          <td class="paramname"><em>net2_link</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">struct <a class="el" href="structnet2__message__t.html">net2_message_t</a> *&#160;</td>
+          <td class="paramname"><em>net2_message</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Converts the given net2 message into raw bytes and write them to the link through net2_link_write function. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">net2_link</td><td>The net2 link to use to communicate. </td></tr>
+    <tr><td class="paramname">net2_message</td><td>The net2 message to send.. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><ul>
+<li>
+SUCCESS : 0. </li>
+<li>
+FAILED : -1. </li>
+</ul>
+</dd></dl>
 
 </div>
 </div>
@@ -514,7 +595,7 @@ FAILED : -1, errno is set appropriately. </li>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Jan 22 2015 01:11:41 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Jan 24 2015 05:06:05 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

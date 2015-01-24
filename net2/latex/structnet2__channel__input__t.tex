@@ -1,0 +1,42 @@
+\hypertarget{structnet2__channel__input__t}{\section{net2\-\_\-channel\-\_\-input\-\_\-t Class Reference}
+\label{structnet2__channel__input__t}\index{net2\-\_\-channel\-\_\-input\-\_\-t@{net2\-\_\-channel\-\_\-input\-\_\-t}}
+}
+
+
+This structure is responsible for reading messages from a remote net2 channel output.  
+
+
+
+
+{\ttfamily \#include $<$net2\-\_\-channel.\-h$>$}
+
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{structnet2__channel__input__t_a17a505dbbe397c65e441c5fc1beb127f}{struct \hyperlink{structnet2__link__t}{net2\-\_\-link\-\_\-t} $\ast$ \hyperlink{structnet2__channel__input__t_a17a505dbbe397c65e441c5fc1beb127f}{\-\_\-my\-\_\-link}}\label{structnet2__channel__input__t_a17a505dbbe397c65e441c5fc1beb127f}
+
+\begin{DoxyCompactList}\small\item\em The link the channel communicates through. \end{DoxyCompactList}\item 
+\hypertarget{structnet2__channel__input__t_aad432fed1cbfe759ef2d473ab8f47109}{unsigned int \hyperlink{structnet2__channel__input__t_aad432fed1cbfe759ef2d473ab8f47109}{\-\_\-number}}\label{structnet2__channel__input__t_aad432fed1cbfe759ef2d473ab8f47109}
+
+\begin{DoxyCompactList}\small\item\em Channel virtual number. \end{DoxyCompactList}\item 
+\hypertarget{structnet2__channel__input__t_a3363f7063e071be71e1320617a870b84}{enum net2\-\_\-channel\-\_\-state\-\_\-e \hyperlink{structnet2__channel__input__t_a3363f7063e071be71e1320617a870b84}{\-\_\-state}}\label{structnet2__channel__input__t_a3363f7063e071be71e1320617a870b84}
+
+\begin{DoxyCompactList}\small\item\em Current channel state. \end{DoxyCompactList}\item 
+\hypertarget{structnet2__channel__input__t_a62adebf1311e1002e0f5a67fa00ea1a0}{struct \\*
+\hyperlink{structnet2__message__linked__element__t}{net2\-\_\-message\-\_\-linked\-\_\-element\-\_\-t} $\ast$ \hyperlink{structnet2__channel__input__t_a62adebf1311e1002e0f5a67fa00ea1a0}{\-\_\-messages}}\label{structnet2__channel__input__t_a62adebf1311e1002e0f5a67fa00ea1a0}
+
+\begin{DoxyCompactList}\small\item\em Messages. \end{DoxyCompactList}\item 
+\hypertarget{structnet2__channel__input__t_a9d656c00ee2f6d89286272487bac4ec3}{pthread\-\_\-mutex\-\_\-t \hyperlink{structnet2__channel__input__t_a9d656c00ee2f6d89286272487bac4ec3}{\-\_\-mutex}}\label{structnet2__channel__input__t_a9d656c00ee2f6d89286272487bac4ec3}
+
+\begin{DoxyCompactList}\small\item\em Used to ensure data integrity. \end{DoxyCompactList}\item 
+\hypertarget{structnet2__channel__input__t_a1cd9ede6cdabb64e0381fa2eea57f71d}{pthread\-\_\-cond\-\_\-t \hyperlink{structnet2__channel__input__t_a1cd9ede6cdabb64e0381fa2eea57f71d}{\-\_\-cond}}\label{structnet2__channel__input__t_a1cd9ede6cdabb64e0381fa2eea57f71d}
+
+\begin{DoxyCompactList}\small\item\em Used if read is before the buffer get the data. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This structure is responsible for reading messages from a remote net2 channel output. 
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{net2__channel_8h}{net2\-\_\-channel.\-h}\end{DoxyCompactItemize}
