@@ -72,8 +72,8 @@ Accepts a connection from the given server net2 socket and stores it into the gi
 \begin{DoxyReturn}{Returns}
 
 \begin{DoxyItemize}
-\item S\-U\-C\-C\-E\-S\-S \-: $>$= 0. 
-\item F\-A\-I\-L\-E\-D \-: -\/1, errno is set appropriately. 
+\item S\-U\-C\-C\-E\-S\-S \-: 0. 
+\item F\-A\-I\-L\-E\-D \-: -\/1. 
 \end{DoxyItemize}
 \end{DoxyReturn}
 \begin{DoxyPrecond}{Precondition}
@@ -164,8 +164,8 @@ Creates a socket used for communication and stores it into the given pointer. Us
 \begin{DoxyReturn}{Returns}
 
 \begin{DoxyItemize}
-\item S\-U\-C\-C\-E\-S\-S \-: $>$= 0. 
-\item F\-A\-I\-L\-E\-D \-: -\/1, errno is set appropriately. 
+\item S\-U\-C\-C\-E\-S\-S \-: 0. 
+\item F\-A\-I\-L\-E\-D \-: -\/1. 
 \end{DoxyItemize}
 \end{DoxyReturn}
 \begin{DoxyPrecond}{Precondition}
@@ -194,7 +194,13 @@ Creates a socket and binds it to the given port. Uses T\-C\-P/\-I\-P protocols.
 
 \begin{DoxyItemize}
 \item S\-U\-C\-C\-E\-S\-S \-: 0. 
-\item F\-A\-I\-L\-E\-D \-: Negative number, errno is set appropriately. 
+\item F\-A\-I\-L\-E\-D \-: 
+\begin{DoxyItemize}
+\item -\/1 \-: socket creation failed. 
+\item -\/2 \-: socket S\-O\-L\-\_\-\-R\-E\-U\-S\-E\-A\-D\-D\-R option set failed. 
+\item -\/3 \-: socket binding failed when trying with port "d", net2\-\_\-socket pointer is p. 
+\item -\/4 \-: the socket information extraction failed. 
+\end{DoxyItemize}
 \end{DoxyItemize}
 \end{DoxyReturn}
 \begin{DoxyPrecond}{Precondition}
@@ -264,7 +270,7 @@ Listens on the given socket to accept connections later on. Does not start any a
 
 \begin{DoxyItemize}
 \item S\-U\-C\-C\-E\-S\-S \-: 0. 
-\item F\-A\-I\-L\-E\-D \-: different from 0, errno is set appropriately. 
+\item F\-A\-I\-L\-E\-D \-: -\/1. 
 \end{DoxyItemize}
 \end{DoxyReturn}
 \begin{DoxyPrecond}{Precondition}
@@ -286,7 +292,7 @@ Prints out the information on the given net2\-\_\-socket \-: its file descriptor
 \begin{DoxyParams}{Parameters}
 {\em heading} & The message to be displayed as a heading. \\
 \hline
-{\em socket} & The socket to be printed out. \\
+{\em net2\-\_\-socket} & The socket to be printed out. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyPrecond}{Precondition}
@@ -317,9 +323,8 @@ Reads from the given socket $<$data\-\_\-length$>$ bytes and store it into the s
 \begin{DoxyReturn}{Returns}
 
 \begin{DoxyItemize}
-\item S\-U\-C\-C\-E\-S\-S \-: Non-\/negative and non-\/null number that is the number of read bytes. 
-\item S\-U\-C\-C\-E\-S\-S \-: 0 if the peer has performed an orderly shutdown. 
-\item F\-A\-I\-L\-E\-D \-: -\/1, errno is set appropriately. 
+\item S\-U\-C\-C\-E\-S\-S \-: 0. 
+\item F\-A\-I\-L\-E\-D \-: -\/1. 
 \end{DoxyItemize}
 \end{DoxyReturn}
 \begin{DoxyPrecond}{Precondition}
@@ -354,8 +359,12 @@ Writes the given data to the given socket.
 \begin{DoxyReturn}{Returns}
 
 \begin{DoxyItemize}
-\item S\-U\-C\-C\-E\-S\-S \-: Non-\/negative number that is the amount of byte written. 
-\item F\-A\-I\-L\-E\-D \-: -\/1, errno is set appropriately. 
+\item S\-U\-C\-C\-E\-S\-S \-: $>$0 
+\item F\-A\-I\-L\-E\-D 
+\begin{DoxyItemize}
+\item -\/1 if the peer has performed an orderly shutdown. 
+\item -\/2 otherwise. 
+\end{DoxyItemize}
 \end{DoxyItemize}
 \end{DoxyReturn}
 \begin{DoxyPrecond}{Precondition}

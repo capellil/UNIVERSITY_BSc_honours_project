@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['read',['read',['../structnet2__link__rx__t.html#a4cf71287a067a11d18e3e8deb7fd5f9d',1,'net2_link_rx_t::read()'],['../structnet2__link__t.html#a4a95768a698152d1be5dc2b416581a49',1,'net2_link_t::read()']]]
+  ['net2_5fdebug_5fmax_5fmessage_5flength',['NET2_DEBUG_MAX_MESSAGE_LENGTH',['../net2__debug_8h.html#ab8a2d9a8dc33d690257deebaa6b122bd',1,'net2_debug.h']]]
 ];

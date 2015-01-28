@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['poison',['poison',['../structnetChannelInput.html#a8b4f3f9497a9eececb55c1848cffd23d',1,'netChannelInput::poison()'],['../structnetChannelOutput.html#af6cadb8ba95c3f6a6059252571e624dc',1,'netChannelOutput::poison()']]]
+  ['write',['write',['../structnet2__link__tx__t.html#a3ee6fe19309869057a034bfdc5824df9',1,'net2_link_tx_t::write()'],['../structnet2__link__t.html#ac1513cd0177b78d51e564224be84ef01',1,'net2_link_t::write()']]]
 ];

@@ -175,9 +175,9 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><ul>
 <li>
-SUCCESS : &gt;= 0. </li>
+SUCCESS : 0. </li>
 <li>
-FAILED : -1, errno is set appropriately. </li>
+FAILED : -1. </li>
 </ul>
 </dd></dl>
 <dl class="section pre"><dt>Precondition</dt><dd><ul>
@@ -301,9 +301,9 @@ FAILED : -1. </li>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><ul>
 <li>
-SUCCESS : &gt;= 0. </li>
+SUCCESS : 0. </li>
 <li>
-FAILED : -1, errno is set appropriately. </li>
+FAILED : -1. </li>
 </ul>
 </dd></dl>
 <dl class="section pre"><dt>Precondition</dt><dd>net2_socket != NULL. </dd></dl>
@@ -346,7 +346,17 @@ FAILED : -1, errno is set appropriately. </li>
 <li>
 SUCCESS : 0. </li>
 <li>
-FAILED : Negative number, errno is set appropriately. </li>
+FAILED : <ul>
+<li>
+-1 : socket creation failed. </li>
+<li>
+-2 : socket SOL_REUSEADDR option set failed. </li>
+<li>
+-3 : socket binding failed when trying with port "d", net2_socket pointer is p. </li>
+<li>
+-4 : the socket information extraction failed. </li>
+</ul>
+</li>
 </ul>
 </dd></dl>
 <dl class="section pre"><dt>Precondition</dt><dd>net2_socket != NULL. </dd></dl>
@@ -430,7 +440,7 @@ FAILED : Negative number, errno is set appropriately. </li>
 <li>
 SUCCESS : 0. </li>
 <li>
-FAILED : different from 0, errno is set appropriately. </li>
+FAILED : -1. </li>
 </ul>
 </dd></dl>
 <dl class="section pre"><dt>Precondition</dt><dd>net2_socket != NULL. </dd></dl>
@@ -465,7 +475,7 @@ FAILED : different from 0, errno is set appropriately. </li>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">heading</td><td>The message to be displayed as a heading. </td></tr>
-    <tr><td class="paramname">socket</td><td>The socket to be printed out. </td></tr>
+    <tr><td class="paramname">net2_socket</td><td>The socket to be printed out. </td></tr>
   </table>
   </dd>
 </dl>
@@ -514,11 +524,9 @@ FAILED : different from 0, errno is set appropriately. </li>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><ul>
 <li>
-SUCCESS : Non-negative and non-null number that is the number of read bytes. </li>
+SUCCESS : 0. </li>
 <li>
-SUCCESS : 0 if the peer has performed an orderly shutdown. </li>
-<li>
-FAILED : -1, errno is set appropriately. </li>
+FAILED : -1. </li>
 </ul>
 </dd></dl>
 <dl class="section pre"><dt>Precondition</dt><dd><ul>
@@ -572,9 +580,15 @@ data_length is less or equal to the size of the allocated memory area pointed by
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><ul>
 <li>
-SUCCESS : Non-negative number that is the amount of byte written. </li>
+SUCCESS : &gt;0 </li>
 <li>
-FAILED : -1, errno is set appropriately. </li>
+FAILED <ul>
+<li>
+-1 if the peer has performed an orderly shutdown. </li>
+<li>
+-2 otherwise. </li>
+</ul>
+</li>
 </ul>
 </dd></dl>
 <dl class="section pre"><dt>Precondition</dt><dd>net2_socket != NULL. </dd></dl>
@@ -584,7 +598,7 @@ FAILED : -1, errno is set appropriately. </li>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Jan 28 2015 16:47:40 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Jan 28 2015 23:31:21 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>
