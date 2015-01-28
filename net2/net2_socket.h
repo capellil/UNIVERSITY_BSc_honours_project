@@ -26,7 +26,7 @@ struct net2_socket_t
 /**
  * @brief Prints out the information on the given net2_socket : its file descriptor, address and port.
  * @param heading The message to be displayed as a heading.
- * @param socket The socket to be printed out.
+ * @param net2_socket The socket to be printed out.
  * @pre net2_socket != NULL.
  **/
 void net2_socket_print(char* heading, struct net2_socket_t* net2_socket);
@@ -36,7 +36,7 @@ void net2_socket_print(char* heading, struct net2_socket_t* net2_socket);
  * @param net2_socket A pointer to store the created net2 socket in.
  * @return <ul>
  		       <li>SUCCESS : 0.
-               <li>FAILED : -1, errno is set appropriately.
+               <li>FAILED : -1.
            </ul>
  * @pre net2_socket != NULL.
  **/
@@ -48,7 +48,13 @@ int net2_socket_create(struct net2_socket_t* net2_socket);
  * @param port The port to be used.
  * @return <ul>
  		       <li>SUCCESS : 0.
-               <li>FAILED : Negative number, errno is set appropriately.
+               <li>FAILED : 
+               <ul>
+                   <li>-1 : socket creation failed.
+                   <li>-2 : socket SOL_REUSEADDR option set failed.
+                   <li>-3 : socket binding failed when trying with port \"%d\", net2_socket pointer is %p.
+                   <li>-4 : the socket information extraction failed.
+               </ul>
            </ul>
  * @pre net2_socket != NULL.
  **/
@@ -59,7 +65,7 @@ int net2_socket_create_and_bind(struct net2_socket_t* net2_socket, unsigned shor
  * @param net2_socket The net2 socket to listen on.
  * @return <ul>
                <li>SUCCESS : 0.
-		       <li>FAILED : different from 0, errno is set appropriately.
+		       <li>FAILED : -1.
 	       </ul>
  * @pre net2_socket != NULL.
  **/
@@ -70,8 +76,8 @@ int net2_socket_listen(struct net2_socket_t* net2_socket);
  * @param server The server to listen on and accepting a connection onto.
  * @param client A pointer to store the client net2 socket in.
  * @return <ul>
-               <li>SUCCESS : >= 0.
- 		       <li>FAILED : -1, errno is set appropriately.
+               <li>SUCCESS : 0.
+ 		       <li>FAILED : -1.
 	       </ul>
  * @pre <ul>
             <li>server != NULL.
@@ -99,8 +105,12 @@ int net2_socket_connect(struct net2_socket_t* net2_socket, unsigned int address,
  * @param data The data to be transmitted.
  * @param data_length The data length.
  * @return <ul>
- 		       <li>SUCCESS : Non-negative number that is the amount of byte written.
-               <li>FAILED : -1, errno is set appropriately.
+ 		       <li>SUCCESS : >0
+ 			   <li>FAILED
+               <ul>
+                   <li>-1 if the peer has performed an orderly shutdown.
+                   <li>-2 otherwise.
+               </ul>
            </ul>
  * @pre net2_socket != NULL.
  **/
@@ -112,9 +122,8 @@ int net2_socket_write(struct net2_socket_t* net2_socket, void* data, unsigned in
  * @param data A pointer on the data allocated space.
  * @param data_length The number of bytes to read from the socket.
  * @return <ul>
- 			   <li>SUCCESS : Non-negative and non-null number that is the number of read bytes.
-               <li>SUCCESS : 0 if the peer has performed an orderly shutdown.
-               <li>FAILED : -1, errno is set appropriately.
+ 			   <li>SUCCESS : 0.
+ 			   <li>FAILED : -1.
            </ul>
  * @pre <ul>
             <li>net2_socket != NULL
