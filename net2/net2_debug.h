@@ -8,6 +8,8 @@
  * @date 25/12/2014
  **/
 
+const unsigned int NET2_DEBUG_MAX_MESSAGE_LENGTH; ///< Max length for debug messages.
+
 /**
  * @brief Displays the name of the function that has been successfully executed.
  * @param function_name The function name to be displayed.
