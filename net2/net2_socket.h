@@ -52,7 +52,7 @@ int net2_socket_create(struct net2_socket_t* net2_socket);
                <ul>
                    <li>-1 : socket creation failed.
                    <li>-2 : socket SOL_REUSEADDR option set failed.
-                   <li>-3 : socket binding failed when trying with port \"%d\", net2_socket pointer is %p.
+                   <li>-3 : socket binding failed when trying with given port.
                    <li>-4 : the socket information extraction failed.
                </ul>
            </ul>
@@ -105,7 +105,7 @@ int net2_socket_connect(struct net2_socket_t* net2_socket, unsigned int address,
  * @param data The data to be transmitted.
  * @param data_length The data length.
  * @return <ul>
- 		       <li>SUCCESS : >0
+ 		       <li>SUCCESS : 0.
  			   <li>FAILED
                <ul>
                    <li>-1 if the peer has performed an orderly shutdown.

@@ -198,7 +198,7 @@ Creates a socket and binds it to the given port. Uses T\-C\-P/\-I\-P protocols.
 \begin{DoxyItemize}
 \item -\/1 \-: socket creation failed. 
 \item -\/2 \-: socket S\-O\-L\-\_\-\-R\-E\-U\-S\-E\-A\-D\-D\-R option set failed. 
-\item -\/3 \-: socket binding failed when trying with port "d", net2\-\_\-socket pointer is p. 
+\item -\/3 \-: socket binding failed when trying with given port. 
 \item -\/4 \-: the socket information extraction failed. 
 \end{DoxyItemize}
 \end{DoxyItemize}
@@ -359,7 +359,7 @@ Writes the given data to the given socket.
 \begin{DoxyReturn}{Returns}
 
 \begin{DoxyItemize}
-\item S\-U\-C\-C\-E\-S\-S \-: $>$0 
+\item S\-U\-C\-C\-E\-S\-S \-: 0. 
 \item F\-A\-I\-L\-E\-D 
 \begin{DoxyItemize}
 \item -\/1 if the peer has performed an orderly shutdown. 
