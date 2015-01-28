@@ -71,12 +71,13 @@ void net2_socket_print(char* heading, struct net2_socket_t* net2_socket)
 
 int net2_socket_create(struct net2_socket_t* net2_socket)
 {
+    int result = 0;
 	int socket = create_socket();
 	
 	// TEST : Is the socket successfully created ?
 	if(socket != -1)
 	{	    
-	    // Socket successfully created.
+	    // Yes, socket successfully created.
 		net2_socket->_socket = socket;
 		#ifdef NET2_DEBUG
 		    net2_debug_success("net2_socket_create");
@@ -84,13 +85,14 @@ int net2_socket_create(struct net2_socket_t* net2_socket)
 	}
 	else
 	{
-	    // Socket creation failed.
+	    // No, socket creation failed.
+	    result = -1;
 	    #ifdef NET2_DEBUG
 		    net2_debug_failure("net2_socket_create", "Socket creation failed");
 		#endif
 	}
 	
-	return socket;
+	return result;
 }
 
 int net2_socket_create_and_bind(struct net2_socket_t* net2_socket, unsigned short port)

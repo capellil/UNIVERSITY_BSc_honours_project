@@ -35,7 +35,7 @@ void net2_socket_print(char* heading, struct net2_socket_t* net2_socket);
  * @brief Creates a socket used for communication and stores it into the given pointer. Uses TCP/IP protocols.
  * @param net2_socket A pointer to store the created net2 socket in.
  * @return <ul>
- 		       <li>SUCCESS : >= 0.
+ 		       <li>SUCCESS : 0.
                <li>FAILED : -1, errno is set appropriately.
            </ul>
  * @pre net2_socket != NULL.
