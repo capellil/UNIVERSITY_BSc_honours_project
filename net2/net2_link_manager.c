@@ -21,7 +21,7 @@ int net2_link_manager_create()
     if(*link_manager)
     {
         // Yes, the link manager dynamic allocation is OK
-        (*link_manager)->_net2_links = NULL;
+        (*link_manager)->_links = NULL;
         #ifdef NET2_DEBUG
             net2_debug_success("net2_link_manager_create");
         #endif
@@ -84,7 +84,7 @@ int net2_link_manager_register_link(struct net2_link_t* net2_link)
     if(*net2_link_manager)
     {        
         // Yes, the link manager is already instanced.
-        struct net2_link_linked_element_t* temp = (*net2_link_manager)->_net2_links;
+        struct net2_link_linked_element_t* temp = (*net2_link_manager)->_links;
         
         // TEST : Has the link manager some links registered already ?
         if(temp)
@@ -141,7 +141,7 @@ int net2_link_manager_register_link(struct net2_link_t* net2_link)
             {
                 // Yes, the new link element dynamic allocation succeeded.
                 new_linked_element->_my_link = net2_link;
-                (*net2_link_manager)->_net2_links = new_linked_element;
+                (*net2_link_manager)->_links = new_linked_element;
                 #ifdef NET2_DEBUG
                     net2_debug_success("net2_link_manager_register_link");
                 #endif
@@ -168,6 +168,69 @@ int net2_link_manager_register_link(struct net2_link_t* net2_link)
     return result;
 }
 
+int net2_link_manager_get_link(struct net2_link_t** net2_link, unsigned int ip_address, unsigned short port)
+{
+    // The function result
+    int result = 0;
+    
+    struct net2_link_manager_t** net2_link_manager = net2_link_manager_get_instance();
+    
+    // TEST : Is the link manager already instanced ?
+    if(*net2_link_manager)
+    {        
+        // Yes, the link manager is already instanced.
+        struct net2_link_linked_element_t* temp = (*net2_link_manager)->_links;
+        
+        // TEST : Has the link manager some links registered already ?
+        if(temp)
+        {
+            // Yes, the link manager already has at least 1 net2 link registered.        
+            // Parses the link manager linked list of links
+            while(!net2_link_compare_to_address_and_port(temp->_my_link, ip_address, port) && temp->_next_link)
+            {
+                // We go to the next net2 link.
+                temp = temp->_next_link;   
+            }
+            
+            // TEST : Did the link manager find a link ?
+            if(net2_link_compare_to_address_and_port(temp->_my_link, ip_address, port))
+            {
+                // Yes, the link manager found a link.
+                *net2_link = temp->_my_link;
+                #ifdef NET2_DEBUG
+                    net2_debug_success("net2_link_manager_get_link");
+                #endif
+            }
+            else
+            {
+                // No, the link manager did not find any link.
+                *net2_link = NULL;
+                #ifdef NET2_DEBUG
+                    net2_debug_success("net2_link_manager_get_link");
+                #endif
+            }
+        }
+        else
+        {
+            // No, the link manager does not have any registered link yet.
+            *net2_link = NULL;
+            #ifdef NET2_DEBUG
+                net2_debug_success("net2_link_manager_get_link");
+            #endif
+        }
+    }
+    else
+    {
+        // No, the link manager is not already instanced.
+        result = -1;
+        #ifdef NET2_DEBUG
+            net2_debug_failure("net2_link_manager_get_link", "The link manager is not already instanced.");
+        #endif
+    }
+    
+    return result;
+}
+
 int net2_link_manager_check_address_and_port(unsigned int address, unsigned short port, bool* found)
 {
     int result = 0;
@@ -178,7 +241,7 @@ int net2_link_manager_check_address_and_port(unsigned int address, unsigned shor
     if(*net2_link_manager)
     {
         // Yes, the link manager is already instanced.
-        struct net2_link_linked_element_t* temp = (*net2_link_manager)->_net2_links;
+        struct net2_link_linked_element_t* temp = (*net2_link_manager)->_links;
         
         // TEST : Has the link manager at least one link ?
         if(temp)

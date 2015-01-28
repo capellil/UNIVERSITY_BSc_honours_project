@@ -34,7 +34,6 @@ struct net2_channel_input_linked_element_t
  **/
 struct net2_channel_manager_t
 {
-    unsigned int _first_free_number; ///< The first free channel number
     struct net2_channel_output_linked_element_t* _channel_outputs; ///< The linked list of channel outputs
     struct net2_channel_input_linked_element_t* _channel_inputs; ///< The linked list of channel inputs
 };
@@ -65,16 +64,6 @@ int net2_channel_manager_create();
 int net2_channel_manager_init();
 
 /**
- * @brief Searches for the first available number.
- * @param channel_number A pointer on a channel number to store the found number.
- * @return <ul>
-               <li>SUCCESS : 0
-               <li>FAILURE : -1
-           </ul>
- **/
-int net2_channel_manager_get_number(unsigned int* channel_number);
-
-/**
  * @brief Checks if the given number is available or not.
  * @param channel_number The channel number to check.
  * @param found A pointer on a boolean to store the research result.
@@ -94,7 +83,7 @@ int net2_channel_manager_check_number(unsigned int channel_number, bool* found);
                <li>FAILURE : -1
            </ul>
  **/
-int net2_channel_manager_register_channel_output(struct net2_channel_output_t* net2_channel_output, unsigned int channel_number);
+int net2_channel_manager_register_channel_output(struct net2_channel_output_t* net2_channel_output);
 
 /**
  * @brief Registers the channel at the given channel number.
@@ -111,7 +100,7 @@ int net2_channel_manager_register_channel_input(struct net2_channel_input_t* net
  * @brief Searches the channel corresponding to the given channel number.
  *
  * If the channel is NOT found, the net2_channel_generic pointer is set to NULL, otherwise it is set to the address of the found channel.
- * @param net2_channel_generic A pointer on a not allocated area to store the address of the found channel. MUST BE "void*" because it cannot be determined if the found channel will be of type input or output.
+ * @param net2_channel_generic A pointer on a pointer on a not allocated area to store the address of the found channel. MUST BE "void**" because it cannot be determined if the found channel will be of type input or output.
  * @param net2_channel_type A pointer on a channel type to store the found channel type (CHANNEL_INPUT or CHANNEL_OUTPUT).
  * @param channel_number The channel number to search.
  * @return <ul>
@@ -119,6 +108,6 @@ int net2_channel_manager_register_channel_input(struct net2_channel_input_t* net
                <li>FAILURE : -1
            </ul>
  **/
-int net2_channel_manager_get_channel(void* net2_channel_generic, enum net2_channel_type_e* net2_channel_type, unsigned int channel_number);
+int net2_channel_manager_get_channel(void** net2_channel_generic, enum net2_channel_type_e* net2_channel_type, unsigned int channel_number);
 
 #endif // NET2_CHANNEL_MANAGER_INCLUDED INCLUDED

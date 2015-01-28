@@ -1,3 +1,4 @@
+#include <stdio.h> // printf
 #include <stdlib.h> // NULL
 
 #include "net2_node.h"
@@ -115,7 +116,7 @@ int net2_node_init(unsigned short port)
     return result;
 }
 
-int net2_node_connect(struct net2_link_t* net2_link, unsigned int ip_address, unsigned short port)
+int net2_node_connect(struct net2_link_t** net2_link, unsigned int ip_address, unsigned short port)
 {
     int result = 0;
     
@@ -129,79 +130,122 @@ int net2_node_connect(struct net2_link_t* net2_link, unsigned int ip_address, un
         if(!found)
         {
             // Yes, the node at the given address and port is available.
-            struct net2_socket_t socket;
+            struct net2_socket_t* socket = (struct net2_socket_t*)malloc(sizeof(struct net2_socket_t));
             
-            // TEST : Did the socket creation succeed ?
-            if(net2_socket_create(&socket) >= 0)
+            // TEST : Did the socket dynamic allocation succeed ?
+            if(socket)
             {
-                // Yes, the socket creation succeeded.
-                // TEST : Did the socket connection succeed ?
-                if(!net2_socket_connect(&socket, ip_address, port))
+                // Yes, the socket dynamic allocation succeeded.            
+                // TEST : Did the socket creation succeed ?
+                if(net2_socket_create(socket) >= 0)
                 {
-                    // Yes, the socket connection succeeded.
-                    signed char data;
-                    unsigned int data_length = sizeof(signed char);
-                    
-                    // TEST : Did the socket read succeed ?
-                    if(net2_socket_read(&socket, (void*)&data, data_length) >= 0)
+                    // Yes, the socket creation succeeded.
+                    // TEST : Did the socket connection succeed ?
+                    if(!net2_socket_connect(socket, ip_address, port))
                     {
-                        // Yes, the socket read succeeded.
-                        // TEST : Has the connection been allowed ?
-                        if(!data)
+                        // Yes, the socket connection succeeded.
+                        signed char data;
+                        unsigned int data_length = sizeof(signed char);
+                        
+                        // TEST : Did the socket read succeed ?
+                        if(net2_socket_read(socket, (void*)&data, data_length) >= 0)
                         {
-                            // Yes, the connection has been allowed.
-                            net2_link_create(net2_link, &socket);
-                            
-                            // TEST : Did the link registration succeed ?
-                            if(!net2_link_manager_register_link(net2_link))
+                            // Yes, the socket read succeeded.
+                            // TEST : Has the connection been allowed ?
+                            if(!data)
                             {
-                                // Yes, the link registration succeeded.
-                                #ifdef NET2_DEBUG
-                                    net2_debug_success("net2_node_connect");
-                                #endif
+                                // Yes, the connection has been allowed.
+                                *net2_link = (struct net2_link_t*)malloc(sizeof(struct net2_link_t));
+                                
+                                // TEST : Did the net2 link dynamic allocation succeed ?
+                                if(*net2_link)
+                                {
+                                    // Yes, the net2 link dynamic allocation succeeded.
+                                    net2_link_create(*net2_link, socket);
+                                    (*net2_link)->_net2_socket->_address.sin_addr.s_addr = htonl(ip_address);
+                                    (*net2_link)->_net2_socket->_address.sin_port = htons(port);
+                                    
+                                    // TEST : Did the link registration succeed ?
+                                    if(!net2_link_manager_register_link(*net2_link))
+                                    {
+                                        // Yes, the link registration succeeded.
+		                                // TEST : Did the new link run succeed ?
+	                                    if(!net2_link_server_new_link_to_run(*net2_link))
+	                                    {
+	                                        // Yes, the new link run succeeded.
+	                                        #ifdef NET2_DEBUG
+	                                            net2_debug_success("net2_node_connect");
+	                                        #endif
+	                                    }
+	                                    else
+	                                    {
+	                                        // Yes, the new link run failed.
+	                                        result = -1;
+	                                        #ifdef NET2_DEBUG
+	                                            net2_debug_failure("net2_node_connect", "The new link run failed.");
+	                                        #endif
+	                                    }
+                                    }
+                                    else
+                                    {
+                                        // No, the link registration failed.
+                                        result = -1;
+                                        #ifdef NET2_DEBUG
+                                            net2_debug_failure("net2_node_connect", "The link registration failed.");
+                                        #endif
+                                    }
+                                }
+                                else
+                                {
+                                    // No, the net2 link dynamic allocation failed.
+                                    result = -1;
+                                    #ifdef NET2_DEBUG
+                                        net2_debug_failure("net2_node_connect", "The link registration failed.");
+                                    #endif
+                                }
                             }
                             else
                             {
-                                // No, the link registration failed.
+                                // No, the connection has not been allowed.
                                 result = -1;
                                 #ifdef NET2_DEBUG
-                                    net2_debug_failure("net2_node_connect", "The link registration failed.");
+                                    net2_debug_failure("net2_node_connect", "The connection has not been allowed.");
                                 #endif
                             }
                         }
                         else
                         {
-                            // No, the connection has not been allowed.
+                            // No, the socket read failed.
                             result = -1;
                             #ifdef NET2_DEBUG
-                                net2_debug_failure("net2_node_connect", "The connection has not been allowed.");
+                                net2_debug_failure("net2_node_connect", "The socket read failed.");
                             #endif
                         }
                     }
                     else
                     {
-                        // No, the socket read failed.
+                        // No, the socket connection failed.
                         result = -1;
                         #ifdef NET2_DEBUG
-                            net2_debug_failure("net2_node_connect", "The socket read failed.");
+                            net2_debug_failure("net2_node_connect", "The socket connection failed.");
                         #endif
                     }
                 }
                 else
                 {
-                    // No, the socket connection failed.
+                    // No, the socket creation failed.
                     result = -1;
                     #ifdef NET2_DEBUG
-                        net2_debug_failure("net2_node_connect", "The socket connection failed.");
+                        net2_debug_failure("net2_node_connect", "The socket creation failed.");
                     #endif
                 }
             }
             else
             {
-                // No, the socket creation failed.
+                // No, the socket dynamic allocation failed.
                 result = -1;
                 #ifdef NET2_DEBUG
-                    net2_debug_failure("net2_node_connect", "The socket creation failed.");
+                    net2_debug_failure("net2_node_connect", "The socket dynamic allocation failed.");
                 #endif
             }
         }
@@ -209,7 +253,7 @@ int net2_node_connect(struct net2_link_t* net2_link, unsigned int ip_address, un
         {
             // No, the node at the given address and port is not available (e.g there is already a link to it).
             // TEST : Did the link manager succeed to get the link back ?
-            if(net2_link_manager_get_link(net2_link, ip_address, port))
+            if(!net2_link_manager_get_link(net2_link, ip_address, port))
             {
                 // Yes, the link manager succeeded to get the link back.
                 #ifdef NET2_DEBUG
@@ -232,6 +276,33 @@ int net2_node_connect(struct net2_link_t* net2_link, unsigned int ip_address, un
         result = -1;
         #ifdef NET2_DEBUG
             net2_debug_failure("net2_node_connect", "The link manager research failed.");
+        #endif
+    }
+    
+    return result;
+}
+
+int net2_node_close()
+{
+    int result = 0;
+    
+    struct net2_link_server_t** temp = net2_link_server_get_instance();
+    
+    // TEST : Is the node not already instanced ?
+    if(*temp)
+    {
+        // Yes, the node is not already instanced.   
+        pthread_join(*((*temp)->_server_thread), NULL);
+        #ifdef NET2_DEBUG
+            net2_debug_success("net2_node_close");
+        #endif
+    }
+    else
+    {
+        // No, the node is not already instanced.
+        result = -1;
+        #ifdef NET2_DEBUG
+            net2_debug_failure("net2_node_close", "The node is not already instanced.");
         #endif
     }
     

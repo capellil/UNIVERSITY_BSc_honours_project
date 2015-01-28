@@ -18,11 +18,11 @@ int main(int argc, char* argv[])
             struct net2_channel_output_t channel_output;
             
             printf("Did the channel registration succeed...");
-            if(!net2_channel_manager_register_channel_output(&channel_output, atoi(argv[1])))
+            if(!net2_channel_manager_register_channel_output(&channel_output))
             {
                 printf("yes.\n");
                 printf("Tries to register the same channel again...");
-                if(net2_channel_manager_register_channel_output(&channel_output, atoi(argv[1])))
+                if(net2_channel_manager_register_channel_output(&channel_output))
                 {
                     printf("failed AS EXPECTED.\n");
                     struct net2_channel_input_t channel_input;

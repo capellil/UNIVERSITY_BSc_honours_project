@@ -33,7 +33,7 @@ struct net2_link_linked_element_t
  **/
 struct net2_link_manager_t
 {
-    struct net2_link_linked_element_t* _net2_links; ///< Net2 links collection
+    struct net2_link_linked_element_t* _links; ///< Net2 links collection
 };
 
 /**
@@ -74,6 +74,14 @@ int net2_link_manager_init();
         </ul>
  **/
 int net2_link_manager_register_link(struct net2_link_t* net2_link);
+
+/**
+ * @brief Retrieves the link corresponding to the given IP address and the port.
+ * @param net2_link A pointer on a net2_link to store the found pointer or NULL if not found.
+ * @param ip_address The IPv4 address to check.
+ * @param port The port to check.
+ **/
+int net2_link_manager_get_link(struct net2_link_t** net2_link, unsigned int ip_address, unsigned short port);
 
 /**
  * @brief Checks if the given IP address + port exist in the link manager links. (e.g If another link already communicate to this address + port)

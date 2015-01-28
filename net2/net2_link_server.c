@@ -184,10 +184,23 @@ void* net2_link_server_run(void* net2_link_server_to_run)
 		                    if(net2_socket_write(&client_socket, (void*)&data, data_length) >= 0)
 		                    {
 		                        // Yes, the confirmation has been successfully sent to the client.
-		                        run_result = net2_link_server_to_run;
-		                        #ifdef NET2_DEBUG
-		                            net2_debug_success("net2_link_server_run");
-		                        #endif
+		                        // TEST : Did the new link run succeed ?
+		                        if(!net2_link_server_new_link_to_run(client_link))
+		                        {
+		                            // Yes, the new link run succeeded.
+		                            run_result = net2_link_server_to_run;
+		                            #ifdef NET2_DEBUG
+                                        net2_debug_success("net2_link_server_run");
+                                    #endif
+		                        }
+		                        else
+		                        {
+		                            // No, the new link run failed.
+	                                run_result = NULL;
+			                        #ifdef NET2_DEBUG
+                                        net2_debug_failure("net2_link_server_run", "The new link run failed.");
+                                    #endif
+		                        }
 	                        }
 	                        else
 	                        {
@@ -253,4 +266,84 @@ void* net2_link_server_run(void* net2_link_server_to_run)
 	}
 
 	return run_result;
+}
+
+int net2_link_server_new_link_to_run(struct net2_link_t* link_to_run)
+{
+    int result = 0;
+
+    struct net2_link_server_t** net2_link_server = net2_link_server_get_instance();
+    
+    // TEST : Is the link server already instanced ?
+    if(*net2_link_server)
+    {
+        // Yes, the link server is already instanced.
+        pthread_t* new_link_thread = (pthread_t*)malloc(sizeof(pthread_t));
+		                            
+        // TEST : Did the link thread dynamic allocation succeed ?
+        if(new_link_thread)
+        {
+            // Yes, the link thread dynamic allocation succeeded.
+            struct net2_link_thread_linked_element_t* new_element = (struct net2_link_thread_linked_element_t*)malloc(sizeof(struct net2_link_thread_linked_element_t));
+            
+            // TEST : Did the new element dynamic allocation succeed ?
+            if(new_element)
+            {
+                // Yes, the new element dynamic allocation succeeded.
+                new_element->_my_thread = new_link_thread;
+                new_element->_my_link = link_to_run;
+                struct net2_link_thread_linked_element_t* temp = (*net2_link_server)->_link_threads;
+                
+                // TEST : Is there already at least one link ?
+                if(temp)
+                {
+                    // Yes, there is already at least one link.
+                    while(temp)
+                    {
+                        temp = temp->_next_link;
+                    }
+                    
+                    temp->_next_link = new_element;
+                }
+                else
+                {
+                    // No, there is not any links yet.
+                    (*net2_link_server)->_link_threads = new_element;
+                }
+                
+                void* new_link_to_run_parameters = link_to_run;
+                void* (*new_link_to_run) (void*) = &net2_link_run;
+                pthread_create(new_link_thread, NULL, new_link_to_run, new_link_to_run_parameters);
+                #ifdef NET2_DEBUG
+                    net2_debug_success("net2_link_server_new_link_to_run");
+                #endif
+            }
+            else
+            {
+                // No, the new element dynamic allocation failed.
+                result = -1;
+                #ifdef NET2_DEBUG
+                    net2_debug_failure("net2_link_server_new_link_to_run", "The new element dynamic allocation failed.");
+                #endif
+            }
+        }
+        else
+        {  
+            // No, the link thread dynamic allocation failed.
+            result = -1;
+            #ifdef NET2_DEBUG
+                net2_debug_failure("net2_link_server_new_link_to_run", "The link thread dynamic allocation failed.");
+            #endif
+        }
+    }
+    else
+    {
+        // No, the link thread dynamic allocation failed.
+        result = -1;
+        #ifdef NET2_DEBUG
+            net2_debug_failure("net2_link_server_new_link_to_run", "The link server is not instanced yet.");
+        #endif
+    }
+    
+    return result;
 }

@@ -13,6 +13,16 @@
 #include "net2_socket.h"
 
 /**
+ * @brief Contains the link being run as well as its thread.
+ **/
+struct net2_link_thread_linked_element_t
+{
+    pthread_t* _my_thread;
+    struct net2_link_t* _my_link;
+    struct net2_link_thread_linked_element_t* _next_link;
+};
+
+/**
  * @class net2_link_server_t
  * @brief The link server is in charge of handling incoming connections requests from remote nodes which want to create a communication between one of their channel and on of its channel. It therefore checks from the link manager than those channels are not already connected with a net2 link.
  **/
@@ -20,6 +30,7 @@ struct net2_link_server_t
 {
     struct net2_socket_t _server_socket; ///< Socket from where it will accept connections from.
     pthread_t* _server_thread; ///< Thread running indefinitely
+    struct net2_link_thread_linked_element_t* _link_threads;
 };
 
 /**
@@ -59,5 +70,15 @@ int net2_link_server_init(unsigned short port);
  * @pre net2_link_server_to_run != NULL
  **/
 void* net2_link_server_run(void* net2_link_server_to_run);
+
+/**
+ * @brief Runs the given link in a new thread to read message from this link continuously.
+ * @param link_to_run The link to run.
+ * @return <ul>
+			   <li>SUCCESS : 0
+			   <li>FAILURE : -1
+		   </ul>
+ **/
+int net2_link_server_new_link_to_run(struct net2_link_t* link_to_run);
 
 #endif // NET2_LINK_SERVER_INCLUDED INCLUDED

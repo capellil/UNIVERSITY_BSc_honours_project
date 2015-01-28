@@ -9,6 +9,7 @@
 #define NET2_LINK_INCLUDED
 
 #include "net2_socket.h"
+#include "net2_protocol.h"
 
 /**
  * @class net2_link_rx_t
@@ -93,6 +94,17 @@ int net2_link_read(struct net2_link_t* net2_link, void* data, unsigned int data_
 int net2_link_write(struct net2_link_t* net2_link, void* data, unsigned int data_length);
 
 /**
+ * @brief Converts the given net2 message into raw bytes and write them to the link through net2_link_write function.
+ * @param net2_link The net2 link to use to communicate.
+ * @param net2_message The net2 message to send..
+ * @return <ul>
+ 		       <li>SUCCESS : 0.
+               <li>FAILED : -1.
+           </ul>
+ **/
+int net2_link_send(struct net2_link_t* net2_link, struct net2_message_t* net2_message);
+
+/**
  * @brief Creates a link : stores the given net2 socket in the link and assigns all function pointers on the link as well as on its link RX and TX.
  * @param net2_link A pointer to an allocated memory to store in the created link.
  * @param net2_socket The net2 socket to store in the net2 link.
@@ -136,5 +148,16 @@ int net2_link_compare_to_socket(struct net2_link_t* net2_link, struct net2_socke
            </ul>
  **/
 int net2_link_compare_to_link(struct net2_link_t* net2_link_a, struct net2_link_t* net2_link_b);
+
+/**
+ * @brief Runs a link : reads indefinitely to accept connections with channels for example.
+ * @param net2_link_to_run The net2 link to run.
+ * @return <ul>
+               <li>SUCCESS : net2_link_to_run
+               <li>FAILURE : NULL
+           </ul>
+ * @pre net2_link_to_run != NULL
+ **/
+void* net2_link_run(void* net2_link_to_run);
 
 #endif // NET2_LINK_INCLUDED INCLUDED

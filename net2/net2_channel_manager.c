@@ -1,3 +1,4 @@
+#include <stdio.h> // printf
 #include <stdlib.h> // malloc
 
 #include "net2_channel_manager.h"
@@ -74,34 +75,6 @@ int net2_channel_manager_init()
     return result;
 }
 
-int net2_channel_manager_get_number(unsigned int* channel_number)
-{
-    // Function result
-    int result = 0;
-    
-    struct net2_channel_manager_t** temp = net2_channel_manager_get_instance();
-    
-    // TEST : Is the channel manager already instanced ?
-    if(*temp)
-    {
-        // Yes, the channel manager is already instanced.
-        *channel_number = (*temp)->_first_free_number;
-        #ifdef NET2_DEBUG
-            net2_debug_success("net2_channel_manager_get_number");
-        #endif
-    }
-    else
-    {
-        // No, the channel manager is not instanced yet.
-        result = -1;
-        #ifdef NET2_DEBUG
-            net2_debug_failure("net2_channel_manager_get_number", "The channel manager is not instanced yet.");
-        #endif  
-    }
-    
-    return result;
-}
-
 int net2_channel_manager_check_number(unsigned int channel_number, bool* found)
 {
     int result = 0;
@@ -169,7 +142,7 @@ int net2_channel_manager_check_number(unsigned int channel_number, bool* found)
     return result;
 }
 
-int net2_channel_manager_register_channel_output(struct net2_channel_output_t* net2_channel_output, unsigned int channel_number)
+int net2_channel_manager_register_channel_output(struct net2_channel_output_t* net2_channel_output)
 {
     // Function result
     int result = 0;
@@ -181,80 +154,66 @@ int net2_channel_manager_register_channel_output(struct net2_channel_output_t* n
     {
         // Yes, the channel manager is already instanced.
         bool found = false;
+        unsigned int channel_number = 0;
         
         // TEST : Did the research into the channel manager succeed ?
-        if(!net2_channel_manager_check_number(channel_number, &found))
+        while(!net2_channel_manager_check_number(channel_number, &found) && found) // TODO Test maximum unsigned int value not reached
         {
-            // Yes, the research into the channel manager succeeded.
-            // TEST : Is the given channel number available ?
-            if(!found)
+            channel_number++;
+        }
+        
+        // TEST : Is the given channel number available ?
+        if(!found)
+        {
+            // Yes, the given channel number is available.
+            struct net2_channel_output_linked_element_t* new_element = (struct net2_channel_output_linked_element_t*)malloc(sizeof(struct net2_channel_output_linked_element_t));
+            
+            // TEST : Did the new element dynamic allocation succeed ?
+            if(new_element)
             {
-                // Yes, the given channel number is available.
-                struct net2_channel_output_linked_element_t* new_element = (struct net2_channel_output_linked_element_t*)malloc(sizeof(struct net2_channel_output_linked_element_t));
+                // Yes, the new element dynamic allocation succeeded.                
+                net2_channel_output->_number = channel_number;
+                new_element->_my_channel = net2_channel_output;
+                new_element->_next_channel = NULL;
                 
-                // TEST : Did the new element dynamic allocation succeed ?
-                if(new_element)
+                struct net2_channel_output_linked_element_t* current_element = (*temp)->_channel_outputs;
+                
+                // TEST : Is there at least one element ? 
+                if(current_element)
                 {
-                    // Yes, the new element dynamic allocation succeeded.
-                    // TEST : Was this channel number the first free number available ?
-                    if((*temp)->_first_free_number == channel_number)
+                    // Yes, there is at least one element.
+                    while(current_element->_next_channel)
                     {
-                        // Yes, this channel number was the first free number available.
-                        // We then have to increment its value.
-                        (*temp)->_first_free_number++; // TODO CHECK we have not used the last possible value.
+                        current_element = current_element->_next_channel;
                     }
                     
-                    net2_channel_output->_number = channel_number;
-                    new_element->_my_channel = net2_channel_output;
-                    new_element->_next_channel = NULL;
-                    
-                    struct net2_channel_output_linked_element_t* current_element = (*temp)->_channel_outputs;
-                    
-                    // TEST : Is there at least one element ? 
-                    if(current_element)
-                    {
-                        // Yes, there is at least one element.
-                        while(current_element)
-                        {
-                            current_element = current_element->_next_channel;
-                        }
-                        
-                        current_element->_next_channel = new_element;                    
-                    }
-                    else
-                    {
-                        // No, there is not any elements yet.
-                        (*temp)->_channel_outputs = new_element;   
-                    }
-                    
-                    #ifdef NET2_DEBUG
-                        net2_debug_success("net2_channel_manager_register_channel_output");
-                    #endif
+                    current_element->_next_channel = new_element;                    
                 }
                 else
                 {
-                    // No, the new element dynamic allocation failed.
-                    result = -1;
-                    #ifdef NET2_DEBUG
-                        net2_debug_failure("net2_channel_manager_register_channel_output", "he new element dynamic allocation failed.");
-                    #endif 
+                    // No, there is not any elements yet.
+                    (*temp)->_channel_outputs = new_element;   
                 }
+                
+                #ifdef NET2_DEBUG
+                    net2_debug_success("net2_channel_manager_register_channel_output");
+                #endif
             }
             else
             {
-                // No, the given channel number is not available.
+                // No, the new element dynamic allocation failed.
                 result = -1;
                 #ifdef NET2_DEBUG
-                    net2_debug_failure("net2_channel_manager_register_channel_output", "The given channel number is not available.");
+                    net2_debug_failure("net2_channel_manager_register_channel_output", "he new element dynamic allocation failed.");
                 #endif 
             }
         }
         else
         {
-            // No, the research into the channel manager failed.
+            // No, no channel number has been found.
             result = -1;
             #ifdef NET2_DEBUG
-                net2_debug_failure("net2_channel_manager_register_channel_output", "The research into the channel manager failed.");
+                net2_debug_failure("net2_channel_manager_register_channel_output", "No channel number has been found.");
             #endif 
         }
     }
@@ -296,15 +255,7 @@ int net2_channel_manager_register_channel_input(struct net2_channel_input_t* net
                 // TEST : Did the new element dynamic allocation succeed ?
                 if(new_element)
                 {
-                    // Yes, the new element dynamic allocation succeeded.
-                    // TEST : Was this channel number the first free number available ?
-                    if((*temp)->_first_free_number == channel_number)
-                    {
-                        // Yes, this channel number was the first free number available.
-                        // We then have to increment its value.
-                        (*temp)->_first_free_number++; // TODO CHECK we have not used the last possible value.
-                    }
-                    
+                    // Yes, the new element dynamic allocation succeeded.                    
                     net2_channel_input->_number = channel_number;
                     new_element->_my_channel = net2_channel_input;
                     new_element->_next_channel = NULL;
@@ -315,7 +266,7 @@ int net2_channel_manager_register_channel_input(struct net2_channel_input_t* net
                     if(current_element)
                     {
                         // Yes, there is at least one element.
-                        while(current_element)
+                        while(current_element->_next_channel)
                         {
                             current_element = current_element->_next_channel;
                         }
@@ -325,11 +276,11 @@ int net2_channel_manager_register_channel_input(struct net2_channel_input_t* net
                     else
                     {
                         // No, there is not any elements yet.
-                        current_element = new_element;    
+                        (*temp)->_channel_inputs = new_element; 
                     }
                     
                     #ifdef NET2_DEBUG
-                        net2_debug_success("net2_channel_manager_register_channel_output");
+                        net2_debug_success("net2_channel_manager_register_channel_input");
                     #endif
                 }
                 else
@@ -337,7 +288,7 @@ int net2_channel_manager_register_channel_input(struct net2_channel_input_t* net
                     // No, the new element dynamic allocation failed.
                     result = -1;
                     #ifdef NET2_DEBUG
-                        net2_debug_failure("net2_channel_manager_register_channel_output", "he new element dynamic allocation failed.");
+                        net2_debug_failure("net2_channel_manager_register_channel_input", "he new element dynamic allocation failed.");
                     #endif 
                 }
             }
@@ -346,7 +297,7 @@ int net2_channel_manager_register_channel_input(struct net2_channel_input_t* net
                 // No, the given channel number is not available.
                 result = -1;
                 #ifdef NET2_DEBUG
-                    net2_debug_failure("net2_channel_manager_register_channel_output", "The given channel number is not available.");
+                    net2_debug_failure("net2_channel_manager_register_channel_input", "The given channel number is not available.");
                 #endif 
             }
         }
@@ -355,7 +306,7 @@ int net2_channel_manager_register_channel_input(struct net2_channel_input_t* net
             // No, the research into the channel manager failed.
             result = -1;
             #ifdef NET2_DEBUG
-                net2_debug_failure("net2_channel_manager_register_channel_output", "The research into the channel manager failed.");
+                net2_debug_failure("net2_channel_manager_register_channel_input", "The research into the channel manager failed.");
             #endif 
         }
     }
@@ -364,14 +315,14 @@ int net2_channel_manager_register_channel_input(struct net2_channel_input_t* net
         // No, the channel manager is not instanced yet.
         result = -1;
         #ifdef NET2_DEBUG
-            net2_debug_failure("net2_channel_manager_register_channel_output", "The channel manager is not instanced yet.");
+            net2_debug_failure("net2_channel_manager_register_channel_input", "The channel manager is not instanced yet.");
         #endif  
     }
     
     return result;
 }
 
-int net2_channel_manager_get_channel(void* net2_channel_generic, enum net2_channel_type_e* net2_channel_type, unsigned int channel_number)
+int net2_channel_manager_get_channel(void** net2_channel_generic, enum net2_channel_type_e* net2_channel_type, unsigned int channel_number)
 {
     // Function result
     int result = 0;
@@ -393,7 +344,7 @@ int net2_channel_manager_get_channel(void* net2_channel_generic, enum net2_chann
         if(temp_output)
         {
             // Yes, we found the given channel number in the outputs.
-            net2_channel_generic = temp_output->_my_channel;
+            *net2_channel_generic = temp_output->_my_channel;
             *net2_channel_type = CHANNEL_OUTPUT;
             #ifdef NET2_DEBUG
                 net2_debug_success("net2_channel_manager_get_channel");
@@ -413,7 +364,7 @@ int net2_channel_manager_get_channel(void* net2_channel_generic, enum net2_chann
             if(temp_input)
             {
                 // Yes, we found the given channel number in the inputs.
-                net2_channel_generic = temp_input->_my_channel;
+                *net2_channel_generic = temp_input->_my_channel;
                 *net2_channel_type = CHANNEL_INPUT;
                 #ifdef NET2_DEBUG
                     net2_debug_success("net2_channel_manager_get_channel");
@@ -422,7 +373,7 @@ int net2_channel_manager_get_channel(void* net2_channel_generic, enum net2_chann
             else
             {
                 // No, we did not find the given channel in the inputs neither.
-                net2_channel_generic = NULL;
+                *net2_channel_generic = NULL;
                 #ifdef NET2_DEBUG
                     net2_debug_success("net2_channel_manager_get_channel");
                 #endif
