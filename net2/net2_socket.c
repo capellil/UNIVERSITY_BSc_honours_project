@@ -101,19 +101,22 @@ int net2_socket_create_and_bind(struct net2_socket_t* net2_socket, unsigned shor
 	// TEST : Is the socket successfully created ?
 	if(socket != -1)
 	{
-	    // Socket successfully created.
+	    // Yes, Socket successfully created.
 		struct sockaddr_in socket_address;
 		socket_address.sin_family = AF_INET; // IPv4 Internet Protocol
 		socket_address.sin_addr.s_addr = INADDR_ANY; // All interfaces
 		socket_address.sin_port = htons(port);
 		
 		int optval = 1;
+		
 		// TEST : Is socket option set
 	    if(!setsockopt(socket, SOL_SOCKET, SO_REUSEADDR, &optval, sizeof(int)))
 	    {		
+	        // Yes, the socket REUSEADDR option set succeeded.
 		    // TEST : Is socket binding successful ?
 		    if(!bind(socket, (struct sockaddr*)&socket_address, sizeof(struct sockaddr_in)))
 		    {
+		        // Yes, the socket binding succeeded.
 		        // Socket binding successful.
 			    net2_socket->_socket = socket;
 			    net2_socket->_address = socket_address;
@@ -123,8 +126,8 @@ int net2_socket_create_and_bind(struct net2_socket_t* net2_socket, unsigned shor
 		    }
 		    else
 		    {
-		        // Socket binding failed.
-			    result = -2;
+		        // No, the socket binding failed.
+			    result = -3;
 			    #ifdef NET2_DEBUG
 			        char message[128]; 
 			        sprintf(message, "Socket binding failed when trying with port \"%d\", net2_socket pointer is %p", port, net2_socket);
@@ -133,11 +136,17 @@ int net2_socket_create_and_bind(struct net2_socket_t* net2_socket, unsigned shor
 		    }
 	    }
 	    else
-	    {
+	    {   
+	        // No, the socket REUSEADDR option set failed.
+	        result = -2;
+		    #ifdef NET2_DEBUG
+		         net2_debug_failure("net2_socket_create_and_bind", "Socket SOL_REUSEADDR option set failed.");
+		    #endif
 	    }		
 	}
 	else
 	{
+	    // No, the socket creation failed.
 		result = -1;
 		#ifdef NET2_DEBUG
 		     net2_debug_failure("net2_socket_create_and_bind", "Socket creation failed");
