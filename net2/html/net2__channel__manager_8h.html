@@ -113,21 +113,18 @@ Functions</h2></td></tr>
 <tr class="memitem:ac1e168f9a6d97b5add6fd144e5369ff5"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="net2__channel__manager_8h.html#ac1e168f9a6d97b5add6fd144e5369ff5">net2_channel_manager_init</a> ()</td></tr>
 <tr class="memdesc:ac1e168f9a6d97b5add6fd144e5369ff5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inits the channel manager : if its singleton is not already instanced, it instances it.  <a href="#ac1e168f9a6d97b5add6fd144e5369ff5">More...</a><br/></td></tr>
 <tr class="separator:ac1e168f9a6d97b5add6fd144e5369ff5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa7a2f7db27c7029482332fa94e00c55f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="net2__channel__manager_8h.html#aa7a2f7db27c7029482332fa94e00c55f">net2_channel_manager_get_number</a> (unsigned int *channel_number)</td></tr>
-<tr class="memdesc:aa7a2f7db27c7029482332fa94e00c55f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Searches for the first available number.  <a href="#aa7a2f7db27c7029482332fa94e00c55f">More...</a><br/></td></tr>
-<tr class="separator:aa7a2f7db27c7029482332fa94e00c55f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a09b74d3bc1583739d4864bafb4d71dcf"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="net2__channel__manager_8h.html#a09b74d3bc1583739d4864bafb4d71dcf">net2_channel_manager_check_number</a> (unsigned int channel_number, bool *found)</td></tr>
 <tr class="memdesc:a09b74d3bc1583739d4864bafb4d71dcf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the given number is available or not.  <a href="#a09b74d3bc1583739d4864bafb4d71dcf">More...</a><br/></td></tr>
 <tr class="separator:a09b74d3bc1583739d4864bafb4d71dcf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad750bd77094d2f5ae4f22267cf911901"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="net2__channel__manager_8h.html#ad750bd77094d2f5ae4f22267cf911901">net2_channel_manager_register_channel_output</a> (struct <a class="el" href="structnet2__channel__output__t.html">net2_channel_output_t</a> *net2_channel_output, unsigned int channel_number)</td></tr>
-<tr class="memdesc:ad750bd77094d2f5ae4f22267cf911901"><td class="mdescLeft">&#160;</td><td class="mdescRight">Registers the channel at the given channel number.  <a href="#ad750bd77094d2f5ae4f22267cf911901">More...</a><br/></td></tr>
-<tr class="separator:ad750bd77094d2f5ae4f22267cf911901"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaf39fa791c85edf83b6e2e77f8048588"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="net2__channel__manager_8h.html#aaf39fa791c85edf83b6e2e77f8048588">net2_channel_manager_register_channel_output</a> (struct <a class="el" href="structnet2__channel__output__t.html">net2_channel_output_t</a> *net2_channel_output)</td></tr>
+<tr class="memdesc:aaf39fa791c85edf83b6e2e77f8048588"><td class="mdescLeft">&#160;</td><td class="mdescRight">Registers the channel at the given channel number.  <a href="#aaf39fa791c85edf83b6e2e77f8048588">More...</a><br/></td></tr>
+<tr class="separator:aaf39fa791c85edf83b6e2e77f8048588"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:affcbfac8b3c009e93080f47ed259c6b9"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="net2__channel__manager_8h.html#affcbfac8b3c009e93080f47ed259c6b9">net2_channel_manager_register_channel_input</a> (struct <a class="el" href="structnet2__channel__input__t.html">net2_channel_input_t</a> *net2_channel_input, unsigned int channel_number)</td></tr>
 <tr class="memdesc:affcbfac8b3c009e93080f47ed259c6b9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Registers the channel at the given channel number.  <a href="#affcbfac8b3c009e93080f47ed259c6b9">More...</a><br/></td></tr>
 <tr class="separator:affcbfac8b3c009e93080f47ed259c6b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2827abbf055e5649b0aec88b2ac89fd8"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="net2__channel__manager_8h.html#a2827abbf055e5649b0aec88b2ac89fd8">net2_channel_manager_get_channel</a> (void *net2_channel_generic, enum net2_channel_type_e *net2_channel_type, unsigned int channel_number)</td></tr>
-<tr class="memdesc:a2827abbf055e5649b0aec88b2ac89fd8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Searches the channel corresponding to the given channel number.  <a href="#a2827abbf055e5649b0aec88b2ac89fd8">More...</a><br/></td></tr>
-<tr class="separator:a2827abbf055e5649b0aec88b2ac89fd8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5602e8cb0f0f982df650b88c8b707f9f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="net2__channel__manager_8h.html#a5602e8cb0f0f982df650b88c8b707f9f">net2_channel_manager_get_channel</a> (void **net2_channel_generic, enum net2_channel_type_e *net2_channel_type, unsigned int channel_number)</td></tr>
+<tr class="memdesc:a5602e8cb0f0f982df650b88c8b707f9f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Searches the channel corresponding to the given channel number.  <a href="#a5602e8cb0f0f982df650b88c8b707f9f">More...</a><br/></td></tr>
+<tr class="separator:a5602e8cb0f0f982df650b88c8b707f9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><dl class="section author"><dt>Author</dt><dd>Capelli, Ludovic </dd></dl>
@@ -200,14 +197,14 @@ FAILURE : -1 </li>
 
 </div>
 </div>
-<a class="anchor" id="a2827abbf055e5649b0aec88b2ac89fd8"></a>
+<a class="anchor" id="a5602e8cb0f0f982df650b88c8b707f9f"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">int net2_channel_manager_get_channel </td>
           <td>(</td>
-          <td class="paramtype">void *&#160;</td>
+          <td class="paramtype">void **&#160;</td>
           <td class="paramname"><em>net2_channel_generic</em>, </td>
         </tr>
         <tr>
@@ -234,7 +231,7 @@ FAILURE : -1 </li>
 <p>If the channel is NOT found, the net2_channel_generic pointer is set to NULL, otherwise it is set to the address of the found channel. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">net2_channel_generic</td><td>A pointer on a not allocated area to store the address of the found channel. MUST BE "void*" because it cannot be determined if the found channel will be of type input or output. </td></tr>
+    <tr><td class="paramname">net2_channel_generic</td><td>A pointer on a pointer on a not allocated area to store the address of the found channel. MUST BE "void**" because it cannot be determined if the found channel will be of type input or output. </td></tr>
     <tr><td class="paramname">net2_channel_type</td><td>A pointer on a channel type to store the found channel type (CHANNEL_INPUT or CHANNEL_OUTPUT). </td></tr>
     <tr><td class="paramname">channel_number</td><td>The channel number to search. </td></tr>
   </table>
@@ -265,37 +262,6 @@ FAILURE : -1 </li>
 
 <p>Returns the singleton of the channel manager. </p>
 <dl class="section return"><dt>Returns</dt><dd>The singleton instance of the channel manager. </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="aa7a2f7db27c7029482332fa94e00c55f"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int net2_channel_manager_get_number </td>
-          <td>(</td>
-          <td class="paramtype">unsigned int *&#160;</td>
-          <td class="paramname"><em>channel_number</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Searches for the first available number. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">channel_number</td><td>A pointer on a channel number to store the found number. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd><ul>
-<li>
-SUCCESS : 0 </li>
-<li>
-FAILURE : -1 </li>
-</ul>
-</dd></dl>
 
 </div>
 </div>
@@ -367,7 +333,7 @@ FAILURE : -1 </li>
 
 </div>
 </div>
-<a class="anchor" id="ad750bd77094d2f5ae4f22267cf911901"></a>
+<a class="anchor" id="aaf39fa791c85edf83b6e2e77f8048588"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -375,18 +341,8 @@ FAILURE : -1 </li>
           <td class="memname">int net2_channel_manager_register_channel_output </td>
           <td>(</td>
           <td class="paramtype">struct <a class="el" href="structnet2__channel__output__t.html">net2_channel_output_t</a> *&#160;</td>
-          <td class="paramname"><em>net2_channel_output</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramname"><em>net2_channel_output</em></td><td>)</td>
           <td></td>
-          <td class="paramtype">unsigned int&#160;</td>
-          <td class="paramname"><em>channel_number</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -412,7 +368,7 @@ FAILURE : -1 </li>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Jan 24 2015 05:06:05 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Jan 28 2015 16:47:40 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

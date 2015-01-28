@@ -94,6 +94,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structnet2__link__thread__linked__element__t.html">net2_link_thread_linked_element_t</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contains the link being run as well as its thread.  <a href="structnet2__link__thread__linked__element__t.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structnet2__link__server__t.html">net2_link_server_t</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The link server is in charge of handling incoming connections requests from remote nodes which want to create a communication between one of their channel and on of its channel. It therefore checks from the link manager than those channels are not already connected with a net2 link.  <a href="structnet2__link__server__t.html#details">More...</a><br/></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -112,6 +115,9 @@ Functions</h2></td></tr>
 <tr class="memitem:af020ba98131a0ce28ec9a6edad471958"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="net2__link__server_8h.html#af020ba98131a0ce28ec9a6edad471958">net2_link_server_run</a> (void *net2_link_server_to_run)</td></tr>
 <tr class="memdesc:af020ba98131a0ce28ec9a6edad471958"><td class="mdescLeft">&#160;</td><td class="mdescRight">Runs the net2 link server : starts listening and accepting incoming connections requests. It has a fancy signature because it will be executed in a different thread and thread format in C is : "void* (*) (void*)".  <a href="#af020ba98131a0ce28ec9a6edad471958">More...</a><br/></td></tr>
 <tr class="separator:af020ba98131a0ce28ec9a6edad471958"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a38d3b90bbf474a199871fbd67eedec1f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="net2__link__server_8h.html#a38d3b90bbf474a199871fbd67eedec1f">net2_link_server_new_link_to_run</a> (struct <a class="el" href="structnet2__link__t.html">net2_link_t</a> *link_to_run)</td></tr>
+<tr class="memdesc:a38d3b90bbf474a199871fbd67eedec1f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Runs the given link in a new thread to read message from this link continuously.  <a href="#a38d3b90bbf474a199871fbd67eedec1f">More...</a><br/></td></tr>
+<tr class="separator:a38d3b90bbf474a199871fbd67eedec1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><dl class="section author"><dt>Author</dt><dd>Capelli, Ludovic </dd></dl>
@@ -201,6 +207,37 @@ ALREADY INSTANCED : -2 </li>
 
 </div>
 </div>
+<a class="anchor" id="a38d3b90bbf474a199871fbd67eedec1f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int net2_link_server_new_link_to_run </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structnet2__link__t.html">net2_link_t</a> *&#160;</td>
+          <td class="paramname"><em>link_to_run</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Runs the given link in a new thread to read message from this link continuously. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">link_to_run</td><td>The link to run. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><ul>
+<li>
+SUCCESS : 0 </li>
+<li>
+FAILURE : -1 </li>
+</ul>
+</dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="af020ba98131a0ce28ec9a6edad471958"></a>
 <div class="memitem">
 <div class="memproto">
@@ -236,7 +273,7 @@ FAILURE : NULL </li>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Jan 24 2015 05:06:05 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Jan 28 2015 16:47:40 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

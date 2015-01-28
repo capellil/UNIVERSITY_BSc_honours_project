@@ -14,7 +14,8 @@ class \hyperlink{structnet2__channel__input__t}{net2\-\_\-channel\-\_\-input\-\_
 \subsection*{Enumerations}
 \begin{DoxyCompactItemize}
 \item 
-enum {\bfseries net2\-\_\-channel\-\_\-state\-\_\-e} \{ {\bfseries O\-K\-\_\-\-I\-N\-P\-U\-T}, 
+enum {\bfseries net2\-\_\-channel\-\_\-state\-\_\-e} \{ {\bfseries I\-N\-A\-C\-T\-I\-V\-E}, 
+{\bfseries O\-K\-\_\-\-I\-N\-P\-U\-T}, 
 {\bfseries O\-K\-\_\-\-O\-U\-T\-P\-U\-T}
  \}
 \item 
@@ -25,7 +26,7 @@ enum {\bfseries net2\-\_\-channel\-\_\-type\-\_\-e} \{ {\bfseries C\-H\-A\-N\-N\
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-int \hyperlink{net2__channel_8h_a8b022b10174fa88cba61806c856743c1}{net2\-\_\-channel\-\_\-output\-\_\-create} (struct \hyperlink{structnet2__channel__output__t}{net2\-\_\-channel\-\_\-output\-\_\-t} $\ast$net2\-\_\-channel\-\_\-output, char $\ast$ip\-\_\-address, unsigned short port)
+int \hyperlink{net2__channel_8h_a90488a31d7baea5682ecf8b83879ad54}{net2\-\_\-channel\-\_\-output\-\_\-create} (struct \hyperlink{structnet2__channel__output__t}{net2\-\_\-channel\-\_\-output\-\_\-t} $\ast$net2\-\_\-channel\-\_\-output, char $\ast$ip\-\_\-address, unsigned short port, unsigned int remote\-\_\-channel\-\_\-number)
 \begin{DoxyCompactList}\small\item\em Creates the channel by asking the node to connect with the given node at (ip\-\_\-address, port) to the channel with the given number. \end{DoxyCompactList}\item 
 \hypertarget{net2__channel_8h_ad1241dbae1affeceb917ca88ae952e6e}{int {\bfseries net2\-\_\-channel\-\_\-output\-\_\-write\-\_\-integer} (struct \hyperlink{structnet2__channel__output__t}{net2\-\_\-channel\-\_\-output\-\_\-t} $\ast$net2\-\_\-channel\-\_\-output, int value)}\label{net2__channel_8h_ad1241dbae1affeceb917ca88ae952e6e}
 
@@ -57,15 +58,16 @@ Capelli, Ludovic
 
 
 \subsection{Function Documentation}
-\hypertarget{net2__channel_8h_a8b022b10174fa88cba61806c856743c1}{\index{net2\-\_\-channel.\-h@{net2\-\_\-channel.\-h}!net2\-\_\-channel\-\_\-output\-\_\-create@{net2\-\_\-channel\-\_\-output\-\_\-create}}
+\hypertarget{net2__channel_8h_a90488a31d7baea5682ecf8b83879ad54}{\index{net2\-\_\-channel.\-h@{net2\-\_\-channel.\-h}!net2\-\_\-channel\-\_\-output\-\_\-create@{net2\-\_\-channel\-\_\-output\-\_\-create}}
 \index{net2\-\_\-channel\-\_\-output\-\_\-create@{net2\-\_\-channel\-\_\-output\-\_\-create}!net2_channel.h@{net2\-\_\-channel.\-h}}
 \subsubsection[{net2\-\_\-channel\-\_\-output\-\_\-create}]{\setlength{\rightskip}{0pt plus 5cm}int net2\-\_\-channel\-\_\-output\-\_\-create (
 \begin{DoxyParamCaption}
 \item[{struct {\bf net2\-\_\-channel\-\_\-output\-\_\-t} $\ast$}]{net2\-\_\-channel\-\_\-output, }
 \item[{char $\ast$}]{ip\-\_\-address, }
-\item[{unsigned short}]{port}
+\item[{unsigned short}]{port, }
+\item[{unsigned int}]{remote\-\_\-channel\-\_\-number}
 \end{DoxyParamCaption}
-)}}\label{net2__channel_8h_a8b022b10174fa88cba61806c856743c1}
+)}}\label{net2__channel_8h_a90488a31d7baea5682ecf8b83879ad54}
 
 
 Creates the channel by asking the node to connect with the given node at (ip\-\_\-address, port) to the channel with the given number. 
@@ -77,6 +79,8 @@ Creates the channel by asking the node to connect with the given node at (ip\-\_
 {\em ip\-\_\-address} & A string format I\-Pv4 address (4 bytes values separated by \char`\"{}.\char`\"{}) of the remote node. \\
 \hline
 {\em port} & The port of the remote node. \\
+\hline
+{\em remote\-\_\-channel\-\_\-number} & The channel number of the remote channel. \\
 \hline
 {\em remote\-\_\-channel\-\_\-number} & \\
 \hline

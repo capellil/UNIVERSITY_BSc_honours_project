@@ -111,23 +111,50 @@ Functions</h2></td></tr>
 <tr class="memitem:a27dd8d200cd218537c2af076d5d53a61"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="net2__node_8h.html#a27dd8d200cd218537c2af076d5d53a61">net2_node_init</a> (unsigned short port)</td></tr>
 <tr class="memdesc:a27dd8d200cd218537c2af076d5d53a61"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inits the node : if the node singleton has not been instanced yet, it is instanced.  <a href="#a27dd8d200cd218537c2af076d5d53a61">More...</a><br/></td></tr>
 <tr class="separator:a27dd8d200cd218537c2af076d5d53a61"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a957a986824f3f8f379a5153c6c358438"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="net2__node_8h.html#a957a986824f3f8f379a5153c6c358438">net2_node_connect</a> (struct <a class="el" href="structnet2__link__t.html">net2_link_t</a> *net2_link, unsigned int ip_address, unsigned short port)</td></tr>
-<tr class="memdesc:a957a986824f3f8f379a5153c6c358438"><td class="mdescLeft">&#160;</td><td class="mdescRight">Connects the node to the remote node at the given ip address and port.  <a href="#a957a986824f3f8f379a5153c6c358438">More...</a><br/></td></tr>
-<tr class="separator:a957a986824f3f8f379a5153c6c358438"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1624236e937aabf97bb93002acc18f3e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="net2__node_8h.html#a1624236e937aabf97bb93002acc18f3e">net2_node_connect</a> (struct <a class="el" href="structnet2__link__t.html">net2_link_t</a> **net2_link, unsigned int ip_address, unsigned short port)</td></tr>
+<tr class="memdesc:a1624236e937aabf97bb93002acc18f3e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Connects the node to the remote node at the given ip address and port.  <a href="#a1624236e937aabf97bb93002acc18f3e">More...</a><br/></td></tr>
+<tr class="separator:a1624236e937aabf97bb93002acc18f3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a35d47a35c765fcd575684c9daede28a2"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="net2__node_8h.html#a35d47a35c765fcd575684c9daede28a2">net2_node_close</a> ()</td></tr>
+<tr class="memdesc:a35d47a35c765fcd575684c9daede28a2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Waits for the link server thread to finish.  <a href="#a35d47a35c765fcd575684c9daede28a2">More...</a><br/></td></tr>
+<tr class="separator:a35d47a35c765fcd575684c9daede28a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><dl class="section author"><dt>Author</dt><dd>Capelli, Ludovic </dd></dl>
 <dl class="section version"><dt>Version</dt><dd>2.0 </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>22/01/2015 </dd></dl>
 </div><h2 class="groupheader">Function Documentation</h2>
-<a class="anchor" id="a957a986824f3f8f379a5153c6c358438"></a>
+<a class="anchor" id="a35d47a35c765fcd575684c9daede28a2"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int net2_node_close </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Waits for the link server thread to finish. </p>
+<dl class="section return"><dt>Returns</dt><dd><ul>
+<li>
+SUCCESS : 0 </li>
+<li>
+FAILURE : -1 </li>
+</ul>
+</dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a1624236e937aabf97bb93002acc18f3e"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">int net2_node_connect </td>
           <td>(</td>
-          <td class="paramtype">struct <a class="el" href="structnet2__link__t.html">net2_link_t</a> *&#160;</td>
+          <td class="paramtype">struct <a class="el" href="structnet2__link__t.html">net2_link_t</a> **&#160;</td>
           <td class="paramname"><em>net2_link</em>, </td>
         </tr>
         <tr>
@@ -153,7 +180,7 @@ Functions</h2></td></tr>
 <p>Connects the node to the remote node at the given ip address and port. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">net2_link</td><td>A pointer on a link to store the corresponding socket. </td></tr>
+    <tr><td class="paramname">net2_link</td><td>A pointer on a pointer on a link to store the corresponding contained socket. </td></tr>
     <tr><td class="paramname">ip_address</td><td>The IPv4 address of the remote node. </td></tr>
     <tr><td class="paramname">port</td><td>The port of the remote node. </td></tr>
   </table>
@@ -255,7 +282,7 @@ ALREADY INSTANCED : -2 </li>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Jan 24 2015 05:06:05 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Jan 28 2015 16:47:40 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

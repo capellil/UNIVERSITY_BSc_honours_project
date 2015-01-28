@@ -116,9 +116,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a8f6f2d60be2b4e95d0af588f594ec97a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="net2__link__manager_8h.html#a8f6f2d60be2b4e95d0af588f594ec97a">net2_link_manager_register_link</a> (struct <a class="el" href="structnet2__link__t.html">net2_link_t</a> *net2_link)</td></tr>
 <tr class="memdesc:a8f6f2d60be2b4e95d0af588f594ec97a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Registers the given link into the net2 link manager's links collection. It will check first that no link related to the same node already exists.  <a href="#a8f6f2d60be2b4e95d0af588f594ec97a">More...</a><br/></td></tr>
 <tr class="separator:a8f6f2d60be2b4e95d0af588f594ec97a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af5dcf41f03ebdeb2a09cec9f688528a0"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="net2__link__manager_8h.html#af5dcf41f03ebdeb2a09cec9f688528a0">net2_link_manager_get_link</a> (struct <a class="el" href="structnet2__link__t.html">net2_link_t</a> *net2_link, unsigned int ip_address, unsigned short port)</td></tr>
-<tr class="memdesc:af5dcf41f03ebdeb2a09cec9f688528a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the link corresponding to the given IP address and the port.  <a href="#af5dcf41f03ebdeb2a09cec9f688528a0">More...</a><br/></td></tr>
-<tr class="separator:af5dcf41f03ebdeb2a09cec9f688528a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a70c86c0d4b319c103155ae078c337ceb"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="net2__link__manager_8h.html#a70c86c0d4b319c103155ae078c337ceb">net2_link_manager_get_link</a> (struct <a class="el" href="structnet2__link__t.html">net2_link_t</a> **net2_link, unsigned int ip_address, unsigned short port)</td></tr>
+<tr class="memdesc:a70c86c0d4b319c103155ae078c337ceb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the link corresponding to the given IP address and the port.  <a href="#a70c86c0d4b319c103155ae078c337ceb">More...</a><br/></td></tr>
+<tr class="separator:a70c86c0d4b319c103155ae078c337ceb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad2405018e99624de9df91daf30a1e3f6"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="net2__link__manager_8h.html#ad2405018e99624de9df91daf30a1e3f6">net2_link_manager_check_address_and_port</a> (unsigned int address, unsigned short port, bool *found)</td></tr>
 <tr class="memdesc:ad2405018e99624de9df91daf30a1e3f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the given IP address + port exist in the link manager links. (e.g If another link already communicate to this address + port)  <a href="#ad2405018e99624de9df91daf30a1e3f6">More...</a><br/></td></tr>
 <tr class="separator:ad2405018e99624de9df91daf30a1e3f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -265,14 +265,14 @@ FAILURE : -1 </li>
 
 </div>
 </div>
-<a class="anchor" id="af5dcf41f03ebdeb2a09cec9f688528a0"></a>
+<a class="anchor" id="a70c86c0d4b319c103155ae078c337ceb"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">int net2_link_manager_get_link </td>
           <td>(</td>
-          <td class="paramtype">struct <a class="el" href="structnet2__link__t.html">net2_link_t</a> *&#160;</td>
+          <td class="paramtype">struct <a class="el" href="structnet2__link__t.html">net2_link_t</a> **&#160;</td>
           <td class="paramname"><em>net2_link</em>, </td>
         </tr>
         <tr>
@@ -374,7 +374,7 @@ net2_link != NULL </li>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Jan 24 2015 05:06:05 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Jan 28 2015 16:47:40 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

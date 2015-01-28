@@ -22,7 +22,7 @@ int \hyperlink{net2__link__manager_8h_a35f8cf95f7bd2a79fb255c12ce77859e}{net2\-\
 \begin{DoxyCompactList}\small\item\em Inits the link manager \-: if the link server singleton has not been instanced yet, it is instanced with a N\-U\-L\-L list of links. \end{DoxyCompactList}\item 
 int \hyperlink{net2__link__manager_8h_a8f6f2d60be2b4e95d0af588f594ec97a}{net2\-\_\-link\-\_\-manager\-\_\-register\-\_\-link} (struct \hyperlink{structnet2__link__t}{net2\-\_\-link\-\_\-t} $\ast$net2\-\_\-link)
 \begin{DoxyCompactList}\small\item\em Registers the given link into the net2 link manager's links collection. It will check first that no link related to the same node already exists. \end{DoxyCompactList}\item 
-int \hyperlink{net2__link__manager_8h_af5dcf41f03ebdeb2a09cec9f688528a0}{net2\-\_\-link\-\_\-manager\-\_\-get\-\_\-link} (struct \hyperlink{structnet2__link__t}{net2\-\_\-link\-\_\-t} $\ast$net2\-\_\-link, unsigned int ip\-\_\-address, unsigned short port)
+int \hyperlink{net2__link__manager_8h_a70c86c0d4b319c103155ae078c337ceb}{net2\-\_\-link\-\_\-manager\-\_\-get\-\_\-link} (struct \hyperlink{structnet2__link__t}{net2\-\_\-link\-\_\-t} $\ast$$\ast$net2\-\_\-link, unsigned int ip\-\_\-address, unsigned short port)
 \begin{DoxyCompactList}\small\item\em Retrieves the link corresponding to the given I\-P address and the port. \end{DoxyCompactList}\item 
 int \hyperlink{net2__link__manager_8h_ad2405018e99624de9df91daf30a1e3f6}{net2\-\_\-link\-\_\-manager\-\_\-check\-\_\-address\-\_\-and\-\_\-port} (unsigned int address, unsigned short port, bool $\ast$found)
 \begin{DoxyCompactList}\small\item\em Checks if the given I\-P address + port exist in the link manager links. (e.\-g If another link already communicate to this address + port) \end{DoxyCompactList}\item 
@@ -130,15 +130,15 @@ Returns a pointer on the link manager (which is itself a pointer on the singleto
 \begin{DoxyReturn}{Returns}
 A pointer on the link manager. 
 \end{DoxyReturn}
-\hypertarget{net2__link__manager_8h_af5dcf41f03ebdeb2a09cec9f688528a0}{\index{net2\-\_\-link\-\_\-manager.\-h@{net2\-\_\-link\-\_\-manager.\-h}!net2\-\_\-link\-\_\-manager\-\_\-get\-\_\-link@{net2\-\_\-link\-\_\-manager\-\_\-get\-\_\-link}}
+\hypertarget{net2__link__manager_8h_a70c86c0d4b319c103155ae078c337ceb}{\index{net2\-\_\-link\-\_\-manager.\-h@{net2\-\_\-link\-\_\-manager.\-h}!net2\-\_\-link\-\_\-manager\-\_\-get\-\_\-link@{net2\-\_\-link\-\_\-manager\-\_\-get\-\_\-link}}
 \index{net2\-\_\-link\-\_\-manager\-\_\-get\-\_\-link@{net2\-\_\-link\-\_\-manager\-\_\-get\-\_\-link}!net2_link_manager.h@{net2\-\_\-link\-\_\-manager.\-h}}
 \subsubsection[{net2\-\_\-link\-\_\-manager\-\_\-get\-\_\-link}]{\setlength{\rightskip}{0pt plus 5cm}int net2\-\_\-link\-\_\-manager\-\_\-get\-\_\-link (
 \begin{DoxyParamCaption}
-\item[{struct {\bf net2\-\_\-link\-\_\-t} $\ast$}]{net2\-\_\-link, }
+\item[{struct {\bf net2\-\_\-link\-\_\-t} $\ast$$\ast$}]{net2\-\_\-link, }
 \item[{unsigned int}]{ip\-\_\-address, }
 \item[{unsigned short}]{port}
 \end{DoxyParamCaption}
-)}}\label{net2__link__manager_8h_af5dcf41f03ebdeb2a09cec9f688528a0}
+)}}\label{net2__link__manager_8h_a70c86c0d4b319c103155ae078c337ceb}
 
 
 Retrieves the link corresponding to the given I\-P address and the port. 

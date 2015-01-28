@@ -105,7 +105,8 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Enumerations</h2></td></tr>
-<tr class="memitem:aec6c65ca30b506931155127e1b23a761"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><b>net2_channel_state_e</b> { <b>OK_INPUT</b>, 
+<tr class="memitem:aec6c65ca30b506931155127e1b23a761"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><b>net2_channel_state_e</b> { <b>INACTIVE</b>, 
+<b>OK_INPUT</b>, 
 <b>OK_OUTPUT</b>
  }</td></tr>
 <tr class="separator:aec6c65ca30b506931155127e1b23a761"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -116,9 +117,9 @@ Enumerations</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a8b022b10174fa88cba61806c856743c1"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="net2__channel_8h.html#a8b022b10174fa88cba61806c856743c1">net2_channel_output_create</a> (struct <a class="el" href="structnet2__channel__output__t.html">net2_channel_output_t</a> *net2_channel_output, char *ip_address, unsigned short port)</td></tr>
-<tr class="memdesc:a8b022b10174fa88cba61806c856743c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates the channel by asking the node to connect with the given node at (ip_address, port) to the channel with the given number.  <a href="#a8b022b10174fa88cba61806c856743c1">More...</a><br/></td></tr>
-<tr class="separator:a8b022b10174fa88cba61806c856743c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a90488a31d7baea5682ecf8b83879ad54"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="net2__channel_8h.html#a90488a31d7baea5682ecf8b83879ad54">net2_channel_output_create</a> (struct <a class="el" href="structnet2__channel__output__t.html">net2_channel_output_t</a> *net2_channel_output, char *ip_address, unsigned short port, unsigned int remote_channel_number)</td></tr>
+<tr class="memdesc:a90488a31d7baea5682ecf8b83879ad54"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates the channel by asking the node to connect with the given node at (ip_address, port) to the channel with the given number.  <a href="#a90488a31d7baea5682ecf8b83879ad54">More...</a><br/></td></tr>
+<tr class="separator:a90488a31d7baea5682ecf8b83879ad54"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad1241dbae1affeceb917ca88ae952e6e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad1241dbae1affeceb917ca88ae952e6e"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>net2_channel_output_write_integer</b> (struct <a class="el" href="structnet2__channel__output__t.html">net2_channel_output_t</a> *net2_channel_output, int value)</td></tr>
 <tr class="separator:ad1241dbae1affeceb917ca88ae952e6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -140,7 +141,7 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>net2_channel_input_add
 <dl class="section version"><dt>Version</dt><dd>2.0 </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>22/01/2015 </dd></dl>
 </div><h2 class="groupheader">Function Documentation</h2>
-<a class="anchor" id="a8b022b10174fa88cba61806c856743c1"></a>
+<a class="anchor" id="a90488a31d7baea5682ecf8b83879ad54"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -160,7 +161,13 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>net2_channel_input_add
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">unsigned short&#160;</td>
-          <td class="paramname"><em>port</em>&#160;</td>
+          <td class="paramname"><em>port</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>remote_channel_number</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -176,6 +183,7 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>net2_channel_input_add
     <tr><td class="paramname">net2_channel</td><td>A pointer to a channel to store in the created one. </td></tr>
     <tr><td class="paramname">ip_address</td><td>A string format IPv4 address (4 bytes values separated by ".") of the remote node. </td></tr>
     <tr><td class="paramname">port</td><td>The port of the remote node. </td></tr>
+    <tr><td class="paramname">remote_channel_number</td><td>The channel number of the remote channel. </td></tr>
     <tr><td class="paramname">remote_channel_number</td><td></td></tr>
   </table>
   </dd>
@@ -194,7 +202,7 @@ FAILURE : -1 </li>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Jan 24 2015 05:06:05 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Jan 28 2015 16:47:40 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>
