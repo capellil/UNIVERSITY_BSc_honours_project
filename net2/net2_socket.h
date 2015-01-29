@@ -106,11 +106,7 @@ int net2_socket_connect(struct net2_socket_t* net2_socket, unsigned int address,
  * @param data_length The data length.
  * @return <ul>
  		       <li>SUCCESS : 0.
- 			   <li>FAILED
-               <ul>
-                   <li>-1 if the peer has performed an orderly shutdown.
-                   <li>-2 otherwise.
-               </ul>
+ 			   <li>FAILED : -1
            </ul>
  * @pre net2_socket != NULL.
  **/
@@ -123,7 +119,11 @@ int net2_socket_write(struct net2_socket_t* net2_socket, void* data, unsigned in
  * @param data_length The number of bytes to read from the socket.
  * @return <ul>
  			   <li>SUCCESS : 0.
- 			   <li>FAILED : -1.
+ 			   <li>FAILED
+               <ul>
+                   <li>-1 if the peer has performed an orderly shutdown.
+                   <li>-2 otherwise.
+               </ul>
            </ul>
  * @pre <ul>
             <li>net2_socket != NULL

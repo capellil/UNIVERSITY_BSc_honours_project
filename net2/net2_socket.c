@@ -263,21 +263,13 @@ int net2_socket_write(struct net2_socket_t* net2_socket, void* data, unsigned in
     int number_of_written_bytes = send(net2_socket->_socket, data, data_length, 0);
 	
 	// TEST : Did the send succeed ?
-	if(number_of_written_bytes > 0)
+	if(number_of_written_bytes >= 0)
 	{
 	    // Yes, the send succeeded.
 	    #ifdef NET2_DEBUG
 		     net2_debug_success("net2_socket_write");
 		#endif
     }
-    else if(!number_of_written_bytes)
-	{
-	    // No, the send failed.
-	    result = -1;
-        #ifdef NET2_DEBUG
-		     net2_debug_failure("net2_socket_write", "The remote peer has performed an orderly shutdown.");
-		#endif
-	}
 	else
 	{
 	    // No, the send failed.
@@ -296,13 +288,22 @@ int net2_socket_read(struct net2_socket_t* net2_socket, void* data, unsigned int
 	int number_of_read_bytes = recv(net2_socket->_socket, data, data_length, 0);
 	
 	// TEST : Did the send succeed ?
-	if(number_of_read_bytes >= 0)
+	if(number_of_read_bytes > 0)
 	{
 	    // Yes, the send succeeded.
 	    #ifdef NET2_DEBUG
 		     net2_debug_success("net2_socket_read");
 		#endif
     }
+    
+    else if(!number_of_read_bytes)
+	{
+	    // No, the send failed.
+	    result = -1;
+        #ifdef NET2_DEBUG
+		     net2_debug_failure("net2_socket_read", "The remote peer has performed an orderly shutdown.");
+		#endif
+	}
 	else
 	{
 	    // No, the send failed.
