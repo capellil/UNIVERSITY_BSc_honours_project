@@ -18,20 +18,24 @@ int net2_link_rx_read(struct net2_socket_t* net2_socket, void* data, unsigned in
         int result = net2_socket_read(net2_socket, data, data_length);
         
         // Did the read succeed ?
-        if(result > 0)
+        if(!result)
         {
             // Yes, the read succeeded.
             net2_debug_success("net2_link_rx_read");
         }
-        else if(!result)
+        else if(result == -1)
         {
             // The peer has performed an orderly shutdown.
             net2_debug_failure("net2_link_rx_read", "The peer has performed an orderly shutdown.");
         }
-        else
+        else if(result == -2)
         {
             // No, the read failed.
             net2_debug_failure("net2_link_rx_read", "The read failed.");
+        }
+        else
+        {
+            // TODO Handles this case
         }
         
         return result;
@@ -69,20 +73,24 @@ int net2_link_read(struct net2_link_t* net2_link, void* data, unsigned int data_
         int result = net2_link_rx_read(net2_link->_net2_socket, data, data_length);
         
         // Did the read succeed ?
-        if(result > 0)
+        if(!result)
         {
             // Yes, the read succeeded.
             net2_debug_success("net2_link_read");
         }
-        else if(!result)
+        else if(result == -1)
         {
             // The peer has performed an orderly shutdown.
             net2_debug_failure("net2_link_read", "The peer has performed an orderly shutdown.");
         }
-        else
+        else if(result == -2)
         {
             // No, the read failed.
             net2_debug_failure("net2_link_read", "The read failed.");
+        }
+        else
+        {
+            // TODO Handles this case
         }
         
         return result;
@@ -190,7 +198,7 @@ int net2_link_send(struct net2_link_t* net2_link, struct net2_message_t* net2_me
             
             result = net2_link_write(net2_link, data, data_length);
             // TEST : Did the writing succeed ?
-            if(result > 0)
+            if(!result)
             {
                 result = 0;
                 //spy("HAS BEEN SENT");
@@ -199,7 +207,7 @@ int net2_link_send(struct net2_link_t* net2_link, struct net2_message_t* net2_me
                     net2_debug_success("net2_link_send");
                 #endif
             }
-            else if(!result)
+            else if(result == -1)
             {
                 // No, nothing has been written.
                 result = -1;
@@ -207,13 +215,17 @@ int net2_link_send(struct net2_link_t* net2_link, struct net2_message_t* net2_me
                     net2_debug_failure("net2_link_send", "Nothing has been written.");
                 #endif
             }
-            else
+            else if(result == -2)
             {
                 // No, the writing failed.
                 result = -1;
                 #ifdef NET2_DEBUG
                     net2_debug_failure("net2_link_send", "The writing failed.");
                 #endif
+            }
+            else
+            {
+                // TODO Handle this case
             }
             
             free(data);
@@ -278,7 +290,7 @@ void* net2_link_run(void* net2_link_to_run)
     if(data)
     {
         // Yes, the data dynamic allocation succeeded.
-        while((number_of_read_bytes = net2_link_read(net2_link, data, data_length)) > 0)
+        while(!(number_of_read_bytes = net2_link_read(net2_link, data, data_length)))
         {
             result = 0;
             
@@ -456,15 +468,19 @@ void* net2_link_run(void* net2_link_to_run)
             data = data_origin;
         }
         
-        if(!number_of_read_bytes)
+        if(number_of_read_bytes == -1)
         {
             //spy("The peer has orderely shutdown.\n");
             // TODO Inform channels it is broken.
         }
-        else
+        else if(number_of_read_bytes == -2)
         {
             //spy("There has been a problem reading.\n");
             // TODO Inform channels it is broken.
+        }
+        else
+        {   
+            // TODO Handles this case
         }
     }
     else
