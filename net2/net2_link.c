@@ -50,15 +50,25 @@ int net2_link_tx_write(struct net2_socket_t* net2_socket, void* data, unsigned i
         int result = net2_socket_write(net2_socket, data, data_length);
         
         // Did the write succeed ?
-        if(result >= 0)
+        if(!result)
         {
             // Yes, the write succeeded.
-            net2_debug_success("net2_link_tx_write");
+            net2_debug_success("net2_link_write");
+        }
+        else if(result == -1)
+        {
+            // No, nothing has been written
+            net2_debug_failure("net2_link_write", "Nothing has been written.");
+        }
+        else if(result == -2)
+        {
+            // No, the write failed.
+            net2_debug_failure("net2_link_write", "The write failed.");
         }
         else
         {
-            // No, the write failed.
-            net2_debug_failure("net2_link_tx_write", "The write failed.");
+            // Unknown returned value
+            net2_debug_failure("net2_link_write", "Unknown returned value.");
         }
         
         return result;
@@ -105,15 +115,25 @@ int net2_link_write(struct net2_link_t* net2_link, void* data, unsigned int data
         int result = net2_link_tx_write(net2_link->_net2_socket, data, data_length);
         
         // Did the write succeed ?
-        if(result >= 0)
+        if(!result)
         {
             // Yes, the write succeeded.
             net2_debug_success("net2_link_tx_write");
         }
-        else
+        else if(result == -1)
+        {
+            // No, nothing has been written.
+            net2_debug_failure("net2_link_tx_write", "Nothing has been written.");
+        }
+        else if(result == -2)
         {
             // No, the write failed.
             net2_debug_failure("net2_link_tx_write", "The write failed.");
+        }
+        else
+        {
+            // Unknown returned value
+            net2_debug_failure("net2_link_tx_write", "Unknown returned value.");
         }
         
         return result;
@@ -132,18 +152,18 @@ int net2_link_send(struct net2_link_t* net2_link, struct net2_message_t* net2_me
     switch(net2_message->_type)
     {
         case SEND :
-            data_length = sizeof(unsigned short) // the type
+            data_length = sizeof(unsigned int) // the type
                         + sizeof(unsigned int) // source
                         + sizeof(unsigned int) // destination
                         + net2_message->_data_length // length of data
                         + sizeof(unsigned int); // the variable containing the length of the data
             break;
         case ACK :
-            data_length = sizeof(unsigned short) // the type
+            data_length = sizeof(unsigned int) // the type
                         + sizeof(unsigned int); // destination
             break;
         case OPEN : 
-            data_length = sizeof(unsigned short) // the type
+            data_length = sizeof(unsigned int) // the type
                         + sizeof(unsigned int) // destination
                         + sizeof(unsigned int); // sourcel
             break;
@@ -167,8 +187,8 @@ int net2_link_send(struct net2_link_t* net2_link, struct net2_message_t* net2_me
             {
                 case SEND :
                     //spy("SEND SENT");
-                    memcpy(temp, &(net2_message->_type), sizeof(unsigned short));
-                    temp += sizeof(unsigned short); // the type
+                    memcpy(temp, &(net2_message->_type), sizeof(unsigned int));
+                    temp += sizeof(unsigned int); // the type
                     memcpy(temp, &(net2_message->_destination), sizeof(unsigned int));
                     temp += sizeof(unsigned int); // destination
                     memcpy(temp, &(net2_message->_source), sizeof(unsigned int));
@@ -179,14 +199,14 @@ int net2_link_send(struct net2_link_t* net2_link, struct net2_message_t* net2_me
                     break;
                 case ACK :
                     //spy("ACK SENT");
-                    memcpy(temp, &(net2_message->_type), sizeof(unsigned short));
-                    temp += sizeof(unsigned short); // the type
+                    memcpy(temp, &(net2_message->_type), sizeof(unsigned int));
+                    temp += sizeof(unsigned int); // the type
                     memcpy(temp, &(net2_message->_destination), sizeof(unsigned int));
                     break;
                 case OPEN :
                     //spy("OPEN SENT");
-                    memcpy(temp, &(net2_message->_type), sizeof(unsigned short));
-                    temp += sizeof(unsigned short); // the type
+                    memcpy(temp, &(net2_message->_type), sizeof(unsigned int));
+                    temp += sizeof(unsigned int); // the type
                     memcpy(temp, &(net2_message->_destination), sizeof(unsigned int));
                     temp += sizeof(unsigned int); // the type
                     memcpy(temp, &(net2_message->_source), sizeof(unsigned int));
@@ -225,7 +245,11 @@ int net2_link_send(struct net2_link_t* net2_link, struct net2_message_t* net2_me
             }
             else
             {
-                // TODO Handle this case
+                // Unknown returned value.
+                result = -1;
+                #ifdef NET2_DEBUG
+                    net2_debug_failure("net2_link_send", "Unknown returned value.");
+                #endif
             }
             
             free(data);
@@ -299,16 +323,16 @@ void* net2_link_run(void* net2_link_to_run)
             // TEST : Did the message dynamic allocation succeed ?
             if(net2_message)
             {
-                unsigned short type;
-                memcpy(&type, (unsigned short*)data, sizeof(unsigned short));
+                unsigned int type;
+                memcpy(&type, data, sizeof(unsigned int));
                 
                 // Yes, the message dynamic allocation succeeded.
                 switch(type)
                 {
                     case SEND :
                         //spy("SEND RECEIVED");
-                        memcpy(&(net2_message->_type), data, sizeof(unsigned short));
-                        data += sizeof(unsigned short); // the type
+                        memcpy(&(net2_message->_type), data, sizeof(unsigned int));
+                        data += sizeof(unsigned int); // the type
                         memcpy(&(net2_message->_destination), data, sizeof(unsigned int));
                         data += sizeof(unsigned int); // destination
                         memcpy(&(net2_message->_source), data, sizeof(unsigned int));
@@ -334,14 +358,14 @@ void* net2_link_run(void* net2_link_to_run)
                         break;
                     case ACK :
                         //spy("ACK RECEIVED");
-                        memcpy(&(net2_message->_type), data, sizeof(unsigned short));
-                        data += sizeof(unsigned short); // the type
+                        memcpy(&(net2_message->_type), data, sizeof(unsigned int));
+                        data += sizeof(unsigned int); // the type
                         memcpy(&(net2_message->_destination), data, sizeof(unsigned int));
                         break;
                     case OPEN :
                         //spy("OPEN RECEIVED");
-                        memcpy(&(net2_message->_type), data, sizeof(unsigned short));
-                        data += sizeof(unsigned short); // the type
+                        memcpy(&(net2_message->_type), data, sizeof(unsigned int));
+                        data += sizeof(unsigned int); // the type
                         memcpy(&(net2_message->_destination), data, sizeof(unsigned int));
                         data += sizeof(unsigned int); // the destination
                         memcpy(&(net2_message->_source), data, sizeof(unsigned int));
@@ -373,7 +397,7 @@ void* net2_link_run(void* net2_link_to_run)
                             {
                                 struct net2_channel_input_t** channel_input = (struct net2_channel_input_t**)&channel;
                                 
-                                if(type == OPEN)
+                                if(net2_message->_type == OPEN)
                                 {
                                     (*channel_input)->_link = net2_link;
                                     pthread_mutex_lock(&((*channel_input)->_mutex));
@@ -383,7 +407,7 @@ void* net2_link_run(void* net2_link_to_run)
                                         net2_debug_success("net2_link_run OPEN");
                                     #endif
                                 }
-                                else
+                                else if(net2_message->_type == SEND)
                                 {
                                     // TEST : Has the message add succeed ?
                                     //spy("ADDS TO BUFFER INPUT");
@@ -401,12 +425,18 @@ void* net2_link_run(void* net2_link_to_run)
                                         #endif
                                     }
                                 }
+                                else
+                                {
+                                    #ifdef NET2_DEBUG
+                                        net2_debug_failure("net2_link_run", "The message has an unknown type.");
+                                    #endif
+                                }
                             }
                             else
                             {
                                 struct net2_channel_output_t** channel_output = (struct net2_channel_output_t**)&channel;
                                 
-                                if(type == ACK)
+                                if(net2_message->_type == ACK)
                                 {
                                     //spy("ADDS TO BUFFER OUTPUT");
                                     if(!net2_channel_output_add_message_to_buffer(*channel_output, net2_message))
@@ -426,7 +456,7 @@ void* net2_link_run(void* net2_link_to_run)
                                 else
                                 {
                                     #ifdef NET2_DEBUG
-                                        net2_debug_failure("net2_link_run", "The message has incorrect type.");
+                                        net2_debug_failure("net2_link_run", "The message has an unknown type.");
                                     #endif
                                 }
                             }
