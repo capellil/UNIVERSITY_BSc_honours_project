@@ -304,89 +304,118 @@ void* net2_link_run(void* net2_link_to_run)
 {
     struct net2_link_t* net2_link = (struct net2_link_t*)net2_link_to_run;
     
-    int result;
-    unsigned int data_length = NET2_MESSAGE_MAX_LENGTH;
-    void* data = (void*)malloc(data_length);
-    void* data_origin = data;
-    int number_of_read_bytes;
+    int result = 0;
+    bool condition = true;
     
-    // TEST : Did the data dynamic allocation succeed ?
-    if(data)
+    struct net2_message_t* net2_message;
+    
+    // TEST : Did the message dynamic allocation succeed ?
+    while(condition && (net2_message = (struct net2_message_t*)malloc(sizeof(struct net2_message_t))))
     {
-        // Yes, the data dynamic allocation succeeded.
-        while(!(number_of_read_bytes = net2_link_read(net2_link, data, data_length)))
+        // Yes, the message dynamic allocation succeeded.
+        result = net2_link_read(net2_link, &(net2_message->_type), sizeof(net2_message->_type));
+        
+        // TEST : Did the message type reading succeed ?
+        if(!result)
         {
-            result = 0;
+            // Yes, the message type reading succeeded.
+            result = net2_link_read(net2_link, &(net2_message->_destination), sizeof(net2_message->_destination));
             
-            struct net2_message_t* net2_message = (struct net2_message_t*)malloc(sizeof(struct net2_message_t));
-                
-            // TEST : Did the message dynamic allocation succeed ?
-            if(net2_message)
+            // TEST : Did the message destination reading succeed ?
+            if(!result)
             {
-                unsigned int type;
-                memcpy(&type, data, sizeof(unsigned int));
-                
-                // Yes, the message dynamic allocation succeeded.
-                switch(type)
+                // Yes, the message destination reading succeeded.
+                // TEST : Is the message of known type ?
+                switch(net2_message->_type)
                 {
                     case SEND :
-                        //spy("SEND RECEIVED");
-                        memcpy(&(net2_message->_type), data, sizeof(unsigned int));
-                        data += sizeof(unsigned int); // the type
-                        memcpy(&(net2_message->_destination), data, sizeof(unsigned int));
-                        data += sizeof(unsigned int); // destination
-                        memcpy(&(net2_message->_source), data, sizeof(unsigned int));
-                        data += sizeof(unsigned int); // source
-                        memcpy(&(net2_message->_data_length), data, sizeof(unsigned int));
-                        data += sizeof(unsigned int); // the variable containing the length of the data
-                        net2_message->_data = (void*)malloc(net2_message->_data_length);
-
-                        // TEST : Did the message data dynamic allocation succeed ?
-                        if(net2_message->_data)
+                        // Yes, the message if of known type.
+                        result = net2_link_read(net2_link, &(net2_message->_source), sizeof(net2_message->_source));
+                        
+                        // TEST : Did the message source reading succeed ?
+                        if(!result)
                         {
-                            // Yes, the message data dynamic allocation succeeded.
-                            memcpy(net2_message->_data, data, net2_message->_data_length);
+                            // Yes, the message source reading succeeded.
+                            result = net2_link_read(net2_link, &(net2_message->_data_length), sizeof(net2_message->_data_length));
+                            
+                            // TEST : Did the message data length reading succeed ?
+                            if(!result)
+                            {
+                                // Yes, the message data length reading succeeded.
+                                net2_message->_data = (void*)malloc(net2_message->_data_length);
+                                
+                                // TEST : Did the data dynamic allocation succeed ?
+                                if(net2_message->_data)
+                                {
+                                    // Yes, the data dynamic allocation succeeded.
+                                    result = net2_link_read(net2_link, net2_message->_data, net2_message->_data_length);
+                                    
+                                    // TEST : Did the message data reading succeed ?
+                                    if(!result)
+                                    {
+                                        // Yes, the message data reading succeeded.
+                                    }
+                                    else
+                                    {
+                                        // No, the message data reading failed.
+                                        condition = (result == -2);
+                                        result = -7;
+                                    }
+                                }
+                                else
+                                {
+                                    // No, the data dynamic allocation failed.
+                                    result = -6;
+                                }
+                            }
+                            else
+                            {
+                                // No, the message data length reading failed.
+                                condition = (result == -2);
+                                result = -5;
+                            }
                         }
                         else
                         {
-                            // No, the message data dynamic allocation failed.
-                            result = -1;
-                            #ifdef NET2_DEBUG
-                                net2_debug_failure("net2_link_run", "The message data dynamic allocation failed.");
-                            #endif
+                            // No, the message source reading failed.
+                            condition = (result == -2);
+                            result = -4;
                         }
                         break;
                     case ACK :
-                        //spy("ACK RECEIVED");
-                        memcpy(&(net2_message->_type), data, sizeof(unsigned int));
-                        data += sizeof(unsigned int); // the type
-                        memcpy(&(net2_message->_destination), data, sizeof(unsigned int));
+                        // Yes, the message if of known type.
                         break;
                     case OPEN :
-                        //spy("OPEN RECEIVED");
-                        memcpy(&(net2_message->_type), data, sizeof(unsigned int));
-                        data += sizeof(unsigned int); // the type
-                        memcpy(&(net2_message->_destination), data, sizeof(unsigned int));
-                        data += sizeof(unsigned int); // the destination
-                        memcpy(&(net2_message->_source), data, sizeof(unsigned int));
+                        // Yes, the message if of known type.
+                        result = net2_link_read(net2_link, &(net2_message->_source), sizeof(net2_message->_source));
+                        
+                        // TEST : Did the message source reading succeed ?
+                        if(!result)
+                        {
+                            // Yes, the message source reading succeeded.
+                        }
+                        else
+                        {  
+                            // No, the message source reading failed.
+                            condition = (result == -2);
+                            result = -8;
+                        }   
                         break;
-                    default : 
-                        result = -1;
-                        #ifdef NET2_DEBUG
-                            net2_debug_failure("net2_link_run", "The message type was not correct.");
-                        #endif
+                    default :
+                        // No, the message is of unknown type.
+                        result = -3;
                         break;
                 }
                 
-                // TEST : Was it a correct message type ?
                 if(!result)
                 {
                     // Yes, it was a correct message type.
                     void* channel = NULL;
                     enum net2_channel_type_e channel_type;
+                    result = net2_channel_manager_get_channel(&channel, &channel_type, net2_message->_destination);
                     
                     // TEST : Did the research into the channel manager succeed ?
-                    if(!net2_channel_manager_get_channel(&channel, &channel_type, net2_message->_destination))
+                    if(!result)
                     {
                         // Yes, the research into the channel manager succeeded.
                         // TEST : Has a channel been found ?
@@ -409,9 +438,10 @@ void* net2_link_run(void* net2_link_to_run)
                                 }
                                 else if(net2_message->_type == SEND)
                                 {
+                                    result = net2_channel_input_add_message_to_buffer(*channel_input, net2_message);
+                                
                                     // TEST : Has the message add succeed ?
-                                    //spy("ADDS TO BUFFER INPUT");
-                                    if(!net2_channel_input_add_message_to_buffer(*channel_input, net2_message))
+                                    if(!result)
                                     {
                                         // Yes, the message add succeeded.
                                         #ifdef NET2_DEBUG
@@ -420,6 +450,7 @@ void* net2_link_run(void* net2_link_to_run)
                                     }
                                     else
                                     {
+                                        result = -9;
                                         #ifdef NET2_DEBUG
                                             net2_debug_failure("net2_link_run", "The message add failed.");
                                         #endif
@@ -427,6 +458,7 @@ void* net2_link_run(void* net2_link_to_run)
                                 }
                                 else
                                 {
+                                    result = -10;
                                     #ifdef NET2_DEBUG
                                         net2_debug_failure("net2_link_run", "The message has an unknown type.");
                                     #endif
@@ -438,8 +470,8 @@ void* net2_link_run(void* net2_link_to_run)
                                 
                                 if(net2_message->_type == ACK)
                                 {
-                                    //spy("ADDS TO BUFFER OUTPUT");
-                                    if(!net2_channel_output_add_message_to_buffer(*channel_output, net2_message))
+                                    result = net2_channel_output_add_message_to_buffer(*channel_output, net2_message);
+                                    if(!result)
                                     {
                                         // Yes, the message add succeeded.
                                         #ifdef NET2_DEBUG
@@ -448,6 +480,7 @@ void* net2_link_run(void* net2_link_to_run)
                                     }
                                     else
                                     {
+                                        result = -11;
                                         #ifdef NET2_DEBUG
                                             net2_debug_failure("net2_link_run", "The message add failed.");
                                         #endif
@@ -455,6 +488,7 @@ void* net2_link_run(void* net2_link_to_run)
                                 }
                                 else
                                 {
+                                    result = -12;
                                     #ifdef NET2_DEBUG
                                         net2_debug_failure("net2_link_run", "The message has an unknown type.");
                                     #endif
@@ -464,6 +498,7 @@ void* net2_link_run(void* net2_link_to_run)
                         else
                         {
                             // No, any channel with this channel number has been found
+                            result = -13;
                             #ifdef NET2_DEBUG
                                 char buffer[512];
                                 sprintf(buffer, "Any channel with this channel number %d has been found.", net2_message->_destination);
@@ -474,6 +509,7 @@ void* net2_link_run(void* net2_link_to_run)
                     else
                     {
                         // No, the reserach into the channel manager failed.
+                        result = -14;
                         #ifdef NET2_DEBUG
                             net2_debug_failure("net2_link_run", "The channel has not been found.");
                         #endif
@@ -482,6 +518,7 @@ void* net2_link_run(void* net2_link_to_run)
                 else
                 {
                     // No, it was not a correct message type, or at least it was not known.
+                    result = -15;
                     #ifdef NET2_DEBUG
                         net2_debug_failure("net2_link_run", "It was not a correct message type, or at least it was not known.");
                     #endif
@@ -489,37 +526,28 @@ void* net2_link_run(void* net2_link_to_run)
             }
             else
             {
-                // No, the message dynamic allocation failed.
-                #ifdef NET2_DEBUG
-                    net2_debug_failure("net2_link_run", "The message dynamic allocation failed.");
-                #endif
+                // No, the message destination reading failed.
+                condition = (result == -2);
+                result = -2;
             }
-            
-            data = data_origin;
-        }
-        
-        if(number_of_read_bytes == -1)
-        {
-            //spy("The peer has orderely shutdown.\n");
-            // TODO Inform channels it is broken.
-        }
-        else if(number_of_read_bytes == -2)
-        {
-            //spy("There has been a problem reading.\n");
-            // TODO Inform channels it is broken.
         }
         else
-        {   
-            // TODO Handles this case
+        {
+            // No, the message type reading failed.
+            condition = (result == -2);
+            result = -1;
+        }
+         
+        if(result)
+        {
+            if(net2_message->_data)
+            {
+                free(net2_message->_data);
+            }
+            
+            free(net2_message);
         }
     }
-    else
-    {
-        // No, the data dynamic allocation failed.
-        #ifdef NET2_DEBUG
-            net2_debug_failure("net2_link_run", "The data dynamic allocation failed.");
-        #endif
-    }
     
-    return NULL;
+    return NULL; // FIXME Replace returned value
 }
