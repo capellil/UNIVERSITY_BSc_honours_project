@@ -292,23 +292,23 @@ int net2_link_server_new_link_to_run(struct net2_link_t* link_to_run)
                 // Yes, the new element dynamic allocation succeeded.
                 new_element->_my_thread = new_link_thread;
                 new_element->_my_link = link_to_run;
-                struct net2_link_thread_linked_element_t* temp = (*net2_link_server)->_link_threads;
+                struct net2_link_thread_linked_element_t** temp = &((*net2_link_server)->_link_threads);
                 
                 // TEST : Is there already at least one link ?
-                if(temp)
+                if(*temp)
                 {
                     // Yes, there is already at least one link.
-                    while(temp)
+                    while(*temp)
                     {
-                        temp = temp->_next_link;
+                        *temp = (*temp)->_next_link;
                     }
                     
-                    temp->_next_link = new_element;
+                    *temp = new_element;
                 }
                 else
                 {
                     // No, there is not any links yet.
-                    (*net2_link_server)->_link_threads = new_element;
+                    *temp = new_element;
                 }
                 
                 void* new_link_to_run_parameters = link_to_run;
