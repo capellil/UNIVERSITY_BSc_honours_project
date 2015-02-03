@@ -40,4 +40,10 @@ struct net2_message_linked_element_t
     struct net2_message_linked_element_t* _next_message; ///< Next message.
 };
 
+/**
+ * @brief Displays the description of the given net2 message.
+ * @param net2_message The message to display.
+ **/
+void net2_message_print(struct net2_message_t* net2_message);
+
 #endif // NET2_NETWORK_PROTOCOL_INCLUDED INCLUDED
