@@ -84,22 +84,22 @@ int net2_link_manager_register_link(struct net2_link_t* net2_link)
     if(*net2_link_manager)
     {        
         // Yes, the link manager is already instanced.
-        struct net2_link_linked_element_t* temp = (*net2_link_manager)->_links;
+        struct net2_link_linked_element_t** temp = &((*net2_link_manager)->_links);
         
         // TEST : Has the link manager some links registered already ?
-        if(temp)
+        if(*temp)
         {
             // Yes, the link manager already has at least 1 net2 link registered.        
             // Parses the link manager linked list of links
-            while(!net2_link_compare_to_link(net2_link, temp->_my_link) && temp->_next_link)
+            while(*temp && !net2_link_compare_to_link(net2_link, (*temp)->_my_link))
             {
                 // We go to the next net2 link.
-                temp = temp->_next_link;   
+                *temp = (*temp)->_next_link;   
             }
             
             // We test if we stopped because we are at the last node and / or if we found another link pointing to the same address + port.
             // TEST : Has an identical link been found ?
-            if(net2_link_compare_to_link(net2_link, temp->_my_link))
+            if(*temp)
             {
                 // Yes, an identical link has been found.
                 result = -1;
@@ -118,7 +118,11 @@ int net2_link_manager_register_link(struct net2_link_t* net2_link)
                 {
                     // Yes, the new link element dynamic allocation succeeded.
                     new_linked_element->_my_link = net2_link;
-                    temp->_next_link = new_linked_element;
+                    new_linked_element->_next_link = NULL;
+                    *temp = new_linked_element;
+                    #ifdef NET2_DEBUG
+                        net2_debug_success("net2_link_manager_register_link");
+                    #endif
                 }
                 else
                 {
@@ -141,6 +145,7 @@ int net2_link_manager_register_link(struct net2_link_t* net2_link)
             {
                 // Yes, the new link element dynamic allocation succeeded.
                 new_linked_element->_my_link = net2_link;
+                new_linked_element->_next_link = NULL;
                 (*net2_link_manager)->_links = new_linked_element;
                 #ifdef NET2_DEBUG
                     net2_debug_success("net2_link_manager_register_link");
