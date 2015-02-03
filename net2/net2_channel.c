@@ -105,22 +105,26 @@ int net2_channel_output_write_integer(struct net2_channel_output_t* net2_channel
     if(!net2_link_send(net2_channel_output->_link, &integer_message))
     {
         // Yes, the writing succeeded.
-        //spy("having mutex");
         if(!(net2_channel_output->_messages))
         {
-            //spy("waiting cond");
             pthread_cond_wait(&(net2_channel_output->_cond), &(net2_channel_output->_mutex));
         }
         
-        //spy("cond ok");
         struct net2_message_t* message_to_read = net2_channel_output->_messages->_my_message;
     
+        if(!(net2_channel_output->_messages->_next_message))
+        {
+            net2_channel_output->_messages = NULL;
+        }
+        else
+        {
+            net2_channel_output->_messages = net2_channel_output->_messages->_next_message;
+        }
+        
         // TEST : Is the message of the expected type ?
         if(message_to_read->_type == ACK)
         {
-            // Yes, the message is of expected type.            
-            net2_channel_output->_messages = net2_channel_output->_messages->_next_message;
-            
+            // Yes, the message is of expected type.                        
             free(message_to_read);
             #ifdef NET2_DEBUG
                 net2_debug_success("net2_channel_output_write_integer");
@@ -174,12 +178,12 @@ int net2_channel_output_add_message_to_buffer(struct net2_channel_output_t* net2
         if(temp)
         {
             // Yes, there is at least one message.
-            while(temp)
+            while(temp->_next_message)
             {
                 temp = temp->_next_message;
             }
             
-            temp = new_element;
+            temp->_next_message = new_element;
             #ifdef NET2_DEBUG
                 net2_debug_success("net2_channel_output_add_message_to_buffer");
             #endif
@@ -274,7 +278,6 @@ int net2_channel_input_read_integer(struct net2_channel_input_t* net2_channel_in
 {
     int result = 0;
     
-    //spy("before mutex lock");
     pthread_mutex_lock(&(net2_channel_input->_mutex));
     
     // TEST : Is there any messages to read ?
@@ -283,21 +286,25 @@ int net2_channel_input_read_integer(struct net2_channel_input_t* net2_channel_in
         // No, there is not any messages to read.
         // Waiting for a new message to be received.
         
-        //spy("Waits to get a message");
         pthread_cond_wait(&(net2_channel_input->_cond), &(net2_channel_input->_mutex));
     }  
     
-    //spy("Must be at least one message");
-    
     struct net2_message_t* message_to_read = net2_channel_input->_messages->_my_message;
+    
+    if(!(net2_channel_input->_messages->_next_message))
+    {
+        net2_channel_input->_messages = NULL;
+    }
+    else
+    {
+        net2_channel_input->_messages = net2_channel_input->_messages->_next_message;
+    }
     
     // TEST : Is the message of the expected type ?
     if(message_to_read->_type == SEND)
     {
         // Yes, the message is of expected type.
-        memcpy(value, (int*)message_to_read->_data, sizeof(int));
-        
-        net2_channel_input->_messages = net2_channel_input->_messages->_next_message;
+        memcpy(value, (int*)(message_to_read->_data), sizeof(int));
         
         struct net2_message_t ack_message;
         ack_message._type = ACK;
@@ -359,27 +366,24 @@ int net2_channel_input_add_message_to_buffer(struct net2_channel_input_t* net2_c
         // Yes, the new element dynamic allocation succeeded.
         new_element->_my_message = net2_message;
         new_element->_next_message = NULL;
-        //spy("Wants to lock the mutex from add message 2 buffer");
         struct net2_message_linked_element_t* temp = net2_channel_input->_messages;
         
         // TEST : Is there already at least one message ?
         if(temp)
         {
-            //spy("There is already at least on message in this buffer.");
             // Yes, there is at least one message.
-            while(temp)
+            while(temp->_next_message)
             {
                 temp = temp->_next_message;
             }
             
-            temp = new_element;
+            temp->_next_message = new_element;
             #ifdef NET2_DEBUG
                 net2_debug_success("net2_channel_input_add_message_to_buffer");
             #endif
         }
         else
         {
-            //spy("There is no message in this buffer yet.");
             net2_channel_input->_messages = new_element;
             #ifdef NET2_DEBUG
                 net2_debug_success("net2_channel_input_add_message_to_buffer");
