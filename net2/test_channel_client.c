@@ -22,12 +22,30 @@ int main(int argc, char* argv[])
         if(!net2_channel_output_create(&channel, ip_address, remote_port, remote_channel_input_number))
         {
             printf("yes.\n");
-            int value = 10;
-            printf("Did the integer writing succeed...");
-            if(!net2_channel_output_write_integer(&channel, value))
+            
+            unsigned int value = 0;
+            int ok = 1;
+            while(value < 10 && ok)
+            {
+                printf("Did the integer writing succeed...");
+                if(!net2_channel_output_write_integer(&channel, value))
+                {
+                    printf("yes.\n");
+                    printf("Value send : %d.\n", value);
+                    value++;
+                }
+                else
+                {
+                    ok = 0;
+                    printf("no.\n");
+                    programme_return = EXIT_FAILURE;
+                }
+            }
+            
+            printf("Did the node close succeed...");
+            if(!net2_node_close())
             {
                 printf("yes.\n");
-                net2_node_close();
             }
             else
             {

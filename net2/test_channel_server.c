@@ -21,11 +21,27 @@ int main(int argc, char* argv[])
         {
             printf("yes.\n");
             int value = 0;
-            printf("Did the integer reading succeed...");
-            if(!net2_channel_input_read_integer(&channel, &value))
+            int ok = 1;
+            for(unsigned int i = 0; i < 10 && ok; i++)
+            {
+                printf("Did the integer reading succeed...");
+                if(!net2_channel_input_read_integer(&channel, &value))
+                {
+                    printf("yes.\n");
+                    printf("Value received : %d.\n", value);
+                }
+                else
+                {
+                    ok = 0;
+                    printf("no.\n");
+                    programme_return = EXIT_FAILURE;
+                }
+            }
+            
+            printf("Did the node close succeed...");
+            if(!net2_node_close())
             {
                 printf("yes.\n");
-                net2_node_close();
             }
             else
             {
