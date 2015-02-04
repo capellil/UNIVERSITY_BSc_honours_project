@@ -15,7 +15,7 @@ function thd_compile
 
 	for i in $*; do
 		if [ -e $i ]; then
-			if [ `gcc -c $i $flags 2>&1 > /dev/null | wc -l` -eq 0 ]; then
+			if [ `gcc -c $i $flags -o ${i%?}o 2>&1 > /dev/null | wc -l` -eq 0 ]; then
 				echo -e "\e[32mSUCCESS\e[0m \c";
 			else
 				echo -e "\e[7m\e[31mFAILURE\e[0m \c";

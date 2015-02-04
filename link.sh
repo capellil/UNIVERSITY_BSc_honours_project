@@ -14,8 +14,8 @@ function thd_LINK
 	fi
 
 	for i in $*; do
-		if [ -e $i.o ]; then
-			if [ `gcc -o $i $i.o net2*.o $flags 2>&1 > /dev/null | wc -l` -eq 0 ]; then
+		if [ -e $i ]; then
+			if [ `gcc -o ${i%??} $i net2/net2*.o processes/process*.o $flags 2>&1 > /dev/null | wc -l` -eq 0 ]; then
 				echo -e "\e[32mSUCCESS\e[0m \c";
 			else
 				echo -e "\e[7m\e[31mFAILURE\e[0m \c";
@@ -29,5 +29,5 @@ function thd_LINK
 
 clear
 
-files_to_LINK=`find -maxdepth 1 -name "*.o" | grep -v net2 | cut -f2 -d / | cut -f1 -d .`
+files_to_LINK=`find -maxdepth 2 -name "test*.o"`
 thd_LINK $files_to_LINK
