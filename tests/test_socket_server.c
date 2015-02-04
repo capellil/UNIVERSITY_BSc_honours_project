@@ -5,7 +5,7 @@
  * @date 19/01/2015
  **/
 
-#include "net2_socket.h"
+#include "../net2/net2_socket.h"
 
 #include <stdio.h> // printf
 #include <stdlib.h> // EXIT_SUCCESS | EXIT_FAILURE

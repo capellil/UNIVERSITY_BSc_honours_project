@@ -9,7 +9,7 @@
 #include <stdlib.h> // EXIT_SUCCESS | EXIT_FAILURE
 #include <netinet/in.h> // sockaddr_in | IPPROTO_TCP | IPPROTO_UDP
 
-#include "net2_link.h"
+#include "../net2/net2_link.h"
 
 /**
  * @brief Creates a link behaving as the client : it connects to the given server (e.g : ip address and port). First, it creates the corresponding socket and the wraps it into a link.

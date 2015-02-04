@@ -9,8 +9,8 @@
 #include <stdlib.h> // atoi
 #include <stdbool.h> // bool
 
-#include "net2_link_server.h"
-#include "net2_link_manager.h"
+#include "../net2/net2_link_server.h"
+#include "../net2/net2_link_manager.h"
 
 /**
  * Tries to connect on the link server at the given address and port.

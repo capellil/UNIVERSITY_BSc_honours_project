@@ -9,8 +9,8 @@
 #include <stdlib.h> // atoi | NULL
 #include <pthread.h> // pthread_join
 
-#include "net2_link_server.h"
-#include "net2_link_manager.h"
+#include "../net2/net2_link_server.h"
+#include "../net2/net2_link_manager.h"
 
 /**
  * @brief Runs a link server on the given port and accepts every incoming connections.

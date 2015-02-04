@@ -2,8 +2,8 @@
 #include <stdlib.h> // EXIT_SUCCESS
 #include <pthread.h> // pthread_join
 
-#include "net2_node.h"
-#include "net2_link_server.h"
+#include "../net2/net2_node.h"
+#include "../net2/net2_link_server.h"
 
 /**
  * @brief Inits the node on the given port.

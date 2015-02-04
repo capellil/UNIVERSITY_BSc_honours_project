@@ -2,8 +2,8 @@
 #include <stdlib.h> // EXIT_SUCCESS
 #include <stdbool.h> // bool
 
-#include "net2_node.h"
-#include "net2_link_manager.h"
+#include "../net2/net2_node.h"
+#include "../net2/net2_link_manager.h"
 
 /**
  * @brief Inits the node on the given port and connects to the node at the given address and port.

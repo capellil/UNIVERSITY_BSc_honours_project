@@ -1,7 +1,7 @@
 #include <stdio.h> // pritnf
 #include <stdlib.h> // EXIT_SUCCESS
 
-#include "net2_channel_manager.h"
+#include "../net2/net2_channel_manager.h"
 
 int main(int argc, char* argv[])
 {

@@ -9,7 +9,7 @@
 #include <stdlib.h> // EXIT_SUCCESS | EXIT_FAILURE
 #include <string.h> // strlen
 
-#include "net2_socket.h"
+#include "../net2/net2_socket.h"
 
 /**
  * @brief Creates a socket and connects it to the given address and port.

@@ -10,7 +10,7 @@
 #include <netinet/in.h> // sockaddr_in | IPPROTO_TCP | IPPROTO_UDP
 #include <string.h> // strcpy
 
-#include "net2_link.h"
+#include "../net2/net2_link.h"
 
 /**
  * @brief Creates a link behaving as the server : it accepts the connection from the client on the given port. It first creates a socket and binds it to the port, it then listens on it and finally accept the client connection in a socket. After that, the socket is wrapped in a link.

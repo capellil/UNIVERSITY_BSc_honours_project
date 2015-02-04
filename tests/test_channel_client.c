@@ -1,34 +1,38 @@
 #include <stdlib.h> // EXIT_SUCCESS
 #include <stdio.h> // printf
 
-#include "net2_node.h"
-#include "net2_channel.h"
+#include "../net2/net2_node.h"
+#include "../net2/net2_channel.h"
 
 int main(int argc, char* argv[])
 {
     int programme_return = EXIT_SUCCESS;
-    unsigned short port = 2500;
-    unsigned int channel_input_number = 100;
+    char ip_address[] = "127.0.0.1";
+    unsigned short port = 2600;
+    unsigned short remote_port = 2500;
+    unsigned int remote_channel_input_number = 100;
 
     printf("Did the node initialisation succeed...");
     if(!net2_node_init(port))
     {
         printf("yes.\n");
-        struct net2_channel_input_t channel;
+        struct net2_channel_output_t channel;
         
-        printf("Did the channel input creation on channel %d succeed...", channel_input_number);
-        if(!net2_channel_input_create(&channel, channel_input_number))
+        printf("Did the channel output creation succeed on remote channel %d...", remote_channel_input_number);
+        if(!net2_channel_output_create(&channel, ip_address, remote_port, remote_channel_input_number))
         {
             printf("yes.\n");
-            int value = 0;
+            
+            unsigned int value = 0;
             int ok = 1;
-            for(unsigned int i = 0; i < 10 && ok; i++)
+            while(value < 10 && ok)
             {
-                printf("Did the integer reading succeed...");
-                if(!net2_channel_input_read_integer(&channel, &value))
+                printf("Did the integer writing succeed...");
+                if(!net2_channel_output_write_integer(&channel, value))
                 {
                     printf("yes.\n");
-                    printf("Value received : %d.\n", value);
+                    printf("Value send : %d.\n", value);
+                    value++;
                 }
                 else
                 {
