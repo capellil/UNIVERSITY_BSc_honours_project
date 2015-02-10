@@ -11,16 +11,7 @@
 #include <pthread.h>
 
 #include "net2_socket.h"
-
-/**
- * @brief Contains the link being run as well as its thread.
- **/
-struct net2_link_thread_linked_element_t
-{
-    pthread_t* _my_thread;
-    struct net2_link_t* _my_link;
-    struct net2_link_thread_linked_element_t* _next_link;
-};
+#include "net2_link.h"
 
 /**
  * @class net2_link_server_t
