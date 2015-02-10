@@ -8,6 +8,8 @@
 #ifndef NET2_PROTOCOL_INCLUDED 
 #define NET2_PROTOCOL_INCLUDED
 
+#include "net2_link.h"
+
 extern const unsigned int NET2_MESSAGE_MAX_LENGTH;
 
 enum net2_protocol_e { NOTHING = 0, 
@@ -28,6 +30,7 @@ struct net2_message_t
     unsigned int _destination; ///< Destination channel number
     unsigned int _data_length; ///< Data length
     void* _data; ///< Data to be sent
+    struct net2_link_t* _link; ///< The link that received the message, used to send back the ACK through the same link.
 };
 
 /**
