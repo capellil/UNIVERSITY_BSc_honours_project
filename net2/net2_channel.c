@@ -32,38 +32,19 @@ int net2_channel_output_create(struct net2_channel_output_t* net2_channel_output
             pthread_cond_init(&(net2_channel_output->_cond), NULL);
             pthread_mutex_init(&(net2_channel_output->_mutex), NULL);
             
-            struct net2_message_t open_message;
-            open_message._type = OPEN;
-            open_message._source = net2_channel_output->_number;
-            open_message._destination = net2_channel_output->_remote_number;
-            
-            // Has the "OPEN" been sent correctly ?
-            if(!net2_link_send(net2_link, &open_message))
+            if(!net2_channel_manager_register_channel_output(net2_channel_output))
             {
-                // Yes, the "OPEN" has been sent correctly.
-                // Did the channel output registration succeed ?
-                if(!net2_channel_manager_register_channel_output(net2_channel_output))
-                {
-                    // Yes, the channel output registration succeeded.
-                    #ifdef NET2_DEBUG
-                        net2_debug_success("net2_channel_output_create");
-                    #endif
-                }
-                else
-                {
-                    // No, the channel output registration failed.
-                    result = -1;
-                    #ifdef NET2_DEBUG
-                        net2_debug_failure("net2_channel_output_create", "The channel output registration failed.");
-                    #endif
-                }
+                // Yes, the channel output registration succeeded.
+                #ifdef NET2_DEBUG
+                    net2_debug_success("net2_channel_output_create");
+                #endif
             }
             else
             {
-                // No, the "OPEN" has failed.
+                // No, the channel output registration failed.
                 result = -1;
                 #ifdef NET2_DEBUG
-                    net2_debug_failure("net2_channel_output_create", "The \"OPEN\" has failed.");
+                    net2_debug_failure("net2_channel_output_create", "The channel output registration failed.");
                 #endif
             }
         }
@@ -277,7 +258,8 @@ int net2_channel_input_create(struct net2_channel_input_t* net2_channel_input, u
 int net2_channel_input_read_integer(struct net2_channel_input_t* net2_channel_input, int* value)
 {
     int result = 0;
-    
+     
+    // Yes, the channel has at least one established link already.
     pthread_mutex_lock(&(net2_channel_input->_mutex));
     
     // TEST : Is there any messages to read ?
@@ -285,12 +267,11 @@ int net2_channel_input_read_integer(struct net2_channel_input_t* net2_channel_in
     {
         // No, there is not any messages to read.
         // Waiting for a new message to be received.
-        
         pthread_cond_wait(&(net2_channel_input->_cond), &(net2_channel_input->_mutex));
     }  
     
     struct net2_message_t* message_to_read = net2_channel_input->_messages->_my_message;
-    
+
     if(!(net2_channel_input->_messages->_next_message))
     {
         net2_channel_input->_messages = NULL;
@@ -311,7 +292,7 @@ int net2_channel_input_read_integer(struct net2_channel_input_t* net2_channel_in
         ack_message._destination = message_to_read->_source;
         
         // TEST : Has the ACK message been correctly sent ?
-        if(!net2_link_send(net2_channel_input->_link, &ack_message))
+        if(!net2_link_send(message_to_read->_link, &ack_message)) 
         {
             // Yes, the ACK message has been correctly sent.
             #ifdef NET2_DEBUG
@@ -347,7 +328,7 @@ int net2_channel_input_read_integer(struct net2_channel_input_t* net2_channel_in
         free(message_to_read);
     }
     
-    pthread_mutex_unlock(&(net2_channel_input->_mutex));
+    pthread_mutex_unlock(&(net2_channel_input->_mutex));    
     
     return result;
 }
@@ -378,9 +359,23 @@ int net2_channel_input_add_message_to_buffer(struct net2_channel_input_t* net2_c
             }
             
             temp->_next_message = new_element;
-            #ifdef NET2_DEBUG
-                net2_debug_success("net2_channel_input_add_message_to_buffer");
-            #endif
+            
+            // TEST : Did the add of the link to the channel input linked list of links succeed ?
+            if(!net2_link_append_to_linked_element(net2_message->_link, &(net2_channel_input->_links)))
+            {
+                // Yes, the add of the link to the channel input linked list of links succeeded.
+                #ifdef NET2_DEBUG
+                    net2_debug_success("net2_channel_input_add_message_to_buffer");
+                #endif
+            }
+            else
+            {
+                // No, the add of the link to the channel input linked list of links failed.
+                result = -1;
+                #ifdef NET2_DEBUG
+                    net2_debug_failure("net2_channel_input_add_message_to_buffer", "The add of the link to the channel input linked list of links failed.");
+                #endif  
+            }
         }
         else
         {
