@@ -385,22 +385,6 @@ void* net2_link_run(void* net2_link_to_run)
                     case ACK :
                         // Yes, the message if of known type.
                         break;
-                    case OPEN :
-                        // Yes, the message if of known type.
-                        result = net2_link_read(net2_link, &(net2_message->_source), sizeof(net2_message->_source));
-                        
-                        // TEST : Did the message source reading succeed ?
-                        if(!result)
-                        {
-                            // Yes, the message source reading succeeded.
-                        }
-                        else
-                        {  
-                            // No, the message source reading failed.
-                            condition = (result == -2);
-                            result = -8;
-                        }   
-                        break;
                     default :
                         // No, the message is of unknown type.
                         result = -3;
@@ -408,8 +392,10 @@ void* net2_link_run(void* net2_link_to_run)
                 }
                 
                 if(!result)
-                {
+                {                    
                     // Yes, it was a correct message type.
+                    net2_message->_link = net2_link;
+                    
                     void* channel = NULL;
                     enum net2_channel_type_e channel_type;
                     result = net2_channel_manager_get_channel(&channel, &channel_type, net2_message->_destination);
@@ -426,17 +412,7 @@ void* net2_link_run(void* net2_link_to_run)
                             {
                                 struct net2_channel_input_t** channel_input = (struct net2_channel_input_t**)&channel;
                                 
-                                if(net2_message->_type == OPEN)
-                                {
-                                    (*channel_input)->_link = net2_link;
-                                    pthread_mutex_lock(&((*channel_input)->_mutex));
-                                    pthread_cond_signal(&((*channel_input)->_cond));
-                                    pthread_mutex_unlock(&((*channel_input)->_mutex));
-                                    #ifdef NET2_DEBUG
-                                        net2_debug_success("net2_link_run OPEN");
-                                    #endif
-                                }
-                                else if(net2_message->_type == SEND)
+                                if(net2_message->_type == SEND)
                                 {
                                     result = net2_channel_input_add_message_to_buffer(*channel_input, net2_message);
                                 
@@ -500,7 +476,7 @@ void* net2_link_run(void* net2_link_to_run)
                             // No, any channel with this channel number has been found
                             result = -13;
                             #ifdef NET2_DEBUG
-                                char buffer[512];
+                                char buffer[NET2_DEBUG_MAX_MESSAGE_LENGTH];
                                 sprintf(buffer, "Any channel with this channel number %d has been found.", net2_message->_destination);
                                 net2_debug_failure("net2_link_run", buffer);
                             #endif
@@ -550,4 +526,66 @@ void* net2_link_run(void* net2_link_to_run)
     }
     
     return NULL; // FIXME Replace returned value
+}
+
+void net2_link_init_linked_element(struct net2_link_t* link, struct net2_link_linked_element_t* element)
+{
+    element->_my_link = link;
+    element->_next_link = NULL;
+}
+
+int net2_link_append_to_linked_element(struct net2_link_t* link, struct net2_link_linked_element_t** current_list)
+{
+    int result = 0;
+
+    struct net2_link_linked_element_t* new_element = (struct net2_link_linked_element_t*)malloc(sizeof(struct net2_link_linked_element_t));
+    net2_link_init_linked_element(link, new_element);
+    
+    // TEST : Did the new element dynamic allocation succeed ?
+    if(new_element)
+    {
+        // Yes, the new element dynamic allocation succeeded.
+        struct net2_link_linked_element_t** temp = current_list;
+    
+        // TEST : Is there any link in the given link list ?
+        if(*temp)
+        {
+            // Yes, there is at least one link.
+            while(*temp && (*temp)->_my_link != link)
+            {
+                temp = &((*temp)->_next_link);
+            }
+            
+            // TEST : Is the given link unknown to the current list ?
+            if(!*temp)
+            {
+                // Yes, the given link is unknown to the current list.
+                *temp = new_element;
+            }
+            else
+            {
+                // No, the given link is already known in the current list BUT it is not a problem, it is even better we do not have anything to do.
+                free(new_element);
+            }
+        }
+        else
+        {
+            // No, the is not any element yet.
+            *temp = new_element;
+        }
+        
+        #ifdef NET2_DEBUG
+            net2_debug_success("net2_link_add_linked_element");
+        #endif
+    }
+    else
+    {  
+        // No, the new element dynamic allocation failed.
+        result = -1;
+        #ifdef NET2_DEBUG
+            net2_debug_failure("net2_link_add_linked_element", "The new element dynamic allocation failed.");
+        #endif
+    }
+    
+    return result;
 }
