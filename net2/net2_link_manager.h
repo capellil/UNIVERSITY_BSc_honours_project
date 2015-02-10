@@ -18,16 +18,6 @@
 #endif
 
 /**
- * @class net2_link_linked_element_t
- * @brief A linked element containing a net2 link, forming a linked list when chained. They are used in the link manager for dynamically growing structure.
- **/
-struct net2_link_linked_element_t
-{
-    struct net2_link_linked_element_t* _next_link; ///< A pointer on the next net2 link
-    struct net2_link_t* _my_link; ///< A pointer on the contained net2 link
-};
-
-/**
  * @class net2_link_manager_t
  * @brief The link manager structure. It contains a collection of links and ensures that one a link is registered per node.
  **/
