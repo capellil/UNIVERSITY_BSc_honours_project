@@ -41,7 +41,7 @@ struct net2_channel_output_t
  **/
 struct net2_channel_input_t
 {
-    struct net2_link_t* _link; ///< The link the channel communicates through.
+    struct net2_link_linked_element_t* _links; ///< Links the channel communicates through.
     unsigned int _number; ///< Channel virtual number
     enum net2_channel_state_e _state; ///< Current channel state
     struct net2_message_linked_element_t* _messages; ///< Messages
