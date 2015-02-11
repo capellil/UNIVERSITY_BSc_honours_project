@@ -22,38 +22,29 @@ int net2_channel_output_create(struct net2_channel_output_t* net2_channel_output
         // Yes, the given address is a valid IPv4 address.        
         struct net2_link_t* net2_link = NULL;
         
-        // TEST : Did the connection with the remote node succeed ?
-        if(!net2_node_connect(&net2_link, htonl(ip_address.s_addr), port))
+        // Yes, the connection with the remote node succeeded.
+        net2_channel_output->_link = net2_link;
+        net2_channel_output->_state = INACTIVE;
+        net2_channel_output->_remote_number = remote_channel_number;
+        net2_channel_output->_messages = NULL;
+        net2_channel_output->_remote_port = port;
+        net2_channel_output->_remote_address = ntohl(ip_address.s_addr);
+        pthread_cond_init(&(net2_channel_output->_cond), NULL);
+        pthread_mutex_init(&(net2_channel_output->_mutex), NULL);
+        
+        if(!net2_channel_manager_register_channel_output(net2_channel_output))
         {
-            // Yes, the connection with the remote node succeeded.
-            net2_channel_output->_link = net2_link;
-            net2_channel_output->_remote_number = remote_channel_number;
-            net2_channel_output->_messages = NULL;
-            pthread_cond_init(&(net2_channel_output->_cond), NULL);
-            pthread_mutex_init(&(net2_channel_output->_mutex), NULL);
-            
-            if(!net2_channel_manager_register_channel_output(net2_channel_output))
-            {
-                // Yes, the channel output registration succeeded.
-                #ifdef NET2_DEBUG
-                    net2_debug_success("net2_channel_output_create");
-                #endif
-            }
-            else
-            {
-                // No, the channel output registration failed.
-                result = -1;
-                #ifdef NET2_DEBUG
-                    net2_debug_failure("net2_channel_output_create", "The channel output registration failed.");
-                #endif
-            }
+            // Yes, the channel output registration succeeded.
+            #ifdef NET2_DEBUG
+                net2_debug_success("net2_channel_output_create");
+            #endif
         }
         else
         {
-            // No, the connection with the remote node failed.
+            // No, the channel output registration failed.
             result = -1;
             #ifdef NET2_DEBUG
-                net2_debug_failure("net2_channel_output_create", "The connection with the remote node failed.");
+                net2_debug_failure("net2_channel_output_create", "The channel output registration failed.");
             #endif
         }
     }
@@ -73,69 +64,104 @@ int net2_channel_output_write_integer(struct net2_channel_output_t* net2_channel
 {
     int result = 0;
     
-    struct net2_message_t integer_message;
-    integer_message._type = SEND;
-    integer_message._source = net2_channel_output->_number;
-    integer_message._destination = net2_channel_output->_remote_number;
-    integer_message._data = &value;
-    integer_message._data_length = sizeof(int);
-    
-    pthread_mutex_lock(&(net2_channel_output->_mutex));
-    
-    // TEST : Did the writing succeed ?
-    if(!net2_link_send(net2_channel_output->_link, &integer_message))
+    // TEST : Is the channel in a functional state, or has it been correctly connected if it was INACTIVE ?
+    if(net2_channel_output->_state == OK_OUTPUT || (net2_channel_output->_state == INACTIVE && !net2_channel_output_connect(net2_channel_output)))
     {
-        // Yes, the writing succeeded.
-        if(!(net2_channel_output->_messages))
-        {
-            pthread_cond_wait(&(net2_channel_output->_cond), &(net2_channel_output->_mutex));
-        }
+        // Yes, the channel is now correctly connected.
+        struct net2_message_t integer_message;
+        integer_message._type = SEND;
+        integer_message._source = net2_channel_output->_number;
+        integer_message._destination = net2_channel_output->_remote_number;
+        integer_message._data = &value;
+        integer_message._data_length = sizeof(int);
         
-        struct net2_message_t* message_to_read = net2_channel_output->_messages->_my_message;
-    
-        if(!(net2_channel_output->_messages->_next_message))
-        {
-            net2_channel_output->_messages = NULL;
-        }
-        else
-        {
-            net2_channel_output->_messages = net2_channel_output->_messages->_next_message;
-        }
+        pthread_mutex_lock(&(net2_channel_output->_mutex));
         
-        // TEST : Is the message of the expected type ?
-        if(message_to_read->_type == ACK)
+        // TEST : Did the writing succeed ?
+        if(!net2_link_send(net2_channel_output->_link, &integer_message))
         {
-            // Yes, the message is of expected type.                        
-            free(message_to_read);
-            #ifdef NET2_DEBUG
-                net2_debug_success("net2_channel_output_write_integer");
-            #endif
-        }
-        else
-        {
-            // No, the message is not of expected type.
-            if(message_to_read->_data)
+            // Yes, the writing succeeded.
+            if(!(net2_channel_output->_messages))
             {
-                free(message_to_read->_data);
+                pthread_cond_wait(&(net2_channel_output->_cond), &(net2_channel_output->_mutex));
             }
             
-            free(message_to_read);
+            struct net2_message_t* message_to_read = net2_channel_output->_messages->_my_message;
+        
+            if(!(net2_channel_output->_messages->_next_message))
+            {
+                net2_channel_output->_messages = NULL;
+            }
+            else
+            {
+                net2_channel_output->_messages = net2_channel_output->_messages->_next_message;
+            }
+            
+            // TEST : Is the message of the expected type ?
+            if(message_to_read->_type == ACK)
+            {
+                // Yes, the message is of expected type.                        
+                free(message_to_read);
+                #ifdef NET2_DEBUG
+                    net2_debug_success("net2_channel_output_write_integer");
+                #endif
+            }
+            else
+            {
+                // No, the message is not of expected type.
+                if(message_to_read->_data)
+                {
+                    free(message_to_read->_data);
+                }
+                
+                free(message_to_read);
+                result = -1;
+                #ifdef NET2_DEBUG
+                    net2_debug_failure("net2_channel_output_write_integer", "The message is not of expected type.");
+                #endif
+            }
+        }
+        else
+        {
+            // No, the writing failed.
             result = -1;
             #ifdef NET2_DEBUG
-                net2_debug_failure("net2_channel_output_write_integer", "The message is not of expected type.");
+                net2_debug_failure("net2_channel_output_write_integer", "The writing failed.");
             #endif
         }
+        
+        pthread_mutex_unlock(&(net2_channel_output->_mutex));
     }
     else
     {
-        // No, the writing failed.
+        // No, the channel is still not properly connected.
         result = -1;
         #ifdef NET2_DEBUG
-            net2_debug_failure("net2_channel_output_write_integer", "The writing failed.");
+            net2_debug_failure("net2_channel_output_write_integer", "The channel is still not properly connected.");
         #endif
     }
     
-    pthread_mutex_unlock(&(net2_channel_output->_mutex));
+    return result;
+}
+
+int net2_channel_output_connect(struct net2_channel_output_t* net2_channel_output)
+{
+    int result = 0;
+    
+    // TEST : Did the node succeed to connect the channel ?
+    if(!net2_node_connect(&(net2_channel_output->_link), net2_channel_output->_remote_address, net2_channel_output->_remote_port))
+    {
+        // Yes, the node succeeded to connect the channel.
+        net2_channel_output->_state = OK_OUTPUT;
+    }
+    else
+    {
+        // No, the node failed to connect the channel.
+        result = -1;
+        #ifdef NET2_DEBUG
+            net2_debug_failure("net2_channel_output_connect", "The node failed to connect the channel.");
+        #endif
+    }
     
     return result;
 }
@@ -197,9 +223,7 @@ int net2_channel_input_create(struct net2_channel_input_t* net2_channel_input, u
 {
     int result = 0;
     bool found = false;
-    
-    net2_channel_input->_state = INACTIVE;
-    
+        
     // TEST : Did the research into the channel manager succeed ?
     if(!net2_channel_manager_check_number(virtual_channel_number, &found))
     {
@@ -217,7 +241,7 @@ int net2_channel_input_create(struct net2_channel_input_t* net2_channel_input, u
             {
                 // Yes, the channel registration succeeded.
                 net2_channel_input->_messages = NULL;
-                pthread_cond_wait(&(net2_channel_input->_cond), &(net2_channel_input->_mutex));
+                net2_channel_input->_state = INACTIVE;
                 
                 #ifdef NET2_DEBUG
                     net2_debug_success("net2_channel_input_create");

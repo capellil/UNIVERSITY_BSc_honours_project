@@ -31,6 +31,8 @@ struct net2_channel_output_t
     unsigned int _remote_number; ///< Remote channel virtual number
     enum net2_channel_state_e _state; ///< Current channel state
     struct net2_message_linked_element_t* _messages; ///< Messages
+    unsigned short _remote_port; ///< Remote port
+    unsigned int _remote_address; ///< Remote address
     pthread_mutex_t _mutex; ///< Used to ensure data integrity
     pthread_cond_t _cond; ///< Used if read is before the buffer get the data.
 };
@@ -65,6 +67,7 @@ struct net2_channel_input_t
 int net2_channel_output_create(struct net2_channel_output_t* net2_channel_output, char* ip_address, unsigned short port, unsigned int remote_channel_number);
 int net2_channel_output_write_integer(struct net2_channel_output_t* net2_channel_output, int value);
 int net2_channel_output_add_message_to_buffer(struct net2_channel_output_t* net2_channel_output, struct net2_message_t* net2_message);
+int net2_channel_output_connect(struct net2_channel_output_t* net2_channel_output);
 
 int net2_channel_input_create(struct net2_channel_input_t* net2_channel_input, unsigned int remote_channel_number);
 int net2_channel_input_read_integer(struct net2_channel_input_t* net2_channel_input, int* value);
