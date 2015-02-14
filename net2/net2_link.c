@@ -313,6 +313,7 @@ void* net2_link_run(void* net2_link_to_run)
     while(condition && (net2_message = (struct net2_message_t*)malloc(sizeof(struct net2_message_t))))
     {
         // Yes, the message dynamic allocation succeeded.
+        net2_message->_data = NULL;
         result = net2_link_read(net2_link, &(net2_message->_type), sizeof(net2_message->_type));
         
         // TEST : Did the message type reading succeed ?
