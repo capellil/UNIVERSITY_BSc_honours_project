@@ -114,8 +114,11 @@ int net2_link_read(struct net2_link_t* net2_link, void* data, unsigned int data_
  * @param data A pointer on the buffer to be written.
  * @param data_length The number of bytes to write.
  * @return <ul>
- 		       <li>SUCCESS : Non-negative number that is the amount of byte written.
-               <li>FAILED : -1, errno is set appropriately.
+ 		       <li>SUCCESS : 0
+               <li>FAILED
+               <ul>
+                   <li>-1 : The remote peer performed an orderly shutdown.
+                   <li>-2 : Other cases.
            </ul>
  **/
 int net2_link_write(struct net2_link_t* net2_link, void* data, unsigned int data_length);
