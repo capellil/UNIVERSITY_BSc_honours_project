@@ -28,6 +28,7 @@ int main(int argc, char* argv[])
     {
         printf("yes.\n");
         struct sockaddr_in ip_address;        
+        ip_address.sin_addr.s_addr = 0;
         printf("Checking the port number : is %d a valid port number...", atoi(argv[1]));
         
         if(atoi(argv[1]) >= 0 && atoi(argv[1]) < 65536)
