@@ -13,11 +13,12 @@ static void* run(void* generic_process_console_for_measures_int)
     int value;
  
     net2_channel_input_read_integer(temp->_in, &value);
-    gettimeofday(&tval_before, NULL);
 
     while(j < temp->_number_of_repetitions)
     {
+        gettimeofday(&tval_before, NULL);
         i = 0;
+
         while(i < temp->_number_of_iterations && !(net2_channel_input_read_integer(temp->_in, &value)))
         {
             i++;
