@@ -1,7 +1,7 @@
 /**
  * @file test_link_server.c
  * @author Capelli, Ludovic
- * @version 2.0
+ * @version 1.0
  * @date 22/01/2015
  **/
  
@@ -15,8 +15,14 @@
 /**
  * @brief Creates a link behaving as the server : it accepts the connection from the client on the given port. It first creates a socket and binds it to the port, it then listens on it and finally accept the client connection in a socket. After that, the socket is wrapped in a link.
  * 
- * Argument 0 : the name of the programme. (hidden)<br>
- * Argument 1 : The port to listen on.
+ * <ul>
+ *     <li>Argument 0 : the name of the programme. (hidden)
+ *     <li>Argument 1 : The port to listen on.
+ * </ul>
+ * @return <ul>
+ *             <li>Success : EXIT_SUCCESS
+ *             <li>Failure : EXIT_FAILURE
+ *         </ul>
  **/
 int main(int argc, char* argv[])
 {
