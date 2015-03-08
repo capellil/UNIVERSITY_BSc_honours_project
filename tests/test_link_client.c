@@ -1,7 +1,7 @@
 /**
  * @file test_link_client.c
  * @author Capelli, Ludovic
- * @version 2.0
+ * @version 1.0
  * @date 22/01/2015
  **/
  
@@ -14,9 +14,15 @@
 /**
  * @brief Creates a link behaving as the client : it connects to the given server (e.g : ip address and port). First, it creates the corresponding socket and the wraps it into a link.
  * 
- * Argument 0 : the name of the programme. (hidden)<br>
- * Argument 1 : The IP address to use.<br>
- * Argument 2 : The port to use.
+ * <ul>
+ *     <li>Argument 0 : the name of the programme. (hidden)
+ *     <li>Argument 1 : The IP address to use.
+ *     <li>Argument 2 : The port to use.
+ * </ul>
+ * @return <ul>
+ *             <li>Success : EXIT_SUCCESS
+ *             <li>Failure : EXIT_FAILURE
+ *         </ul>
  **/
 int main(int argc, char* argv[])
 {
@@ -60,6 +66,7 @@ int main(int argc, char* argv[])
 	                    if(net2_link_write(&client, (void*)data, data_length) != -1)
 	                    {
 	                        printf("yes.\n");
+	                        
 	                        printf("Waits for the feedback from the server. Has the feedback been well received..."); fflush(stdout);
 	                        if(net2_link_read(&client, (void*)data, data_length) >= 0)
 	                        {
