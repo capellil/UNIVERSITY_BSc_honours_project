@@ -1,9 +1,23 @@
+/**
+ * @file test_channel_client.c
+ * @author Capelli, Ludovic
+ * @version 1.0
+ * @date 08/02/2015
+ **/
+
 #include <stdlib.h> // EXIT_SUCCESS
 #include <stdio.h> // printf
 
 #include "../net2/net2_node.h"
 #include "../net2/net2_channel.h"
 
+/**
+ * @brief Creates a channel and connects it to a remote one.
+ * @return <ul>
+ *             <li>Success : EXIT_SUCCESS
+ *             <li>Failure : EXIT_FAILURE
+ *         </ul>
+ **/
 int main(int argc, char* argv[])
 {
     int programme_return = EXIT_SUCCESS;
