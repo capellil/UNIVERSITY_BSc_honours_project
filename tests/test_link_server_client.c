@@ -1,7 +1,7 @@
 /**
  * @file test_link_server_client.c
  * @author Capelli, Ludovic
- * @version 2.0
+ * @version 1.0
  * @date 22/01/2015
  **/
  
@@ -13,7 +13,17 @@
 #include "../net2/net2_link_manager.h"
 
 /**
- * Tries to connect on the link server at the given address and port.
+ * @brief Sets up a link server and connects to the remote link server.
+ *
+ * <ul>
+ *     <li>Argument 0 : the programme name. (hidden)
+ *     <li>Argument 1 : IP address of the remote link server.
+ *     <li>Argument 2 : port of the remote link server.
+ * </ul>
+ * @return <ul>
+ *             <li>Success : EXIT_SUCCESS
+ *             <li>Failure : EXIT_FAILURE
+ *         </ul>
  **/
 int main(int argc, char* argv[])
 {
@@ -26,10 +36,10 @@ int main(int argc, char* argv[])
     {
         printf("yes.\n");        
         
-        // TEST : Did the link manager initialisation succeed ?
+        printf("Did the link manager initialisation succeed... ");
         if(!net2_link_manager_init())
         {
-            // Yes, the link manager initialisation succeeded.
+            printf("yes.\n");
             bool found = false;
                 
             printf("Did the link manager research succeed...");
@@ -46,12 +56,14 @@ int main(int argc, char* argv[])
                     if(net2_socket_create(&socket) >= 0)
                     {
                         printf("yes.\n");
+                        
                         printf("Did the socket connection succeed...");
                         if(!net2_socket_connect(&socket, htonl(ip_address.s_addr), atoi(argv[2])))
                         {
                             printf("yes.\n");
                             signed char data;
                             unsigned int data_length = sizeof(signed char);
+                            
                             printf("Did the socket read succeed...");
                             if(net2_socket_read(&socket, (void*)&data, data_length) >= 0)
                             {
