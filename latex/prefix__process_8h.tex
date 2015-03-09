@@ -1,0 +1,59 @@
+\hypertarget{prefix__process_8h}{\section{first\-\_\-experimentations/prefix\-\_\-process.h File Reference}
+\label{prefix__process_8h}\index{first\-\_\-experimentations/prefix\-\_\-process.\-h@{first\-\_\-experimentations/prefix\-\_\-process.\-h}}
+}
+{\ttfamily \#include \char`\"{}channel.\-h\char`\"{}}\\*
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structprefix__process}{prefix\-\_\-process}
+\begin{DoxyCompactList}\small\item\em Prefixes what it reads by a given value. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structprefix__process}{prefix\-\_\-process} $\ast$ \hyperlink{prefix__process_8h_a408c850dda67d50e06306f17ca34a25c}{create\-\_\-prefix\-\_\-process} (int prefix\-\_\-\-Value, struct \hyperlink{structchannel__input__end__t}{channel\-\_\-input\-\_\-end\-\_\-t} $\ast$channel\-\_\-input, struct \hyperlink{structchannel__output__end__t}{channel\-\_\-output\-\_\-end\-\_\-t} $\ast$channel\-\_\-output\-\_\-end)
+\begin{DoxyCompactList}\small\item\em Creates a prefix process and returns a pointer on the created prefix process. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Capelli Ludovic 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\-0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+02/10/2014 
+\end{DoxyDate}
+
+
+\subsection{Function Documentation}
+\hypertarget{prefix__process_8h_a408c850dda67d50e06306f17ca34a25c}{\index{prefix\-\_\-process.\-h@{prefix\-\_\-process.\-h}!create\-\_\-prefix\-\_\-process@{create\-\_\-prefix\-\_\-process}}
+\index{create\-\_\-prefix\-\_\-process@{create\-\_\-prefix\-\_\-process}!prefix_process.h@{prefix\-\_\-process.\-h}}
+\subsubsection[{create\-\_\-prefix\-\_\-process}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf prefix\-\_\-process}$\ast$ create\-\_\-prefix\-\_\-process (
+\begin{DoxyParamCaption}
+\item[{int}]{prefix\-\_\-\-Value, }
+\item[{struct {\bf channel\-\_\-input\-\_\-end\-\_\-t} $\ast$}]{channel\-\_\-input, }
+\item[{struct {\bf channel\-\_\-output\-\_\-end\-\_\-t} $\ast$}]{channel\-\_\-output\-\_\-end}
+\end{DoxyParamCaption}
+)}}\label{prefix__process_8h_a408c850dda67d50e06306f17ca34a25c}
+
+
+Creates a prefix process and returns a pointer on the created prefix process. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em prefix\-\_\-\-Value\mbox{[}in\mbox{]}} & The char to be prefixed. \\
+\hline
+{\em channel\-\_\-input\-\_\-end\mbox{[}in\mbox{]}} & The channel to read data from \\
+\hline
+{\em channel\-\_\-output\-\_\-end\mbox{[}out\mbox{]}} & The channel to write data to \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer on the created prefix process. N\-U\-L\-L if it failed. 
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondition}
+\begin{DoxyItemize}
+\item channel\-\_\-input\-\_\-end != N\-U\-L\-L \item channel\-\_\-output\-\_\-end != N\-U\-L\-L \end{DoxyItemize}
+
+\end{DoxyPrecond}

@@ -1,0 +1,51 @@
+\hypertarget{structnet2__channel__output__t}{\section{net2\-\_\-channel\-\_\-output\-\_\-t Class Reference}
+\label{structnet2__channel__output__t}\index{net2\-\_\-channel\-\_\-output\-\_\-t@{net2\-\_\-channel\-\_\-output\-\_\-t}}
+}
+
+
+This structure is responsible for sending messages to a remote net2 channel input.  
+
+
+
+
+{\ttfamily \#include $<$net2\-\_\-channel.\-h$>$}
+
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{structnet2__channel__output__t_a8e678b9a5931b8d9d05e29e59cc0fa29}{struct \hyperlink{structnet2__link__t}{net2\-\_\-link\-\_\-t} $\ast$ \hyperlink{structnet2__channel__output__t_a8e678b9a5931b8d9d05e29e59cc0fa29}{\-\_\-link}}\label{structnet2__channel__output__t_a8e678b9a5931b8d9d05e29e59cc0fa29}
+
+\begin{DoxyCompactList}\small\item\em The link the channel communicates through. \end{DoxyCompactList}\item 
+\hypertarget{structnet2__channel__output__t_ad271c6722053d44e59fe7e1c50dda193}{unsigned int \hyperlink{structnet2__channel__output__t_ad271c6722053d44e59fe7e1c50dda193}{\-\_\-number}}\label{structnet2__channel__output__t_ad271c6722053d44e59fe7e1c50dda193}
+
+\begin{DoxyCompactList}\small\item\em Channel virtual number. \end{DoxyCompactList}\item 
+\hypertarget{structnet2__channel__output__t_af4e5410aaceaef8e8bb17d44b1a28a67}{unsigned int \hyperlink{structnet2__channel__output__t_af4e5410aaceaef8e8bb17d44b1a28a67}{\-\_\-remote\-\_\-number}}\label{structnet2__channel__output__t_af4e5410aaceaef8e8bb17d44b1a28a67}
+
+\begin{DoxyCompactList}\small\item\em Remote channel virtual number. \end{DoxyCompactList}\item 
+\hypertarget{structnet2__channel__output__t_a924791491eaed2c9f34f89ebe943abfd}{enum net2\-\_\-channel\-\_\-state\-\_\-e \hyperlink{structnet2__channel__output__t_a924791491eaed2c9f34f89ebe943abfd}{\-\_\-state}}\label{structnet2__channel__output__t_a924791491eaed2c9f34f89ebe943abfd}
+
+\begin{DoxyCompactList}\small\item\em Current channel state. \end{DoxyCompactList}\item 
+\hypertarget{structnet2__channel__output__t_a297f9515cb73f62847b127a55ad63a09}{struct \\*
+\hyperlink{structnet2__message__linked__element__t}{net2\-\_\-message\-\_\-linked\-\_\-element\-\_\-t} $\ast$ \hyperlink{structnet2__channel__output__t_a297f9515cb73f62847b127a55ad63a09}{\-\_\-messages}}\label{structnet2__channel__output__t_a297f9515cb73f62847b127a55ad63a09}
+
+\begin{DoxyCompactList}\small\item\em Messages. \end{DoxyCompactList}\item 
+\hypertarget{structnet2__channel__output__t_a7236b85d69d9c17a6d11d830c191096a}{unsigned short \hyperlink{structnet2__channel__output__t_a7236b85d69d9c17a6d11d830c191096a}{\-\_\-remote\-\_\-port}}\label{structnet2__channel__output__t_a7236b85d69d9c17a6d11d830c191096a}
+
+\begin{DoxyCompactList}\small\item\em Remote port. \end{DoxyCompactList}\item 
+\hypertarget{structnet2__channel__output__t_aed3ee28ef3dd928ad8735a44187e6016}{unsigned int \hyperlink{structnet2__channel__output__t_aed3ee28ef3dd928ad8735a44187e6016}{\-\_\-remote\-\_\-address}}\label{structnet2__channel__output__t_aed3ee28ef3dd928ad8735a44187e6016}
+
+\begin{DoxyCompactList}\small\item\em Remote address. \end{DoxyCompactList}\item 
+\hypertarget{structnet2__channel__output__t_a440374b4242121a1dafbe2f457264b15}{pthread\-\_\-mutex\-\_\-t \hyperlink{structnet2__channel__output__t_a440374b4242121a1dafbe2f457264b15}{\-\_\-mutex}}\label{structnet2__channel__output__t_a440374b4242121a1dafbe2f457264b15}
+
+\begin{DoxyCompactList}\small\item\em Used to ensure data integrity. \end{DoxyCompactList}\item 
+\hypertarget{structnet2__channel__output__t_ab87a0f05e9a6580b15fb5e9fc21e2142}{pthread\-\_\-cond\-\_\-t \hyperlink{structnet2__channel__output__t_ab87a0f05e9a6580b15fb5e9fc21e2142}{\-\_\-cond}}\label{structnet2__channel__output__t_ab87a0f05e9a6580b15fb5e9fc21e2142}
+
+\begin{DoxyCompactList}\small\item\em Used if read is before the buffer get the data. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This structure is responsible for sending messages to a remote net2 channel input. 
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+net2/\hyperlink{net2__channel_8h}{net2\-\_\-channel.\-h}\end{DoxyCompactItemize}

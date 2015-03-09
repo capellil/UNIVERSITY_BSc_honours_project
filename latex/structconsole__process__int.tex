@@ -1,0 +1,37 @@
+\hypertarget{structconsole__process__int}{\section{console\-\_\-process\-\_\-int Struct Reference}
+\label{structconsole__process__int}\index{console\-\_\-process\-\_\-int@{console\-\_\-process\-\_\-int}}
+}
+
+
+Console process structure that deals with integers.  
+
+
+
+
+{\ttfamily \#include $<$console\-\_\-process\-\_\-int.\-h$>$}
+
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{structconsole__process__int_a73987543b6fcef970427a5f5c9b89865}{char $\ast$ \hyperlink{structconsole__process__int_a73987543b6fcef970427a5f5c9b89865}{prefix}}\label{structconsole__process__int_a73987543b6fcef970427a5f5c9b89865}
+
+\begin{DoxyCompactList}\small\item\em Message to prepend. \end{DoxyCompactList}\item 
+\hypertarget{structconsole__process__int_a94636e0e828894757a66e4446d2b5d60}{char $\ast$ \hyperlink{structconsole__process__int_a94636e0e828894757a66e4446d2b5d60}{suffix}}\label{structconsole__process__int_a94636e0e828894757a66e4446d2b5d60}
+
+\begin{DoxyCompactList}\small\item\em Message to append. \end{DoxyCompactList}\item 
+\hypertarget{structconsole__process__int_ad7eff16845b0e7d2419b88d0d40168d1}{struct \hyperlink{structchannel__input__end__t}{channel\-\_\-input\-\_\-end\-\_\-t} $\ast$ \hyperlink{structconsole__process__int_ad7eff16845b0e7d2419b88d0d40168d1}{channel\-\_\-input\-\_\-end}}\label{structconsole__process__int_ad7eff16845b0e7d2419b88d0d40168d1}
+
+\begin{DoxyCompactList}\small\item\em Channel to read data from. \end{DoxyCompactList}\item 
+\hypertarget{structconsole__process__int_a583f528489e0ce6d7792a1d5f09d4fa1}{void $\ast$($\ast$ \hyperlink{structconsole__process__int_a583f528489e0ce6d7792a1d5f09d4fa1}{run} )(void $\ast$)}\label{structconsole__process__int_a583f528489e0ce6d7792a1d5f09d4fa1}
+
+\begin{DoxyCompactList}\small\item\em Method to call to execute the process. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Console process structure that deals with integers. 
+
+A console process has a channel input it reads integers from, it then displays it on the standard output (e.\-g \-: console). User can choose a prefix and a suffix to respectively prepend and append to the displayed message. I\-M\-P\-O\-R\-T\-A\-N\-T \-: prefix and suffix must have the '\textbackslash{}0' terminating character. 
+
+The documentation for this struct was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+first\-\_\-experimentations/\hyperlink{console__process__int_8h}{console\-\_\-process\-\_\-int.\-h}\end{DoxyCompactItemize}

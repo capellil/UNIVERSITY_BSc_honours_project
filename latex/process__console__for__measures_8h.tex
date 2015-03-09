@@ -1,0 +1,57 @@
+\hypertarget{process__console__for__measures_8h}{\section{processes/process\-\_\-console\-\_\-for\-\_\-measures.h File Reference}
+\label{process__console__for__measures_8h}\index{processes/process\-\_\-console\-\_\-for\-\_\-measures.\-h@{processes/process\-\_\-console\-\_\-for\-\_\-measures.\-h}}
+}
+{\ttfamily \#include \char`\"{}../net2/net2\-\_\-channel.\-h\char`\"{}}\\*
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{structprocess__console__for__measures__int__t}{process\-\_\-console\-\_\-for\-\_\-measures\-\_\-int\-\_\-t}
+\begin{DoxyCompactList}\small\item\em This process is in charge of acting as a regular console but with some measurement functionality included. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{process__console__for__measures_8h_a45ca85be89cea4d0bfaf1ed684726284}{process\-\_\-console\-\_\-for\-\_\-measures\-\_\-int\-\_\-create} (unsigned int number\-\_\-of\-\_\-iterations, unsigned int number\-\_\-of\-\_\-repetitions, struct \hyperlink{structprocess__console__for__measures__int__t}{process\-\_\-console\-\_\-for\-\_\-measures\-\_\-int\-\_\-t} $\ast$process\-\_\-console\-\_\-for\-\_\-measures\-\_\-int, struct \hyperlink{structnet2__channel__input__t}{net2\-\_\-channel\-\_\-input\-\_\-t} $\ast$channel\-\_\-input)
+\begin{DoxyCompactList}\small\item\em Creates a console process. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Capelli, Ludovic 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\-0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+09/02/2015 
+\end{DoxyDate}
+
+
+\subsection{Function Documentation}
+\hypertarget{process__console__for__measures_8h_a45ca85be89cea4d0bfaf1ed684726284}{\index{process\-\_\-console\-\_\-for\-\_\-measures.\-h@{process\-\_\-console\-\_\-for\-\_\-measures.\-h}!process\-\_\-console\-\_\-for\-\_\-measures\-\_\-int\-\_\-create@{process\-\_\-console\-\_\-for\-\_\-measures\-\_\-int\-\_\-create}}
+\index{process\-\_\-console\-\_\-for\-\_\-measures\-\_\-int\-\_\-create@{process\-\_\-console\-\_\-for\-\_\-measures\-\_\-int\-\_\-create}!process_console_for_measures.h@{process\-\_\-console\-\_\-for\-\_\-measures.\-h}}
+\subsubsection[{process\-\_\-console\-\_\-for\-\_\-measures\-\_\-int\-\_\-create}]{\setlength{\rightskip}{0pt plus 5cm}void process\-\_\-console\-\_\-for\-\_\-measures\-\_\-int\-\_\-create (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{number\-\_\-of\-\_\-iterations, }
+\item[{unsigned int}]{number\-\_\-of\-\_\-repetitions, }
+\item[{struct {\bf process\-\_\-console\-\_\-for\-\_\-measures\-\_\-int\-\_\-t} $\ast$}]{process\-\_\-console\-\_\-for\-\_\-measures\-\_\-int, }
+\item[{struct {\bf net2\-\_\-channel\-\_\-input\-\_\-t} $\ast$}]{channel\-\_\-input}
+\end{DoxyParamCaption}
+)}}\label{process__console__for__measures_8h_a45ca85be89cea4d0bfaf1ed684726284}
+
+
+Creates a console process. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em number\-\_\-of\-\_\-iterations} & The number of iterations. \\
+\hline
+{\em number\-\_\-of\-\_\-repetitions} & The number of repetitions. \\
+\hline
+{\em process\-\_\-console\-\_\-for\-\_\-measures\-\_\-int} & A pointer on an allocated memory area to store the created process. \\
+\hline
+{\em channel\-\_\-input} & The channel to read from. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+process\-\_\-console\-\_\-for\-\_\-measures\-\_\-int != N\-U\-L\-L 
+\end{DoxyPrecond}

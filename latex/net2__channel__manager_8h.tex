@@ -1,0 +1,203 @@
+\hypertarget{net2__channel__manager_8h}{\section{net2/net2\-\_\-channel\-\_\-manager.h File Reference}
+\label{net2__channel__manager_8h}\index{net2/net2\-\_\-channel\-\_\-manager.\-h@{net2/net2\-\_\-channel\-\_\-manager.\-h}}
+}
+{\ttfamily \#include $<$stdbool.\-h$>$}\\*
+{\ttfamily \#include \char`\"{}net2\-\_\-channel.\-h\char`\"{}}\\*
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structnet2__channel__output__linked__element__t}{net2\-\_\-channel\-\_\-output\-\_\-linked\-\_\-element\-\_\-t}
+\item 
+struct \hyperlink{structnet2__channel__input__linked__element__t}{net2\-\_\-channel\-\_\-input\-\_\-linked\-\_\-element\-\_\-t}
+\item 
+class \hyperlink{structnet2__channel__manager__t}{net2\-\_\-channel\-\_\-manager\-\_\-t}
+\begin{DoxyCompactList}\small\item\em Handles the channels; it registers them and is then able to return a channel corresponding to a channel number. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structnet2__channel__manager__t}{net2\-\_\-channel\-\_\-manager\-\_\-t} $\ast$$\ast$ \hyperlink{net2__channel__manager_8h_abb8102ce89dac83e93c37c516911ecc0}{net2\-\_\-channel\-\_\-manager\-\_\-get\-\_\-instance} ()
+\begin{DoxyCompactList}\small\item\em Returns the singleton of the channel manager. \end{DoxyCompactList}\item 
+int \hyperlink{net2__channel__manager_8h_a59a38543800c7b19b4339053a2f53926}{net2\-\_\-channel\-\_\-manager\-\_\-create} ()
+\begin{DoxyCompactList}\small\item\em Creates the singleton instance of the channel manager. \end{DoxyCompactList}\item 
+int \hyperlink{net2__channel__manager_8h_ac1e168f9a6d97b5add6fd144e5369ff5}{net2\-\_\-channel\-\_\-manager\-\_\-init} ()
+\begin{DoxyCompactList}\small\item\em Inits the channel manager \-: if its singleton is not already instanced, it instances it. \end{DoxyCompactList}\item 
+int \hyperlink{net2__channel__manager_8h_a09b74d3bc1583739d4864bafb4d71dcf}{net2\-\_\-channel\-\_\-manager\-\_\-check\-\_\-number} (unsigned int channel\-\_\-number, bool $\ast$found)
+\begin{DoxyCompactList}\small\item\em Checks if the given number is available or not. \end{DoxyCompactList}\item 
+int \hyperlink{net2__channel__manager_8h_aaf39fa791c85edf83b6e2e77f8048588}{net2\-\_\-channel\-\_\-manager\-\_\-register\-\_\-channel\-\_\-output} (struct \hyperlink{structnet2__channel__output__t}{net2\-\_\-channel\-\_\-output\-\_\-t} $\ast$net2\-\_\-channel\-\_\-output)
+\begin{DoxyCompactList}\small\item\em Registers the channel at the given channel number. \end{DoxyCompactList}\item 
+int \hyperlink{net2__channel__manager_8h_affcbfac8b3c009e93080f47ed259c6b9}{net2\-\_\-channel\-\_\-manager\-\_\-register\-\_\-channel\-\_\-input} (struct \hyperlink{structnet2__channel__input__t}{net2\-\_\-channel\-\_\-input\-\_\-t} $\ast$net2\-\_\-channel\-\_\-input, unsigned int channel\-\_\-number)
+\begin{DoxyCompactList}\small\item\em Registers the channel at the given channel number. \end{DoxyCompactList}\item 
+int \hyperlink{net2__channel__manager_8h_a5602e8cb0f0f982df650b88c8b707f9f}{net2\-\_\-channel\-\_\-manager\-\_\-get\-\_\-channel} (void $\ast$$\ast$net2\-\_\-channel\-\_\-generic, enum net2\-\_\-channel\-\_\-type\-\_\-e $\ast$net2\-\_\-channel\-\_\-type, unsigned int channel\-\_\-number)
+\begin{DoxyCompactList}\small\item\em Searches the channel corresponding to the given channel number. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Capelli, Ludovic 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+2.\-0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+22/01/2015 
+\end{DoxyDate}
+
+
+\subsection{Function Documentation}
+\hypertarget{net2__channel__manager_8h_a09b74d3bc1583739d4864bafb4d71dcf}{\index{net2\-\_\-channel\-\_\-manager.\-h@{net2\-\_\-channel\-\_\-manager.\-h}!net2\-\_\-channel\-\_\-manager\-\_\-check\-\_\-number@{net2\-\_\-channel\-\_\-manager\-\_\-check\-\_\-number}}
+\index{net2\-\_\-channel\-\_\-manager\-\_\-check\-\_\-number@{net2\-\_\-channel\-\_\-manager\-\_\-check\-\_\-number}!net2_channel_manager.h@{net2\-\_\-channel\-\_\-manager.\-h}}
+\subsubsection[{net2\-\_\-channel\-\_\-manager\-\_\-check\-\_\-number}]{\setlength{\rightskip}{0pt plus 5cm}int net2\-\_\-channel\-\_\-manager\-\_\-check\-\_\-number (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{channel\-\_\-number, }
+\item[{bool $\ast$}]{found}
+\end{DoxyParamCaption}
+)}}\label{net2__channel__manager_8h_a09b74d3bc1583739d4864bafb4d71dcf}
+
+
+Checks if the given number is available or not. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em channel\-\_\-number} & The channel number to check. \\
+\hline
+{\em found} & A pointer on a boolean to store the research result. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\begin{DoxyItemize}
+\item S\-U\-C\-C\-E\-S\-S \-: 0 
+\item F\-A\-I\-L\-U\-R\-E \-: -\/1 
+\end{DoxyItemize}
+\end{DoxyReturn}
+\hypertarget{net2__channel__manager_8h_a59a38543800c7b19b4339053a2f53926}{\index{net2\-\_\-channel\-\_\-manager.\-h@{net2\-\_\-channel\-\_\-manager.\-h}!net2\-\_\-channel\-\_\-manager\-\_\-create@{net2\-\_\-channel\-\_\-manager\-\_\-create}}
+\index{net2\-\_\-channel\-\_\-manager\-\_\-create@{net2\-\_\-channel\-\_\-manager\-\_\-create}!net2_channel_manager.h@{net2\-\_\-channel\-\_\-manager.\-h}}
+\subsubsection[{net2\-\_\-channel\-\_\-manager\-\_\-create}]{\setlength{\rightskip}{0pt plus 5cm}int net2\-\_\-channel\-\_\-manager\-\_\-create (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{net2__channel__manager_8h_a59a38543800c7b19b4339053a2f53926}
+
+
+Creates the singleton instance of the channel manager. 
+
+\begin{DoxyReturn}{Returns}
+
+\begin{DoxyItemize}
+\item S\-U\-C\-C\-E\-S\-S \-: 0 
+\item F\-A\-I\-L\-U\-R\-E \-: -\/1 
+\end{DoxyItemize}
+\end{DoxyReturn}
+\hypertarget{net2__channel__manager_8h_a5602e8cb0f0f982df650b88c8b707f9f}{\index{net2\-\_\-channel\-\_\-manager.\-h@{net2\-\_\-channel\-\_\-manager.\-h}!net2\-\_\-channel\-\_\-manager\-\_\-get\-\_\-channel@{net2\-\_\-channel\-\_\-manager\-\_\-get\-\_\-channel}}
+\index{net2\-\_\-channel\-\_\-manager\-\_\-get\-\_\-channel@{net2\-\_\-channel\-\_\-manager\-\_\-get\-\_\-channel}!net2_channel_manager.h@{net2\-\_\-channel\-\_\-manager.\-h}}
+\subsubsection[{net2\-\_\-channel\-\_\-manager\-\_\-get\-\_\-channel}]{\setlength{\rightskip}{0pt plus 5cm}int net2\-\_\-channel\-\_\-manager\-\_\-get\-\_\-channel (
+\begin{DoxyParamCaption}
+\item[{void $\ast$$\ast$}]{net2\-\_\-channel\-\_\-generic, }
+\item[{enum net2\-\_\-channel\-\_\-type\-\_\-e $\ast$}]{net2\-\_\-channel\-\_\-type, }
+\item[{unsigned int}]{channel\-\_\-number}
+\end{DoxyParamCaption}
+)}}\label{net2__channel__manager_8h_a5602e8cb0f0f982df650b88c8b707f9f}
+
+
+Searches the channel corresponding to the given channel number. 
+
+If the channel is N\-O\-T found, the net2\-\_\-channel\-\_\-generic pointer is set to N\-U\-L\-L, otherwise it is set to the address of the found channel. 
+\begin{DoxyParams}{Parameters}
+{\em net2\-\_\-channel\-\_\-generic} & A pointer on a pointer on a not allocated area to store the address of the found channel. M\-U\-S\-T B\-E \char`\"{}void$\ast$$\ast$\char`\"{} because it cannot be determined if the found channel will be of type input or output. \\
+\hline
+{\em net2\-\_\-channel\-\_\-type} & A pointer on a channel type to store the found channel type (C\-H\-A\-N\-N\-E\-L\-\_\-\-I\-N\-P\-U\-T or C\-H\-A\-N\-N\-E\-L\-\_\-\-O\-U\-T\-P\-U\-T). \\
+\hline
+{\em channel\-\_\-number} & The channel number to search. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\begin{DoxyItemize}
+\item S\-U\-C\-C\-E\-S\-S \-: 0 
+\item F\-A\-I\-L\-U\-R\-E \-: -\/1 
+\end{DoxyItemize}
+\end{DoxyReturn}
+\hypertarget{net2__channel__manager_8h_abb8102ce89dac83e93c37c516911ecc0}{\index{net2\-\_\-channel\-\_\-manager.\-h@{net2\-\_\-channel\-\_\-manager.\-h}!net2\-\_\-channel\-\_\-manager\-\_\-get\-\_\-instance@{net2\-\_\-channel\-\_\-manager\-\_\-get\-\_\-instance}}
+\index{net2\-\_\-channel\-\_\-manager\-\_\-get\-\_\-instance@{net2\-\_\-channel\-\_\-manager\-\_\-get\-\_\-instance}!net2_channel_manager.h@{net2\-\_\-channel\-\_\-manager.\-h}}
+\subsubsection[{net2\-\_\-channel\-\_\-manager\-\_\-get\-\_\-instance}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf net2\-\_\-channel\-\_\-manager\-\_\-t}$\ast$$\ast$ net2\-\_\-channel\-\_\-manager\-\_\-get\-\_\-instance (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{net2__channel__manager_8h_abb8102ce89dac83e93c37c516911ecc0}
+
+
+Returns the singleton of the channel manager. 
+
+\begin{DoxyReturn}{Returns}
+The singleton instance of the channel manager. 
+\end{DoxyReturn}
+\hypertarget{net2__channel__manager_8h_ac1e168f9a6d97b5add6fd144e5369ff5}{\index{net2\-\_\-channel\-\_\-manager.\-h@{net2\-\_\-channel\-\_\-manager.\-h}!net2\-\_\-channel\-\_\-manager\-\_\-init@{net2\-\_\-channel\-\_\-manager\-\_\-init}}
+\index{net2\-\_\-channel\-\_\-manager\-\_\-init@{net2\-\_\-channel\-\_\-manager\-\_\-init}!net2_channel_manager.h@{net2\-\_\-channel\-\_\-manager.\-h}}
+\subsubsection[{net2\-\_\-channel\-\_\-manager\-\_\-init}]{\setlength{\rightskip}{0pt plus 5cm}int net2\-\_\-channel\-\_\-manager\-\_\-init (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{net2__channel__manager_8h_ac1e168f9a6d97b5add6fd144e5369ff5}
+
+
+Inits the channel manager \-: if its singleton is not already instanced, it instances it. 
+
+\begin{DoxyReturn}{Returns}
+
+\begin{DoxyItemize}
+\item S\-U\-C\-C\-E\-S\-S \-: 0 
+\item F\-A\-I\-L\-U\-R\-E \-: -\/1 
+\item A\-L\-R\-E\-A\-D\-Y I\-N\-S\-T\-A\-N\-C\-E\-D \-: -\/2 
+\end{DoxyItemize}
+\end{DoxyReturn}
+\hypertarget{net2__channel__manager_8h_affcbfac8b3c009e93080f47ed259c6b9}{\index{net2\-\_\-channel\-\_\-manager.\-h@{net2\-\_\-channel\-\_\-manager.\-h}!net2\-\_\-channel\-\_\-manager\-\_\-register\-\_\-channel\-\_\-input@{net2\-\_\-channel\-\_\-manager\-\_\-register\-\_\-channel\-\_\-input}}
+\index{net2\-\_\-channel\-\_\-manager\-\_\-register\-\_\-channel\-\_\-input@{net2\-\_\-channel\-\_\-manager\-\_\-register\-\_\-channel\-\_\-input}!net2_channel_manager.h@{net2\-\_\-channel\-\_\-manager.\-h}}
+\subsubsection[{net2\-\_\-channel\-\_\-manager\-\_\-register\-\_\-channel\-\_\-input}]{\setlength{\rightskip}{0pt plus 5cm}int net2\-\_\-channel\-\_\-manager\-\_\-register\-\_\-channel\-\_\-input (
+\begin{DoxyParamCaption}
+\item[{struct {\bf net2\-\_\-channel\-\_\-input\-\_\-t} $\ast$}]{net2\-\_\-channel\-\_\-input, }
+\item[{unsigned int}]{channel\-\_\-number}
+\end{DoxyParamCaption}
+)}}\label{net2__channel__manager_8h_affcbfac8b3c009e93080f47ed259c6b9}
+
+
+Registers the channel at the given channel number. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em net2\-\_\-channel\-\_\-input} & The net2 channel input to register. \\
+\hline
+{\em channel\-\_\-number} & The channel number to use. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\begin{DoxyItemize}
+\item S\-U\-C\-C\-E\-S\-S \-: 0 
+\item F\-A\-I\-L\-U\-R\-E \-: -\/1 
+\end{DoxyItemize}
+\end{DoxyReturn}
+\hypertarget{net2__channel__manager_8h_aaf39fa791c85edf83b6e2e77f8048588}{\index{net2\-\_\-channel\-\_\-manager.\-h@{net2\-\_\-channel\-\_\-manager.\-h}!net2\-\_\-channel\-\_\-manager\-\_\-register\-\_\-channel\-\_\-output@{net2\-\_\-channel\-\_\-manager\-\_\-register\-\_\-channel\-\_\-output}}
+\index{net2\-\_\-channel\-\_\-manager\-\_\-register\-\_\-channel\-\_\-output@{net2\-\_\-channel\-\_\-manager\-\_\-register\-\_\-channel\-\_\-output}!net2_channel_manager.h@{net2\-\_\-channel\-\_\-manager.\-h}}
+\subsubsection[{net2\-\_\-channel\-\_\-manager\-\_\-register\-\_\-channel\-\_\-output}]{\setlength{\rightskip}{0pt plus 5cm}int net2\-\_\-channel\-\_\-manager\-\_\-register\-\_\-channel\-\_\-output (
+\begin{DoxyParamCaption}
+\item[{struct {\bf net2\-\_\-channel\-\_\-output\-\_\-t} $\ast$}]{net2\-\_\-channel\-\_\-output}
+\end{DoxyParamCaption}
+)}}\label{net2__channel__manager_8h_aaf39fa791c85edf83b6e2e77f8048588}
+
+
+Registers the channel at the given channel number. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em net2\-\_\-channel\-\_\-output} & The net2 channel output to register. \\
+\hline
+{\em channel\-\_\-number} & The channel number to use. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\begin{DoxyItemize}
+\item S\-U\-C\-C\-E\-S\-S \-: 0 
+\item F\-A\-I\-L\-U\-R\-E \-: -\/1 
+\end{DoxyItemize}
+\end{DoxyReturn}

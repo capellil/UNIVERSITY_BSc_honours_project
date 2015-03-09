@@ -1,0 +1,201 @@
+\hypertarget{net2__link__manager_8h}{\section{net2/net2\-\_\-link\-\_\-manager.h File Reference}
+\label{net2__link__manager_8h}\index{net2/net2\-\_\-link\-\_\-manager.\-h@{net2/net2\-\_\-link\-\_\-manager.\-h}}
+}
+{\ttfamily \#include $<$stdlib.\-h$>$}\\*
+{\ttfamily \#include $<$stdbool.\-h$>$}\\*
+{\ttfamily \#include \char`\"{}net2\-\_\-link.\-h\char`\"{}}\\*
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{structnet2__link__manager__t}{net2\-\_\-link\-\_\-manager\-\_\-t}
+\begin{DoxyCompactList}\small\item\em The link manager structure. It contains a collection of links and ensures that one a link is registered per node. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structnet2__link__manager__t}{net2\-\_\-link\-\_\-manager\-\_\-t} $\ast$$\ast$ \hyperlink{net2__link__manager_8h_a4466ecce97c01bf137cdd27d4fa8a1d8}{net2\-\_\-link\-\_\-manager\-\_\-get\-\_\-instance} (void)
+\begin{DoxyCompactList}\small\item\em Returns a pointer on the link manager (which is itself a pointer on the singleton instance, hence \char`\"{}$\ast$$\ast$\char`\"{}). \end{DoxyCompactList}\item 
+int \hyperlink{net2__link__manager_8h_a9e2df59c9ccd78c62b5245a6aaff1e70}{net2\-\_\-link\-\_\-manager\-\_\-create} ()
+\begin{DoxyCompactList}\small\item\em Instances the net2 link manager singleton. \end{DoxyCompactList}\item 
+int \hyperlink{net2__link__manager_8h_a35f8cf95f7bd2a79fb255c12ce77859e}{net2\-\_\-link\-\_\-manager\-\_\-init} ()
+\begin{DoxyCompactList}\small\item\em Inits the link manager \-: if the link server singleton has not been instanced yet, it is instanced with a N\-U\-L\-L list of links. \end{DoxyCompactList}\item 
+int \hyperlink{net2__link__manager_8h_a8f6f2d60be2b4e95d0af588f594ec97a}{net2\-\_\-link\-\_\-manager\-\_\-register\-\_\-link} (struct \hyperlink{structnet2__link__t}{net2\-\_\-link\-\_\-t} $\ast$net2\-\_\-link)
+\begin{DoxyCompactList}\small\item\em Registers the given link into the net2 link manager's links collection. It will check first that no link related to the same node already exists. \end{DoxyCompactList}\item 
+int \hyperlink{net2__link__manager_8h_a70c86c0d4b319c103155ae078c337ceb}{net2\-\_\-link\-\_\-manager\-\_\-get\-\_\-link} (struct \hyperlink{structnet2__link__t}{net2\-\_\-link\-\_\-t} $\ast$$\ast$net2\-\_\-link, unsigned int ip\-\_\-address, unsigned short port)
+\begin{DoxyCompactList}\small\item\em Retrieves the link corresponding to the given I\-P address and the port. \end{DoxyCompactList}\item 
+int \hyperlink{net2__link__manager_8h_ad2405018e99624de9df91daf30a1e3f6}{net2\-\_\-link\-\_\-manager\-\_\-check\-\_\-address\-\_\-and\-\_\-port} (unsigned int address, unsigned short port, bool $\ast$found)
+\begin{DoxyCompactList}\small\item\em Checks if the given I\-P address + port exist in the link manager links. (e.\-g If another link already communicate to this address + port) \end{DoxyCompactList}\item 
+int \hyperlink{net2__link__manager_8h_afad6c2ba9a161d706da6f7f710ba1740}{net2\-\_\-link\-\_\-manager\-\_\-check\-\_\-socket} (struct \hyperlink{structnet2__socket__t}{net2\-\_\-socket\-\_\-t} $\ast$net2\-\_\-socket, bool $\ast$found)
+\begin{DoxyCompactList}\small\item\em Checks if the given socket exists in the link manager links. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Ludovic Capelli 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\-0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+05/01/2015 
+\end{DoxyDate}
+
+
+\subsection{Function Documentation}
+\hypertarget{net2__link__manager_8h_ad2405018e99624de9df91daf30a1e3f6}{\index{net2\-\_\-link\-\_\-manager.\-h@{net2\-\_\-link\-\_\-manager.\-h}!net2\-\_\-link\-\_\-manager\-\_\-check\-\_\-address\-\_\-and\-\_\-port@{net2\-\_\-link\-\_\-manager\-\_\-check\-\_\-address\-\_\-and\-\_\-port}}
+\index{net2\-\_\-link\-\_\-manager\-\_\-check\-\_\-address\-\_\-and\-\_\-port@{net2\-\_\-link\-\_\-manager\-\_\-check\-\_\-address\-\_\-and\-\_\-port}!net2_link_manager.h@{net2\-\_\-link\-\_\-manager.\-h}}
+\subsubsection[{net2\-\_\-link\-\_\-manager\-\_\-check\-\_\-address\-\_\-and\-\_\-port}]{\setlength{\rightskip}{0pt plus 5cm}int net2\-\_\-link\-\_\-manager\-\_\-check\-\_\-address\-\_\-and\-\_\-port (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{address, }
+\item[{unsigned short}]{port, }
+\item[{bool $\ast$}]{found}
+\end{DoxyParamCaption}
+)}}\label{net2__link__manager_8h_ad2405018e99624de9df91daf30a1e3f6}
+
+
+Checks if the given I\-P address + port exist in the link manager links. (e.\-g If another link already communicate to this address + port) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em address} & The I\-P address to check. \\
+\hline
+{\em port} & The port to check. \\
+\hline
+{\em found} & A pointer on a boolean to store the comparison result in. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\begin{DoxyItemize}
+\item S\-U\-C\-C\-E\-S\-S \-: 0 
+\item F\-A\-I\-L\-U\-R\-E \-: -\/1 
+\end{DoxyItemize}
+\end{DoxyReturn}
+\hypertarget{net2__link__manager_8h_afad6c2ba9a161d706da6f7f710ba1740}{\index{net2\-\_\-link\-\_\-manager.\-h@{net2\-\_\-link\-\_\-manager.\-h}!net2\-\_\-link\-\_\-manager\-\_\-check\-\_\-socket@{net2\-\_\-link\-\_\-manager\-\_\-check\-\_\-socket}}
+\index{net2\-\_\-link\-\_\-manager\-\_\-check\-\_\-socket@{net2\-\_\-link\-\_\-manager\-\_\-check\-\_\-socket}!net2_link_manager.h@{net2\-\_\-link\-\_\-manager.\-h}}
+\subsubsection[{net2\-\_\-link\-\_\-manager\-\_\-check\-\_\-socket}]{\setlength{\rightskip}{0pt plus 5cm}int net2\-\_\-link\-\_\-manager\-\_\-check\-\_\-socket (
+\begin{DoxyParamCaption}
+\item[{struct {\bf net2\-\_\-socket\-\_\-t} $\ast$}]{net2\-\_\-socket, }
+\item[{bool $\ast$}]{found}
+\end{DoxyParamCaption}
+)}}\label{net2__link__manager_8h_afad6c2ba9a161d706da6f7f710ba1740}
+
+
+Checks if the given socket exists in the link manager links. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em net2\-\_\-socket} & The net2 socket to be compared with all registered links sockets. \\
+\hline
+{\em found} & A pointer on a boolean to store the comparison result in. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\begin{DoxyItemize}
+\item S\-U\-C\-C\-E\-S\-S \-: 0 
+\item F\-A\-I\-L\-U\-R\-E \-: -\/1 
+\end{DoxyItemize}
+\end{DoxyReturn}
+\hypertarget{net2__link__manager_8h_a9e2df59c9ccd78c62b5245a6aaff1e70}{\index{net2\-\_\-link\-\_\-manager.\-h@{net2\-\_\-link\-\_\-manager.\-h}!net2\-\_\-link\-\_\-manager\-\_\-create@{net2\-\_\-link\-\_\-manager\-\_\-create}}
+\index{net2\-\_\-link\-\_\-manager\-\_\-create@{net2\-\_\-link\-\_\-manager\-\_\-create}!net2_link_manager.h@{net2\-\_\-link\-\_\-manager.\-h}}
+\subsubsection[{net2\-\_\-link\-\_\-manager\-\_\-create}]{\setlength{\rightskip}{0pt plus 5cm}int net2\-\_\-link\-\_\-manager\-\_\-create (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{net2__link__manager_8h_a9e2df59c9ccd78c62b5245a6aaff1e70}
+
+
+Instances the net2 link manager singleton. 
+
+\begin{DoxyReturn}{Returns}
+
+\begin{DoxyItemize}
+\item S\-U\-C\-C\-E\-S\-S \-: 0 
+\item F\-A\-I\-L\-U\-R\-E \-: -\/1 
+\end{DoxyItemize}
+\end{DoxyReturn}
+\hypertarget{net2__link__manager_8h_a4466ecce97c01bf137cdd27d4fa8a1d8}{\index{net2\-\_\-link\-\_\-manager.\-h@{net2\-\_\-link\-\_\-manager.\-h}!net2\-\_\-link\-\_\-manager\-\_\-get\-\_\-instance@{net2\-\_\-link\-\_\-manager\-\_\-get\-\_\-instance}}
+\index{net2\-\_\-link\-\_\-manager\-\_\-get\-\_\-instance@{net2\-\_\-link\-\_\-manager\-\_\-get\-\_\-instance}!net2_link_manager.h@{net2\-\_\-link\-\_\-manager.\-h}}
+\subsubsection[{net2\-\_\-link\-\_\-manager\-\_\-get\-\_\-instance}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf net2\-\_\-link\-\_\-manager\-\_\-t}$\ast$$\ast$ net2\-\_\-link\-\_\-manager\-\_\-get\-\_\-instance (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{net2__link__manager_8h_a4466ecce97c01bf137cdd27d4fa8a1d8}
+
+
+Returns a pointer on the link manager (which is itself a pointer on the singleton instance, hence \char`\"{}$\ast$$\ast$\char`\"{}). 
+
+\begin{DoxyReturn}{Returns}
+A pointer on the link manager. 
+\end{DoxyReturn}
+\hypertarget{net2__link__manager_8h_a70c86c0d4b319c103155ae078c337ceb}{\index{net2\-\_\-link\-\_\-manager.\-h@{net2\-\_\-link\-\_\-manager.\-h}!net2\-\_\-link\-\_\-manager\-\_\-get\-\_\-link@{net2\-\_\-link\-\_\-manager\-\_\-get\-\_\-link}}
+\index{net2\-\_\-link\-\_\-manager\-\_\-get\-\_\-link@{net2\-\_\-link\-\_\-manager\-\_\-get\-\_\-link}!net2_link_manager.h@{net2\-\_\-link\-\_\-manager.\-h}}
+\subsubsection[{net2\-\_\-link\-\_\-manager\-\_\-get\-\_\-link}]{\setlength{\rightskip}{0pt plus 5cm}int net2\-\_\-link\-\_\-manager\-\_\-get\-\_\-link (
+\begin{DoxyParamCaption}
+\item[{struct {\bf net2\-\_\-link\-\_\-t} $\ast$$\ast$}]{net2\-\_\-link, }
+\item[{unsigned int}]{ip\-\_\-address, }
+\item[{unsigned short}]{port}
+\end{DoxyParamCaption}
+)}}\label{net2__link__manager_8h_a70c86c0d4b319c103155ae078c337ceb}
+
+
+Retrieves the link corresponding to the given I\-P address and the port. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em net2\-\_\-link} & A pointer on a net2\-\_\-link to store the found pointer or N\-U\-L\-L if not found. \\
+\hline
+{\em ip\-\_\-address} & The I\-Pv4 address to check. \\
+\hline
+{\em port} & The port to check. \\
+\hline
+\end{DoxyParams}
+\hypertarget{net2__link__manager_8h_a35f8cf95f7bd2a79fb255c12ce77859e}{\index{net2\-\_\-link\-\_\-manager.\-h@{net2\-\_\-link\-\_\-manager.\-h}!net2\-\_\-link\-\_\-manager\-\_\-init@{net2\-\_\-link\-\_\-manager\-\_\-init}}
+\index{net2\-\_\-link\-\_\-manager\-\_\-init@{net2\-\_\-link\-\_\-manager\-\_\-init}!net2_link_manager.h@{net2\-\_\-link\-\_\-manager.\-h}}
+\subsubsection[{net2\-\_\-link\-\_\-manager\-\_\-init}]{\setlength{\rightskip}{0pt plus 5cm}int net2\-\_\-link\-\_\-manager\-\_\-init (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{net2__link__manager_8h_a35f8cf95f7bd2a79fb255c12ce77859e}
+
+
+Inits the link manager \-: if the link server singleton has not been instanced yet, it is instanced with a N\-U\-L\-L list of links. 
+
+\begin{DoxyReturn}{Returns}
+
+\begin{DoxyItemize}
+\item S\-U\-C\-C\-E\-S\-S \-: 0 
+\item F\-A\-I\-L\-U\-R\-E \-: -\/1 
+\item A\-L\-R\-E\-A\-D\-Y I\-N\-S\-T\-A\-N\-C\-E\-D \-: -\/2 
+\end{DoxyItemize}
+\end{DoxyReturn}
+\hypertarget{net2__link__manager_8h_a8f6f2d60be2b4e95d0af588f594ec97a}{\index{net2\-\_\-link\-\_\-manager.\-h@{net2\-\_\-link\-\_\-manager.\-h}!net2\-\_\-link\-\_\-manager\-\_\-register\-\_\-link@{net2\-\_\-link\-\_\-manager\-\_\-register\-\_\-link}}
+\index{net2\-\_\-link\-\_\-manager\-\_\-register\-\_\-link@{net2\-\_\-link\-\_\-manager\-\_\-register\-\_\-link}!net2_link_manager.h@{net2\-\_\-link\-\_\-manager.\-h}}
+\subsubsection[{net2\-\_\-link\-\_\-manager\-\_\-register\-\_\-link}]{\setlength{\rightskip}{0pt plus 5cm}int net2\-\_\-link\-\_\-manager\-\_\-register\-\_\-link (
+\begin{DoxyParamCaption}
+\item[{struct {\bf net2\-\_\-link\-\_\-t} $\ast$}]{net2\-\_\-link}
+\end{DoxyParamCaption}
+)}}\label{net2__link__manager_8h_a8f6f2d60be2b4e95d0af588f594ec97a}
+
+
+Registers the given link into the net2 link manager's links collection. It will check first that no link related to the same node already exists. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em net2\-\_\-link} & A pointer on the link to register. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\begin{DoxyItemize}
+\item S\-U\-C\-C\-E\-S\-S \-: 0 
+\item F\-A\-I\-L\-U\-R\-E \-: -\/1 
+\end{DoxyItemize}
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondition}
+
+\begin{DoxyItemize}
+\item net2\-\_\-link\-\_\-manager != N\-U\-L\-L 
+\item net2\-\_\-link != N\-U\-L\-L 
+\end{DoxyItemize}
+\end{DoxyPrecond}
