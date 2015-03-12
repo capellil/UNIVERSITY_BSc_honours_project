@@ -39,7 +39,7 @@ int main(int argc, char* argv[])
         {
             printf("yes.\n");
             
-            printf("Checking the second parameter given : is \"%s\" a valid IPv4 address...", argv[1]);
+            printf("Checking the second parameter given : is \"%s\" a valid IPv4 address...", argv[2]);
             if(inet_pton(AF_INET, argv[2], &ip_address) > 0)
             {
                 printf("yes.\n");
