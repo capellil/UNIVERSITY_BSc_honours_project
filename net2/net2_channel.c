@@ -86,7 +86,8 @@ int net2_channel_output_write_integer(struct net2_channel_output_t* net2_channel
                 pthread_cond_wait(&(net2_channel_output->_cond), &(net2_channel_output->_mutex));
             }
             
-            struct net2_message_t* message_to_read = net2_channel_output->_messages->_my_message;
+            struct net2_message_linked_element_t* container = net2_channel_output->_messages;
+            struct net2_message_t* message_to_read = container->_my_message;
         
             if(!(net2_channel_output->_messages->_next_message))
             {
@@ -100,8 +101,9 @@ int net2_channel_output_write_integer(struct net2_channel_output_t* net2_channel
             // TEST : Is the message of the expected type ?
             if(message_to_read->_type == ACK)
             {
-                // Yes, the message is of expected type.                        
+                // Yes, the message is of expected type.   
                 free(message_to_read);
+                free(container); 
                 #ifdef NET2_DEBUG
                     net2_debug_success("net2_channel_output_write_integer");
                 #endif
@@ -115,6 +117,7 @@ int net2_channel_output_write_integer(struct net2_channel_output_t* net2_channel
                 }
                 
                 free(message_to_read);
+                free(container);
                 result = -1;
                 #ifdef NET2_DEBUG
                     net2_debug_failure("net2_channel_output_write_integer", "The message is not of expected type.");
@@ -294,7 +297,8 @@ int net2_channel_input_read_integer(struct net2_channel_input_t* net2_channel_in
         pthread_cond_wait(&(net2_channel_input->_cond), &(net2_channel_input->_mutex));
     }  
     
-    struct net2_message_t* message_to_read = net2_channel_input->_messages->_my_message;
+    struct net2_message_linked_element_t* container = net2_channel_input->_messages;
+    struct net2_message_t* message_to_read = container->_my_message;
 
     if(!(net2_channel_input->_messages->_next_message))
     {
@@ -334,6 +338,7 @@ int net2_channel_input_read_integer(struct net2_channel_input_t* net2_channel_in
         
         free(message_to_read->_data);
         free(message_to_read);
+        free(container); 
     }
     else
     {
@@ -342,6 +347,7 @@ int net2_channel_input_read_integer(struct net2_channel_input_t* net2_channel_in
         {
             free(message_to_read->_data);
         }
+        free(container); 
         
         result = -1;
         #ifdef NET2_DEBUG
