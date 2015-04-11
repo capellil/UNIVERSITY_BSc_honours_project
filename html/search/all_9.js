@@ -1,7 +1,10 @@
 var searchData=
 [
   ['net2_5fchannel_2eh',['net2_channel.h',['../net2__channel_8h.html',1,'']]],
+  ['net2_5fchannel_5finput_5fadd_5fmessage_5fto_5fbuffer',['net2_channel_input_add_message_to_buffer',['../net2__channel_8h.html#a9241aeb36c406fa47b6abaf49c386818',1,'net2_channel.c']]],
+  ['net2_5fchannel_5finput_5fcreate',['net2_channel_input_create',['../net2__channel_8h.html#aab5136e23bdbc7106bf64d20ecca9706',1,'net2_channel.c']]],
   ['net2_5fchannel_5finput_5flinked_5felement_5ft',['net2_channel_input_linked_element_t',['../structnet2__channel__input__linked__element__t.html',1,'']]],
+  ['net2_5fchannel_5finput_5fread_5finteger',['net2_channel_input_read_integer',['../net2__channel_8h.html#a82087e4d7f3522c264eb6945636df1f2',1,'net2_channel.c']]],
   ['net2_5fchannel_5finput_5ft',['net2_channel_input_t',['../structnet2__channel__input__t.html',1,'']]],
   ['net2_5fchannel_5fmanager_2eh',['net2_channel_manager.h',['../net2__channel__manager_8h.html',1,'']]],
   ['net2_5fchannel_5fmanager_5fcheck_5fnumber',['net2_channel_manager_check_number',['../net2__channel__manager_8h.html#a09b74d3bc1583739d4864bafb4d71dcf',1,'net2_channel_manager.c']]],
@@ -12,9 +15,12 @@ var searchData=
   ['net2_5fchannel_5fmanager_5fregister_5fchannel_5finput',['net2_channel_manager_register_channel_input',['../net2__channel__manager_8h.html#affcbfac8b3c009e93080f47ed259c6b9',1,'net2_channel_manager.c']]],
   ['net2_5fchannel_5fmanager_5fregister_5fchannel_5foutput',['net2_channel_manager_register_channel_output',['../net2__channel__manager_8h.html#aaf39fa791c85edf83b6e2e77f8048588',1,'net2_channel_manager.c']]],
   ['net2_5fchannel_5fmanager_5ft',['net2_channel_manager_t',['../structnet2__channel__manager__t.html',1,'']]],
+  ['net2_5fchannel_5foutput_5fadd_5fmessage_5fto_5fbuffer',['net2_channel_output_add_message_to_buffer',['../net2__channel_8h.html#a8077d865b2001975fb8c585549fdf933',1,'net2_channel.c']]],
+  ['net2_5fchannel_5foutput_5fconnect',['net2_channel_output_connect',['../net2__channel_8h.html#a9b3b5ad0392b7d3d85334b0c1bc30028',1,'net2_channel.c']]],
   ['net2_5fchannel_5foutput_5fcreate',['net2_channel_output_create',['../net2__channel_8h.html#a90488a31d7baea5682ecf8b83879ad54',1,'net2_channel.c']]],
   ['net2_5fchannel_5foutput_5flinked_5felement_5ft',['net2_channel_output_linked_element_t',['../structnet2__channel__output__linked__element__t.html',1,'']]],
   ['net2_5fchannel_5foutput_5ft',['net2_channel_output_t',['../structnet2__channel__output__t.html',1,'']]],
+  ['net2_5fchannel_5foutput_5fwrite_5finteger',['net2_channel_output_write_integer',['../net2__channel_8h.html#ad1241dbae1affeceb917ca88ae952e6e',1,'net2_channel.c']]],
   ['net2_5fdebug_2eh',['net2_debug.h',['../net2__debug_8h.html',1,'']]],
   ['net2_5fdebug_5ffailure',['net2_debug_failure',['../net2__debug_8h.html#a5a6c541dc93483c66ef9be09b4a37716',1,'net2_debug.c']]],
   ['net2_5fdebug_5fmax_5fmessage_5flength',['NET2_DEBUG_MAX_MESSAGE_LENGTH',['../net2__debug_8h.html#ab8a2d9a8dc33d690257deebaa6b122bd',1,'net2_debug.h']]],

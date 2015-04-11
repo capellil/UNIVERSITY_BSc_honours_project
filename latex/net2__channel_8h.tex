@@ -27,25 +27,19 @@ enum {\bfseries net2\-\_\-channel\-\_\-type\-\_\-e} \{ {\bfseries C\-H\-A\-N\-N\
 \begin{DoxyCompactItemize}
 \item 
 int \hyperlink{net2__channel_8h_a90488a31d7baea5682ecf8b83879ad54}{net2\-\_\-channel\-\_\-output\-\_\-create} (struct \hyperlink{structnet2__channel__output__t}{net2\-\_\-channel\-\_\-output\-\_\-t} $\ast$net2\-\_\-channel\-\_\-output, char $\ast$ip\-\_\-address, unsigned short port, unsigned int remote\-\_\-channel\-\_\-number)
-\begin{DoxyCompactList}\small\item\em Creates the channel by asking the node to connect with the given node at (ip\-\_\-address, port) to the channel with the given number. \end{DoxyCompactList}\item 
-\hypertarget{net2__channel_8h_ad1241dbae1affeceb917ca88ae952e6e}{int {\bfseries net2\-\_\-channel\-\_\-output\-\_\-write\-\_\-integer} (struct \hyperlink{structnet2__channel__output__t}{net2\-\_\-channel\-\_\-output\-\_\-t} $\ast$net2\-\_\-channel\-\_\-output, int value)}\label{net2__channel_8h_ad1241dbae1affeceb917ca88ae952e6e}
-
-\item 
-\hypertarget{net2__channel_8h_a8077d865b2001975fb8c585549fdf933}{int {\bfseries net2\-\_\-channel\-\_\-output\-\_\-add\-\_\-message\-\_\-to\-\_\-buffer} (struct \hyperlink{structnet2__channel__output__t}{net2\-\_\-channel\-\_\-output\-\_\-t} $\ast$net2\-\_\-channel\-\_\-output, struct \hyperlink{structnet2__message__t}{net2\-\_\-message\-\_\-t} $\ast$net2\-\_\-message)}\label{net2__channel_8h_a8077d865b2001975fb8c585549fdf933}
-
-\item 
-\hypertarget{net2__channel_8h_a9b3b5ad0392b7d3d85334b0c1bc30028}{int {\bfseries net2\-\_\-channel\-\_\-output\-\_\-connect} (struct \hyperlink{structnet2__channel__output__t}{net2\-\_\-channel\-\_\-output\-\_\-t} $\ast$net2\-\_\-channel\-\_\-output)}\label{net2__channel_8h_a9b3b5ad0392b7d3d85334b0c1bc30028}
-
-\item 
-\hypertarget{net2__channel_8h_aed5375495c109b5342a886d4134693d2}{int {\bfseries net2\-\_\-channel\-\_\-input\-\_\-create} (struct \hyperlink{structnet2__channel__input__t}{net2\-\_\-channel\-\_\-input\-\_\-t} $\ast$net2\-\_\-channel\-\_\-input, unsigned int remote\-\_\-channel\-\_\-number)}\label{net2__channel_8h_aed5375495c109b5342a886d4134693d2}
-
-\item 
-\hypertarget{net2__channel_8h_a82087e4d7f3522c264eb6945636df1f2}{int {\bfseries net2\-\_\-channel\-\_\-input\-\_\-read\-\_\-integer} (struct \hyperlink{structnet2__channel__input__t}{net2\-\_\-channel\-\_\-input\-\_\-t} $\ast$net2\-\_\-channel\-\_\-input, int $\ast$value)}\label{net2__channel_8h_a82087e4d7f3522c264eb6945636df1f2}
-
-\item 
-\hypertarget{net2__channel_8h_a9241aeb36c406fa47b6abaf49c386818}{int {\bfseries net2\-\_\-channel\-\_\-input\-\_\-add\-\_\-message\-\_\-to\-\_\-buffer} (struct \hyperlink{structnet2__channel__input__t}{net2\-\_\-channel\-\_\-input\-\_\-t} $\ast$net2\-\_\-channel\-\_\-input, struct \hyperlink{structnet2__message__t}{net2\-\_\-message\-\_\-t} $\ast$net2\-\_\-message)}\label{net2__channel_8h_a9241aeb36c406fa47b6abaf49c386818}
-
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Creates the channel but the connection is not established yet. \end{DoxyCompactList}\item 
+int \hyperlink{net2__channel_8h_ad1241dbae1affeceb917ca88ae952e6e}{net2\-\_\-channel\-\_\-output\-\_\-write\-\_\-integer} (struct \hyperlink{structnet2__channel__output__t}{net2\-\_\-channel\-\_\-output\-\_\-t} $\ast$net2\-\_\-channel\-\_\-output, int value)
+\begin{DoxyCompactList}\small\item\em Sends the integer from the given channel to the one it is connected to. \end{DoxyCompactList}\item 
+int \hyperlink{net2__channel_8h_a8077d865b2001975fb8c585549fdf933}{net2\-\_\-channel\-\_\-output\-\_\-add\-\_\-message\-\_\-to\-\_\-buffer} (struct \hyperlink{structnet2__channel__output__t}{net2\-\_\-channel\-\_\-output\-\_\-t} $\ast$net2\-\_\-channel\-\_\-output, struct \hyperlink{structnet2__message__t}{net2\-\_\-message\-\_\-t} $\ast$net2\-\_\-message)
+\begin{DoxyCompactList}\small\item\em Called when a message (typically an A\-C\-K) is received from a remote channel to this channel output; the message is buffered until it can be handled.. \end{DoxyCompactList}\item 
+int \hyperlink{net2__channel_8h_a9b3b5ad0392b7d3d85334b0c1bc30028}{net2\-\_\-channel\-\_\-output\-\_\-connect} (struct \hyperlink{structnet2__channel__output__t}{net2\-\_\-channel\-\_\-output\-\_\-t} $\ast$net2\-\_\-channel\-\_\-output)
+\begin{DoxyCompactList}\small\item\em Effictively connects the channel to its remote one. The remote channel is known at creation but the connection is not established until this function gets explicitely called. \end{DoxyCompactList}\item 
+int \hyperlink{net2__channel_8h_aab5136e23bdbc7106bf64d20ecca9706}{net2\-\_\-channel\-\_\-input\-\_\-create} (struct \hyperlink{structnet2__channel__input__t}{net2\-\_\-channel\-\_\-input\-\_\-t} $\ast$net2\-\_\-channel\-\_\-input, unsigned int virtual\-\_\-channel\-\_\-number)
+\begin{DoxyCompactList}\small\item\em Creates the input channel and registers it to the channel manager. \end{DoxyCompactList}\item 
+int \hyperlink{net2__channel_8h_a82087e4d7f3522c264eb6945636df1f2}{net2\-\_\-channel\-\_\-input\-\_\-read\-\_\-integer} (struct \hyperlink{structnet2__channel__input__t}{net2\-\_\-channel\-\_\-input\-\_\-t} $\ast$net2\-\_\-channel\-\_\-input, int $\ast$value)
+\begin{DoxyCompactList}\small\item\em Receives the integer from the given channel. \end{DoxyCompactList}\item 
+int \hyperlink{net2__channel_8h_a9241aeb36c406fa47b6abaf49c386818}{net2\-\_\-channel\-\_\-input\-\_\-add\-\_\-message\-\_\-to\-\_\-buffer} (struct \hyperlink{structnet2__channel__input__t}{net2\-\_\-channel\-\_\-input\-\_\-t} $\ast$net2\-\_\-channel\-\_\-input, struct \hyperlink{structnet2__message__t}{net2\-\_\-message\-\_\-t} $\ast$net2\-\_\-message)
+\begin{DoxyCompactList}\small\item\em Called when a message (typically an S\-E\-N\-D) is received from a remote channel to this channel input; the message is buffered until it can be handled. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
@@ -61,6 +55,148 @@ Capelli, Ludovic
 
 
 \subsection{Function Documentation}
+\hypertarget{net2__channel_8h_a9241aeb36c406fa47b6abaf49c386818}{\index{net2\-\_\-channel.\-h@{net2\-\_\-channel.\-h}!net2\-\_\-channel\-\_\-input\-\_\-add\-\_\-message\-\_\-to\-\_\-buffer@{net2\-\_\-channel\-\_\-input\-\_\-add\-\_\-message\-\_\-to\-\_\-buffer}}
+\index{net2\-\_\-channel\-\_\-input\-\_\-add\-\_\-message\-\_\-to\-\_\-buffer@{net2\-\_\-channel\-\_\-input\-\_\-add\-\_\-message\-\_\-to\-\_\-buffer}!net2_channel.h@{net2\-\_\-channel.\-h}}
+\subsubsection[{net2\-\_\-channel\-\_\-input\-\_\-add\-\_\-message\-\_\-to\-\_\-buffer}]{\setlength{\rightskip}{0pt plus 5cm}int net2\-\_\-channel\-\_\-input\-\_\-add\-\_\-message\-\_\-to\-\_\-buffer (
+\begin{DoxyParamCaption}
+\item[{struct {\bf net2\-\_\-channel\-\_\-input\-\_\-t} $\ast$}]{net2\-\_\-channel\-\_\-input, }
+\item[{struct {\bf net2\-\_\-message\-\_\-t} $\ast$}]{net2\-\_\-message}
+\end{DoxyParamCaption}
+)}}\label{net2__channel_8h_a9241aeb36c406fa47b6abaf49c386818}
+
+
+Called when a message (typically an S\-E\-N\-D) is received from a remote channel to this channel input; the message is buffered until it can be handled. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em net2\-\_\-channel\-\_\-input} & The channel to queue the message to. \\
+\hline
+{\em net2\-\_\-message} & The message to be queud. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\begin{DoxyItemize}
+\item S\-U\-C\-C\-E\-S\-S \-: 0 
+\item F\-A\-I\-L\-U\-R\-E \-: -\/1 
+\end{DoxyItemize}
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondition}
+net2\-\_\-channel\-\_\-input != N\-U\-L\-L 
+\end{DoxyPrecond}
+\hypertarget{net2__channel_8h_aab5136e23bdbc7106bf64d20ecca9706}{\index{net2\-\_\-channel.\-h@{net2\-\_\-channel.\-h}!net2\-\_\-channel\-\_\-input\-\_\-create@{net2\-\_\-channel\-\_\-input\-\_\-create}}
+\index{net2\-\_\-channel\-\_\-input\-\_\-create@{net2\-\_\-channel\-\_\-input\-\_\-create}!net2_channel.h@{net2\-\_\-channel.\-h}}
+\subsubsection[{net2\-\_\-channel\-\_\-input\-\_\-create}]{\setlength{\rightskip}{0pt plus 5cm}int net2\-\_\-channel\-\_\-input\-\_\-create (
+\begin{DoxyParamCaption}
+\item[{struct {\bf net2\-\_\-channel\-\_\-input\-\_\-t} $\ast$}]{net2\-\_\-channel\-\_\-input, }
+\item[{unsigned int}]{virtual\-\_\-channel\-\_\-number}
+\end{DoxyParamCaption}
+)}}\label{net2__channel_8h_aab5136e23bdbc7106bf64d20ecca9706}
+
+
+Creates the input channel and registers it to the channel manager. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em net2\-\_\-channel\-\_\-input} & A pointer on the channel to be created. \\
+\hline
+{\em virtual\-\_\-channel\-\_\-number} & The channel number. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\begin{DoxyItemize}
+\item S\-U\-C\-C\-E\-S\-S \-: 0 
+\item F\-A\-I\-L\-U\-R\-E \-: -\/1 
+\end{DoxyItemize}
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondition}
+net2\-\_\-channel\-\_\-input != N\-U\-L\-L 
+\end{DoxyPrecond}
+\hypertarget{net2__channel_8h_a82087e4d7f3522c264eb6945636df1f2}{\index{net2\-\_\-channel.\-h@{net2\-\_\-channel.\-h}!net2\-\_\-channel\-\_\-input\-\_\-read\-\_\-integer@{net2\-\_\-channel\-\_\-input\-\_\-read\-\_\-integer}}
+\index{net2\-\_\-channel\-\_\-input\-\_\-read\-\_\-integer@{net2\-\_\-channel\-\_\-input\-\_\-read\-\_\-integer}!net2_channel.h@{net2\-\_\-channel.\-h}}
+\subsubsection[{net2\-\_\-channel\-\_\-input\-\_\-read\-\_\-integer}]{\setlength{\rightskip}{0pt plus 5cm}int net2\-\_\-channel\-\_\-input\-\_\-read\-\_\-integer (
+\begin{DoxyParamCaption}
+\item[{struct {\bf net2\-\_\-channel\-\_\-input\-\_\-t} $\ast$}]{net2\-\_\-channel\-\_\-input, }
+\item[{int $\ast$}]{value}
+\end{DoxyParamCaption}
+)}}\label{net2__channel_8h_a82087e4d7f3522c264eb6945636df1f2}
+
+
+Receives the integer from the given channel. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em net2\-\_\-channel\-\_\-input} & The channel to receive the integer on. \\
+\hline
+{\em value} & A pointer to store the integer received. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\begin{DoxyItemize}
+\item S\-U\-C\-C\-E\-S\-S \-: 0 
+\item F\-A\-I\-L\-U\-R\-E \-: -\/1 
+\end{DoxyItemize}
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondition}
+net2\-\_\-channel\-\_\-input != N\-U\-L\-L 
+\end{DoxyPrecond}
+\hypertarget{net2__channel_8h_a8077d865b2001975fb8c585549fdf933}{\index{net2\-\_\-channel.\-h@{net2\-\_\-channel.\-h}!net2\-\_\-channel\-\_\-output\-\_\-add\-\_\-message\-\_\-to\-\_\-buffer@{net2\-\_\-channel\-\_\-output\-\_\-add\-\_\-message\-\_\-to\-\_\-buffer}}
+\index{net2\-\_\-channel\-\_\-output\-\_\-add\-\_\-message\-\_\-to\-\_\-buffer@{net2\-\_\-channel\-\_\-output\-\_\-add\-\_\-message\-\_\-to\-\_\-buffer}!net2_channel.h@{net2\-\_\-channel.\-h}}
+\subsubsection[{net2\-\_\-channel\-\_\-output\-\_\-add\-\_\-message\-\_\-to\-\_\-buffer}]{\setlength{\rightskip}{0pt plus 5cm}int net2\-\_\-channel\-\_\-output\-\_\-add\-\_\-message\-\_\-to\-\_\-buffer (
+\begin{DoxyParamCaption}
+\item[{struct {\bf net2\-\_\-channel\-\_\-output\-\_\-t} $\ast$}]{net2\-\_\-channel\-\_\-output, }
+\item[{struct {\bf net2\-\_\-message\-\_\-t} $\ast$}]{net2\-\_\-message}
+\end{DoxyParamCaption}
+)}}\label{net2__channel_8h_a8077d865b2001975fb8c585549fdf933}
+
+
+Called when a message (typically an A\-C\-K) is received from a remote channel to this channel output; the message is buffered until it can be handled.. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em net2\-\_\-channel\-\_\-output} & The channel to queue the message to. \\
+\hline
+{\em net2\-\_\-message} & The message to be queud. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\begin{DoxyItemize}
+\item S\-U\-C\-C\-E\-S\-S \-: 0 
+\item F\-A\-I\-L\-U\-R\-E \-: -\/1 
+\end{DoxyItemize}
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondition}
+net2\-\_\-channel\-\_\-output != N\-U\-L\-L 
+\end{DoxyPrecond}
+\hypertarget{net2__channel_8h_a9b3b5ad0392b7d3d85334b0c1bc30028}{\index{net2\-\_\-channel.\-h@{net2\-\_\-channel.\-h}!net2\-\_\-channel\-\_\-output\-\_\-connect@{net2\-\_\-channel\-\_\-output\-\_\-connect}}
+\index{net2\-\_\-channel\-\_\-output\-\_\-connect@{net2\-\_\-channel\-\_\-output\-\_\-connect}!net2_channel.h@{net2\-\_\-channel.\-h}}
+\subsubsection[{net2\-\_\-channel\-\_\-output\-\_\-connect}]{\setlength{\rightskip}{0pt plus 5cm}int net2\-\_\-channel\-\_\-output\-\_\-connect (
+\begin{DoxyParamCaption}
+\item[{struct {\bf net2\-\_\-channel\-\_\-output\-\_\-t} $\ast$}]{net2\-\_\-channel\-\_\-output}
+\end{DoxyParamCaption}
+)}}\label{net2__channel_8h_a9b3b5ad0392b7d3d85334b0c1bc30028}
+
+
+Effictively connects the channel to its remote one. The remote channel is known at creation but the connection is not established until this function gets explicitely called. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em net2\-\_\-channel\-\_\-output} & The channel to start the connection from. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\begin{DoxyItemize}
+\item S\-U\-C\-C\-E\-S\-S \-: 0 
+\item F\-A\-I\-L\-U\-R\-E \-: -\/1 
+\end{DoxyItemize}
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondition}
+net2\-\_\-channel\-\_\-output != N\-U\-L\-L 
+\end{DoxyPrecond}
 \hypertarget{net2__channel_8h_a90488a31d7baea5682ecf8b83879ad54}{\index{net2\-\_\-channel.\-h@{net2\-\_\-channel.\-h}!net2\-\_\-channel\-\_\-output\-\_\-create@{net2\-\_\-channel\-\_\-output\-\_\-create}}
 \index{net2\-\_\-channel\-\_\-output\-\_\-create@{net2\-\_\-channel\-\_\-output\-\_\-create}!net2_channel.h@{net2\-\_\-channel.\-h}}
 \subsubsection[{net2\-\_\-channel\-\_\-output\-\_\-create}]{\setlength{\rightskip}{0pt plus 5cm}int net2\-\_\-channel\-\_\-output\-\_\-create (
@@ -73,7 +209,7 @@ Capelli, Ludovic
 )}}\label{net2__channel_8h_a90488a31d7baea5682ecf8b83879ad54}
 
 
-Creates the channel by asking the node to connect with the given node at (ip\-\_\-address, port) to the channel with the given number. 
+Creates the channel but the connection is not established yet. 
 
 
 \begin{DoxyParams}{Parameters}
@@ -85,7 +221,34 @@ Creates the channel by asking the node to connect with the given node at (ip\-\_
 \hline
 {\em remote\-\_\-channel\-\_\-number} & The channel number of the remote channel. \\
 \hline
-{\em remote\-\_\-channel\-\_\-number} & \\
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\begin{DoxyItemize}
+\item S\-U\-C\-C\-E\-S\-S \-: 0 
+\item F\-A\-I\-L\-U\-R\-E \-: -\/1 
+\end{DoxyItemize}
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondition}
+net2\-\_\-channel\-\_\-output != N\-U\-L\-L 
+\end{DoxyPrecond}
+\hypertarget{net2__channel_8h_ad1241dbae1affeceb917ca88ae952e6e}{\index{net2\-\_\-channel.\-h@{net2\-\_\-channel.\-h}!net2\-\_\-channel\-\_\-output\-\_\-write\-\_\-integer@{net2\-\_\-channel\-\_\-output\-\_\-write\-\_\-integer}}
+\index{net2\-\_\-channel\-\_\-output\-\_\-write\-\_\-integer@{net2\-\_\-channel\-\_\-output\-\_\-write\-\_\-integer}!net2_channel.h@{net2\-\_\-channel.\-h}}
+\subsubsection[{net2\-\_\-channel\-\_\-output\-\_\-write\-\_\-integer}]{\setlength{\rightskip}{0pt plus 5cm}int net2\-\_\-channel\-\_\-output\-\_\-write\-\_\-integer (
+\begin{DoxyParamCaption}
+\item[{struct {\bf net2\-\_\-channel\-\_\-output\-\_\-t} $\ast$}]{net2\-\_\-channel\-\_\-output, }
+\item[{int}]{value}
+\end{DoxyParamCaption}
+)}}\label{net2__channel_8h_ad1241dbae1affeceb917ca88ae952e6e}
+
+
+Sends the integer from the given channel to the one it is connected to. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em net2\-\_\-channel\-\_\-output} & The channel to send the integer from. \\
+\hline
+{\em value} & The value to be sent. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -96,5 +259,5 @@ Creates the channel by asking the node to connect with the given node at (ip\-\_
 \end{DoxyItemize}
 \end{DoxyReturn}
 \begin{DoxyPrecond}{Precondition}
-net2\-\_\-channel != N\-U\-L\-L 
+net2\-\_\-channel\-\_\-output != N\-U\-L\-L 
 \end{DoxyPrecond}
