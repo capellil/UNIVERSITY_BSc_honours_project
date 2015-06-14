@@ -16,7 +16,10 @@ NET2_SUBDIR=net2
 PROCESSES_SUBDIR=processes
 TESTS_SUBDIR=tests
 
-default: final_binaries tests processes net2
+default: create_directories final_binaries tests processes net2
+
+create_directories:
+	mkdir -p $(BIN_DIR) $(BIN_DIR)/$(TESTS_SUBDIR) $(OBJ_DIR) $(OBJ_DIR)/$(NET2_SUBDIR) $(OBJ_DIR)/$(TESTS_SUBDIR) $(OBJ_DIR)/$(PROCESSES_SUBDIR); 
 
 final_binaries: $(BIN_DIR)/$(TESTS_SUBDIR)/$(TESTS_PREFIX)$(PREFIX_SEPARATOR)$(PROCESSES_PREFIX)$(PREFIX_SEPARATOR)console \
 				$(BIN_DIR)/$(TESTS_SUBDIR)/$(TESTS_PREFIX)$(PREFIX_SEPARATOR)$(PROCESSES_PREFIX)$(PREFIX_SEPARATOR)console_for_measures \
@@ -228,4 +231,4 @@ $(OBJ_DIR)/$(NET2_SUBDIR)/$(NET2_PREFIX)$(PREFIX_SEPARATOR)protocol.o: $(SRC_DIR
 	$(CC) $(CFLAGS) -o $(OBJ_DIR)/$(NET2_SUBDIR)/$(NET2_PREFIX)$(PREFIX_SEPARATOR)protocol.o -c $(SRC_DIR)/$(NET2_SUBDIR)/$(NET2_PREFIX)$(PREFIX_SEPARATOR)protocol.c
 
 clean:
-	rm $(OBJ_DIR)/$(TESTS_SUBDIR)/* $(OBJ_DIR)/$(PROCESSES_SUBDIR)/* $(OBJ_DIR)/$(NET2_SUBDIR)/* $(BIN_DIR)/$(TESTS_SUBDIR)/*
+	rm -f $(OBJ_DIR)/$(TESTS_SUBDIR)/* $(OBJ_DIR)/$(PROCESSES_SUBDIR)/* $(OBJ_DIR)/$(NET2_SUBDIR)/* $(BIN_DIR)/$(TESTS_SUBDIR)/*;
