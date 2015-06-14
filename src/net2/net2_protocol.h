@@ -20,7 +20,6 @@ enum net2_protocol_e { NOTHING = 0,
                        REQUEST_ACK = 22};
 
 /**
- * @class net2_message_t
  * @brief Contains a message in a defined format.
  **/
 struct net2_message_t
@@ -34,8 +33,7 @@ struct net2_message_t
 };
 
 /**
- * @class net2_message_linked_element_t
- * @brief A linked element composing a linekd list.
+ * @brief A linked element composing a linked list.
  **/
 struct net2_message_linked_element_t
 {

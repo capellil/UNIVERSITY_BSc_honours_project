@@ -14,7 +14,6 @@
 #include <arpa/inet.h> // inet_ntoa
 
 /**
- * @class net2_socket_t
  * @brief Structure containing the socket and its address structure.
  **/
 struct net2_socket_t

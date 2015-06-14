@@ -21,7 +21,6 @@ enum net2_channel_state_e {INACTIVE, OK_INPUT, OK_OUTPUT};
 enum net2_channel_type_e {CHANNEL_INPUT, CHANNEL_OUTPUT};
 
 /**
- * @class net2_channel_output_t
  * @brief This structure is responsible for sending messages to a remote net2 channel input.
  **/
 struct net2_channel_output_t
@@ -38,7 +37,6 @@ struct net2_channel_output_t
 };
 
 /**
- * @class net2_channel_input_t
  * @brief This structure is responsible for reading messages from a remote net2 channel output.
  **/
 struct net2_channel_input_t

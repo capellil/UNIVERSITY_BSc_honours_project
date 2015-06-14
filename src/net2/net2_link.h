@@ -29,7 +29,6 @@ struct net2_link_thread_linked_element_t
 };
 
 /**
- * @class net2_link_linked_element_t
  * @brief A linked element containing a net2 link, forming a linked list when chained.
  **/
 struct net2_link_linked_element_t
@@ -39,7 +38,6 @@ struct net2_link_linked_element_t
 };
 
 /**
- * @class net2_link_rx_t
  * @brief Link layer reception unit. It has a function to read from the given socket.
  **/
 struct net2_link_rx_t
@@ -48,7 +46,6 @@ struct net2_link_rx_t
 };
 
 /**
- * @class net2_link_tx_t
  * @brief Link layer transmission unit. It has a function to write to the given socket.
  **/
 struct net2_link_tx_t
@@ -57,7 +54,6 @@ struct net2_link_tx_t
 };
 
 /**
- * @class net2_link_t
  * @brief Contains the two links to send and receive data as well as the two function to deal with both.
  **/
 struct net2_link_t

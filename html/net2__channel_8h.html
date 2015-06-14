@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>My Project: net2/net2_channel.h File Reference</title>
+<title>My Project: src/net2/net2_channel.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -80,7 +80,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_008a5368819d8ae2ba1734755bcca454.html">net2</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_be7e576466f509afc7a315148875dd06.html">net2</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -100,10 +100,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structnet2__channel__output__t.html">net2_channel_output_t</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structnet2__channel__output__t.html">net2_channel_output_t</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">This structure is responsible for sending messages to a remote net2 channel input.  <a href="structnet2__channel__output__t.html#details">More...</a><br/></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structnet2__channel__input__t.html">net2_channel_input_t</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structnet2__channel__input__t.html">net2_channel_input_t</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">This structure is responsible for reading messages from a remote net2 channel output.  <a href="structnet2__channel__input__t.html#details">More...</a><br/></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -122,25 +122,25 @@ Enumerations</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a90488a31d7baea5682ecf8b83879ad54"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="net2__channel_8h.html#a90488a31d7baea5682ecf8b83879ad54">net2_channel_output_create</a> (struct <a class="el" href="structnet2__channel__output__t.html">net2_channel_output_t</a> *net2_channel_output, char *ip_address, unsigned short port, unsigned int remote_channel_number)</td></tr>
-<tr class="memdesc:a90488a31d7baea5682ecf8b83879ad54"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates the channel but the connection is not established yet.  <a href="#a90488a31d7baea5682ecf8b83879ad54">More...</a><br/></td></tr>
+<tr class="memdesc:a90488a31d7baea5682ecf8b83879ad54"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates the channel by asking the node to connect with the given node at (ip_address, port) to the channel with the given number.  <a href="#a90488a31d7baea5682ecf8b83879ad54">More...</a><br/></td></tr>
 <tr class="separator:a90488a31d7baea5682ecf8b83879ad54"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad1241dbae1affeceb917ca88ae952e6e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="net2__channel_8h.html#ad1241dbae1affeceb917ca88ae952e6e">net2_channel_output_write_integer</a> (struct <a class="el" href="structnet2__channel__output__t.html">net2_channel_output_t</a> *net2_channel_output, int value)</td></tr>
-<tr class="memdesc:ad1241dbae1affeceb917ca88ae952e6e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends the integer from the given channel to the one it is connected to.  <a href="#ad1241dbae1affeceb917ca88ae952e6e">More...</a><br/></td></tr>
+<tr class="memitem:ad1241dbae1affeceb917ca88ae952e6e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad1241dbae1affeceb917ca88ae952e6e"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>net2_channel_output_write_integer</b> (struct <a class="el" href="structnet2__channel__output__t.html">net2_channel_output_t</a> *net2_channel_output, int value)</td></tr>
 <tr class="separator:ad1241dbae1affeceb917ca88ae952e6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8077d865b2001975fb8c585549fdf933"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="net2__channel_8h.html#a8077d865b2001975fb8c585549fdf933">net2_channel_output_add_message_to_buffer</a> (struct <a class="el" href="structnet2__channel__output__t.html">net2_channel_output_t</a> *net2_channel_output, struct <a class="el" href="structnet2__message__t.html">net2_message_t</a> *net2_message)</td></tr>
-<tr class="memdesc:a8077d865b2001975fb8c585549fdf933"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when a message (typically an ACK) is received from a remote channel to this channel output; the message is buffered until it can be handled..  <a href="#a8077d865b2001975fb8c585549fdf933">More...</a><br/></td></tr>
+<tr class="memitem:a8077d865b2001975fb8c585549fdf933"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8077d865b2001975fb8c585549fdf933"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>net2_channel_output_add_message_to_buffer</b> (struct <a class="el" href="structnet2__channel__output__t.html">net2_channel_output_t</a> *net2_channel_output, struct <a class="el" href="structnet2__message__t.html">net2_message_t</a> *net2_message)</td></tr>
 <tr class="separator:a8077d865b2001975fb8c585549fdf933"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9b3b5ad0392b7d3d85334b0c1bc30028"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="net2__channel_8h.html#a9b3b5ad0392b7d3d85334b0c1bc30028">net2_channel_output_connect</a> (struct <a class="el" href="structnet2__channel__output__t.html">net2_channel_output_t</a> *net2_channel_output)</td></tr>
-<tr class="memdesc:a9b3b5ad0392b7d3d85334b0c1bc30028"><td class="mdescLeft">&#160;</td><td class="mdescRight">Effictively connects the channel to its remote one. The remote channel is known at creation but the connection is not established until this function gets explicitely called.  <a href="#a9b3b5ad0392b7d3d85334b0c1bc30028">More...</a><br/></td></tr>
+<tr class="memitem:a9b3b5ad0392b7d3d85334b0c1bc30028"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9b3b5ad0392b7d3d85334b0c1bc30028"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>net2_channel_output_connect</b> (struct <a class="el" href="structnet2__channel__output__t.html">net2_channel_output_t</a> *net2_channel_output)</td></tr>
 <tr class="separator:a9b3b5ad0392b7d3d85334b0c1bc30028"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aab5136e23bdbc7106bf64d20ecca9706"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="net2__channel_8h.html#aab5136e23bdbc7106bf64d20ecca9706">net2_channel_input_create</a> (struct <a class="el" href="structnet2__channel__input__t.html">net2_channel_input_t</a> *net2_channel_input, unsigned int virtual_channel_number)</td></tr>
-<tr class="memdesc:aab5136e23bdbc7106bf64d20ecca9706"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates the input channel and registers it to the channel manager.  <a href="#aab5136e23bdbc7106bf64d20ecca9706">More...</a><br/></td></tr>
-<tr class="separator:aab5136e23bdbc7106bf64d20ecca9706"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a82087e4d7f3522c264eb6945636df1f2"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="net2__channel_8h.html#a82087e4d7f3522c264eb6945636df1f2">net2_channel_input_read_integer</a> (struct <a class="el" href="structnet2__channel__input__t.html">net2_channel_input_t</a> *net2_channel_input, int *value)</td></tr>
-<tr class="memdesc:a82087e4d7f3522c264eb6945636df1f2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Receives the integer from the given channel.  <a href="#a82087e4d7f3522c264eb6945636df1f2">More...</a><br/></td></tr>
+<tr class="memitem:aed5375495c109b5342a886d4134693d2"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aed5375495c109b5342a886d4134693d2"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>net2_channel_input_create</b> (struct <a class="el" href="structnet2__channel__input__t.html">net2_channel_input_t</a> *net2_channel_input, unsigned int remote_channel_number)</td></tr>
+<tr class="separator:aed5375495c109b5342a886d4134693d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a82087e4d7f3522c264eb6945636df1f2"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a82087e4d7f3522c264eb6945636df1f2"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>net2_channel_input_read_integer</b> (struct <a class="el" href="structnet2__channel__input__t.html">net2_channel_input_t</a> *net2_channel_input, int *value)</td></tr>
 <tr class="separator:a82087e4d7f3522c264eb6945636df1f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9241aeb36c406fa47b6abaf49c386818"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="net2__channel_8h.html#a9241aeb36c406fa47b6abaf49c386818">net2_channel_input_add_message_to_buffer</a> (struct <a class="el" href="structnet2__channel__input__t.html">net2_channel_input_t</a> *net2_channel_input, struct <a class="el" href="structnet2__message__t.html">net2_message_t</a> *net2_message)</td></tr>
-<tr class="memdesc:a9241aeb36c406fa47b6abaf49c386818"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when a message (typically an SEND) is received from a remote channel to this channel input; the message is buffered until it can be handled.  <a href="#a9241aeb36c406fa47b6abaf49c386818">More...</a><br/></td></tr>
+<tr class="memitem:a9241aeb36c406fa47b6abaf49c386818"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9241aeb36c406fa47b6abaf49c386818"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>net2_channel_input_add_message_to_buffer</b> (struct <a class="el" href="structnet2__channel__input__t.html">net2_channel_input_t</a> *net2_channel_input, struct <a class="el" href="structnet2__message__t.html">net2_message_t</a> *net2_message)</td></tr>
 <tr class="separator:a9241aeb36c406fa47b6abaf49c386818"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -148,210 +148,6 @@ Functions</h2></td></tr>
 <dl class="section version"><dt>Version</dt><dd>2.0 </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>22/01/2015 </dd></dl>
 </div><h2 class="groupheader">Function Documentation</h2>
-<a class="anchor" id="a9241aeb36c406fa47b6abaf49c386818"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int net2_channel_input_add_message_to_buffer </td>
-          <td>(</td>
-          <td class="paramtype">struct <a class="el" href="structnet2__channel__input__t.html">net2_channel_input_t</a> *&#160;</td>
-          <td class="paramname"><em>net2_channel_input</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">struct <a class="el" href="structnet2__message__t.html">net2_message_t</a> *&#160;</td>
-          <td class="paramname"><em>net2_message</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Called when a message (typically an SEND) is received from a remote channel to this channel input; the message is buffered until it can be handled. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">net2_channel_input</td><td>The channel to queue the message to. </td></tr>
-    <tr><td class="paramname">net2_message</td><td>The message to be queud. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd><ul>
-<li>
-SUCCESS : 0 </li>
-<li>
-FAILURE : -1 </li>
-</ul>
-</dd></dl>
-<dl class="section pre"><dt>Precondition</dt><dd>net2_channel_input != NULL </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="aab5136e23bdbc7106bf64d20ecca9706"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int net2_channel_input_create </td>
-          <td>(</td>
-          <td class="paramtype">struct <a class="el" href="structnet2__channel__input__t.html">net2_channel_input_t</a> *&#160;</td>
-          <td class="paramname"><em>net2_channel_input</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">unsigned int&#160;</td>
-          <td class="paramname"><em>virtual_channel_number</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Creates the input channel and registers it to the channel manager. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">net2_channel_input</td><td>A pointer on the channel to be created. </td></tr>
-    <tr><td class="paramname">virtual_channel_number</td><td>The channel number. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd><ul>
-<li>
-SUCCESS : 0 </li>
-<li>
-FAILURE : -1 </li>
-</ul>
-</dd></dl>
-<dl class="section pre"><dt>Precondition</dt><dd>net2_channel_input != NULL </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="a82087e4d7f3522c264eb6945636df1f2"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int net2_channel_input_read_integer </td>
-          <td>(</td>
-          <td class="paramtype">struct <a class="el" href="structnet2__channel__input__t.html">net2_channel_input_t</a> *&#160;</td>
-          <td class="paramname"><em>net2_channel_input</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int *&#160;</td>
-          <td class="paramname"><em>value</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Receives the integer from the given channel. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">net2_channel_input</td><td>The channel to receive the integer on. </td></tr>
-    <tr><td class="paramname">value</td><td>A pointer to store the integer received. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd><ul>
-<li>
-SUCCESS : 0 </li>
-<li>
-FAILURE : -1 </li>
-</ul>
-</dd></dl>
-<dl class="section pre"><dt>Precondition</dt><dd>net2_channel_input != NULL </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="a8077d865b2001975fb8c585549fdf933"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int net2_channel_output_add_message_to_buffer </td>
-          <td>(</td>
-          <td class="paramtype">struct <a class="el" href="structnet2__channel__output__t.html">net2_channel_output_t</a> *&#160;</td>
-          <td class="paramname"><em>net2_channel_output</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">struct <a class="el" href="structnet2__message__t.html">net2_message_t</a> *&#160;</td>
-          <td class="paramname"><em>net2_message</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Called when a message (typically an ACK) is received from a remote channel to this channel output; the message is buffered until it can be handled.. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">net2_channel_output</td><td>The channel to queue the message to. </td></tr>
-    <tr><td class="paramname">net2_message</td><td>The message to be queud. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd><ul>
-<li>
-SUCCESS : 0 </li>
-<li>
-FAILURE : -1 </li>
-</ul>
-</dd></dl>
-<dl class="section pre"><dt>Precondition</dt><dd>net2_channel_output != NULL </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="a9b3b5ad0392b7d3d85334b0c1bc30028"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int net2_channel_output_connect </td>
-          <td>(</td>
-          <td class="paramtype">struct <a class="el" href="structnet2__channel__output__t.html">net2_channel_output_t</a> *&#160;</td>
-          <td class="paramname"><em>net2_channel_output</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Effictively connects the channel to its remote one. The remote channel is known at creation but the connection is not established until this function gets explicitely called. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">net2_channel_output</td><td>The channel to start the connection from. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd><ul>
-<li>
-SUCCESS : 0 </li>
-<li>
-FAILURE : -1 </li>
-</ul>
-</dd></dl>
-<dl class="section pre"><dt>Precondition</dt><dd>net2_channel_output != NULL </dd></dl>
-
-</div>
-</div>
 <a class="anchor" id="a90488a31d7baea5682ecf8b83879ad54"></a>
 <div class="memitem">
 <div class="memproto">
@@ -388,13 +184,14 @@ FAILURE : -1 </li>
       </table>
 </div><div class="memdoc">
 
-<p>Creates the channel but the connection is not established yet. </p>
+<p>Creates the channel by asking the node to connect with the given node at (ip_address, port) to the channel with the given number. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">net2_channel</td><td>A pointer to a channel to store in the created one. </td></tr>
     <tr><td class="paramname">ip_address</td><td>A string format IPv4 address (4 bytes values separated by ".") of the remote node. </td></tr>
     <tr><td class="paramname">port</td><td>The port of the remote node. </td></tr>
     <tr><td class="paramname">remote_channel_number</td><td>The channel number of the remote channel. </td></tr>
+    <tr><td class="paramname">remote_channel_number</td><td></td></tr>
   </table>
   </dd>
 </dl>
@@ -405,57 +202,14 @@ SUCCESS : 0 </li>
 FAILURE : -1 </li>
 </ul>
 </dd></dl>
-<dl class="section pre"><dt>Precondition</dt><dd>net2_channel_output != NULL </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="ad1241dbae1affeceb917ca88ae952e6e"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int net2_channel_output_write_integer </td>
-          <td>(</td>
-          <td class="paramtype">struct <a class="el" href="structnet2__channel__output__t.html">net2_channel_output_t</a> *&#160;</td>
-          <td class="paramname"><em>net2_channel_output</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>value</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Sends the integer from the given channel to the one it is connected to. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">net2_channel_output</td><td>The channel to send the integer from. </td></tr>
-    <tr><td class="paramname">value</td><td>The value to be sent. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd><ul>
-<li>
-SUCCESS : 0 </li>
-<li>
-FAILURE : -1 </li>
-</ul>
-</dd></dl>
-<dl class="section pre"><dt>Precondition</dt><dd>net2_channel_output != NULL </dd></dl>
+<dl class="section pre"><dt>Precondition</dt><dd>net2_channel != NULL </dd></dl>
 
 </div>
 </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Apr 11 2015 12:48:16 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Jun 14 2015 18:32:14 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

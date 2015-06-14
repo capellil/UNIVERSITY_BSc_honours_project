@@ -16,7 +16,6 @@
 #endif
 
 /**
- * @class net2_node_id_t
  * @brief Structure used to identify a node : IP address + port (because scope : TCP / IP only).
  */
 struct net2_node_id_t
@@ -26,7 +25,7 @@ struct net2_node_id_t
 };
 
 /**
- * @class net2_node_t
+ * @brief Structure used to represent the node itself. It contains its node id structure.
  **/
 struct net2_node_t
 { 

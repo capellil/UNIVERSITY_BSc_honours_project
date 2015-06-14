@@ -18,7 +18,6 @@
 #endif
 
 /**
- * @class net2_link_manager_t
  * @brief The link manager structure. It contains a collection of links and ensures that one a link is registered per node.
  **/
 struct net2_link_manager_t

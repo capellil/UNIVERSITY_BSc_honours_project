@@ -29,7 +29,6 @@ struct net2_channel_input_linked_element_t
 };
 
 /**
- * @class net2_channel_manager_t
  * @brief Handles the channels; it registers them and is then able to return a channel corresponding to a channel number.
  **/
 struct net2_channel_manager_t

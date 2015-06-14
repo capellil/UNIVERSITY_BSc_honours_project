@@ -1,9 +1,21 @@
 var searchData=
 [
-  ['main',['main',['../test__channel__client_8c.html#a0ddf1224851353fc92bfbff6f499fa97',1,'main(int argc, char *argv[]):&#160;test_channel_client.c'],['../test__channel__manager_8c.html#a0ddf1224851353fc92bfbff6f499fa97',1,'main(int argc, char *argv[]):&#160;test_channel_manager.c'],['../test__channel__server_8c.html#a0ddf1224851353fc92bfbff6f499fa97',1,'main(int argc, char *argv[]):&#160;test_channel_server.c'],['../test__link__client_8c.html#a0ddf1224851353fc92bfbff6f499fa97',1,'main(int argc, char *argv[]):&#160;test_link_client.c'],['../test__link__manager__client_8c.html#a0ddf1224851353fc92bfbff6f499fa97',1,'main(int argc, char *argv[]):&#160;test_link_manager_client.c'],['../test__link__manager__server_8c.html#a0ddf1224851353fc92bfbff6f499fa97',1,'main(int argc, char *argv[]):&#160;test_link_manager_server.c'],['../test__link__server_8c.html#a0ddf1224851353fc92bfbff6f499fa97',1,'main(int argc, char *argv[]):&#160;test_link_server.c'],['../test__link__server__client_8c.html#a0ddf1224851353fc92bfbff6f499fa97',1,'main(int argc, char *argv[]):&#160;test_link_server_client.c'],['../test__link__server__server_8c.html#a0ddf1224851353fc92bfbff6f499fa97',1,'main(int argc, char *argv[]):&#160;test_link_server_server.c'],['../test__node__client_8c.html#a0ddf1224851353fc92bfbff6f499fa97',1,'main(int argc, char *argv[]):&#160;test_node_client.c'],['../test__node__server_8c.html#a0ddf1224851353fc92bfbff6f499fa97',1,'main(int argc, char *argv[]):&#160;test_node_server.c'],['../test__process__console_8c.html#a0ddf1224851353fc92bfbff6f499fa97',1,'main(int argc, char *argv[]):&#160;test_process_console.c'],['../test__process__console__for__measures_8c.html#a0ddf1224851353fc92bfbff6f499fa97',1,'main(int argc, char *argv[]):&#160;test_process_console_for_measures.c'],['../test__process__copy_8c.html#a0ddf1224851353fc92bfbff6f499fa97',1,'main(int argc, char *argv[]):&#160;test_process_copy.c'],['../test__process__prefix_8c.html#a0ddf1224851353fc92bfbff6f499fa97',1,'main(int argc, char *argv[]):&#160;test_process_prefix.c'],['../test__process__successor_8c.html#a0ddf1224851353fc92bfbff6f499fa97',1,'main(int argc, char *argv[]):&#160;test_process_successor.c'],['../test__socket__client_8c.html#a0ddf1224851353fc92bfbff6f499fa97',1,'main(int argc, char *argv[]):&#160;test_socket_client.c'],['../test__socket__server_8c.html#a0ddf1224851353fc92bfbff6f499fa97',1,'main(int argc, char *argv[]):&#160;test_socket_server.c']]],
-  ['max',['max',['../structnumber__generator__process.html#a31cde720224a169bb71d8b7aa71517e0',1,'number_generator_process']]],
-  ['min',['min',['../structnumber__generator__process.html#aafc57424c6c4c542b637318b0eb1ed37',1,'number_generator_process']]],
-  ['multi_5fconsole_5fprocess',['multi_console_process',['../structmulti__console__process.html',1,'']]],
-  ['multi_5fconsole_5fprocess_2eh',['multi_console_process.h',['../multi__console__process_8h.html',1,'']]],
-  ['mutex',['mutex',['../structchannel__t.html#af5fb25d8c1f0ec6bc2f96d62deff8637',1,'channel_t']]]
+  ['test_5fchannel_5fclient_2ec',['test_channel_client.c',['../test__channel__client_8c.html',1,'']]],
+  ['test_5fchannel_5fmanager_2ec',['test_channel_manager.c',['../test__channel__manager_8c.html',1,'']]],
+  ['test_5fchannel_5fserver_2ec',['test_channel_server.c',['../test__channel__server_8c.html',1,'']]],
+  ['test_5flink_5fclient_2ec',['test_link_client.c',['../test__link__client_8c.html',1,'']]],
+  ['test_5flink_5fmanager_5fclient_2ec',['test_link_manager_client.c',['../test__link__manager__client_8c.html',1,'']]],
+  ['test_5flink_5fmanager_5fserver_2ec',['test_link_manager_server.c',['../test__link__manager__server_8c.html',1,'']]],
+  ['test_5flink_5fserver_2ec',['test_link_server.c',['../test__link__server_8c.html',1,'']]],
+  ['test_5flink_5fserver_5fclient_2ec',['test_link_server_client.c',['../test__link__server__client_8c.html',1,'']]],
+  ['test_5flink_5fserver_5fserver_2ec',['test_link_server_server.c',['../test__link__server__server_8c.html',1,'']]],
+  ['test_5fnode_5fclient_2ec',['test_node_client.c',['../test__node__client_8c.html',1,'']]],
+  ['test_5fnode_5fserver_2ec',['test_node_server.c',['../test__node__server_8c.html',1,'']]],
+  ['test_5fprocess_5fconsole_2ec',['test_process_console.c',['../test__process__console_8c.html',1,'']]],
+  ['test_5fprocess_5fconsole_5ffor_5fmeasures_2ec',['test_process_console_for_measures.c',['../test__process__console__for__measures_8c.html',1,'']]],
+  ['test_5fprocess_5fcopy_2ec',['test_process_copy.c',['../test__process__copy_8c.html',1,'']]],
+  ['test_5fprocess_5fprefix_2ec',['test_process_prefix.c',['../test__process__prefix_8c.html',1,'']]],
+  ['test_5fprocess_5fsuccessor_2ec',['test_process_successor.c',['../test__process__successor_8c.html',1,'']]],
+  ['test_5fsocket_5fclient_2ec',['test_socket_client.c',['../test__socket__client_8c.html',1,'']]],
+  ['test_5fsocket_5fserver_2ec',['test_socket_server.c',['../test__socket__server_8c.html',1,'']]]
 ];

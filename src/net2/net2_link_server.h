@@ -14,7 +14,6 @@
 #include "net2_link.h"
 
 /**
- * @class net2_link_server_t
  * @brief The link server is in charge of handling incoming connections requests from remote nodes which want to create a communication between one of their channel and on of its channel. It therefore checks from the link manager than those channels are not already connected with a net2 link.
  **/
 struct net2_link_server_t
