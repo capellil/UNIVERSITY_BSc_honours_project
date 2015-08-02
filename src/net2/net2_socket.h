@@ -8,8 +8,7 @@
 #ifndef NET2_SOCKET_INCLUDED
 #define NET2_SOCKET_INCLUDED
 
-#include <sys/types.h> // Compulsory for AF_INET, SOCK_STREAM...
-#include <sys/socket.h> // Obvious...
+#include <sys/types.h> // AF_INET, SOCK_STREAM...
 #include <netinet/in.h> // sockaddr_in | IPPROTO_TCP | IPPROTO_UDP
 #include <arpa/inet.h> // inet_ntoa
 
@@ -23,10 +22,10 @@ struct net2_socket_t
 };
 
 /**
- * @brief Prints out the information on the given net2_socket : its file descriptor, address and port.
+ * @brief Prints out all the information in the given net2_socket next to the given header.
  * @param heading The message to be displayed as a heading.
  * @param net2_socket The socket to be printed out.
- * @pre net2_socket != NULL.
+ * @pre net2_socket points to a non-NULL net2_socket.
  **/
 void net2_socket_print(char* heading, struct net2_socket_t* net2_socket);
 
@@ -37,7 +36,7 @@ void net2_socket_print(char* heading, struct net2_socket_t* net2_socket);
  		       <li>SUCCESS : 0.
                <li>FAILED : -1.
            </ul>
- * @pre net2_socket != NULL.
+ * @pre net2_socket points to a non-NULL net2_socket.
  **/
 int net2_socket_create(struct net2_socket_t* net2_socket);
 
@@ -55,7 +54,7 @@ int net2_socket_create(struct net2_socket_t* net2_socket);
                    <li>-4 : the socket information extraction failed.
                </ul>
            </ul>
- * @pre net2_socket != NULL.
+ * @pre net2_socket points to a non-NULL net2_socket.
  **/
 int net2_socket_create_and_bind(struct net2_socket_t* net2_socket, unsigned short port);
 
@@ -66,7 +65,7 @@ int net2_socket_create_and_bind(struct net2_socket_t* net2_socket, unsigned shor
                <li>SUCCESS : 0.
 		       <li>FAILED : -1.
 	       </ul>
- * @pre net2_socket != NULL.
+ * @pre net2_socket points to a non-NULL net2_socket.
  **/
 int net2_socket_listen(struct net2_socket_t* net2_socket);
 
@@ -79,8 +78,8 @@ int net2_socket_listen(struct net2_socket_t* net2_socket);
  		       <li>FAILED : -1.
 	       </ul>
  * @pre <ul>
-            <li>server != NULL.
-            <li>client != NULL.
+            <li>server points to a non-NULL net2_socket.
+            <li>client points to an allocated memory area.
         </ul>
  **/
 int net2_socket_accept(struct net2_socket_t* server, struct net2_socket_t* client);
@@ -94,7 +93,7 @@ int net2_socket_accept(struct net2_socket_t* server, struct net2_socket_t* clien
  			   <li>SUCCESS : 0.
                <li>FAILED : -1.
            </ul>
- * @pre net2_socket != NULL.
+ * @pre net2_socket points to a non-NULL net2_socket.
  **/
 int net2_socket_connect(struct net2_socket_t* net2_socket, unsigned int address, unsigned short port);
 
@@ -107,7 +106,7 @@ int net2_socket_connect(struct net2_socket_t* net2_socket, unsigned int address,
  		       <li>SUCCESS : 0.
  			   <li>FAILED : -1
            </ul>
- * @pre net2_socket != NULL.
+ * @pre net2_socket points to a non-NULL net2_socket.
  **/
 int net2_socket_write(struct net2_socket_t* net2_socket, void* data, unsigned int data_length);
 
@@ -120,12 +119,12 @@ int net2_socket_write(struct net2_socket_t* net2_socket, void* data, unsigned in
  			   <li>SUCCESS : 0.
  			   <li>FAILED
                <ul>
-                   <li>-1 if the peer has performed an orderly shutdown.
-                   <li>-2 otherwise.
+                   <li>-1 : if the peer has performed an orderly shutdown.
+                   <li>-2 : otherwise.
                </ul>
            </ul>
  * @pre <ul>
-            <li>net2_socket != NULL
+            <li>net2_socket points to a non-NULL net2_socket.
             <li>data_length is less or equal to the size of the allocated memory area pointed by data.
         </ul>
  **/
@@ -139,25 +138,25 @@ int net2_socket_read(struct net2_socket_t* net2_socket, void* data, unsigned int
  		       <li> FAILURE : -1.
 	       </ul>
  * @pre <ul>
-            <li>net2_socket != NULL.
+            <li>net2_socket points to a non-NULL net2_socket.
             <li>net2_socket contains an active socket.
         </ul>
  **/
 int net2_socket_close(struct net2_socket_t* net2_socket);
 
 /**
- * @brief Returns the ip address of the given net2 socket (host order).
- * @param net2_socket The socket to extract the ip from.
- * @return The IP address of the given socket in unsigned integer format (host byte order).
- * @pre net2_socket points to an already allocated memory area.
+ * @brief Returns - in host byte order - the IP address of the given net2 socket.
+ * @param net2_socket The net2 socket to extract the IP from.
+ * @return The IP address - in host byte order - of the given socket.
+ * @pre net2_socket points to a non-NULL net2_socket.
  **/
 unsigned int net2_socket_get_ip(struct net2_socket_t* net2_socket);
 
 /**
- * @brief Returns the port of the given net2 socket (host order).
- * @param net2_socket The socket to extract the ip from.
- * @return The port of the given socket in unsigned integer format (host byte order).
- * @pre net2_socket points to an already allocated memory area.
+ * @brief Returns - in host byte order - the port of the given net2 socket.
+ * @param net2_socket The net2 socket to extract the port from.
+ * @return The port - in host byte order - of the given socket.
+ * @pre net2_socket points to a non-NULL net2_socket.
  **/
 unsigned short net2_socket_get_port(struct net2_socket_t* net2_socket);
 
