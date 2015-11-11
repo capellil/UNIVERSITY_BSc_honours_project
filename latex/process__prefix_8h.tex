@@ -1,16 +1,15 @@
-\hypertarget{process__prefix_8h}{\section{src/processes/process\-\_\-prefix.h File Reference}
-\label{process__prefix_8h}\index{src/processes/process\-\_\-prefix.\-h@{src/processes/process\-\_\-prefix.\-h}}
-}
-{\ttfamily \#include \char`\"{}../net2/net2\-\_\-channel.\-h\char`\"{}}\\*
+\hypertarget{process__prefix_8h}{}\section{src/processes/process\+\_\+prefix.h File Reference}
+\label{process__prefix_8h}\index{src/processes/process\+\_\+prefix.\+h@{src/processes/process\+\_\+prefix.\+h}}
+{\ttfamily \#include \char`\"{}../net2/net2\+\_\+channel.\+h\char`\"{}}\\*
 \subsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
-class \hyperlink{structprocess__prefix__int__t}{process\-\_\-prefix\-\_\-int\-\_\-t}
+class \hyperlink{structprocess__prefix__int__t}{process\+\_\+prefix\+\_\+int\+\_\+t}
 \begin{DoxyCompactList}\small\item\em A process sending an initial value, then it simply transmits data its receives from its channel input to its channel output. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-void \hyperlink{process__prefix_8h_ade4d8a497841bee807ad96b3cdc93751}{process\-\_\-prefix\-\_\-int\-\_\-create} (struct \hyperlink{structprocess__prefix__int__t}{process\-\_\-prefix\-\_\-int\-\_\-t} $\ast$process\-\_\-prefix\-\_\-int, int value, struct \hyperlink{structnet2__channel__input__t}{net2\-\_\-channel\-\_\-input\-\_\-t} $\ast$channel\-\_\-input, struct \hyperlink{structnet2__channel__output__t}{net2\-\_\-channel\-\_\-output\-\_\-t} $\ast$channel\-\_\-output)
+void \hyperlink{process__prefix_8h_ade4d8a497841bee807ad96b3cdc93751}{process\+\_\+prefix\+\_\+int\+\_\+create} (struct \hyperlink{structprocess__prefix__int__t}{process\+\_\+prefix\+\_\+int\+\_\+t} $\ast$process\+\_\+prefix\+\_\+int, int value, struct \hyperlink{structnet2__channel__input__t}{net2\+\_\+channel\+\_\+input\+\_\+t} $\ast$channel\+\_\+input, struct \hyperlink{structnet2__channel__output__t}{net2\+\_\+channel\+\_\+output\+\_\+t} $\ast$channel\+\_\+output)
 \begin{DoxyCompactList}\small\item\em Creates a prefix process. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
@@ -19,7 +18,7 @@ void \hyperlink{process__prefix_8h_ade4d8a497841bee807ad96b3cdc93751}{process\-\
 Capelli, Ludovic 
 \end{DoxyAuthor}
 \begin{DoxyVersion}{Version}
-1.\-0 
+1.\+0 
 \end{DoxyVersion}
 \begin{DoxyDate}{Date}
 09/02/2015 
@@ -27,31 +26,31 @@ Capelli, Ludovic
 
 
 \subsection{Function Documentation}
-\hypertarget{process__prefix_8h_ade4d8a497841bee807ad96b3cdc93751}{\index{process\-\_\-prefix.\-h@{process\-\_\-prefix.\-h}!process\-\_\-prefix\-\_\-int\-\_\-create@{process\-\_\-prefix\-\_\-int\-\_\-create}}
-\index{process\-\_\-prefix\-\_\-int\-\_\-create@{process\-\_\-prefix\-\_\-int\-\_\-create}!process_prefix.h@{process\-\_\-prefix.\-h}}
-\subsubsection[{process\-\_\-prefix\-\_\-int\-\_\-create}]{\setlength{\rightskip}{0pt plus 5cm}void process\-\_\-prefix\-\_\-int\-\_\-create (
+\hypertarget{process__prefix_8h_ade4d8a497841bee807ad96b3cdc93751}{}\index{process\+\_\+prefix.\+h@{process\+\_\+prefix.\+h}!process\+\_\+prefix\+\_\+int\+\_\+create@{process\+\_\+prefix\+\_\+int\+\_\+create}}
+\index{process\+\_\+prefix\+\_\+int\+\_\+create@{process\+\_\+prefix\+\_\+int\+\_\+create}!process\+\_\+prefix.\+h@{process\+\_\+prefix.\+h}}
+\subsubsection[{process\+\_\+prefix\+\_\+int\+\_\+create(struct process\+\_\+prefix\+\_\+int\+\_\+t $\ast$process\+\_\+prefix\+\_\+int, int value, struct net2\+\_\+channel\+\_\+input\+\_\+t $\ast$channel\+\_\+input, struct net2\+\_\+channel\+\_\+output\+\_\+t $\ast$channel\+\_\+output)}]{\setlength{\rightskip}{0pt plus 5cm}void process\+\_\+prefix\+\_\+int\+\_\+create (
 \begin{DoxyParamCaption}
-\item[{struct {\bf process\-\_\-prefix\-\_\-int\-\_\-t} $\ast$}]{process\-\_\-prefix\-\_\-int, }
+\item[{struct {\bf process\+\_\+prefix\+\_\+int\+\_\+t} $\ast$}]{process\+\_\+prefix\+\_\+int, }
 \item[{int}]{value, }
-\item[{struct {\bf net2\-\_\-channel\-\_\-input\-\_\-t} $\ast$}]{channel\-\_\-input, }
-\item[{struct {\bf net2\-\_\-channel\-\_\-output\-\_\-t} $\ast$}]{channel\-\_\-output}
+\item[{struct {\bf net2\+\_\+channel\+\_\+input\+\_\+t} $\ast$}]{channel\+\_\+input, }
+\item[{struct {\bf net2\+\_\+channel\+\_\+output\+\_\+t} $\ast$}]{channel\+\_\+output}
 \end{DoxyParamCaption}
-)}}\label{process__prefix_8h_ade4d8a497841bee807ad96b3cdc93751}
+)}\label{process__prefix_8h_ade4d8a497841bee807ad96b3cdc93751}
 
 
 Creates a prefix process. 
 
 
 \begin{DoxyParams}{Parameters}
-{\em process\-\_\-prefix\-\_\-int} & A pointer on an allocated memory area to store the created process in. \\
+{\em process\+\_\+prefix\+\_\+int} & A pointer on an allocated memory area to store the created process in. \\
 \hline
 {\em value} & Value to be initially sent. \\
 \hline
-{\em channel\-\_\-input} & The channel to read data from. \\
+{\em channel\+\_\+input} & The channel to read data from. \\
 \hline
-{\em channel\-\_\-output} & The channel to send data to. \\
+{\em channel\+\_\+output} & The channel to send data to. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyPrecond}{Precondition}
-process\-\_\-prefix != N\-U\-L\-L 
+process\+\_\+prefix != N\+U\+L\+L 
 \end{DoxyPrecond}

@@ -1,10 +1,9 @@
-\hypertarget{test__link__manager__server_8c}{\section{src/tests/test\-\_\-link\-\_\-manager\-\_\-server.c File Reference}
-\label{test__link__manager__server_8c}\index{src/tests/test\-\_\-link\-\_\-manager\-\_\-server.\-c@{src/tests/test\-\_\-link\-\_\-manager\-\_\-server.\-c}}
-}
-{\ttfamily \#include $<$stdio.\-h$>$}\\*
-{\ttfamily \#include $<$stdlib.\-h$>$}\\*
-{\ttfamily \#include $<$stdbool.\-h$>$}\\*
-{\ttfamily \#include \char`\"{}../net2/net2\-\_\-link\-\_\-manager.\-h\char`\"{}}\\*
+\hypertarget{test__link__manager__server_8c}{}\section{src/tests/test\+\_\+link\+\_\+manager\+\_\+server.c File Reference}
+\label{test__link__manager__server_8c}\index{src/tests/test\+\_\+link\+\_\+manager\+\_\+server.\+c@{src/tests/test\+\_\+link\+\_\+manager\+\_\+server.\+c}}
+{\ttfamily \#include $<$stdio.\+h$>$}\\*
+{\ttfamily \#include $<$stdlib.\+h$>$}\\*
+{\ttfamily \#include $<$stdbool.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}../net2/net2\+\_\+link\+\_\+manager.\+h\char`\"{}}\\*
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -17,7 +16,7 @@ int \hyperlink{test__link__manager__server_8c_a0ddf1224851353fc92bfbff6f499fa97}
 Capelli, Ludovic 
 \end{DoxyAuthor}
 \begin{DoxyVersion}{Version}
-1.\-0 
+1.\+0 
 \end{DoxyVersion}
 \begin{DoxyDate}{Date}
 22/01/2015 
@@ -25,27 +24,27 @@ Capelli, Ludovic
 
 
 \subsection{Function Documentation}
-\hypertarget{test__link__manager__server_8c_a0ddf1224851353fc92bfbff6f499fa97}{\index{test\-\_\-link\-\_\-manager\-\_\-server.\-c@{test\-\_\-link\-\_\-manager\-\_\-server.\-c}!main@{main}}
-\index{main@{main}!test_link_manager_server.c@{test\-\_\-link\-\_\-manager\-\_\-server.\-c}}
-\subsubsection[{main}]{\setlength{\rightskip}{0pt plus 5cm}int main (
+\hypertarget{test__link__manager__server_8c_a0ddf1224851353fc92bfbff6f499fa97}{}\index{test\+\_\+link\+\_\+manager\+\_\+server.\+c@{test\+\_\+link\+\_\+manager\+\_\+server.\+c}!main@{main}}
+\index{main@{main}!test\+\_\+link\+\_\+manager\+\_\+server.\+c@{test\+\_\+link\+\_\+manager\+\_\+server.\+c}}
+\subsubsection[{main(int argc, char $\ast$argv[])}]{\setlength{\rightskip}{0pt plus 5cm}int main (
 \begin{DoxyParamCaption}
 \item[{int}]{argc, }
 \item[{char $\ast$}]{argv\mbox{[}$\,$\mbox{]}}
 \end{DoxyParamCaption}
-)}}\label{test__link__manager__server_8c_a0ddf1224851353fc92bfbff6f499fa97}
+)}\label{test__link__manager__server_8c_a0ddf1224851353fc92bfbff6f499fa97}
 
 
 This application tests the link manager. 
 
-It first consists in instanciating the link manager singleton through net2\-\_\-link\-\_\-manager\-\_\-get\-\_\-instance function.\par
- Then it creates a link, connected with the test\-\_\-link\-\_\-manager\-\_\-client programme one. This application will check the functions net2\-\_\-link\-\_\-manager\-\_\-check\-\_\-socket and net2\-\_\-link\-\_\-manager\-\_\-register\-\_\-link before and after the link gets registered. 
+It first consists in instanciating the link manager singleton through net2\+\_\+link\+\_\+manager\+\_\+get\+\_\+instance function.~\newline
+ Then it creates a link, connected with the test\+\_\+link\+\_\+manager\+\_\+client programme one. This application will check the functions net2\+\_\+link\+\_\+manager\+\_\+check\+\_\+socket and net2\+\_\+link\+\_\+manager\+\_\+register\+\_\+link before and after the link gets registered. 
 \begin{DoxyItemize}
-\item Argument 0 \-: the application name. (hidden) 
-\item Argument 1 \-: the port to use. 
+\item Argument 0 \+: the application name. (hidden) 
+\item Argument 1 \+: the port to use. 
 \end{DoxyItemize}\begin{DoxyReturn}{Returns}
 
 \begin{DoxyItemize}
-\item Success \-: E\-X\-I\-T\-\_\-\-S\-U\-C\-C\-E\-S\-S 
-\item Failure \-: E\-X\-I\-T\-\_\-\-F\-A\-I\-L\-U\-R\-E 
+\item Success \+: E\+X\+I\+T\+\_\+\+S\+U\+C\+C\+E\+S\+S 
+\item Failure \+: E\+X\+I\+T\+\_\+\+F\+A\+I\+L\+U\+R\+E 
 \end{DoxyItemize}
 \end{DoxyReturn}
