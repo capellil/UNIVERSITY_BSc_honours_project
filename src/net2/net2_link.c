@@ -21,7 +21,7 @@ int net2_link_rx_read(struct net2_socket_t* net2_socket, void* data, unsigned in
         if(!result)
         {
             // Yes, the read succeeded.
-            net2_debug_success("net2_link_rx_read");
+            net2_debug_success();
         }
         else if(result == -1)
         {
@@ -53,7 +53,7 @@ int net2_link_tx_write(struct net2_socket_t* net2_socket, void* data, unsigned i
         if(!result)
         {
             // Yes, the write succeeded.
-            net2_debug_success("net2_link_write");
+            net2_debug_success();
         }
         else if(result == -1)
         {
@@ -86,7 +86,7 @@ int net2_link_read(struct net2_link_t* net2_link, void* data, unsigned int data_
         if(!result)
         {
             // Yes, the read succeeded.
-            net2_debug_success("net2_link_read");
+            net2_debug_success();
         }
         else if(result == -1)
         {
@@ -118,7 +118,7 @@ int net2_link_write(struct net2_link_t* net2_link, void* data, unsigned int data
         if(!result)
         {
             // Yes, the write succeeded.
-            net2_debug_success("net2_link_tx_write");
+            net2_debug_success();
         }
         else if(result == -1)
         {
@@ -224,7 +224,7 @@ int net2_link_send(struct net2_link_t* net2_link, struct net2_message_t* net2_me
                 //spy("HAS BEEN SENT");
                 // Yes, the writing succeeded.
                 #ifdef NET2_DEBUG
-                    net2_debug_success("net2_link_send");
+                    net2_debug_success();
                 #endif
             }
             else if(result == -1)
@@ -422,7 +422,7 @@ void* net2_link_run(void* net2_link_to_run)
                                     {
                                         // Yes, the message add succeeded.
                                         #ifdef NET2_DEBUG
-                                            net2_debug_success("net2_link_run SEND");
+                                            net2_debug_success();
                                         #endif
                                     }
                                     else
@@ -452,7 +452,7 @@ void* net2_link_run(void* net2_link_to_run)
                                     {
                                         // Yes, the message add succeeded.
                                         #ifdef NET2_DEBUG
-                                            net2_debug_success("net2_link_run ACK");
+                                            net2_debug_success();
                                         #endif
                                     }
                                     else
@@ -576,7 +576,7 @@ int net2_link_append_to_linked_element(struct net2_link_t* link, struct net2_lin
         }
         
         #ifdef NET2_DEBUG
-            net2_debug_success("net2_link_add_linked_element");
+            net2_debug_success();
         #endif
     }
     else

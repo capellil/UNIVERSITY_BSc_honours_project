@@ -80,7 +80,7 @@ int net2_socket_create(struct net2_socket_t* net2_socket)
 	    // Yes, socket successfully created.
 		net2_socket->_socket = socket;
 		#ifdef NET2_DEBUG
-		    net2_debug_success("net2_socket_create");
+		    net2_debug_success();
 		#endif
 	}
 	else
@@ -129,7 +129,7 @@ int net2_socket_create_and_bind(struct net2_socket_t* net2_socket, unsigned shor
                 {
                     // Yes, the socket information extraction succeed.
     			    #ifdef NET2_DEBUG
-    		             net2_debug_success("net2_socket_create_and_bind");
+    		             net2_debug_success();
     		        #endif
 		        }
 		        else
@@ -182,7 +182,7 @@ int net2_socket_listen(struct net2_socket_t* net2_socket)
 	{
 	    // Yes, the socket listening succeeded.
 	    #ifdef NET2_DEBUG
-		     net2_debug_success("net2_socket_listen");
+		     net2_debug_success();
 		#endif
 	}
 	else
@@ -212,7 +212,7 @@ int net2_socket_accept(struct net2_socket_t* server, struct net2_socket_t* clien
 	    client->_socket = socket;
 	    client->_address = address;
 	    #ifdef NET2_DEBUG
-		     net2_debug_success("net2_socket_accept");
+		     net2_debug_success();
 		#endif
     }
     else
@@ -242,7 +242,7 @@ int net2_socket_connect(struct net2_socket_t* net2_socket, unsigned int address,
 	{
 	    // Yes, the socket connection succeeded.
 	    #ifdef NET2_DEBUG
-		     net2_debug_success("net2_socket_connect");
+		     net2_debug_success();
 		#endif
 	}
 	else
@@ -267,7 +267,7 @@ int net2_socket_write(struct net2_socket_t* net2_socket, void* data, unsigned in
 	{
 	    // Yes, the send succeeded.
 	    #ifdef NET2_DEBUG
-		     net2_debug_success("net2_socket_write");
+		     net2_debug_success();
 		#endif
     }
     else if(!number_of_written_bytes)
@@ -300,7 +300,7 @@ int net2_socket_read(struct net2_socket_t* net2_socket, void* data, unsigned int
 	{
 	    // Yes, the send succeeded.
 	    #ifdef NET2_DEBUG
-		     net2_debug_success("net2_socket_read");
+		     net2_debug_success();
 		#endif
     }
     else if(number_of_read_bytes == 0)
@@ -332,7 +332,7 @@ int net2_socket_close(struct net2_socket_t* net2_socket)
 	{
 	    // Yes, the socket close succeeded.
 	    #ifdef NET2_DEBUG
-		     net2_debug_success("net2_socket_close");
+		     net2_debug_success();
 		#endif
 	}
 	else

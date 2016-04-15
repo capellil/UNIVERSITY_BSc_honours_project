@@ -37,7 +37,7 @@ int net2_node_create(unsigned short port)
                 {
                     // Yes, the channel manager initialisation succeeded.
                     #ifdef NET2_DEBUG
-                        net2_debug_success("net2_node_create");
+                        net2_debug_success();
                     #endif
                 }
                 else
@@ -92,7 +92,7 @@ int net2_node_init(unsigned short port)
         {
             // Yes, the node creation succeeded.
             #ifdef NET2_DEBUG
-                net2_debug_success("net2_node_init");
+                net2_debug_success();
             #endif
         }
         else
@@ -174,7 +174,7 @@ int net2_node_connect(struct net2_link_t** net2_link, unsigned int ip_address, u
 	                                    {
 	                                        // Yes, the new link run succeeded.
 	                                        #ifdef NET2_DEBUG
-	                                            net2_debug_success("net2_node_connect");
+	                                            net2_debug_success();
 	                                        #endif
 	                                    }
 	                                    else
@@ -257,7 +257,7 @@ int net2_node_connect(struct net2_link_t** net2_link, unsigned int ip_address, u
             {
                 // Yes, the link manager succeeded to get the link back.
                 #ifdef NET2_DEBUG
-                    net2_debug_success("net2_node_connect");
+                    net2_debug_success();
                 #endif
             }
             else
@@ -294,7 +294,7 @@ int net2_node_close()
         // Yes, the node is not already instanced.   
         pthread_join(*((*temp)->_server_thread), NULL);
         #ifdef NET2_DEBUG
-            net2_debug_success("net2_node_close");
+            net2_debug_success();
         #endif
     }
     else

@@ -23,7 +23,7 @@ int net2_link_manager_create()
         // Yes, the link manager dynamic allocation is OK
         (*link_manager)->_links = NULL;
         #ifdef NET2_DEBUG
-            net2_debug_success("net2_link_manager_create");
+            net2_debug_success();
         #endif
     }
     else
@@ -53,7 +53,7 @@ int net2_link_manager_init()
         {
             // Yes, the link manager creation succeeded.
             #ifdef NET2_DEBUG
-                net2_debug_success("net2_link_manager_init");
+                net2_debug_success();
             #endif
         }
         else
@@ -89,7 +89,7 @@ int net2_link_manager_register_link(struct net2_link_t* net2_link)
         {
             // Yes, the new link has been correctly appended to the linked list of links.
             #ifdef NET2_DEBUG
-                net2_debug_success("net2_link_manager_register_link");
+                net2_debug_success();
             #endif
         }
         else
@@ -143,7 +143,7 @@ int net2_link_manager_get_link(struct net2_link_t** net2_link, unsigned int ip_a
                 // Yes, the link manager found a link.
                 *net2_link = temp->_my_link;
                 #ifdef NET2_DEBUG
-                    net2_debug_success("net2_link_manager_get_link");
+                    net2_debug_success();
                 #endif
             }
             else
@@ -151,7 +151,7 @@ int net2_link_manager_get_link(struct net2_link_t** net2_link, unsigned int ip_a
                 // No, the link manager did not find any link.
                 *net2_link = NULL;
                 #ifdef NET2_DEBUG
-                    net2_debug_success("net2_link_manager_get_link");
+                    net2_debug_success();
                 #endif
             }
         }
@@ -160,7 +160,7 @@ int net2_link_manager_get_link(struct net2_link_t** net2_link, unsigned int ip_a
             // No, the link manager does not have any registered link yet.
             *net2_link = NULL;
             #ifdef NET2_DEBUG
-                net2_debug_success("net2_link_manager_get_link");
+                net2_debug_success();
             #endif
         }
     }
@@ -200,7 +200,7 @@ int net2_link_manager_check_address_and_port(unsigned int address, unsigned shor
             
             *found = (net2_link_compare_to_address_and_port(temp->_my_link, address, port));
             #ifdef NET2_DEBUG
-                net2_debug_success("net2_link_manager_check_socket");
+                net2_debug_success();
             #endif
         }
         else
@@ -208,7 +208,7 @@ int net2_link_manager_check_address_and_port(unsigned int address, unsigned shor
             // No, the link manager does not have any link yet.
             *found = false;
             #ifdef NET2_DEBUG
-                net2_debug_success("net2_link_manager_check_socket");
+                net2_debug_success();
             #endif
         }
     }

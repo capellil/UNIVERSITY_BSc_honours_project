@@ -4,9 +4,9 @@
 
 const unsigned int NET2_DEBUG_MAX_MESSAGE_LENGTH = 256;
 
-void net2_debug_success(char* function_name)
+void net2_debug_success()
 {
-    printf("FUNCTION SUCCESS : %s\n", function_name);
+    printf("FUNCTION SUCCESS : %s\n", __FUNCTION__);
 }
 
 void net2_debug_failure(char* function_name, char* message)

@@ -25,7 +25,7 @@ int net2_channel_manager_create()
         (*net2_channel_manager)->_channel_inputs = NULL;
         (*net2_channel_manager)->_channel_outputs = NULL;
         #ifdef NET2_DEBUG
-            net2_debug_success("net2_channel_manager_create");
+            net2_debug_success();
         #endif
     }
     else
@@ -55,7 +55,7 @@ int net2_channel_manager_init()
         {
             // Yes, the channel manager creation succeeded.
             #ifdef NET2_DEBUG
-                net2_debug_success("net2_channel_manager_init");
+                net2_debug_success();
             #endif
         }
         else
@@ -98,7 +98,7 @@ int net2_channel_manager_check_number(unsigned int channel_number, bool* found)
             // Yes, we found the given channel number in the channel outputs.
             *found = true;
             #ifdef NET2_DEBUG
-                net2_debug_success("net2_channel_manager_check_number");
+                net2_debug_success();
             #endif
         }
         else
@@ -117,7 +117,7 @@ int net2_channel_manager_check_number(unsigned int channel_number, bool* found)
                 // Yes, we found the given channel number in the channel inputs.
                 *found = true;
                 #ifdef NET2_DEBUG
-                    net2_debug_success("net2_channel_manager_check_number");
+                    net2_debug_success();
                 #endif
             }
             else
@@ -125,7 +125,7 @@ int net2_channel_manager_check_number(unsigned int channel_number, bool* found)
                 // No, we did not find the given channel number in the channel inputs.
                 *found = false;
                 #ifdef NET2_DEBUG
-                    net2_debug_success("net2_channel_manager_check_number");
+                    net2_debug_success();
                 #endif
             }
         }
@@ -196,7 +196,7 @@ int net2_channel_manager_register_channel_output(struct net2_channel_output_t* n
                 }
                 
                 #ifdef NET2_DEBUG
-                    net2_debug_success("net2_channel_manager_register_channel_output");
+                    net2_debug_success();
                 #endif
             }
             else
@@ -280,7 +280,7 @@ int net2_channel_manager_register_channel_input(struct net2_channel_input_t* net
                     }
                     
                     #ifdef NET2_DEBUG
-                        net2_debug_success("net2_channel_manager_register_channel_input");
+                        net2_debug_success();
                     #endif
                 }
                 else
@@ -347,7 +347,7 @@ int net2_channel_manager_get_channel(void** net2_channel_generic, enum net2_chan
             *net2_channel_generic = temp_output->_my_channel;
             *net2_channel_type = CHANNEL_OUTPUT;
             #ifdef NET2_DEBUG
-                net2_debug_success("net2_channel_manager_get_channel");
+                net2_debug_success();
             #endif
         }
         else
@@ -367,7 +367,7 @@ int net2_channel_manager_get_channel(void** net2_channel_generic, enum net2_chan
                 *net2_channel_generic = temp_input->_my_channel;
                 *net2_channel_type = CHANNEL_INPUT;
                 #ifdef NET2_DEBUG
-                    net2_debug_success("net2_channel_manager_get_channel");
+                    net2_debug_success();
                 #endif
             }
             else
@@ -375,7 +375,7 @@ int net2_channel_manager_get_channel(void** net2_channel_generic, enum net2_chan
                 // No, we did not find the given channel in the inputs neither.
                 *net2_channel_generic = NULL;
                 #ifdef NET2_DEBUG
-                    net2_debug_success("net2_channel_manager_get_channel");
+                    net2_debug_success();
                 #endif
             }
         }

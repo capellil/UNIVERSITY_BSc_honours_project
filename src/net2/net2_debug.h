@@ -12,9 +12,8 @@ const unsigned int NET2_DEBUG_MAX_MESSAGE_LENGTH; ///< Max length for debug mess
 
 /**
  * @brief Displays the name of the function that has been successfully executed.
- * @param function_name The function name to be displayed.
  **/
-void net2_debug_success(char* function_name);
+void net2_debug_success();
 
 /**
  * @brief Displays the name of the function and a message explaining what error has been encountered during the function execution. The message returned by perror is also displayed.

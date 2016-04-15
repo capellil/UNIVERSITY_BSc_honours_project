@@ -58,7 +58,7 @@ int net2_link_server_init(unsigned short port)
 			    void* net2_link_server_parameter = (void*)*net2_link_server;
 			    pthread_create(link_server_thread, NULL, net2_link_server_run_function_pointer, net2_link_server_parameter);
 			    #ifdef NET2_DEBUG
-				    net2_debug_success("net2_link_server_init");
+				    net2_debug_success();
 			    #endif
 		    }
 		    else
@@ -110,7 +110,7 @@ int net2_link_server_create(unsigned short port)
 			{
 				// Yes, the server socket listening succeeded.
 		        #ifdef NET2_DEBUG
-		            net2_debug_success("net2_link_server_create");
+		            net2_debug_success();
 		        #endif
 			}
 			else
@@ -190,7 +190,7 @@ void* net2_link_server_run(void* net2_link_server_to_run)
 		                            // Yes, the new link run succeeded.
 		                            run_result = net2_link_server_to_run;
 		                            #ifdef NET2_DEBUG
-                                        net2_debug_success("net2_link_server_run");
+                                        net2_debug_success();
                                     #endif
 		                        }
 		                        else
@@ -241,7 +241,7 @@ void* net2_link_server_run(void* net2_link_server_to_run)
 		                // Yes, the confirmation has been successfully sent to the client.
 		                run_result = net2_link_server_to_run;
 		                #ifdef NET2_DEBUG
-		                    net2_debug_success("net2_link_server_run");
+		                    net2_debug_success();
 		                #endif
 		            }
 		            else
@@ -315,7 +315,7 @@ int net2_link_server_new_link_to_run(struct net2_link_t* link_to_run)
                 void* (*new_link_to_run) (void*) = &net2_link_run;
                 pthread_create(new_link_thread, NULL, new_link_to_run, new_link_to_run_parameters);
                 #ifdef NET2_DEBUG
-                    net2_debug_success("net2_link_server_new_link_to_run");
+                    net2_debug_success();
                 #endif
             }
             else

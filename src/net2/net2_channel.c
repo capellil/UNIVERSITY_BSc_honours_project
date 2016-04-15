@@ -36,7 +36,7 @@ int net2_channel_output_create(struct net2_channel_output_t* net2_channel_output
         {
             // Yes, the channel output registration succeeded.
             #ifdef NET2_DEBUG
-                net2_debug_success("net2_channel_output_create");
+                net2_debug_success();
             #endif
         }
         else
@@ -105,7 +105,7 @@ int net2_channel_output_write_integer(struct net2_channel_output_t* net2_channel
                 free(message_to_read);
                 free(container); 
                 #ifdef NET2_DEBUG
-                    net2_debug_success("net2_channel_output_write_integer");
+                    net2_debug_success();
                 #endif
             }
             else
@@ -195,14 +195,14 @@ int net2_channel_output_add_message_to_buffer(struct net2_channel_output_t* net2
             
             temp->_next_message = new_element;
             #ifdef NET2_DEBUG
-                net2_debug_success("net2_channel_output_add_message_to_buffer");
+                net2_debug_success();
             #endif
         }
         else
         {
             net2_channel_output->_messages = new_element;
             #ifdef NET2_DEBUG
-                net2_debug_success("net2_channel_output_add_message_to_buffer");
+                net2_debug_success();
             #endif
         }
         
@@ -247,7 +247,7 @@ int net2_channel_input_create(struct net2_channel_input_t* net2_channel_input, u
                 net2_channel_input->_state = INACTIVE;
                 
                 #ifdef NET2_DEBUG
-                    net2_debug_success("net2_channel_input_create");
+                    net2_debug_success();
                 #endif
             }
             else
@@ -324,7 +324,7 @@ int net2_channel_input_read_integer(struct net2_channel_input_t* net2_channel_in
         {
             // Yes, the ACK message has been correctly sent.
             #ifdef NET2_DEBUG
-                net2_debug_success("net2_channel_input_read_integer");
+                net2_debug_success();
             #endif
         }
         else
@@ -395,7 +395,7 @@ int net2_channel_input_add_message_to_buffer(struct net2_channel_input_t* net2_c
             {
                 // Yes, the add of the link to the channel input linked list of links succeeded.
                 #ifdef NET2_DEBUG
-                    net2_debug_success("net2_channel_input_add_message_to_buffer");
+                    net2_debug_success();
                 #endif
             }
             else
@@ -411,7 +411,7 @@ int net2_channel_input_add_message_to_buffer(struct net2_channel_input_t* net2_c
         {
             net2_channel_input->_messages = new_element;
             #ifdef NET2_DEBUG
-                net2_debug_success("net2_channel_input_add_message_to_buffer");
+                net2_debug_success();
             #endif
         }
         
