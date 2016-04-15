@@ -314,7 +314,7 @@ int net2_socket_read(struct net2_socket_t* net2_socket, void* data, unsigned int
 	else
 	{
 	    // No, the send failed.
-	    result = -1;
+	    result = -2;
         #ifdef NET2_DEBUG
 		     net2_debug_failure("net2_socket_read", "The socket read failed.");
 		#endif
