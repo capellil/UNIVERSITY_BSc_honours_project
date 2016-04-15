@@ -303,8 +303,7 @@ int net2_socket_read(struct net2_socket_t* net2_socket, void* data, unsigned int
 		     net2_debug_success("net2_socket_read");
 		#endif
     }
-    
-    else if(!number_of_read_bytes)
+    else if(number_of_read_bytes == 0)
 	{
 	    // No, the send failed.
 	    result = -1;
