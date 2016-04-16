@@ -92,19 +92,29 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a href="net2__debug_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef NET2_DEBUG_INCLUDED</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define NET2_DEBUG_INCLUDED</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;</div>
-<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="net2__debug_8h.html#ab8a2d9a8dc33d690257deebaa6b122bd">   11</a></span>&#160;<span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="net2__debug_8h.html#ab8a2d9a8dc33d690257deebaa6b122bd">NET2_DEBUG_MAX_MESSAGE_LENGTH</a>; </div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keywordtype">void</span> <a class="code" href="net2__debug_8h.html#a995a5d300597a9931cbc85e2bf5c77c9">net2_debug_success</a>(<span class="keywordtype">char</span>* function_name);</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keywordtype">void</span> <a class="code" href="net2__debug_8h.html#a5a6c541dc93483c66ef9be09b4a37716">net2_debug_failure</a>(<span class="keywordtype">char</span>* function_name, <span class="keywordtype">char</span>* message);</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keywordtype">void</span> <a class="code" href="net2__debug_8h.html#a4c7fbf008ce9e539a10ad5dc486c255e">spy</a>(<span class="keywordtype">char</span>* message);</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#endif // NET2_DEBUG_INCLUDED INCLUDED</span></div>
-<div class="ttc" id="net2__debug_8h_html_a995a5d300597a9931cbc85e2bf5c77c9"><div class="ttname"><a href="net2__debug_8h.html#a995a5d300597a9931cbc85e2bf5c77c9">net2_debug_success</a></div><div class="ttdeci">void net2_debug_success(char *function_name)</div><div class="ttdoc">Displays the name of the function that has been successfully executed. </div><div class="ttdef"><b>Definition:</b> net2_debug.c:7</div></div>
-<div class="ttc" id="net2__debug_8h_html_a5a6c541dc93483c66ef9be09b4a37716"><div class="ttname"><a href="net2__debug_8h.html#a5a6c541dc93483c66ef9be09b4a37716">net2_debug_failure</a></div><div class="ttdeci">void net2_debug_failure(char *function_name, char *message)</div><div class="ttdoc">Displays the name of the function and a message explaining what error has been encountered during the...</div><div class="ttdef"><b>Definition:</b> net2_debug.c:12</div></div>
-<div class="ttc" id="net2__debug_8h_html_ab8a2d9a8dc33d690257deebaa6b122bd"><div class="ttname"><a href="net2__debug_8h.html#ab8a2d9a8dc33d690257deebaa6b122bd">NET2_DEBUG_MAX_MESSAGE_LENGTH</a></div><div class="ttdeci">const unsigned int NET2_DEBUG_MAX_MESSAGE_LENGTH</div><div class="ttdoc">Max length for debug messages. </div><div class="ttdef"><b>Definition:</b> net2_debug.h:11</div></div>
-<div class="ttc" id="net2__debug_8h_html_a4c7fbf008ce9e539a10ad5dc486c255e"><div class="ttname"><a href="net2__debug_8h.html#a4c7fbf008ce9e539a10ad5dc486c255e">spy</a></div><div class="ttdeci">void spy(char *message)</div><div class="ttdoc">Useful when inserting some checkpoints in the code. It displays the given message to show if a specif...</div><div class="ttdef"><b>Definition:</b> net2_debug.c:21</div></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="net2__debug_8h.html#ab8a2d9a8dc33d690257deebaa6b122bd">NET2_DEBUG_MAX_MESSAGE_LENGTH</a>;</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#ifdef NET2_DEBUG </span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">    #define net2_debug_success() printf(&quot;FUNCTION SUCCESS : %s\n&quot;, __FUNCTION__);</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">    #define net2_debug_failure(message) printf(&quot;FUNCTION FAILURE : \n&quot;); \</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">                                        printf(&quot;\t- Function : %s\n&quot;, __FUNCTION__); \</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">                                        printf(&quot;\t- Message : %s\n&quot;, message); \</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">                                        perror(&quot;\t- PError &quot;); \</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">                                        fflush(stdout);</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="net2__debug_8h.html#a1bf6ded71abc1d8107caac13b5cf37fe">   33</a></span>&#160;<span class="preprocessor">    #define net2_debug_success() {}</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="net2__debug_8h.html#a5f9a796d1293fd75319341efd2e87a13">   39</a></span>&#160;<span class="preprocessor">    #define net2_debug_failure(message) {}</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="keywordtype">void</span> <a class="code" href="net2__debug_8h.html#a4c7fbf008ce9e539a10ad5dc486c255e">spy</a>(<span class="keywordtype">char</span>* message);</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="preprocessor">#endif // NET2_DEBUG_INCLUDED INCLUDED</span></div>
+<div class="ttc" id="net2__debug_8h_html_ab8a2d9a8dc33d690257deebaa6b122bd"><div class="ttname"><a href="net2__debug_8h.html#ab8a2d9a8dc33d690257deebaa6b122bd">NET2_DEBUG_MAX_MESSAGE_LENGTH</a></div><div class="ttdeci">const unsigned int NET2_DEBUG_MAX_MESSAGE_LENGTH</div><div class="ttdoc">This variable stores the maximum length ot debug messages. </div><div class="ttdef"><b>Definition:</b> net2_debug.h:12</div></div>
+<div class="ttc" id="net2__debug_8h_html_a4c7fbf008ce9e539a10ad5dc486c255e"><div class="ttname"><a href="net2__debug_8h.html#a4c7fbf008ce9e539a10ad5dc486c255e">spy</a></div><div class="ttdeci">void spy(char *message)</div><div class="ttdoc">Useful when inserting some checkpoints in the code. It displays the given message to show if a specif...</div><div class="ttdef"><b>Definition:</b> net2_debug.c:7</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

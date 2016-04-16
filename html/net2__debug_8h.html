@@ -86,6 +86,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#define-members">Macros</a> &#124;
 <a href="#func-members">Functions</a> &#124;
 <a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
@@ -95,14 +96,18 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <p><a href="net2__debug_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:a1bf6ded71abc1d8107caac13b5cf37fe"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1bf6ded71abc1d8107caac13b5cf37fe"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="net2__debug_8h.html#a1bf6ded71abc1d8107caac13b5cf37fe">net2_debug_success</a>()&#160;&#160;&#160;{}</td></tr>
+<tr class="memdesc:a1bf6ded71abc1d8107caac13b5cf37fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Displays the name of the function that has been successfully executed. <br /></td></tr>
+<tr class="separator:a1bf6ded71abc1d8107caac13b5cf37fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5f9a796d1293fd75319341efd2e87a13"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="net2__debug_8h.html#a5f9a796d1293fd75319341efd2e87a13">net2_debug_failure</a>(message)&#160;&#160;&#160;{}</td></tr>
+<tr class="memdesc:a5f9a796d1293fd75319341efd2e87a13"><td class="mdescLeft">&#160;</td><td class="mdescRight">Displays the name of the function and a message explaining what error has been encountered during the function execution. The message returned by perror is also displayed.  <a href="#a5f9a796d1293fd75319341efd2e87a13">More...</a><br /></td></tr>
+<tr class="separator:a5f9a796d1293fd75319341efd2e87a13"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a995a5d300597a9931cbc85e2bf5c77c9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="net2__debug_8h.html#a995a5d300597a9931cbc85e2bf5c77c9">net2_debug_success</a> (char *function_name)</td></tr>
-<tr class="memdesc:a995a5d300597a9931cbc85e2bf5c77c9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Displays the name of the function that has been successfully executed.  <a href="#a995a5d300597a9931cbc85e2bf5c77c9">More...</a><br /></td></tr>
-<tr class="separator:a995a5d300597a9931cbc85e2bf5c77c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5a6c541dc93483c66ef9be09b4a37716"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="net2__debug_8h.html#a5a6c541dc93483c66ef9be09b4a37716">net2_debug_failure</a> (char *function_name, char *message)</td></tr>
-<tr class="memdesc:a5a6c541dc93483c66ef9be09b4a37716"><td class="mdescLeft">&#160;</td><td class="mdescRight">Displays the name of the function and a message explaining what error has been encountered during the function execution. The message returned by perror is also displayed.  <a href="#a5a6c541dc93483c66ef9be09b4a37716">More...</a><br /></td></tr>
-<tr class="separator:a5a6c541dc93483c66ef9be09b4a37716"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4c7fbf008ce9e539a10ad5dc486c255e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="net2__debug_8h.html#a4c7fbf008ce9e539a10ad5dc486c255e">spy</a> (char *message)</td></tr>
 <tr class="memdesc:a4c7fbf008ce9e539a10ad5dc486c255e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Useful when inserting some checkpoints in the code. It displays the given message to show if a specific point in the code has been reached or not.  <a href="#a4c7fbf008ce9e539a10ad5dc486c255e">More...</a><br /></td></tr>
 <tr class="separator:a4c7fbf008ce9e539a10ad5dc486c255e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -111,34 +116,24 @@ Functions</h2></td></tr>
 Variables</h2></td></tr>
 <tr class="memitem:ab8a2d9a8dc33d690257deebaa6b122bd"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab8a2d9a8dc33d690257deebaa6b122bd"></a>
 const unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="net2__debug_8h.html#ab8a2d9a8dc33d690257deebaa6b122bd">NET2_DEBUG_MAX_MESSAGE_LENGTH</a></td></tr>
-<tr class="memdesc:ab8a2d9a8dc33d690257deebaa6b122bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Max length for debug messages. <br /></td></tr>
+<tr class="memdesc:ab8a2d9a8dc33d690257deebaa6b122bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">This variable stores the maximum length ot debug messages. <br /></td></tr>
 <tr class="separator:ab8a2d9a8dc33d690257deebaa6b122bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><dl class="section author"><dt>Author</dt><dd>Ludovic Capelli </dd></dl>
 <dl class="section version"><dt>Version</dt><dd>1.0 </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>25/12/2014 </dd></dl>
-</div><h2 class="groupheader">Function Documentation</h2>
-<a class="anchor" id="a5a6c541dc93483c66ef9be09b4a37716"></a>
+</div><h2 class="groupheader">Macro Definition Documentation</h2>
+<a class="anchor" id="a5f9a796d1293fd75319341efd2e87a13"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void net2_debug_failure </td>
+          <td class="memname">#define net2_debug_failure</td>
           <td>(</td>
-          <td class="paramtype">char *&#160;</td>
-          <td class="paramname"><em>function_name</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">char *&#160;</td>
-          <td class="paramname"><em>message</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">message</td><td>)</td>
+          <td>&#160;&#160;&#160;{}</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -146,7 +141,6 @@ const unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="
 <p>Displays the name of the function and a message explaining what error has been encountered during the function execution. The message returned by perror is also displayed. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">function_name</td><td>The function name to be displayed. </td></tr>
     <tr><td class="paramname">message</td><td>Error message to be displayed. </td></tr>
   </table>
   </dd>
@@ -154,30 +148,7 @@ const unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="
 
 </div>
 </div>
-<a class="anchor" id="a995a5d300597a9931cbc85e2bf5c77c9"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void net2_debug_success </td>
-          <td>(</td>
-          <td class="paramtype">char *&#160;</td>
-          <td class="paramname"><em>function_name</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Displays the name of the function that has been successfully executed. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">function_name</td><td>The function name to be displayed. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
+<h2 class="groupheader">Function Documentation</h2>
 <a class="anchor" id="a4c7fbf008ce9e539a10ad5dc486c255e"></a>
 <div class="memitem">
 <div class="memproto">

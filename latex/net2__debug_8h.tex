@@ -1,12 +1,16 @@
 \hypertarget{net2__debug_8h}{}\section{src/net2/net2\+\_\+debug.h File Reference}
 \label{net2__debug_8h}\index{src/net2/net2\+\_\+debug.\+h@{src/net2/net2\+\_\+debug.\+h}}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{net2__debug_8h_a1bf6ded71abc1d8107caac13b5cf37fe}{}\#define \hyperlink{net2__debug_8h_a1bf6ded71abc1d8107caac13b5cf37fe}{net2\+\_\+debug\+\_\+success}()~\{\}\label{net2__debug_8h_a1bf6ded71abc1d8107caac13b5cf37fe}
+
+\begin{DoxyCompactList}\small\item\em Displays the name of the function that has been successfully executed. \end{DoxyCompactList}\item 
+\#define \hyperlink{net2__debug_8h_a5f9a796d1293fd75319341efd2e87a13}{net2\+\_\+debug\+\_\+failure}(message)~\{\}
+\begin{DoxyCompactList}\small\item\em Displays the name of the function and a message explaining what error has been encountered during the function execution. The message returned by perror is also displayed. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-void \hyperlink{net2__debug_8h_a995a5d300597a9931cbc85e2bf5c77c9}{net2\+\_\+debug\+\_\+success} (char $\ast$function\+\_\+name)
-\begin{DoxyCompactList}\small\item\em Displays the name of the function that has been successfully executed. \end{DoxyCompactList}\item 
-void \hyperlink{net2__debug_8h_a5a6c541dc93483c66ef9be09b4a37716}{net2\+\_\+debug\+\_\+failure} (char $\ast$function\+\_\+name, char $\ast$message)
-\begin{DoxyCompactList}\small\item\em Displays the name of the function and a message explaining what error has been encountered during the function execution. The message returned by perror is also displayed. \end{DoxyCompactList}\item 
 void \hyperlink{net2__debug_8h_a4c7fbf008ce9e539a10ad5dc486c255e}{spy} (char $\ast$message)
 \begin{DoxyCompactList}\small\item\em Useful when inserting some checkpoints in the code. It displays the given message to show if a specific point in the code has been reached or not. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Variables}
@@ -14,7 +18,7 @@ void \hyperlink{net2__debug_8h_a4c7fbf008ce9e539a10ad5dc486c255e}{spy} (char $\a
 \item 
 \hypertarget{net2__debug_8h_ab8a2d9a8dc33d690257deebaa6b122bd}{}const unsigned int \hyperlink{net2__debug_8h_ab8a2d9a8dc33d690257deebaa6b122bd}{N\+E\+T2\+\_\+\+D\+E\+B\+U\+G\+\_\+\+M\+A\+X\+\_\+\+M\+E\+S\+S\+A\+G\+E\+\_\+\+L\+E\+N\+G\+T\+H}\label{net2__debug_8h_ab8a2d9a8dc33d690257deebaa6b122bd}
 
-\begin{DoxyCompactList}\small\item\em Max length for debug messages. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em This variable stores the maximum length ot debug messages. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
@@ -29,42 +33,26 @@ Ludovic Capelli
 \end{DoxyDate}
 
 
-\subsection{Function Documentation}
-\hypertarget{net2__debug_8h_a5a6c541dc93483c66ef9be09b4a37716}{}\index{net2\+\_\+debug.\+h@{net2\+\_\+debug.\+h}!net2\+\_\+debug\+\_\+failure@{net2\+\_\+debug\+\_\+failure}}
+\subsection{Macro Definition Documentation}
+\hypertarget{net2__debug_8h_a5f9a796d1293fd75319341efd2e87a13}{}\index{net2\+\_\+debug.\+h@{net2\+\_\+debug.\+h}!net2\+\_\+debug\+\_\+failure@{net2\+\_\+debug\+\_\+failure}}
 \index{net2\+\_\+debug\+\_\+failure@{net2\+\_\+debug\+\_\+failure}!net2\+\_\+debug.\+h@{net2\+\_\+debug.\+h}}
-\subsubsection[{net2\+\_\+debug\+\_\+failure(char $\ast$function\+\_\+name, char $\ast$message)}]{\setlength{\rightskip}{0pt plus 5cm}void net2\+\_\+debug\+\_\+failure (
+\subsubsection[{net2\+\_\+debug\+\_\+failure}]{\setlength{\rightskip}{0pt plus 5cm}\#define net2\+\_\+debug\+\_\+failure(
 \begin{DoxyParamCaption}
-\item[{char $\ast$}]{function\+\_\+name, }
-\item[{char $\ast$}]{message}
+\item[{}]{message}
 \end{DoxyParamCaption}
-)}\label{net2__debug_8h_a5a6c541dc93483c66ef9be09b4a37716}
+)~\{\}}\label{net2__debug_8h_a5f9a796d1293fd75319341efd2e87a13}
 
 
 Displays the name of the function and a message explaining what error has been encountered during the function execution. The message returned by perror is also displayed. 
 
 
 \begin{DoxyParams}{Parameters}
-{\em function\+\_\+name} & The function name to be displayed. \\
-\hline
 {\em message} & Error message to be displayed. \\
 \hline
 \end{DoxyParams}
-\hypertarget{net2__debug_8h_a995a5d300597a9931cbc85e2bf5c77c9}{}\index{net2\+\_\+debug.\+h@{net2\+\_\+debug.\+h}!net2\+\_\+debug\+\_\+success@{net2\+\_\+debug\+\_\+success}}
-\index{net2\+\_\+debug\+\_\+success@{net2\+\_\+debug\+\_\+success}!net2\+\_\+debug.\+h@{net2\+\_\+debug.\+h}}
-\subsubsection[{net2\+\_\+debug\+\_\+success(char $\ast$function\+\_\+name)}]{\setlength{\rightskip}{0pt plus 5cm}void net2\+\_\+debug\+\_\+success (
-\begin{DoxyParamCaption}
-\item[{char $\ast$}]{function\+\_\+name}
-\end{DoxyParamCaption}
-)}\label{net2__debug_8h_a995a5d300597a9931cbc85e2bf5c77c9}
 
 
-Displays the name of the function that has been successfully executed. 
-
-
-\begin{DoxyParams}{Parameters}
-{\em function\+\_\+name} & The function name to be displayed. \\
-\hline
-\end{DoxyParams}
+\subsection{Function Documentation}
 \hypertarget{net2__debug_8h_a4c7fbf008ce9e539a10ad5dc486c255e}{}\index{net2\+\_\+debug.\+h@{net2\+\_\+debug.\+h}!spy@{spy}}
 \index{spy@{spy}!net2\+\_\+debug.\+h@{net2\+\_\+debug.\+h}}
 \subsubsection[{spy(char $\ast$message)}]{\setlength{\rightskip}{0pt plus 5cm}void spy (
