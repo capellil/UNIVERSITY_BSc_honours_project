@@ -178,6 +178,10 @@ int net2_read_from_socket(struct net2_socket_t* net2_socket, void* data, unsigne
  * @pre <ul>
  *          <li>net2_socket points to a valid net2_socket_t structure.</li>
  *      </ul>
+ * @post <ul>
+ *           <li>ON SUCCESS: the net2_socket provided is closed.</li>
+ *           <li>ON FAILURE: the net2_socket is not closed.</li>
+ *       </ul>
  **/
 int net2_close_socket(struct net2_socket_t* net2_socket);
 
