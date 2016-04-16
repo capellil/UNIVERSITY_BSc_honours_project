@@ -57,9 +57,9 @@ struct net2_channel_input_t
  * @param remote_channel_number The channel number of the remote channel.
  * @param remote_channel_number
  * @return <ul>
-               <li>SUCCESS : 0
-               <li>FAILURE : -1
-           </ul>
+ *             <li>SUCCESS : 0
+ *             <li>FAILURE : -1
+ *         </ul>
  * @pre net2_channel != NULL
  **/
 int net2_channel_output_create(struct net2_channel_output_t* net2_channel_output, char* ip_address, unsigned short port, unsigned int remote_channel_number);

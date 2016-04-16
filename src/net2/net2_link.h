@@ -71,10 +71,10 @@ struct net2_link_t
  * @param data A pointer on the buffer to fill from reading.
  * @param data_length The number of bytes to read.
  * @return <ul>
- 			   <li>SUCCESS : Non-negative and non-null number that is the number of read bytes.
-               <li>SUCCESS : 0 if the peer has performed an orderly shutdown.
-               <li>FAILED : -1, errno is set appropriately.
-           </ul>
+ *		   <li>SUCCESS : Non-negative and non-null number that is the number of read bytes.
+ *             <li>SUCCESS : 0 if the peer has performed an orderly shutdown.
+ *             <li>FAILED : -1, errno is set appropriately.
+ *         </ul>
  * @pre net2_link_rx != NULL
  **/
 int net2_link_rx_read(struct net2_socket_t* net2_socket, void* data, unsigned int data_length);
@@ -85,9 +85,9 @@ int net2_link_rx_read(struct net2_socket_t* net2_socket, void* data, unsigned in
  * @param data A pointer on the buffer to be written.
  * @param data_length The number of bytes to write.
  * @return <ul>
- 		       <li>SUCCESS : Non-negative number that is the amount of byte written.
-               <li>FAILED : -1, errno is set appropriately.
-           </ul>
+ *	       <li>SUCCESS : Non-negative number that is the amount of byte written.
+ *             <li>FAILED : -1, errno is set appropriately.
+ *         </ul>
  **/
 int net2_link_tx_write(struct net2_socket_t* net2_socket, void* data, unsigned int data_length);
 
@@ -97,10 +97,10 @@ int net2_link_tx_write(struct net2_socket_t* net2_socket, void* data, unsigned i
  * @param data A pointer on the buffer to fill from reading.
  * @param data_length The number of bytes to read.
  * @return <ul>
- 			   <li>SUCCESS : Non-negative and non-null number that is the number of read bytes.
-               <li>SUCCESS : 0 if the peer has performed an orderly shutdown.
-               <li>FAILED : -1, errno is set appropriately.
-           </ul>
+ *		   <li>SUCCESS : Non-negative and non-null number that is the number of read bytes.
+ *             <li>SUCCESS : 0 if the peer has performed an orderly shutdown.
+ *             <li>FAILED : -1, errno is set appropriately.
+ *         </ul>
  **/
 int net2_link_read(struct net2_link_t* net2_link, void* data, unsigned int data_length);
 
@@ -110,12 +110,12 @@ int net2_link_read(struct net2_link_t* net2_link, void* data, unsigned int data_
  * @param data A pointer on the buffer to be written.
  * @param data_length The number of bytes to write.
  * @return <ul>
- 		       <li>SUCCESS : 0
-               <li>FAILED
-               <ul>
-                   <li>-1 : The remote peer performed an orderly shutdown.
-                   <li>-2 : Other cases.
-           </ul>
+ *	       <li>SUCCESS : 0
+ *             <li>FAILED
+ *             <ul>
+ *                 <li>-1 : The remote peer performed an orderly shutdown.
+ *                 <li>-2 : Other cases.
+ *         </ul>
  **/
 int net2_link_write(struct net2_link_t* net2_link, void* data, unsigned int data_length);
 
@@ -124,9 +124,9 @@ int net2_link_write(struct net2_link_t* net2_link, void* data, unsigned int data
  * @param net2_link The net2 link to use to communicate.
  * @param net2_message The net2 message to send..
  * @return <ul>
- 		       <li>SUCCESS : 0.
-               <li>FAILED : -1.
-           </ul>
+ *	       <li>SUCCESS : 0.
+ *             <li>FAILED : -1.
+ *         </ul>
  **/
 int net2_link_send(struct net2_link_t* net2_link, struct net2_message_t* net2_message);
 
@@ -135,9 +135,9 @@ int net2_link_send(struct net2_link_t* net2_link, struct net2_message_t* net2_me
  * @param net2_link A pointer to an allocated memory to store in the created link.
  * @param net2_socket The net2 socket to store in the net2 link.
  * @pre <ul>
-            <li>net2_link != NULL
-            <li>net2_socket != NULL
-        </ul>
+ *          <li>net2_link != NULL
+ *          <li>net2_socket != NULL
+ *      </ul>
  **/
 void net2_link_create(struct net2_link_t* net2_link, struct net2_socket_t* net2_socket);
 
@@ -147,9 +147,9 @@ void net2_link_create(struct net2_link_t* net2_link, struct net2_socket_t* net2_
  * @param ip_address The IP address to be tested.
  * @param port The port to be tested.
  * @return <ul>
-               <li>IDENTICAL : != 0
-               <li>DIFFERENT : 0
-           </ul>
+ *             <li>IDENTICAL : != 0
+ *             <li>DIFFERENT : 0
+ *         </ul>
  **/
 int net2_link_compare_to_address_and_port(struct net2_link_t* net2_link, unsigned int ip_address, unsigned short port);
 
@@ -158,9 +158,9 @@ int net2_link_compare_to_address_and_port(struct net2_link_t* net2_link, unsigne
  * @param net2_link The link to be compared.
  * @param net2_socket The socket to be compared.
  * @return <ul>
-               <li>IDENTICAL : != 0
-               <li>DIFFERENT : 0
-           </ul>
+ *             <li>IDENTICAL : != 0
+ *             <li>DIFFERENT : 0
+ *         </ul>
  **/
 int net2_link_compare_to_socket(struct net2_link_t* net2_link, struct net2_socket_t* net2_socket);
 
@@ -169,9 +169,9 @@ int net2_link_compare_to_socket(struct net2_link_t* net2_link, struct net2_socke
  * @param net2_link_a The link to be compared 1.
  * @param net2_link_b The link to be compared 2.
  * @return <ul>
-               <li>IDENTICAL : != 0
-               <li>DIFFERENT : 0
-           </ul>
+ *             <li>IDENTICAL : != 0
+ *             <li>DIFFERENT : 0
+ *         </ul>
  **/
 int net2_link_compare_to_link(struct net2_link_t* net2_link_a, struct net2_link_t* net2_link_b);
 
@@ -179,9 +179,9 @@ int net2_link_compare_to_link(struct net2_link_t* net2_link_a, struct net2_link_
  * @brief Runs a link : reads indefinitely to accept connections with channels for example.
  * @param net2_link_to_run The net2 link to run.
  * @return <ul>
-               <li>SUCCESS : net2_link_to_run
-               <li>FAILURE : NULL
-           </ul>
+ *             <li>SUCCESS : net2_link_to_run
+ *             <li>FAILURE : NULL
+ *         </ul>
  * @pre net2_link_to_run != NULL
  **/
 void* net2_link_run(void* net2_link_to_run);
@@ -198,13 +198,13 @@ void net2_link_init_linked_element(struct net2_link_t* link, struct net2_link_li
  * @param current_list The link linked list to be modified.
  * @param link The new element to append to the given linked list.
  * @return <ul>
-               <li>SUCCESS : 0
-               <li>FAILURE : -1
-           </ul>
+ *             <li>SUCCESS : 0
+ *             <li>FAILURE : -1
+ *         </ul>
  * @pre <ul>
-            <li>current_list != NULL
-            <li>new_element != NULL
-        </ul>
+ *          <li>current_list != NULL
+ *          <li>new_element != NULL
+ *      </ul>
  **/
 int net2_link_append_to_linked_element(struct net2_link_t* link, struct net2_link_linked_element_t** current_list);
 

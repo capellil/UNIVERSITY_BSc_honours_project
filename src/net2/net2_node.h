@@ -42,9 +42,9 @@ struct net2_node_t** net2_node_get_instance(void);
  * @brief If the net2 node singleton has not been instanced yet, it is created. That means it instances the link manager, also the link server on the given port.
  * @param port The port to be used to instance the link server (e.g the port to listen on).
  * @return <ul>
-               <li>SUCCESS : 0
-               <li>FAILURE : -1
-           </ul>
+ *             <li>SUCCESS : 0
+ *             <li>FAILURE : -1
+ *         </ul>
  **/
 int net2_node_create(unsigned short port);
 
@@ -52,10 +52,10 @@ int net2_node_create(unsigned short port);
  * @brief Inits the node : if the node singleton has not been instanced yet, it is instanced.
  * @param port The port to be used to instance the link server (e.g the port to listen on).
  * @return <ul>
-			   <li>SUCCESS : 0
-			   <li>FAILURE : -1
-			   <li>ALREADY INSTANCED : -2
-		   </ul>
+ *    		   <li>SUCCESS : 0
+ *    		   <li>FAILURE : -1
+ *    		   <li>ALREADY INSTANCED : -2
+ *    	   </ul>
  **/
 int net2_node_init(unsigned short port);
 
@@ -65,18 +65,18 @@ int net2_node_init(unsigned short port);
  * @param ip_address The IPv4 address of the remote node.
  * @param port The port of the remote node.
  * @return <ul>
-               <li>SUCCESS : 0
-               <li>FAILURE : -1
-           </ul>
+ *             <li>SUCCESS : 0
+ *             <li>FAILURE : -1
+ *         </ul>
  **/
 int net2_node_connect(struct net2_link_t** net2_link, unsigned int ip_address, unsigned short port);
 
 /**
  * @brief Waits for the link server thread to finish.
  * @return <ul>
-               <li>SUCCESS : 0
-               <li>FAILURE : -1
-           </ul>
+ *             <li>SUCCESS : 0
+ *             <li>FAILURE : -1
+ *         </ul>
  **/
 int net2_node_close();
 

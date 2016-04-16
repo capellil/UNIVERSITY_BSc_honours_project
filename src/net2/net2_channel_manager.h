@@ -46,19 +46,19 @@ struct net2_channel_manager_t** net2_channel_manager_get_instance();
 /**
  * @brief Creates the singleton instance of the channel manager.
  * @return <ul>
-               <li>SUCCESS : 0
-               <li>FAILURE : -1
-           </ul>
+ *             <li>SUCCESS : 0
+ *             <li>FAILURE : -1
+ *         </ul>
  **/
 int net2_channel_manager_create();
 
 /**
  * @brief Inits the channel manager : if its singleton is not already instanced, it instances it.
  * @return <ul>
-               <li>SUCCESS : 0
-               <li>FAILURE : -1
-               <li>ALREADY INSTANCED : -2
-           </ul>
+ *             <li>SUCCESS : 0
+ *             <li>FAILURE : -1
+ *             <li>ALREADY INSTANCED : -2
+ *         </ul>
  **/
 int net2_channel_manager_init();
 
@@ -67,9 +67,9 @@ int net2_channel_manager_init();
  * @param channel_number The channel number to check.
  * @param found A pointer on a boolean to store the research result.
  * @return <ul>
-               <li>SUCCESS : 0
-               <li>FAILURE : -1
-           </ul>
+ *             <li>SUCCESS : 0
+ *             <li>FAILURE : -1
+ *         </ul>
  **/
 int net2_channel_manager_check_number(unsigned int channel_number, bool* found);
 
@@ -78,9 +78,9 @@ int net2_channel_manager_check_number(unsigned int channel_number, bool* found);
  * @param net2_channel_output The net2 channel output to register.
  * @param channel_number The channel number to use.
  * @return <ul>
-               <li>SUCCESS : 0
-               <li>FAILURE : -1
-           </ul>
+ *             <li>SUCCESS : 0
+ *             <li>FAILURE : -1
+ *         </ul>
  **/
 int net2_channel_manager_register_channel_output(struct net2_channel_output_t* net2_channel_output);
 
@@ -89,9 +89,9 @@ int net2_channel_manager_register_channel_output(struct net2_channel_output_t* n
  * @param net2_channel_input The net2 channel input to register.
  * @param channel_number The channel number to use.
  * @return <ul>
-               <li>SUCCESS : 0
-               <li>FAILURE : -1
-           </ul>
+ *             <li>SUCCESS : 0
+ *             <li>FAILURE : -1
+ *         </ul>
  **/
 int net2_channel_manager_register_channel_input(struct net2_channel_input_t* net2_channel_input, unsigned int channel_number);
 
@@ -103,9 +103,9 @@ int net2_channel_manager_register_channel_input(struct net2_channel_input_t* net
  * @param net2_channel_type A pointer on a channel type to store the found channel type (CHANNEL_INPUT or CHANNEL_OUTPUT).
  * @param channel_number The channel number to search.
  * @return <ul>
-               <li>SUCCESS : 0
-               <li>FAILURE : -1
-           </ul>
+ *             <li>SUCCESS : 0
+ *             <li>FAILURE : -1
+ *         </ul>
  **/
 int net2_channel_manager_get_channel(void** net2_channel_generic, enum net2_channel_type_e* net2_channel_type, unsigned int channel_number);
 

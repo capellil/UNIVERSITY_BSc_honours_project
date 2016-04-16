@@ -33,9 +33,9 @@ struct net2_link_server_t** net2_link_server_get_instance(void);
  * @brief Instances the net2 link server singleton.
  * @param port The port to listen on.
  * @return <ul>
-			   <li>SUCCESS : 0
-			   <li>FAILURE : -1
-		   </ul>
+ *           <li>SUCCESS : 0
+ *           <li>FAILURE : -1
+ *         </ul>
  **/
 int net2_link_server_create(unsigned short port);
 
@@ -43,10 +43,10 @@ int net2_link_server_create(unsigned short port);
  * @brief Inits the link server : if the link server singleton has not been instanced yet, it is instanced and starts listening & accepting incoming connections requests.
  * @param port The port to listen on.
  * @return <ul>
-			   <li>SUCCESS : 0
-			   <li>FAILURE : -1
-			   <li>ALREADY INSTANCED : -2
-		   </ul>
+ *       <li>SUCCESS : 0
+ *       <li>FAILURE : -1
+ *       <li>ALREADY INSTANCED : -2
+ *     </ul>
  **/
 int net2_link_server_init(unsigned short port);
 
@@ -54,9 +54,9 @@ int net2_link_server_init(unsigned short port);
  * @brief Runs the net2 link server : starts listening and accepting incoming connections requests. It has a fancy signature because it will be executed in a different thread and thread format in C is : "void* (*) (void*)".
  * @param net2_link_server_to_run A pointer on the net2 link server to be started.
  * @return <ul>
-		       <li>SUCCESS : net2_link_server_to_run
-               <li>FAILURE : NULL
-           </ul>
+ *         <li>SUCCESS : net2_link_server_to_run
+ *             <li>FAILURE : NULL
+ *         </ul>
  * @pre net2_link_server_to_run != NULL
  **/
 void* net2_link_server_run(void* net2_link_server_to_run);
@@ -65,9 +65,9 @@ void* net2_link_server_run(void* net2_link_server_to_run);
  * @brief Runs the given link in a new thread to read message from this link continuously.
  * @param link_to_run The link to run.
  * @return <ul>
-			   <li>SUCCESS : 0
-			   <li>FAILURE : -1
-		   </ul>
+ *       <li>SUCCESS : 0
+ *       <li>FAILURE : -1
+ *     </ul>
  **/
 int net2_link_server_new_link_to_run(struct net2_link_t* link_to_run);
 

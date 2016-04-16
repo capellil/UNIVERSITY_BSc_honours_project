@@ -34,19 +34,19 @@ struct net2_link_manager_t** net2_link_manager_get_instance(void);
 /**
  * @brief Instances the net2 link manager singleton.
  * @return <ul>
-			   <li>SUCCESS : 0
-			   <li>FAILURE : -1
-		   </ul>
+ *       <li>SUCCESS : 0
+ *       <li>FAILURE : -1
+ *     </ul>
  **/
 int net2_link_manager_create();
 
 /**
  * @brief Inits the link manager : if the link server singleton has not been instanced yet, it is instanced with a NULL list of links.
  * @return <ul>
-			   <li>SUCCESS : 0
-			   <li>FAILURE : -1
-			   <li>ALREADY INSTANCED : -2
-		   </ul>
+ *       <li>SUCCESS : 0
+ *       <li>FAILURE : -1
+ *       <li>ALREADY INSTANCED : -2
+ *     </ul>
  **/
 int net2_link_manager_init();
 
@@ -54,13 +54,13 @@ int net2_link_manager_init();
  * @brief Registers the given link into the net2 link manager's links collection. It will check first that no link related to the same node already exists.
  * @param net2_link A pointer on the link to register.
  * @return <ul>
-               <li>SUCCESS : 0
-               <li>FAILURE : -1
-           </ul>
+ *             <li>SUCCESS : 0
+ *             <li>FAILURE : -1
+ *         </ul>
  * @pre <ul>
-            <li>net2_link_manager != NULL
-            <li>net2_link != NULL
-        </ul>
+ *          <li>net2_link_manager != NULL
+ *          <li>net2_link != NULL
+ *      </ul>
  **/
 int net2_link_manager_register_link(struct net2_link_t* net2_link);
 
@@ -78,9 +78,9 @@ int net2_link_manager_get_link(struct net2_link_t** net2_link, unsigned int ip_a
  * @param port The port to check.
  * @param found A pointer on a boolean to store the comparison result in.
  * @return <ul>
-               <li>SUCCESS : 0
-               <li>FAILURE : -1
-           </ul>
+ *             <li>SUCCESS : 0
+ *             <li>FAILURE : -1
+ *         </ul>
  **/
 int net2_link_manager_check_address_and_port(unsigned int address, unsigned short port, bool* found);
 
@@ -89,9 +89,9 @@ int net2_link_manager_check_address_and_port(unsigned int address, unsigned shor
  * @param net2_socket The net2 socket to be compared with all registered links sockets.
  * @param found A pointer on a boolean to store the comparison result in.
  * @return <ul>
-               <li>SUCCESS : 0
-               <li>FAILURE : -1
-           </ul>
+ *             <li>SUCCESS : 0
+ *             <li>FAILURE : -1
+ *         </ul>
  **/
 int net2_link_manager_check_socket(struct net2_socket_t* net2_socket, bool* found);
 
