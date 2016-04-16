@@ -96,14 +96,14 @@ int net2_link_server_create(unsigned short port)
     {
         // Yes, the link server dynamic allocation succeed.
 		// Create the links server socket and binds it to the given port.
-		result = net2_socket_create_and_bind(&((*net2_link_server_singleton)->_server_socket), port);
+		result = net2_create_and_bind_socket(&((*net2_link_server_singleton)->_server_socket), port);
 		
 		// TEST : Did the server socket creation and binding succeed ?
 		if(!result)
 		{
 			// Yes, the server socket creation and binding succeeded.
 			// Listen on the server socket
-			result = net2_socket_listen(&((*net2_link_server_singleton)->_server_socket));
+			result = net2_listen_from_socket(&((*net2_link_server_singleton)->_server_socket));
 			
 			// TEST : Did the server socket listening succeed ?
 			if(!result)
@@ -153,7 +153,7 @@ void* net2_link_server_run(void* net2_link_server_to_run)
 
 	while(1)
 	{	
-		if(net2_socket_accept(server_socket, &client_socket) >= 0)
+		if(net2_accept_from_socket(server_socket, &client_socket) >= 0)
 		{
 			// The socket has been correctly accepted.
 			// TEST : Did the research into the link manager succeed ?
@@ -181,7 +181,7 @@ void* net2_link_server_run(void* net2_link_server_to_run)
 	                        unsigned int data_length = sizeof(signed char);
 	                        
 	                        // TEST : Has the confirmation been successfully sent to the client ?
-		                    if(net2_socket_write(&client_socket, (void*)&data, data_length) >= 0)
+		                    if(net2_write_to_socket(&client_socket, (void*)&data, data_length) >= 0)
 		                    {
 		                        // Yes, the confirmation has been successfully sent to the client.
 		                        // TEST : Did the new link run succeed ?
@@ -236,7 +236,7 @@ void* net2_link_server_run(void* net2_link_server_to_run)
 	                unsigned int data_length = sizeof(signed char);
 	                
 	                // TEST : Has the confirmation been successfully sent to the client ?
-		            if(net2_socket_write(&client_socket, (void*)&data, data_length) >= 0)
+		            if(net2_write_to_socket(&client_socket, (void*)&data, data_length) >= 0)
 		            {
 		                // Yes, the confirmation has been successfully sent to the client.
 		                run_result = net2_link_server_to_run;

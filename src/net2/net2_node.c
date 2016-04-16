@@ -137,18 +137,18 @@ int net2_node_connect(struct net2_link_t** net2_link, unsigned int ip_address, u
             {
                 // Yes, the socket dynamic allocation succeeded.            
                 // TEST : Did the socket creation succeed ?
-                if(net2_socket_create(socket) >= 0)
+                if(net2_create_socket(socket) >= 0)
                 {
                     // Yes, the socket creation succeeded.
                     // TEST : Did the socket connection succeed ?
-                    if(!net2_socket_connect(socket, ip_address, port))
+                    if(!net2_connect_socket(socket, ip_address, port))
                     {
                         // Yes, the socket connection succeeded.
                         signed char data;
                         unsigned int data_length = sizeof(signed char);
                         
                         // TEST : Did the socket read succeed ?
-                        if(net2_socket_read(socket, (void*)&data, data_length) >= 0)
+                        if(net2_read_from_socket(socket, (void*)&data, data_length) >= 0)
                         {
                             // Yes, the socket read succeeded.
                             // TEST : Has the connection been allowed ?

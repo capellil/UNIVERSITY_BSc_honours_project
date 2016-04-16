@@ -38,7 +38,7 @@ int main(int argc, char* argv[])
             printf("yes.\n");
 
             struct net2_socket_t server_socket;
-            int result = net2_socket_create_and_bind(&server_socket, atoi(argv[1])); 
+            int result = net2_create_and_bind_socket(&server_socket, atoi(argv[1])); 
 
             printf("Checking the socket creation : did it succeed...");
             if(result >= 0)
@@ -47,13 +47,13 @@ int main(int argc, char* argv[])
 	            printf("The server socket is now created.\n");
 	
 	            printf("Tries to listen on the server. Did the listening succeed...");
-	            if(!net2_socket_listen(&server_socket))
+	            if(!net2_listen_from_socket(&server_socket))
 	            {
 		            printf("yes.\n");
 		            
 		            struct net2_socket_t client_socket;
 		            printf("Tries to accept a connection. Has the connection acceptation succeed...");
-		            if(net2_socket_accept(&server_socket, &client_socket) >= 0)
+		            if(net2_accept_from_socket(&server_socket, &client_socket) >= 0)
 		            {
 		                printf("yes.\n");
 		                printf("The server is now connected to the client.\n");
@@ -62,7 +62,7 @@ int main(int argc, char* argv[])
 		                unsigned int data_length = 13;
 		                
 		                printf("Waits for client to send a message. Has the message been well received...");
-                        if(net2_socket_read(&client_socket, (void*)data, data_length) >= 0)
+                        if(net2_read_from_socket(&client_socket, (void*)data, data_length) >= 0)
                         {
                             printf("yes.\n");
                             printf("The client said : \"%s\".\n", data);
@@ -70,7 +70,7 @@ int main(int argc, char* argv[])
                             strcpy(data, "Hello client\0");
                             
                             printf("Reply by sending \"%s\". Has the reply been sent...", data);
-		                    if(net2_socket_write(&client_socket, (void*)data, data_length) != -1)
+		                    if(net2_write_to_socket(&client_socket, (void*)data, data_length) != -1)
 		                    {
 		                        printf("yes.\n");
 	                        }

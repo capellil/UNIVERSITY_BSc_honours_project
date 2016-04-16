@@ -227,5 +227,5 @@ int net2_link_manager_check_address_and_port(unsigned int address, unsigned shor
 
 int net2_link_manager_check_socket(struct net2_socket_t* net2_socket, bool* found)
 {
-    return net2_link_manager_check_address_and_port(net2_socket_get_ip(net2_socket), net2_socket_get_port(net2_socket), found);
+    return net2_link_manager_check_address_and_port(net2_get_ip_of_socket(net2_socket), net2_get_port_of_socket(net2_socket), found);
 }

@@ -8,18 +8,36 @@
  * @date 25/12/2014
  **/
 
-const unsigned int NET2_DEBUG_MAX_MESSAGE_LENGTH; ///< Max length for debug messages.
+/// This variable stores the maximum length ot debug messages.
+const unsigned int NET2_DEBUG_MAX_MESSAGE_LENGTH;
 
-/**
- * @brief Displays the name of the function that has been successfully executed.
- **/
-void net2_debug_success();
+#ifdef NET2_DEBUG 
+ 	/**
+	 * @brief Displays the name of the function that has been successfully executed.
+	 **/
+    #define net2_debug_success() printf("FUNCTION SUCCESS : %s\n", __FUNCTION__);
 
-/**
- * @brief Displays the name of the function and a message explaining what error has been encountered during the function execution. The message returned by perror is also displayed.
- * @param message Error message to be displayed.
- **/
-void net2_debug_failure(char* message);
+	/**
+	 * @brief Displays the name of the function and a message explaining what error has been encountered during the function execution. The message returned by perror is also displayed.
+	 * @param message Error message to be displayed.
+	 **/
+    #define net2_debug_failure(message) printf("FUNCTION FAILURE : \n"); \
+                                        printf("\t- Function : %s\n", __FUNCTION__); \
+                                        printf("\t- Message : %s\n", message); \
+                                        perror("\t- PError "); \
+                                        fflush(stdout);
+#else
+    /**
+	 * @brief Displays the name of the function that has been successfully executed.
+	 **/
+    #define net2_debug_success() {}
+
+	/**
+	 * @brief Displays the name of the function and a message explaining what error has been encountered during the function execution. The message returned by perror is also displayed.
+	 * @param message Error message to be displayed.
+	 **/
+    #define net2_debug_failure(message) {}
+#endif
 
 /**
  * @brief Useful when inserting some checkpoints in the code. It displays the given message to show if a specific point in the code has been reached or not.

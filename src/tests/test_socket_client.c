@@ -33,7 +33,7 @@ int main(int argc, char* argv[])
     {
         printf("right number.\n");
         
-        struct sockaddr_in ip_address;
+        struct in_addr ip_address;
         printf("Checking the first parameter given : is \"%s\" a valid IPv4 address...", argv[1]);
         if(inet_pton(AF_INET, argv[1], &ip_address) > 0)
         {
@@ -45,7 +45,7 @@ int main(int argc, char* argv[])
                 printf("yes.\n");
 
 	            struct net2_socket_t client_socket;
-	            int result = net2_socket_create(&client_socket); 
+	            int result = net2_create_socket(&client_socket); 
 	
 	            printf("Checking the socket creation : did it succeed...");
 	            if(result >= 0)
@@ -54,7 +54,7 @@ int main(int argc, char* argv[])
 		            printf("The client socket is now created.\n");
 		
 		            printf("Tries to connect to the server. Did the connection succeed...");
-		            if(!net2_socket_connect(&client_socket, ip_address.sin_addr.s_addr, atoi(argv[2])))
+		            if(!net2_connect_socket(&client_socket, ntohl(ip_address.s_addr), atoi(argv[2])))
 		            {
 			            printf("yes.\n");
 			            printf("The client is now connected to the server.\n");
@@ -63,11 +63,11 @@ int main(int argc, char* argv[])
 			            unsigned int data_length = 13;
 			            
 			            printf("Test the connection by sending \"%s\" to the server. Has the message been correctly sent...", data);
-			            if(net2_socket_write(&client_socket, (void*)data, data_length) != -1)
+			            if(net2_write_to_socket(&client_socket, (void*)data, data_length) != -1)
 			            {
 			                printf("yes.\n");
 			                printf("Waits for the feedback from the server. Has the feedback been well received...");
-			                if(net2_socket_read(&client_socket, (void*)data, data_length) >= 0)
+			                if(net2_read_from_socket(&client_socket, (void*)data, data_length) >= 0)
 			                {
 			                    printf("yes.\n");
 			                    printf("The server says : \"%s\".\n", data);

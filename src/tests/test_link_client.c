@@ -46,12 +46,12 @@ int main(int argc, char* argv[])
                 struct net2_socket_t socket;
                 
                 printf("Checking the socket creation. Did the socket creation succeed..."); fflush(stdout);
-                if(net2_socket_create(&socket) >= 0)
+                if(net2_create_socket(&socket) >= 0)
                 {
                     printf("yes.\n");
                     
                     printf("Check the socket connection. Did the socket connection succeed..."); fflush(stdout);
-                    if(!net2_socket_connect(&socket, htonl(ip_address.s_addr), atoi(argv[2])))
+                    if(!net2_connect_socket(&socket, htonl(ip_address.s_addr), atoi(argv[2])))
                     {
                         printf("yes.\n");
                         printf("The client is now connected to the server.\n");

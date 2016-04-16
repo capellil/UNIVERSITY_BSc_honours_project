@@ -40,7 +40,7 @@ int net2_link_rx_read(struct net2_socket_t* net2_socket, void* data, unsigned in
         
         return result;
     #else        
-        return net2_socket_read(net2_socket, data, data_length);
+        return net2_read_from_socket(net2_socket, data, data_length);
     #endif
 }
 
@@ -73,7 +73,7 @@ int net2_link_tx_write(struct net2_socket_t* net2_socket, void* data, unsigned i
         
         return result;
     #else        
-        return net2_socket_write(net2_socket, data, data_length);
+        return net2_write_to_socket(net2_socket, data, data_length);
     #endif
 }
 
@@ -292,7 +292,7 @@ int net2_link_compare_to_address_and_port(struct net2_link_t* net2_link, unsigne
 
 int net2_link_compare_to_socket(struct net2_link_t* net2_link, struct net2_socket_t* net2_socket)
 {
-    return net2_link_compare_to_address_and_port(net2_link, net2_socket_get_ip(net2_socket), net2_socket_get_port(net2_socket));
+    return net2_link_compare_to_address_and_port(net2_link, net2_get_ip_of_socket(net2_socket), net2_get_port_of_socket(net2_socket));
 }
 
 int net2_link_compare_to_link(struct net2_link_t* net2_link_a, struct net2_link_t* net2_link_b)

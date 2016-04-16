@@ -61,12 +61,12 @@ int main(int argc, char* argv[])
                             printf("yes.\n");
                             
                             printf("Checks the socket creation. Did the socket creation succeed...");
-                            if(net2_socket_create(&socket) >= 0)
+                            if(net2_create_socket(&socket) >= 0)
                             {
                                 printf("yes.\n");
                                 
                                 printf("Checks the socket connection. Did the socket connection succeed...");
-                                if(!net2_socket_connect(&socket, ip_address.sin_addr.s_addr, atoi(argv[2])))
+                                if(!net2_connect_socket(&socket, ip_address.sin_addr.s_addr, atoi(argv[2])))
                                 {
                                     printf("yes.\n");
                                     struct net2_link_t link;

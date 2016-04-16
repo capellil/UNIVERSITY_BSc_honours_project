@@ -40,18 +40,18 @@ int main(int argc, char* argv[])
             struct net2_socket_t socket;
             
             printf("Checking the socket creation and binding. Did the socket creation and binding succeed...");
-            if(net2_socket_create_and_bind(&socket, atoi(argv[1])) >= 0)
+            if(net2_create_and_bind_socket(&socket, atoi(argv[1])) >= 0)
             {
                 printf("yes.\n");
                 
                 printf("Tries to listen on the socket. Did the listening succeed...");
-                if(!net2_socket_listen(&socket))
+                if(!net2_listen_from_socket(&socket))
                 {
                     printf("yes.\n");
                     
                     struct net2_socket_t client_socket;
                     printf("Tries to accept the client connection. Did the client connection acceptation succeed...");
-                    if(net2_socket_accept(&socket, &client_socket) >= 0)
+                    if(net2_accept_from_socket(&socket, &client_socket) >= 0)
                     {
                         printf("yes.\n");
                         printf("The server is now connected to the server.\n");

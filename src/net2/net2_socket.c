@@ -3,356 +3,300 @@
 #include <unistd.h> // close
 
 #include "net2_socket.h"
-#ifdef NET2_DEBUG
-    #include "net2_debug.h"
-#endif
 
 /**
- * @brief Creates a socket used for communication with a remote machine, initialised to streaming data (suitable for TCP protocol).
+ * @brief Creates a socket used for communication with a remote machine.
+ *
+ * This function creates a socket relying on TCP/IPv4. If the function fails, the given socket_descriptor is left untouched.
+ * @param socket_descriptor A pointer to use to store the result
  * @return <ul>
-    	       <li>SUCCESS : Non negative number that is the socket descriptor
- 		       <li>FAILED : -1, errno is set appropriately
-	       </ul>
+ *             <li>SUCCESS : 0.
+ *             <li>FAILED : -1, errno is set appropriately.
+ *         </ul>
+ * @pre <ul>
+ *          <li>parameter socket_descriptor != NULL</li>
+ *      </ul>
+ * @post <ul>
+ *           <li>SUCCESS: parameter socket = file descriptor on the new socket.</li>
+ *           <li>FAILURE: left untouched.</li>
+ *       </ul>
  **/
-static int create_socket()
+static int create_ipv4_tcp_socket(int* socket_descriptor)
 {
-    return socket(AF_INET, SOCK_STREAM, 0);
-}
- 
-void net2_socket_print(char* heading, struct net2_socket_t* net2_socket)
-{
-	if(heading)
-	{
-	    printf("%s\n", heading);   
-    }
-    
-	printf("\t- File descriptor : %d\n", net2_socket->_socket);
-	
-	int address = ntohl(net2_socket->_address.sin_addr.s_addr);
-	switch(address)
-	{
-		case INADDR_ANY :
-			printf("\t- Address : INADDR_ANY\n");
-			break;
-		default :
-			printf("\t- Address : %d.%d.%d.%d\n", address >> 24 & 0xFF, 
-												  address >> 16 & 0xFF, 
-												  address >> 8  & 0xFF, 
-												  address       & 0xFF);
-			break;
-	}
-										  
-	unsigned short port = ntohs(net2_socket->_address.sin_port);
-	switch(port)
-	{
-		case 0 :
-			printf("\t- Port : ANY_PORT\n");
-			break;
-		default:
-			printf("\t- Port : %d\n", port);
-			break;
-	}
-	
-	char* family;
-	switch(net2_socket->_address.sin_family)
-	{
-		case AF_INET :
-			family = "AF_INET";
-			break;
-		case AF_UNIX :
-			family = "AF_UNIX";
-			break;
-		default :
-			family = "UNKNOWN";
-			break;
-	}
-	printf("\t- Family : %s\n", family);
-}
+    int family = AF_INET; // IPv4
+    int type = SOCK_STREAM; // Stream, suitable for TCP.
+    int protocol = IPPROTO_TCP; // TCP.
+    int result;    
 
-int net2_socket_create(struct net2_socket_t* net2_socket)
-{
-    int result = 0;
-	int socket = create_socket();
-	
-	// TEST : Is the socket successfully created ?
-	if(socket != -1)
-	{	    
-	    // Yes, socket successfully created.
-		net2_socket->_socket = socket;
-		#ifdef NET2_DEBUG
-		    net2_debug_success();
-		#endif
-	}
-	else
-	{
-	    // No, socket creation failed.
-	    result = -1;
-	    #ifdef NET2_DEBUG
-		    net2_debug_failure("Socket creation failed");
-		#endif
-	}
-	
-	return result;
-}
+    result = socket(family, type, protocol);
 
-int net2_socket_create_and_bind(struct net2_socket_t* net2_socket, unsigned short port)
-{
-	int result = 0;
-	int socket = create_socket();
-	
-	// TEST : Is the socket successfully created ?
-	if(socket != -1)
-	{
-	    // Yes, Socket successfully created.
-		struct sockaddr_in socket_address;
-		socket_address.sin_family = AF_INET; // IPv4 Internet Protocol
-		socket_address.sin_addr.s_addr = INADDR_ANY; // All interfaces
-		socket_address.sin_port = htons(port);
-		socklen_t socket_length = sizeof(struct sockaddr_in);
-		
-		int optval = 1;
-		
-		// TEST : Is socket option set
-	    if(!setsockopt(socket, SOL_SOCKET, SO_REUSEADDR, &optval, sizeof(int)))
-	    {		
-	        // Yes, the socket REUSEADDR option set succeeded.
-		    // TEST : Is socket binding successful ?
-		    if(!bind(socket, (struct sockaddr*)&socket_address, sizeof(struct sockaddr_in)))
-		    {
-		        // Yes, the socket binding succeeded.
-		        // Socket binding successful.
-			    net2_socket->_socket = socket;
-			    net2_socket->_address = socket_address;
-			    
-			    // TEST : Did the socket information extraction succeed ?
-                if(!getsockname(socket, (struct sockaddr *)&socket_address, &socket_length))
-                {
-                    // Yes, the socket information extraction succeed.
-    			    #ifdef NET2_DEBUG
-    		             net2_debug_success();
-    		        #endif
-		        }
-		        else
-		        {
-		            // No, the socket information extraction failed.
-		            result = -4;
-		            #ifdef NET2_DEBUG
-		                 net2_debug_failure("The socket information extraction failed.");
-		            #endif
-		        }
-		    }
-		    else
-		    {
-		        // No, the socket binding failed.
-			    result = -3;
-			    #ifdef NET2_DEBUG
-			        char message[NET2_DEBUG_MAX_MESSAGE_LENGTH]; 
-			        sprintf(message, "Socket binding failed when trying with port \"%d\", net2_socket pointer is %p.", port, net2_socket);
-		            net2_debug_failure(message);
-		        #endif
-		    }
-	    }
-	    else
-	    {   
-	        // No, the socket REUSEADDR option set failed.
-	        result = -2;
-		    #ifdef NET2_DEBUG
-		         net2_debug_failure("Socket SOL_REUSEADDR option set failed.");
-		    #endif
-	    }		
-	}
-	else
-	{
-	    // No, the socket creation failed.
-		result = -1;
-		#ifdef NET2_DEBUG
-		     net2_debug_failure("Socket creation failed,");
-		#endif
-	}
-	
-	return result;
-}
-
-int net2_socket_listen(struct net2_socket_t* net2_socket)
-{
-    int result = 0;
-    
-    // TEST : Did the socket listening succeed ?
-	if(!listen(net2_socket->_socket, 1))
-	{
-	    // Yes, the socket listening succeeded.
-	    #ifdef NET2_DEBUG
-		     net2_debug_success();
-		#endif
-	}
-	else
-	{
-	    // No, the socket listening failed.
-	    result = -1;
-	    #ifdef NET2_DEBUG
-		     net2_debug_failure("The socket listening failed.");
-		#endif
-	}
-	
-	return result;
-}
-
-int net2_socket_accept(struct net2_socket_t* server, struct net2_socket_t* client)
-{
-    int result = 0;
-    
-	struct sockaddr_in address;
-	socklen_t address_length = sizeof(struct sockaddr_in);
-	int socket = accept(server->_socket, (struct sockaddr*)&address, &address_length);
-	
-	// TEST : Did the accept on socket succeed ?
-	if(socket >= 0)
-	{
-	    // Yes, the accept on socket succeeded.
-	    client->_socket = socket;
-	    client->_address = address;
-	    #ifdef NET2_DEBUG
-		     net2_debug_success();
-		#endif
-    }
-    else
+    if(result == -1)
     {
-        // No, the accept on socket failed.
-        result = -1;
-        #ifdef NET2_DEBUG
-		     net2_debug_failure("The accept on socket failed.");
-		#endif
+        // The socket creation failed.
+        return -1;
     }
-	
-	return result;
+
+    *socket_descriptor = result;
+    return 0;
 }
 
-int net2_socket_connect(struct net2_socket_t* net2_socket, unsigned int address, unsigned short port)
+int net2_create_socket(struct net2_socket_t* net2_socket)
 {
-    int result = 0;
+    int socket_descriptor;
     
-	struct sockaddr_in server;
-	server.sin_family = AF_INET; // IPv4 Internet Protocol
-	server.sin_addr.s_addr = htonl(address);
-	server.sin_port = htons(port);
-	socklen_t server_length = sizeof(struct sockaddr_in);
-	
-    // TEST : Did the socket connection succeed ?
-	if(!connect(net2_socket->_socket, (struct sockaddr*)&server, server_length))
-	{
-	    // Yes, the socket connection succeeded.
-	    #ifdef NET2_DEBUG
-		     net2_debug_success();
-		#endif
-	}
-	else
-	{
-	    // No, the socket connection failed.
-	    result = -1;
-        #ifdef NET2_DEBUG
-		     net2_debug_failure("The socket connection failed.");
-		#endif
-	}
-	
-	return result;
+    if(create_ipv4_tcp_socket(&socket_descriptor) == -1)
+    {       
+        net2_debug_failure("Socket creation failed");
+        return -1;
+    }
+
+    net2_socket->_socket = socket_descriptor;
+    net2_debug_success();
+    return 0;
 }
 
-int net2_socket_write(struct net2_socket_t* net2_socket, void* data, unsigned int data_length)
+int net2_create_and_bind_socket(struct net2_socket_t* net2_socket, unsigned short int port)
 {
-    int result = 0;
-    int number_of_written_bytes = send(net2_socket->_socket, data, data_length, 0);
-	
-	// TEST : Did the send succeed ?
-	if(number_of_written_bytes > 0)
-	{
-	    // Yes, the send succeeded.
-	    #ifdef NET2_DEBUG
-		     net2_debug_success();
-		#endif
-    }
-    else if(!number_of_written_bytes)
+    int socket_descriptor;
+    struct sockaddr_in socket_address;
+    socket_address.sin_family = AF_INET; // IPv4 Internet Protocol
+    socket_address.sin_addr.s_addr = INADDR_ANY; // All interfaces
+    socket_address.sin_port = htons(port);
+    socklen_t socket_length = sizeof(struct sockaddr_in);
+    int option_value = 1;
+    
+    if(create_ipv4_tcp_socket(&socket_descriptor) == -1)
     {
-        // No, nothing has been written
-        result = -1;
-        #ifdef NET2_DEBUG
-		     net2_debug_failure("Nothing has been written.");
-		#endif
-    }
-	else
-	{
-	    // No, the send failed.
-	    result = -2;
-        #ifdef NET2_DEBUG
-		     net2_debug_failure("The socket send failed.");
-		#endif
-	}
-	
-	return result;
-}
-
-int net2_socket_read(struct net2_socket_t* net2_socket, void* data, unsigned int data_length)
-{
-    int result = 0;
-	int number_of_read_bytes = recv(net2_socket->_socket, data, data_length, 0);
-	
-	// TEST : Did the send succeed ?
-	if(number_of_read_bytes > 0)
-	{
-	    // Yes, the send succeeded.
-	    #ifdef NET2_DEBUG
-		     net2_debug_success();
-		#endif
-    }
-    else if(number_of_read_bytes == 0)
-	{
-	    // No, the send failed.
-	    result = -1;
-        #ifdef NET2_DEBUG
-		     net2_debug_failure("The remote peer has performed an orderly shutdown.");
-		#endif
-	}
-	else
-	{
-	    // No, the send failed.
-	    result = -2;
-        #ifdef NET2_DEBUG
-		     net2_debug_failure("The socket read failed.");
-		#endif
-	}
-	
-	return result;
-}
-
-int net2_socket_close(struct net2_socket_t* net2_socket)
-{
-    int result = 0;
+        net2_debug_failure("Socket creation failed.");
+        return -1;
+    }    
     
-    // TEST : Did the socket close succeed ?
-	if(!close(net2_socket->_socket))
-	{
-	    // Yes, the socket close succeeded.
-	    #ifdef NET2_DEBUG
-		     net2_debug_success();
-		#endif
-	}
-	else
-	{
-	    // No, the socket close failed.
-	    result = -1;
-        #ifdef NET2_DEBUG
-		     net2_debug_failure("The socket close failed.");
-		#endif
-	}
-	
-	return result;
+    if(setsockopt(socket_descriptor, SOL_SOCKET, SO_REUSEADDR, &option_value, sizeof(int)) == -1)
+    {   
+        net2_debug_failure("Socket SOL_REUSEADDR option set failed.");    
+        return -2;
+    }
+
+    if(bind(socket_descriptor, (struct sockaddr*)&socket_address, sizeof(struct sockaddr_in)) == -1)
+    {
+        char message[NET2_DEBUG_MAX_MESSAGE_LENGTH]; 
+        sprintf(message, "Socket binding failed when trying with port \"%d\", net2_socket pointer is %p.", port, net2_socket);
+        net2_debug_failure(message);
+        return -3;
+    }
+    
+    if(getsockname(socket_descriptor, (struct sockaddr*)&socket_address, &socket_length) == -1)
+    {
+        net2_debug_failure("The socket information extraction failed.");
+        return -4;
+    }    
+
+    net2_socket->_socket = socket_descriptor;
+    net2_socket->_address = socket_address;
+    net2_debug_success();
+    return 0;
 }
 
-unsigned int net2_socket_get_ip(struct net2_socket_t* net2_socket)
-{
-	return ntohl(net2_socket->_address.sin_addr.s_addr);
+int net2_listen_from_socket(struct net2_socket_t* net2_socket)
+{    
+    if(listen(net2_socket->_socket, 1) == -1)
+    {
+        net2_debug_failure("The socket listening failed.");
+        return -1;
+    }
+
+    net2_debug_success();
+    return 0;
 }
 
-unsigned short net2_socket_get_port(struct net2_socket_t* net2_socket)
+int net2_accept_from_socket(struct net2_socket_t* server, struct net2_socket_t* client)
 {
+    struct sockaddr_in address;
+    socklen_t address_length = sizeof(struct sockaddr_in);
+    int socket_descriptor;
+
+    socket_descriptor = accept(server->_socket, (struct sockaddr*)&address, &address_length);
+    
+    if(socket_descriptor == -1)
+    {
+        net2_debug_failure("The accept on socket failed.");
+        return -1;
+    }
+
+    client->_socket = socket_descriptor;
+    client->_address = address;
+    net2_debug_success();
+    return 0;
+}
+
+int net2_connect_socket(struct net2_socket_t* net2_socket, unsigned int address, unsigned short int port)
+{
+    struct sockaddr_in server;
+    server.sin_family = AF_INET; // IPv4
+    server.sin_addr.s_addr = htonl(address);
+    server.sin_port = htons(port);
+    socklen_t server_length = sizeof(struct sockaddr_in);
+    
+    if(connect(net2_socket->_socket, (struct sockaddr*)&server, server_length) == -1)
+    {
+        net2_debug_failure("The socket connection failed.");
+        return -1;
+    }
+
+    net2_debug_success();    
+    return 0;
+}
+
+int net2_write_to_socket(struct net2_socket_t* net2_socket, void* data, unsigned int data_length)
+{
+    int result;
+    
+    result = send(net2_socket->_socket, data, data_length, 0);
+
+    if(result == 0)
+    {
+        net2_debug_failure("Nothing has been written.");
+        return -1;
+    }
+
+    if(result < 0)
+    {
+        net2_debug_failure("The socket send failed.");
+        return -2;
+    }
+    
+    net2_debug_success();
+    return 0;
+}
+
+int net2_read_from_socket(struct net2_socket_t* net2_socket, void* data, unsigned int data_length)
+{
+    int result;
+    
+    result = recv(net2_socket->_socket, data, data_length, 0);
+    
+    if(result == 0)
+    {
+        net2_debug_failure("The remote peer has performed an orderly shutdown.");
+        return -1;
+    }
+
+    if(result == -1)
+    {
+        net2_debug_failure("The socket read failed.");
+        return -2;
+    }
+
+    net2_debug_success();    
+    return 0;
+}
+
+int net2_close_socket(struct net2_socket_t* net2_socket)
+{    
+    if(close(net2_socket->_socket) == -1)
+    {
+        net2_debug_failure("The socket close failed.");
+        return -1;
+    }
+
+    net2_debug_success();
+    return 0;
+}
+
+unsigned int net2_get_ip_of_socket(struct net2_socket_t* net2_socket)
+{
+    net2_debug_success();
+    return ntohl(net2_socket->_address.sin_addr.s_addr);
+}
+
+unsigned short int net2_get_port_of_socket(struct net2_socket_t* net2_socket)
+{
+    net2_debug_success();
     return ntohs(net2_socket->_address.sin_port);
+}
+
+int net2_create_client_socket(char* ip_address, unsigned short int port, struct net2_socket_t* client_socket)
+{
+    const int family = AF_INET;
+    struct in_addr in_address;
+    int result;
+
+    result = inet_pton(family, ip_address, &in_address);
+
+    if(result == 0)
+    {
+        net2_debug_failure("The given ip address is not a valid IPv4 address.");
+        return -1;
+    }
+
+    if(result == -1)
+    {
+        net2_debug_failure("The family variable does not contain a valid internet family.");
+        return -2;
+    }
+
+    if(net2_create_socket(client_socket) == -1)
+    {
+        net2_debug_failure("The client socket creation failed.");
+        return -3;
+    }
+
+    if(net2_connect_socket(client_socket, ntohl(in_address.s_addr), port) == -1)
+    {
+        net2_debug_failure("The socket connection failed.");
+        return -4;
+    }
+
+    net2_debug_success();
+    return 0;
+}
+
+void net2_print_socket(char* heading, struct net2_socket_t* net2_socket)
+{
+    if(heading)
+    {
+        printf("%s\n", heading);   
+    }
+    
+    printf("\t- File descriptor : %d\n", net2_socket->_socket);
+    
+    int address = ntohl(net2_socket->_address.sin_addr.s_addr);
+    switch(address)
+    {
+        case INADDR_ANY :
+            printf("\t- Address : INADDR_ANY\n");
+            break;
+        default :
+            printf("\t- Address : %d.%d.%d.%d\n", address >> 24 & 0xFF, 
+                                                  address >> 16 & 0xFF, 
+                                                  address >> 8  & 0xFF, 
+                                                  address       & 0xFF);
+            break;
+    }
+                                          
+    unsigned short port = ntohs(net2_socket->_address.sin_port);
+    switch(port)
+    {
+        case 0 :
+            printf("\t- Port : ANY_PORT\n");
+            break;
+        default:
+            printf("\t- Port : %d\n", port);
+            break;
+    }
+    
+    char* family;
+    switch(net2_socket->_address.sin_family)
+    {
+        case AF_INET :
+            family = "AF_INET";
+            break;
+        case AF_UNIX :
+            family = "AF_UNIX";
+            break;
+        default :
+            family = "UNKNOWN";
+            break;
+    }
+    printf("\t- Family : %s\n", family);
 }

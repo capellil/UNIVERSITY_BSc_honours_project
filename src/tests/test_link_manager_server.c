@@ -59,18 +59,18 @@ int main(int argc, char* argv[])
                         printf("yes.\n");
                         
                         printf("Checks the socket creation. Did the socket creation succeed...");
-                        if(!net2_socket_create_and_bind(&socket, atoi(argv[1])))
+                        if(!net2_create_and_bind_socket(&socket, atoi(argv[1])))
                         {
                             printf("yes.\n");
                             
                             printf("Checks the socket listening. Did the socket listening succeed...");
-                            if(!net2_socket_listen(&socket))
+                            if(!net2_listen_from_socket(&socket))
                             {
                                 printf("yes.\n");
                                 struct net2_socket_t client_socket;
                                 
                                 printf("Tries to accept the client connection. Did the client connection acceptation succeed...");
-                                if(net2_socket_accept(&socket, &client_socket) >= 0)
+                                if(net2_accept_from_socket(&socket, &client_socket) >= 0)
                                 {
                                     printf("yes.\n");
                                     struct net2_link_t link;

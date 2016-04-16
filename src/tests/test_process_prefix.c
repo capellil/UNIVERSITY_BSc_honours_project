@@ -26,7 +26,7 @@
 int main(int argc, char* argv[])
 {   
     int result = EXIT_SUCCESS;
-    struct sockaddr_in ip_address;
+    struct in_addr ip_address;
     
     printf("Checking the first parameter given : is \"%s\" a valid IPv4 address...", argv[1]);
     if(inet_pton(AF_INET, argv[1], &ip_address) > 0)
