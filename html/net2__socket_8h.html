@@ -435,6 +435,13 @@ ip_address contains a '\0' terminated character string. </li>
 client_socket points to a valid <a class="el" href="structnet2__socket__t.html" title="Structure containing the socket and its address structure. ">net2_socket_t</a> structure. </li>
 </ul>
 </dd></dl>
+<dl class="section post"><dt>Postcondition</dt><dd><ul>
+<li>
+ON SUCCESS: client_socket contains the socket connected to the given address and port. </li>
+<li>
+ON FAILURE: client_socket is left untouched. </li>
+</ul>
+</dd></dl>
 
 </div>
 </div>
