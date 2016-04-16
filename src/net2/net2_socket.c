@@ -88,7 +88,7 @@ int net2_socket_create(struct net2_socket_t* net2_socket)
 	    // No, socket creation failed.
 	    result = -1;
 	    #ifdef NET2_DEBUG
-		    net2_debug_failure("net2_socket_create", "Socket creation failed");
+		    net2_debug_failure("Socket creation failed");
 		#endif
 	}
 	
@@ -137,7 +137,7 @@ int net2_socket_create_and_bind(struct net2_socket_t* net2_socket, unsigned shor
 		            // No, the socket information extraction failed.
 		            result = -4;
 		            #ifdef NET2_DEBUG
-		                 net2_debug_failure("net2_socket_create_and_bind", "The socket information extraction failed.");
+		                 net2_debug_failure("The socket information extraction failed.");
 		            #endif
 		        }
 		    }
@@ -148,7 +148,7 @@ int net2_socket_create_and_bind(struct net2_socket_t* net2_socket, unsigned shor
 			    #ifdef NET2_DEBUG
 			        char message[NET2_DEBUG_MAX_MESSAGE_LENGTH]; 
 			        sprintf(message, "Socket binding failed when trying with port \"%d\", net2_socket pointer is %p.", port, net2_socket);
-		            net2_debug_failure("net2_socket_create_and_bind", message);
+		            net2_debug_failure(message);
 		        #endif
 		    }
 	    }
@@ -157,7 +157,7 @@ int net2_socket_create_and_bind(struct net2_socket_t* net2_socket, unsigned shor
 	        // No, the socket REUSEADDR option set failed.
 	        result = -2;
 		    #ifdef NET2_DEBUG
-		         net2_debug_failure("net2_socket_create_and_bind", "Socket SOL_REUSEADDR option set failed.");
+		         net2_debug_failure("Socket SOL_REUSEADDR option set failed.");
 		    #endif
 	    }		
 	}
@@ -166,7 +166,7 @@ int net2_socket_create_and_bind(struct net2_socket_t* net2_socket, unsigned shor
 	    // No, the socket creation failed.
 		result = -1;
 		#ifdef NET2_DEBUG
-		     net2_debug_failure("net2_socket_create_and_bind", "Socket creation failed,");
+		     net2_debug_failure("Socket creation failed,");
 		#endif
 	}
 	
@@ -190,7 +190,7 @@ int net2_socket_listen(struct net2_socket_t* net2_socket)
 	    // No, the socket listening failed.
 	    result = -1;
 	    #ifdef NET2_DEBUG
-		     net2_debug_failure("net2_socket_listen", "The socket listening failed.");
+		     net2_debug_failure("The socket listening failed.");
 		#endif
 	}
 	
@@ -220,7 +220,7 @@ int net2_socket_accept(struct net2_socket_t* server, struct net2_socket_t* clien
         // No, the accept on socket failed.
         result = -1;
         #ifdef NET2_DEBUG
-		     net2_debug_failure("net2_socket_accept", "The accept on socket failed.");
+		     net2_debug_failure("The accept on socket failed.");
 		#endif
     }
 	
@@ -250,7 +250,7 @@ int net2_socket_connect(struct net2_socket_t* net2_socket, unsigned int address,
 	    // No, the socket connection failed.
 	    result = -1;
         #ifdef NET2_DEBUG
-		     net2_debug_failure("net2_socket_connect", "The socket connection failed.");
+		     net2_debug_failure("The socket connection failed.");
 		#endif
 	}
 	
@@ -275,7 +275,7 @@ int net2_socket_write(struct net2_socket_t* net2_socket, void* data, unsigned in
         // No, nothing has been written
         result = -1;
         #ifdef NET2_DEBUG
-		     net2_debug_failure("net2_socket_write", "Nothing has been written.");
+		     net2_debug_failure("Nothing has been written.");
 		#endif
     }
 	else
@@ -283,7 +283,7 @@ int net2_socket_write(struct net2_socket_t* net2_socket, void* data, unsigned in
 	    // No, the send failed.
 	    result = -2;
         #ifdef NET2_DEBUG
-		     net2_debug_failure("net2_socket_write", "The socket send failed.");
+		     net2_debug_failure("The socket send failed.");
 		#endif
 	}
 	
@@ -308,7 +308,7 @@ int net2_socket_read(struct net2_socket_t* net2_socket, void* data, unsigned int
 	    // No, the send failed.
 	    result = -1;
         #ifdef NET2_DEBUG
-		     net2_debug_failure("net2_socket_read", "The remote peer has performed an orderly shutdown.");
+		     net2_debug_failure("The remote peer has performed an orderly shutdown.");
 		#endif
 	}
 	else
@@ -316,7 +316,7 @@ int net2_socket_read(struct net2_socket_t* net2_socket, void* data, unsigned int
 	    // No, the send failed.
 	    result = -2;
         #ifdef NET2_DEBUG
-		     net2_debug_failure("net2_socket_read", "The socket read failed.");
+		     net2_debug_failure("The socket read failed.");
 		#endif
 	}
 	
@@ -340,7 +340,7 @@ int net2_socket_close(struct net2_socket_t* net2_socket)
 	    // No, the socket close failed.
 	    result = -1;
         #ifdef NET2_DEBUG
-		     net2_debug_failure("net2_socket_close", "The socket close failed.");
+		     net2_debug_failure("The socket close failed.");
 		#endif
 	}
 	

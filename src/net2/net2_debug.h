@@ -17,10 +17,9 @@ void net2_debug_success();
 
 /**
  * @brief Displays the name of the function and a message explaining what error has been encountered during the function execution. The message returned by perror is also displayed.
- * @param function_name The function name to be displayed.
  * @param message Error message to be displayed.
  **/
-void net2_debug_failure(char* function_name, char* message);
+void net2_debug_failure(char* message);
 
 /**
  * @brief Useful when inserting some checkpoints in the code. It displays the given message to show if a specific point in the code has been reached or not.

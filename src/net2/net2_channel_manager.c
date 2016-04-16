@@ -33,7 +33,7 @@ int net2_channel_manager_create()
         // No, the channel manager dynamic allocation failed.
         result = -1;
         #ifdef NET2_DEBUG
-            net2_debug_failure("net2_channel_manager_create", "The channel manager dynamic allocation failed.");
+            net2_debug_failure("The channel manager dynamic allocation failed.");
         #endif
     }
     
@@ -62,7 +62,7 @@ int net2_channel_manager_init()
         {
             // No, the channel manager creation failed.
             #ifdef NET2_DEBUG
-                net2_debug_failure("net2_channel_manager_init", "Link manager creation failed.");
+                net2_debug_failure("Link manager creation failed.");
             #endif
         }
     }
@@ -135,7 +135,7 @@ int net2_channel_manager_check_number(unsigned int channel_number, bool* found)
         // No, the channel manager is not instanced yet.
         result = -1;
         #ifdef NET2_DEBUG
-            net2_debug_failure("net2_channel_manager_check_number", "The channel manager is not instanced yet.");
+            net2_debug_failure("The channel manager is not instanced yet.");
         #endif  
     }
     
@@ -204,7 +204,7 @@ int net2_channel_manager_register_channel_output(struct net2_channel_output_t* n
                 // No, the new element dynamic allocation failed.
                 result = -1;
                 #ifdef NET2_DEBUG
-                    net2_debug_failure("net2_channel_manager_register_channel_output", "he new element dynamic allocation failed.");
+                    net2_debug_failure("The new element dynamic allocation failed.");
                 #endif 
             }
         }
@@ -213,7 +213,7 @@ int net2_channel_manager_register_channel_output(struct net2_channel_output_t* n
             // No, no channel number has been found.
             result = -1;
             #ifdef NET2_DEBUG
-                net2_debug_failure("net2_channel_manager_register_channel_output", "No channel number has been found.");
+                net2_debug_failure("No channel number has been found.");
             #endif 
         }
     }
@@ -222,7 +222,7 @@ int net2_channel_manager_register_channel_output(struct net2_channel_output_t* n
         // No, the channel manager is not instanced yet.
         result = -1;
         #ifdef NET2_DEBUG
-            net2_debug_failure("net2_channel_manager_register_channel_output", "The channel manager is not instanced yet.");
+            net2_debug_failure("The channel manager is not instanced yet.");
         #endif  
     }
     
@@ -288,7 +288,7 @@ int net2_channel_manager_register_channel_input(struct net2_channel_input_t* net
                     // No, the new element dynamic allocation failed.
                     result = -1;
                     #ifdef NET2_DEBUG
-                        net2_debug_failure("net2_channel_manager_register_channel_input", "he new element dynamic allocation failed.");
+                        net2_debug_failure("The new element dynamic allocation failed.");
                     #endif 
                 }
             }
@@ -297,7 +297,7 @@ int net2_channel_manager_register_channel_input(struct net2_channel_input_t* net
                 // No, the given channel number is not available.
                 result = -1;
                 #ifdef NET2_DEBUG
-                    net2_debug_failure("net2_channel_manager_register_channel_input", "The given channel number is not available.");
+                    net2_debug_failure("The given channel number is not available.");
                 #endif 
             }
         }
@@ -306,7 +306,7 @@ int net2_channel_manager_register_channel_input(struct net2_channel_input_t* net
             // No, the research into the channel manager failed.
             result = -1;
             #ifdef NET2_DEBUG
-                net2_debug_failure("net2_channel_manager_register_channel_input", "The research into the channel manager failed.");
+                net2_debug_failure("The research into the channel manager failed.");
             #endif 
         }
     }
@@ -315,7 +315,7 @@ int net2_channel_manager_register_channel_input(struct net2_channel_input_t* net
         // No, the channel manager is not instanced yet.
         result = -1;
         #ifdef NET2_DEBUG
-            net2_debug_failure("net2_channel_manager_register_channel_input", "The channel manager is not instanced yet.");
+            net2_debug_failure("The channel manager is not instanced yet.");
         #endif  
     }
     
@@ -385,7 +385,7 @@ int net2_channel_manager_get_channel(void** net2_channel_generic, enum net2_chan
         // No, the channel manager is not instanced yet.
         result = -1;
         #ifdef NET2_DEBUG
-            net2_debug_failure("net2_channel_manager_get_number", "The channel manager is not instanced yet.");
+            net2_debug_failure("The channel manager is not instanced yet.");
         #endif  
     }
     

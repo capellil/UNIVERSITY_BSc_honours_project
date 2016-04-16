@@ -30,7 +30,7 @@ int net2_link_server_init(unsigned short port)
         // Yes, the link server singleton is already instanced.
         result = -2;
         #ifdef NET2_DEBUG
-            net2_debug_failure("net2_link_server_create", "The link server singleton is already instanced.");
+            net2_debug_failure("The link server singleton is already instanced.");
         #endif
     }
     else
@@ -66,7 +66,7 @@ int net2_link_server_init(unsigned short port)
 			    // No, the thread dynamic allocation failed.
 			    result = -1;
 			    #ifdef NET2_DEBUG
-				    net2_debug_failure("net2_link_server_init", "Thread dynamic allocation failed.");
+				    net2_debug_failure("Thread dynamic allocation failed.");
 			    #endif
 		    }
 		}
@@ -75,7 +75,7 @@ int net2_link_server_init(unsigned short port)
 			// No, the link server singleton instanciation failed.
 			result = -1;
 			#ifdef NET2_DEBUG
-				net2_debug_failure("net2_link_server_init", "Link server singleton instance failed.");
+				net2_debug_failure("Link server singleton instance failed.");
 			#endif
 		}
 	}
@@ -118,7 +118,7 @@ int net2_link_server_create(unsigned short port)
 				// No, the server socket listening failed.
         		result = -1;
 		        #ifdef NET2_DEBUG
-		            net2_debug_failure("net2_link_server_create", "The server socket listening failed.");
+		            net2_debug_failure("The server socket listening failed.");
 		        #endif
 			}
 		}
@@ -127,7 +127,7 @@ int net2_link_server_create(unsigned short port)
 			// No, the server socket creation and binding failed.
         	result = -1;
 	        #ifdef NET2_DEBUG
-	            net2_debug_failure("net2_link_server_create", "The server socket creation and binding failed.");
+	            net2_debug_failure("The server socket creation and binding failed.");
     	    #endif
 		}
     }
@@ -136,7 +136,7 @@ int net2_link_server_create(unsigned short port)
         // No, the link server dynamic allocation failed.
         result = -1;
         #ifdef NET2_DEBUG
-            net2_debug_failure("net2_link_server_create", "The link server dynamic allocation failed.");
+            net2_debug_failure("The link server dynamic allocation failed.");
         #endif
     }
     
@@ -198,7 +198,7 @@ void* net2_link_server_run(void* net2_link_server_to_run)
 		                            // No, the new link run failed.
 	                                run_result = NULL;
 			                        #ifdef NET2_DEBUG
-                                        net2_debug_failure("net2_link_server_run", "The new link run failed.");
+                                        net2_debug_failure("The new link run failed.");
                                     #endif
 		                        }
 	                        }
@@ -207,7 +207,7 @@ void* net2_link_server_run(void* net2_link_server_to_run)
 	                            // No, the confirmation failed during its communication.
 	                            run_result = NULL;
 			                    #ifdef NET2_DEBUG
-                                    net2_debug_failure("net2_link_server_run", "The confirmation failed during its communication.");
+                                    net2_debug_failure("The confirmation failed during its communication.");
                                 #endif
 	                        }
 			            }
@@ -216,7 +216,7 @@ void* net2_link_server_run(void* net2_link_server_to_run)
 			                // No, the link registration failed.
 			                run_result = NULL;
 			                #ifdef NET2_DEBUG
-                                net2_debug_failure("net2_link_server_run", "The link registration failed.");
+                                net2_debug_failure("The link registration failed.");
                             #endif
 			            }
 			        }
@@ -225,7 +225,7 @@ void* net2_link_server_run(void* net2_link_server_to_run)
 			            // No, the link dynamic allocation failed.
 			            run_result = NULL;
 			            #ifdef NET2_DEBUG
-                            net2_debug_failure("net2_link_server_run", "The link dynamic allocation failed.");
+                            net2_debug_failure("The link dynamic allocation failed.");
                         #endif
 			        }
 		        }
@@ -249,7 +249,7 @@ void* net2_link_server_run(void* net2_link_server_to_run)
 		                // No, the confirmation failed during its communication.
 		                run_result = NULL;
 		                #ifdef NET2_DEBUG
-                            net2_debug_failure("net2_link_server_run", "The confirmation failed during its communication");
+                            net2_debug_failure("The confirmation failed during its communication");
                         #endif
 		            }
 		        }
@@ -259,7 +259,7 @@ void* net2_link_server_run(void* net2_link_server_to_run)
 		        // No, the research into the link manager failed.
                 run_result = NULL;
                 #ifdef NET2_DEBUG
-                    net2_debug_failure("net2_link_server_run", "The research into the link manager failed.");
+                    net2_debug_failure("The research into the link manager failed.");
                 #endif
 		    }
 		}
@@ -323,7 +323,7 @@ int net2_link_server_new_link_to_run(struct net2_link_t* link_to_run)
                 // No, the new element dynamic allocation failed.
                 result = -1;
                 #ifdef NET2_DEBUG
-                    net2_debug_failure("net2_link_server_new_link_to_run", "The new element dynamic allocation failed.");
+                    net2_debug_failure("The new element dynamic allocation failed.");
                 #endif
             }
         }
@@ -332,7 +332,7 @@ int net2_link_server_new_link_to_run(struct net2_link_t* link_to_run)
             // No, the link thread dynamic allocation failed.
             result = -1;
             #ifdef NET2_DEBUG
-                net2_debug_failure("net2_link_server_new_link_to_run", "The link thread dynamic allocation failed.");
+                net2_debug_failure("The link thread dynamic allocation failed.");
             #endif
         }
     }
@@ -341,7 +341,7 @@ int net2_link_server_new_link_to_run(struct net2_link_t* link_to_run)
         // No, the link thread dynamic allocation failed.
         result = -1;
         #ifdef NET2_DEBUG
-            net2_debug_failure("net2_link_server_new_link_to_run", "The link server is not instanced yet.");
+            net2_debug_failure("The link server is not instanced yet.");
         #endif
     }
     

@@ -44,7 +44,7 @@ int net2_channel_output_create(struct net2_channel_output_t* net2_channel_output
             // No, the channel output registration failed.
             result = -1;
             #ifdef NET2_DEBUG
-                net2_debug_failure("net2_channel_output_create", "The channel output registration failed.");
+                net2_debug_failure("The channel output registration failed.");
             #endif
         }
     }
@@ -53,7 +53,7 @@ int net2_channel_output_create(struct net2_channel_output_t* net2_channel_output
         // No, the given address is not a valid IPv4 address.
         result = -1;
         #ifdef NET2_DEBUG
-            net2_debug_failure("net2_channel_output_create", "The given address is not a valid IPv4 address.");
+            net2_debug_failure("The given address is not a valid IPv4 address.");
         #endif
     }
     
@@ -120,7 +120,7 @@ int net2_channel_output_write_integer(struct net2_channel_output_t* net2_channel
                 free(container);
                 result = -1;
                 #ifdef NET2_DEBUG
-                    net2_debug_failure("net2_channel_output_write_integer", "The message is not of expected type.");
+                    net2_debug_failure("The message is not of expected type.");
                 #endif
             }
         }
@@ -129,7 +129,7 @@ int net2_channel_output_write_integer(struct net2_channel_output_t* net2_channel
             // No, the writing failed.
             result = -1;
             #ifdef NET2_DEBUG
-                net2_debug_failure("net2_channel_output_write_integer", "The writing failed.");
+                net2_debug_failure("The writing failed.");
             #endif
         }
         
@@ -140,7 +140,7 @@ int net2_channel_output_write_integer(struct net2_channel_output_t* net2_channel
         // No, the channel is still not properly connected.
         result = -1;
         #ifdef NET2_DEBUG
-            net2_debug_failure("net2_channel_output_write_integer", "The channel is still not properly connected.");
+            net2_debug_failure("The channel is still not properly connected.");
         #endif
     }
     
@@ -162,7 +162,7 @@ int net2_channel_output_connect(struct net2_channel_output_t* net2_channel_outpu
         // No, the node failed to connect the channel.
         result = -1;
         #ifdef NET2_DEBUG
-            net2_debug_failure("net2_channel_output_connect", "The node failed to connect the channel.");
+            net2_debug_failure("The node failed to connect the channel.");
         #endif
     }
     
@@ -215,7 +215,7 @@ int net2_channel_output_add_message_to_buffer(struct net2_channel_output_t* net2
         // No, the new element dynamic allocation failed.
         result = -1;
         #ifdef NET2_DEBUG
-            net2_debug_failure("net2_channel_output_add_message_to_buffer", "The new element dynamic allocation failed.");
+            net2_debug_failure("The new element dynamic allocation failed.");
         #endif
     }
     
@@ -255,7 +255,7 @@ int net2_channel_input_create(struct net2_channel_input_t* net2_channel_input, u
                 // No, the channel registration failed.
                 result = -1;
                 #ifdef NET2_DEBUG
-                    net2_debug_failure("net2_channel_input_create", "The channel registration failed.");
+                    net2_debug_failure("The channel registration failed.");
                 #endif
             }
             
@@ -266,7 +266,7 @@ int net2_channel_input_create(struct net2_channel_input_t* net2_channel_input, u
             // No, the channel manager already has a channel with this number.
             result = -1;
             #ifdef NET2_DEBUG
-                net2_debug_failure("net2_channel_input_create", "The channel manager already has a channel with this number.");
+                net2_debug_failure("The channel manager already has a channel with this number.");
             #endif
         }
     }
@@ -275,7 +275,7 @@ int net2_channel_input_create(struct net2_channel_input_t* net2_channel_input, u
         // No, the research into the channel manager failed.
         result = -1;
         #ifdef NET2_DEBUG
-            net2_debug_failure("net2_channel_input_create", "The research into the channel manager failed.");
+            net2_debug_failure("The research into the channel manager failed.");
         #endif
     }
     
@@ -332,7 +332,7 @@ int net2_channel_input_read_integer(struct net2_channel_input_t* net2_channel_in
             // No, the ACK message has not been correctly sent.
             result = -1;
             #ifdef NET2_DEBUG
-                net2_debug_failure("net2_channel_input_read_integer", "The ACK message has not been correctly sent.");
+                net2_debug_failure("The ACK message has not been correctly sent.");
             #endif
         }
         
@@ -353,7 +353,7 @@ int net2_channel_input_read_integer(struct net2_channel_input_t* net2_channel_in
         #ifdef NET2_DEBUG
             char buffer[64];
             sprintf(buffer, "The message is not of expected type, value of %d.", message_to_read->_type);
-            net2_debug_failure("net2_channel_input_read_integer", buffer);
+            net2_debug_failure(buffer);
         #endif
         free(message_to_read);
     }
@@ -403,7 +403,7 @@ int net2_channel_input_add_message_to_buffer(struct net2_channel_input_t* net2_c
                 // No, the add of the link to the channel input linked list of links failed.
                 result = -1;
                 #ifdef NET2_DEBUG
-                    net2_debug_failure("net2_channel_input_add_message_to_buffer", "The add of the link to the channel input linked list of links failed.");
+                    net2_debug_failure("The add of the link to the channel input linked list of links failed.");
                 #endif  
             }
         }
@@ -422,7 +422,7 @@ int net2_channel_input_add_message_to_buffer(struct net2_channel_input_t* net2_c
         // No, the new element dynamic allocation failed.
         result = -1;
         #ifdef NET2_DEBUG
-            net2_debug_failure("net2_channel_input_add_message_to_buffer", "The new element dynamic allocation failed.");
+            net2_debug_failure("The new element dynamic allocation failed.");
         #endif
     }
     

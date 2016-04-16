@@ -45,7 +45,7 @@ int net2_node_create(unsigned short port)
                     // No, the channel manager initialisation failed.
                     result = -1;
                     #ifdef NET2_DEBUG
-                        net2_debug_failure("net2_node_create", "The channel manager initialisation failed.");
+                        net2_debug_failure("The channel manager initialisation failed.");
                     #endif
                 }
             }
@@ -54,7 +54,7 @@ int net2_node_create(unsigned short port)
                 // No, the link server initialisation failed.
                 result = -1;
                 #ifdef NET2_DEBUG
-                    net2_debug_failure("net2_node_create", "The link server initialisation failed.");
+                    net2_debug_failure("The link server initialisation failed.");
                 #endif
             }
         }
@@ -63,7 +63,7 @@ int net2_node_create(unsigned short port)
             // No, the link manager initialisation failed.
             result = -1;
             #ifdef NET2_DEBUG
-                net2_debug_failure("net2_node_create", "The link manager initialisation failed.");
+                net2_debug_failure("The link manager initialisation failed.");
             #endif
         }
     }
@@ -72,7 +72,7 @@ int net2_node_create(unsigned short port)
         // No, the node dynamic allocation failed.
         result = -1;
         #ifdef NET2_DEBUG
-            net2_debug_failure("net2_node_create", "The node dynamic allocation failed.");
+            net2_debug_failure("The node dynamic allocation failed.");
         #endif
     }
         
@@ -100,7 +100,7 @@ int net2_node_init(unsigned short port)
             // No, the node creation failed.
             result = -1;
             #ifdef NET2_DEBUG
-                net2_debug_failure("net2_node_init", "The node creation failed.");
+                net2_debug_failure("The node creation failed.");
             #endif
         }
     }
@@ -109,7 +109,7 @@ int net2_node_init(unsigned short port)
         // No, the node is already instanced.
         result = -2;
         #ifdef NET2_DEBUG
-            net2_debug_failure("net2_node_init", "The node is already instanced.");
+            net2_debug_failure("The node is already instanced.");
         #endif
     }
     
@@ -182,7 +182,7 @@ int net2_node_connect(struct net2_link_t** net2_link, unsigned int ip_address, u
 	                                        // Yes, the new link run failed.
 	                                        result = -1;
 	                                        #ifdef NET2_DEBUG
-	                                            net2_debug_failure("net2_node_connect", "The new link run failed.");
+	                                            net2_debug_failure("The new link run failed.");
 	                                        #endif
 	                                    }
                                     }
@@ -191,7 +191,7 @@ int net2_node_connect(struct net2_link_t** net2_link, unsigned int ip_address, u
                                         // No, the link registration failed.
                                         result = -1;
                                         #ifdef NET2_DEBUG
-                                            net2_debug_failure("net2_node_connect", "The link registration failed.");
+                                            net2_debug_failure("The link registration failed.");
                                         #endif
                                     }
                                 }
@@ -200,7 +200,7 @@ int net2_node_connect(struct net2_link_t** net2_link, unsigned int ip_address, u
                                     // No, the net2 link dynamic allocation failed.
                                     result = -1;
                                     #ifdef NET2_DEBUG
-                                        net2_debug_failure("net2_node_connect", "The link registration failed.");
+                                        net2_debug_failure("The link registration failed.");
                                     #endif
                                 }
                             }
@@ -209,7 +209,7 @@ int net2_node_connect(struct net2_link_t** net2_link, unsigned int ip_address, u
                                 // No, the connection has not been allowed.
                                 result = -1;
                                 #ifdef NET2_DEBUG
-                                    net2_debug_failure("net2_node_connect", "The connection has not been allowed.");
+                                    net2_debug_failure("The connection has not been allowed.");
                                 #endif
                             }
                         }
@@ -218,7 +218,7 @@ int net2_node_connect(struct net2_link_t** net2_link, unsigned int ip_address, u
                             // No, the socket read failed.
                             result = -1;
                             #ifdef NET2_DEBUG
-                                net2_debug_failure("net2_node_connect", "The socket read failed.");
+                                net2_debug_failure("The socket read failed.");
                             #endif
                         }
                     }
@@ -227,7 +227,7 @@ int net2_node_connect(struct net2_link_t** net2_link, unsigned int ip_address, u
                         // No, the socket connection failed.
                         result = -1;
                         #ifdef NET2_DEBUG
-                            net2_debug_failure("net2_node_connect", "The socket connection failed.");
+                            net2_debug_failure("The socket connection failed.");
                         #endif
                     }
                 }
@@ -236,7 +236,7 @@ int net2_node_connect(struct net2_link_t** net2_link, unsigned int ip_address, u
                     // No, the socket creation failed.
                     result = -1;
                     #ifdef NET2_DEBUG
-                        net2_debug_failure("net2_node_connect", "The socket creation failed.");
+                        net2_debug_failure("The socket creation failed.");
                     #endif
                 }
             }
@@ -245,7 +245,7 @@ int net2_node_connect(struct net2_link_t** net2_link, unsigned int ip_address, u
                 // No, the socket dynamic allocation failed.
                 result = -1;
                 #ifdef NET2_DEBUG
-                    net2_debug_failure("net2_node_connect", "The socket dynamic allocation failed.");
+                    net2_debug_failure("The socket dynamic allocation failed.");
                 #endif
             }
         }
@@ -265,7 +265,7 @@ int net2_node_connect(struct net2_link_t** net2_link, unsigned int ip_address, u
                 // No, the link manager failed to get the link back.
                 result = -1;
                 #ifdef NET2_DEBUG
-                    net2_debug_failure("net2_node_connect", "The socket creation failed.");
+                    net2_debug_failure("The socket creation failed.");
                 #endif
             }
         }
@@ -275,7 +275,7 @@ int net2_node_connect(struct net2_link_t** net2_link, unsigned int ip_address, u
         // No, the link manager research failed.
         result = -1;
         #ifdef NET2_DEBUG
-            net2_debug_failure("net2_node_connect", "The link manager research failed.");
+            net2_debug_failure("The link manager research failed.");
         #endif
     }
     
@@ -302,7 +302,7 @@ int net2_node_close()
         // No, the node is not already instanced.
         result = -1;
         #ifdef NET2_DEBUG
-            net2_debug_failure("net2_node_close", "The node is not already instanced.");
+            net2_debug_failure("The node is not already instanced.");
         #endif
     }
     

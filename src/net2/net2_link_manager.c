@@ -31,7 +31,7 @@ int net2_link_manager_create()
         // No, the link manager dynamic allocation failed.
         result = -1;
         #ifdef NET2_DEBUG
-            net2_debug_failure("net2_link_manager_create", "Link manager dynamic allocation");
+            net2_debug_failure("Link manager dynamic allocation");
         #endif
     }
     
@@ -60,7 +60,7 @@ int net2_link_manager_init()
         {
             // No, the link manager creation failed.
             #ifdef NET2_DEBUG
-                net2_debug_failure("net2_link_manager_init", "Link manager creation failed.");
+                net2_debug_failure("Link manager creation failed.");
             #endif
         }
     }
@@ -97,7 +97,7 @@ int net2_link_manager_register_link(struct net2_link_t* net2_link)
             // Yes, the new link has not been appended to the linked list of links.
             result = -1;
             #ifdef NET2_DEBUG
-                net2_debug_failure("net2_link_manager_register_link", "The link manager is not already instanced.");
+                net2_debug_failure("The link manager is not already instanced.");
             #endif
         }
     }
@@ -106,7 +106,7 @@ int net2_link_manager_register_link(struct net2_link_t* net2_link)
         // No, the link manager is not already instanced.
         result = -1;
         #ifdef NET2_DEBUG
-            net2_debug_failure("net2_link_manager_register_link", "The link manager is not already instanced.");
+            net2_debug_failure("The link manager is not already instanced.");
         #endif
     }
     
@@ -169,7 +169,7 @@ int net2_link_manager_get_link(struct net2_link_t** net2_link, unsigned int ip_a
         // No, the link manager is not already instanced.
         result = -1;
         #ifdef NET2_DEBUG
-            net2_debug_failure("net2_link_manager_get_link", "The link manager is not already instanced.");
+            net2_debug_failure("The link manager is not already instanced.");
         #endif
     }
     
@@ -218,7 +218,7 @@ int net2_link_manager_check_address_and_port(unsigned int address, unsigned shor
         *found = false;
         result = -1;
         #ifdef NET2_DEBUG
-            net2_debug_failure("net2_link_manager_check_socket", "The link manager is not already instanced.");
+            net2_debug_failure("The link manager is not already instanced.");
         #endif
     }
     

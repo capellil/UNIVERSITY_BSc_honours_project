@@ -26,12 +26,12 @@ int net2_link_rx_read(struct net2_socket_t* net2_socket, void* data, unsigned in
         else if(result == -1)
         {
             // The peer has performed an orderly shutdown.
-            net2_debug_failure("net2_link_rx_read", "The peer has performed an orderly shutdown.");
+            net2_debug_failure("The peer has performed an orderly shutdown.");
         }
         else if(result == -2)
         {
             // No, the read failed.
-            net2_debug_failure("net2_link_rx_read", "The read failed.");
+            net2_debug_failure("The read failed.");
         }
         else
         {
@@ -58,17 +58,17 @@ int net2_link_tx_write(struct net2_socket_t* net2_socket, void* data, unsigned i
         else if(result == -1)
         {
             // No, nothing has been written
-            net2_debug_failure("net2_link_write", "Nothing has been written.");
+            net2_debug_failure("Nothing has been written.");
         }
         else if(result == -2)
         {
             // No, the write failed.
-            net2_debug_failure("net2_link_write", "The write failed.");
+            net2_debug_failure("The write failed.");
         }
         else
         {
             // Unknown returned value
-            net2_debug_failure("net2_link_write", "Unknown returned value.");
+            net2_debug_failure("Unknown returned value.");
         }
         
         return result;
@@ -91,12 +91,12 @@ int net2_link_read(struct net2_link_t* net2_link, void* data, unsigned int data_
         else if(result == -1)
         {
             // The peer has performed an orderly shutdown.
-            net2_debug_failure("net2_link_read", "The peer has performed an orderly shutdown.");
+            net2_debug_failure("The peer has performed an orderly shutdown.");
         }
         else if(result == -2)
         {
             // No, the read failed.
-            net2_debug_failure("net2_link_read", "The read failed.");
+            net2_debug_failure("The read failed.");
         }
         else
         {
@@ -123,17 +123,17 @@ int net2_link_write(struct net2_link_t* net2_link, void* data, unsigned int data
         else if(result == -1)
         {
             // No, nothing has been written.
-            net2_debug_failure("net2_link_tx_write", "Nothing has been written.");
+            net2_debug_failure("Nothing has been written.");
         }
         else if(result == -2)
         {
             // No, the write failed.
-            net2_debug_failure("net2_link_tx_write", "The write failed.");
+            net2_debug_failure("The write failed.");
         }
         else
         {
             // Unknown returned value
-            net2_debug_failure("net2_link_tx_write", "Unknown returned value.");
+            net2_debug_failure("Unknown returned value.");
         }
         
         return result;
@@ -232,7 +232,7 @@ int net2_link_send(struct net2_link_t* net2_link, struct net2_message_t* net2_me
                 // No, nothing has been written.
                 result = -1;
                 #ifdef NET2_DEBUG
-                    net2_debug_failure("net2_link_send", "Nothing has been written.");
+                    net2_debug_failure("Nothing has been written.");
                 #endif
             }
             else if(result == -2)
@@ -240,7 +240,7 @@ int net2_link_send(struct net2_link_t* net2_link, struct net2_message_t* net2_me
                 // No, the writing failed.
                 result = -1;
                 #ifdef NET2_DEBUG
-                    net2_debug_failure("net2_link_send", "The writing failed.");
+                    net2_debug_failure("The writing failed.");
                 #endif
             }
             else
@@ -248,7 +248,7 @@ int net2_link_send(struct net2_link_t* net2_link, struct net2_message_t* net2_me
                 // Unknown returned value.
                 result = -1;
                 #ifdef NET2_DEBUG
-                    net2_debug_failure("net2_link_send", "Unknown returned value.");
+                    net2_debug_failure("Unknown returned value.");
                 #endif
             }
             
@@ -259,7 +259,7 @@ int net2_link_send(struct net2_link_t* net2_link, struct net2_message_t* net2_me
             // No, the data dynamic allocation failed.
             result = -1;
             #ifdef NET2_DEBUG
-                net2_debug_failure("net2_link_send", "The data dynamic allocation failed.");
+                net2_debug_failure("The data dynamic allocation failed.");
             #endif
         }
     }
@@ -268,7 +268,7 @@ int net2_link_send(struct net2_link_t* net2_link, struct net2_message_t* net2_me
         // No, the type was not correct.
         result = -1;
         #ifdef NET2_DEBUG
-            net2_debug_failure("net2_link_send", "The type was not correct.");
+            net2_debug_failure("The type was not correct.");
         #endif
     }
     
@@ -429,7 +429,7 @@ void* net2_link_run(void* net2_link_to_run)
                                     {
                                         result = -9;
                                         #ifdef NET2_DEBUG
-                                            net2_debug_failure("net2_link_run", "The message add failed.");
+                                            net2_debug_failure("The message add failed.");
                                         #endif
                                     }
                                 }
@@ -437,7 +437,7 @@ void* net2_link_run(void* net2_link_to_run)
                                 {
                                     result = -10;
                                     #ifdef NET2_DEBUG
-                                        net2_debug_failure("net2_link_run", "The message has an unknown type.");
+                                        net2_debug_failure("The message has an unknown type.");
                                     #endif
                                 }
                             }
@@ -459,7 +459,7 @@ void* net2_link_run(void* net2_link_to_run)
                                     {
                                         result = -11;
                                         #ifdef NET2_DEBUG
-                                            net2_debug_failure("net2_link_run", "The message add failed.");
+                                            net2_debug_failure("The message add failed.");
                                         #endif
                                     }
                                 }
@@ -467,7 +467,7 @@ void* net2_link_run(void* net2_link_to_run)
                                 {
                                     result = -12;
                                     #ifdef NET2_DEBUG
-                                        net2_debug_failure("net2_link_run", "The message has an unknown type.");
+                                        net2_debug_failure("The message has an unknown type.");
                                     #endif
                                 }
                             }
@@ -479,7 +479,7 @@ void* net2_link_run(void* net2_link_to_run)
                             #ifdef NET2_DEBUG
                                 char buffer[NET2_DEBUG_MAX_MESSAGE_LENGTH];
                                 sprintf(buffer, "Any channel with this channel number %d has been found.", net2_message->_destination);
-                                net2_debug_failure("net2_link_run", buffer);
+                                net2_debug_failure(buffer);
                             #endif
                         }
                     }
@@ -488,7 +488,7 @@ void* net2_link_run(void* net2_link_to_run)
                         // No, the reserach into the channel manager failed.
                         result = -14;
                         #ifdef NET2_DEBUG
-                            net2_debug_failure("net2_link_run", "The channel has not been found.");
+                            net2_debug_failure("The channel has not been found.");
                         #endif
                     }
                 }
@@ -497,7 +497,7 @@ void* net2_link_run(void* net2_link_to_run)
                     // No, it was not a correct message type, or at least it was not known.
                     result = -15;
                     #ifdef NET2_DEBUG
-                        net2_debug_failure("net2_link_run", "It was not a correct message type, or at least it was not known.");
+                        net2_debug_failure("It was not a correct message type, or at least it was not known.");
                     #endif
                 }
             }
@@ -584,7 +584,7 @@ int net2_link_append_to_linked_element(struct net2_link_t* link, struct net2_lin
         // No, the new element dynamic allocation failed.
         result = -1;
         #ifdef NET2_DEBUG
-            net2_debug_failure("net2_link_add_linked_element", "The new element dynamic allocation failed.");
+            net2_debug_failure("The new element dynamic allocation failed.");
         #endif
     }
     

@@ -9,10 +9,10 @@ void net2_debug_success()
     printf("FUNCTION SUCCESS : %s\n", __FUNCTION__);
 }
 
-void net2_debug_failure(char* function_name, char* message)
+void net2_debug_failure(char* message)
 {
     printf("FUNCTION FAILURE : \n");
-    printf("\t- Function : %s\n", function_name);
+    printf("\t- Function : %s\n", __FUNCTION__);
     printf("\t- Message : %s\n", message);    
     perror("\t- PError "); 
     fflush(stdout);
