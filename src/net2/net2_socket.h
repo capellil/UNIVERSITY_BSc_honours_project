@@ -225,6 +225,10 @@ unsigned short int net2_get_port_of_socket(struct net2_socket_t* net2_socket);
  *          <li>ip_address contains a '\0' terminated character string.</li>
  *          <li>client_socket points to a valid net2_socket_t structure.</li>
  *      </ul>
+ * @post <ul>
+ *           <li>ON SUCCESS: client_socket contains the socket connected to the given address and port.</li>
+ *           <li>ON FAILURE: client_socket is left untouched.</li>
+ *       </ul>
  **/
 int net2_create_client_socket(char* ip_address, unsigned short int port, struct net2_socket_t* client_socket);
 
