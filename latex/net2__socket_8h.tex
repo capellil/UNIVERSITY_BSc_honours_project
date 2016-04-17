@@ -34,6 +34,8 @@ unsigned short int \hyperlink{net2__socket_8h_a3562ae1f88710b0695de2736dee6c041}
 \begin{DoxyCompactList}\small\item\em Returns -\/ in host byte order -\/ the port of the given net2 socket. \end{DoxyCompactList}\item 
 int \hyperlink{net2__socket_8h_a3f6ee8dfba4b8eff1695eb2fae7da4f0}{net2\+\_\+create\+\_\+client\+\_\+socket} (char $\ast$ip\+\_\+address, unsigned short int port, struct \hyperlink{structnet2__socket__t}{net2\+\_\+socket\+\_\+t} $\ast$client\+\_\+socket)
 \begin{DoxyCompactList}\small\item\em This function creates a net2\+\_\+socket and connects it to the given remote socket. \end{DoxyCompactList}\item 
+int \hyperlink{net2__socket_8h_a0bce09f335597f27eff48853b39f1ff0}{net2\+\_\+create\+\_\+server\+\_\+socket} (unsigned short int port, struct \hyperlink{structnet2__socket__t}{net2\+\_\+socket\+\_\+t} $\ast$server\+\_\+socket)
+\begin{DoxyCompactList}\small\item\em This function creates a net2\+\_\+socket and opens a server on the given port. \end{DoxyCompactList}\item 
 void \hyperlink{net2__socket_8h_a6709a86111a8a3bce8af1cffbbb3fc08}{net2\+\_\+print\+\_\+socket} (char $\ast$heading, struct \hyperlink{structnet2__socket__t}{net2\+\_\+socket\+\_\+t} $\ast$net2\+\_\+socket)
 \begin{DoxyCompactList}\small\item\em Prints out all the information in the given net2\+\_\+socket next to the given header. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
@@ -261,6 +263,49 @@ This function creates a net2\+\_\+socket and connects it to the given remote soc
 \begin{DoxyItemize}
 \item O\+N S\+U\+C\+C\+E\+S\+S\+: client\+\_\+socket contains the socket connected to the given address and port. 
 \item O\+N F\+A\+I\+L\+U\+R\+E\+: client\+\_\+socket is left untouched. 
+\end{DoxyItemize}
+\end{DoxyPostcond}
+\hypertarget{net2__socket_8h_a0bce09f335597f27eff48853b39f1ff0}{}\index{net2\+\_\+socket.\+h@{net2\+\_\+socket.\+h}!net2\+\_\+create\+\_\+server\+\_\+socket@{net2\+\_\+create\+\_\+server\+\_\+socket}}
+\index{net2\+\_\+create\+\_\+server\+\_\+socket@{net2\+\_\+create\+\_\+server\+\_\+socket}!net2\+\_\+socket.\+h@{net2\+\_\+socket.\+h}}
+\subsubsection[{net2\+\_\+create\+\_\+server\+\_\+socket(unsigned short int port, struct net2\+\_\+socket\+\_\+t $\ast$server\+\_\+socket)}]{\setlength{\rightskip}{0pt plus 5cm}int net2\+\_\+create\+\_\+server\+\_\+socket (
+\begin{DoxyParamCaption}
+\item[{unsigned short int}]{port, }
+\item[{struct {\bf net2\+\_\+socket\+\_\+t} $\ast$}]{server\+\_\+socket}
+\end{DoxyParamCaption}
+)}\label{net2__socket_8h_a0bce09f335597f27eff48853b39f1ff0}
+
+
+This function creates a net2\+\_\+socket and opens a server on the given port. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em port} & The port number to use for the server in host byte order. \\
+\hline
+\mbox{\tt out}  & {\em server\+\_\+socket} & A pointer to the \hyperlink{structnet2__socket__t}{net2\+\_\+socket\+\_\+t} structure to use to store the server net2 socket. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\begin{DoxyItemize}
+\item O\+N S\+U\+C\+C\+E\+S\+S\+: 0. 
+\item O\+N F\+A\+I\+L\+U\+R\+E\+: 
+\begin{DoxyItemize}
+\item -\/1\+: Something went wrong in the creation \& binding process. 
+\item -\/2\+: Something went wrong in the listening process. 
+\end{DoxyItemize}
+\end{DoxyItemize}
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondition}
+
+\begin{DoxyItemize}
+\item server\+\_\+socket points to a valid \hyperlink{structnet2__socket__t}{net2\+\_\+socket\+\_\+t} structure. 
+\end{DoxyItemize}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+
+\begin{DoxyItemize}
+\item O\+N S\+U\+C\+C\+E\+S\+S\+: server\+\_\+socket contains the server socket listening on the given port. 
+\item O\+N F\+A\+I\+L\+U\+R\+E\+: server\+\_\+socket is left untouched. 
 \end{DoxyItemize}
 \end{DoxyPostcond}
 \hypertarget{net2__socket_8h_ae2de8a69dfe0231f1423fcfe5dba986f}{}\index{net2\+\_\+socket.\+h@{net2\+\_\+socket.\+h}!net2\+\_\+create\+\_\+socket@{net2\+\_\+create\+\_\+socket}}

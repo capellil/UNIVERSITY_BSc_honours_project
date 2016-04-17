@@ -13,6 +13,7 @@ var searchData=
   ['net2_5fconnect_5fsocket',['net2_connect_socket',['../net2__socket_8h.html#a2a1ce497c813f99e4afad9780c4a3a40',1,'net2_socket.c']]],
   ['net2_5fcreate_5fand_5fbind_5fsocket',['net2_create_and_bind_socket',['../net2__socket_8h.html#a1cac498404158fd3d2f69fa342e7418c',1,'net2_socket.c']]],
   ['net2_5fcreate_5fclient_5fsocket',['net2_create_client_socket',['../net2__socket_8h.html#a3f6ee8dfba4b8eff1695eb2fae7da4f0',1,'net2_socket.c']]],
+  ['net2_5fcreate_5fserver_5fsocket',['net2_create_server_socket',['../net2__socket_8h.html#a0bce09f335597f27eff48853b39f1ff0',1,'net2_socket.c']]],
   ['net2_5fcreate_5fsocket',['net2_create_socket',['../net2__socket_8h.html#ae2de8a69dfe0231f1423fcfe5dba986f',1,'net2_socket.c']]],
   ['net2_5fget_5fip_5fof_5fsocket',['net2_get_ip_of_socket',['../net2__socket_8h.html#acf56d3eb79a05ec075aa8751920dca9d',1,'net2_socket.c']]],
   ['net2_5fget_5fport_5fof_5fsocket',['net2_get_port_of_socket',['../net2__socket_8h.html#a3562ae1f88710b0695de2736dee6c041',1,'net2_socket.c']]],
