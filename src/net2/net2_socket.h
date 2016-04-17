@@ -210,7 +210,7 @@ unsigned short int net2_get_port_of_socket(struct net2_socket_t* net2_socket);
  * @param[in] ip_address ASCII representation of an IPv4 address in host byte order.
  * @param[in] port The port number of the remote socket in host byte order.
  * @param[out] client_socket A pointer to the net2_socket_t structure to use to store the remote net2 socket.
- * return <ul>
+ * @return <ul>
  *            <li>ON SUCCESS: 0.</li>
  *            <li>ON FAILURE:
  *            <ul>
