@@ -11,10 +11,9 @@
 #include <pthread.h> // pthread_t
 
 #include "net2_socket.h"
-#include "net2_protocol.h"
 
 /**
- * @brief Incomplete declaration to avoid errors with the mutual inclusion with net2_protocol.h
+ * @brief Forward declaration to avoid errors with the mutual inclusion with net2_protocol.h
  **/
 struct net2_message_t;
 
@@ -207,5 +206,7 @@ void net2_link_init_linked_element(struct net2_link_t* link, struct net2_link_li
  *      </ul>
  **/
 int net2_link_append_to_linked_element(struct net2_link_t* link, struct net2_link_linked_element_t** current_list);
+
+#include "net2_protocol.h"
 
 #endif // NET2_LINK_INCLUDED INCLUDED

@@ -5,10 +5,12 @@
  * @date 24/01/2015
  **/
 
+#ifndef NET2_LINK_INCLUDED
+#include "net2_link.h"
+#endif
+
 #ifndef NET2_PROTOCOL_INCLUDED 
 #define NET2_PROTOCOL_INCLUDED
-
-#include "net2_link.h"
 
 extern const unsigned int NET2_MESSAGE_MAX_LENGTH;
 
