@@ -107,9 +107,6 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ae2de8a69dfe0231f1423fcfe5dba986f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="net2__socket_8h.html#ae2de8a69dfe0231f1423fcfe5dba986f">net2_create_socket</a> (struct <a class="el" href="structnet2__socket__t.html">net2_socket_t</a> *net2_socket)</td></tr>
-<tr class="memdesc:ae2de8a69dfe0231f1423fcfe5dba986f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a socket used for communication and stores it into the <a class="el" href="structnet2__socket__t.html" title="Structure containing the socket and its address structure. ">net2_socket_t</a> structure pointed by the given pointer.  <a href="#ae2de8a69dfe0231f1423fcfe5dba986f">More...</a><br /></td></tr>
-<tr class="separator:ae2de8a69dfe0231f1423fcfe5dba986f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1cac498404158fd3d2f69fa342e7418c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="net2__socket_8h.html#a1cac498404158fd3d2f69fa342e7418c">net2_create_and_bind_socket</a> (struct <a class="el" href="structnet2__socket__t.html">net2_socket_t</a> *net2_socket, unsigned short int port)</td></tr>
 <tr class="memdesc:a1cac498404158fd3d2f69fa342e7418c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a socket and binds it to the given port. Uses TCP/IP protocols.  <a href="#a1cac498404158fd3d2f69fa342e7418c">More...</a><br /></td></tr>
 <tr class="separator:a1cac498404158fd3d2f69fa342e7418c"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -119,6 +116,9 @@ Functions</h2></td></tr>
 <tr class="memitem:ae30d2d353f769adc052df97f103c079b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="net2__socket_8h.html#ae30d2d353f769adc052df97f103c079b">net2_accept_from_socket</a> (struct <a class="el" href="structnet2__socket__t.html">net2_socket_t</a> *server, struct <a class="el" href="structnet2__socket__t.html">net2_socket_t</a> *client)</td></tr>
 <tr class="memdesc:ae30d2d353f769adc052df97f103c079b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Accepts a connection from the given server net2 socket and stores it into the given client net2 socket.  <a href="#ae30d2d353f769adc052df97f103c079b">More...</a><br /></td></tr>
 <tr class="separator:ae30d2d353f769adc052df97f103c079b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0e4c67bad9113de8bc44adb506a83ce2"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="net2__socket_8h.html#a0e4c67bad9113de8bc44adb506a83ce2">net2_create_and_connect_socket</a> (struct <a class="el" href="structnet2__socket__t.html">net2_socket_t</a> *net2_socket, unsigned int address, unsigned short int port)</td></tr>
+<tr class="memdesc:a0e4c67bad9113de8bc44adb506a83ce2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates and connects the given socket to the provided address and port.  <a href="#a0e4c67bad9113de8bc44adb506a83ce2">More...</a><br /></td></tr>
+<tr class="separator:a0e4c67bad9113de8bc44adb506a83ce2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2a1ce497c813f99e4afad9780c4a3a40"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="net2__socket_8h.html#a2a1ce497c813f99e4afad9780c4a3a40">net2_connect_socket</a> (struct <a class="el" href="structnet2__socket__t.html">net2_socket_t</a> *net2_socket, unsigned int address, unsigned short int port)</td></tr>
 <tr class="memdesc:a2a1ce497c813f99e4afad9780c4a3a40"><td class="mdescLeft">&#160;</td><td class="mdescRight">Connects the given socket to the provided address and port.  <a href="#a2a1ce497c813f99e4afad9780c4a3a40">More...</a><br /></td></tr>
 <tr class="separator:a2a1ce497c813f99e4afad9780c4a3a40"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -376,6 +376,75 @@ ON FAILURE: net2_socket is left untouched. </li>
 
 </div>
 </div>
+<a class="anchor" id="a0e4c67bad9113de8bc44adb506a83ce2"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int net2_create_and_connect_socket </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structnet2__socket__t.html">net2_socket_t</a> *&#160;</td>
+          <td class="paramname"><em>net2_socket</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>address</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned short int&#160;</td>
+          <td class="paramname"><em>port</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Creates and connects the given socket to the provided address and port. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[out]</td><td class="paramname">net2_socket</td><td>A pointer to store the <a class="el" href="structnet2__socket__t.html" title="Structure containing the socket and its address structure. ">net2_socket_t</a> structure once created and connected. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">address</td><td>The IP address to connect to. (Host byte order) </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">port</td><td>The port to connect to. (Host byte order) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><ul>
+<li>
+ON SUCCESS : 0. </li>
+<li>
+ON FAILURE : <ul>
+<li>
+-1: Something went wrong in the TCP/Ipv4 socket creation. </li>
+<li>
+-2: Socket SOL_REUSEADDR option set failed. </li>
+<li>
+-3: The socket connection failed. </li>
+</ul>
+</li>
+</ul>
+</dd></dl>
+<dl class="section pre"><dt>Precondition</dt><dd><ul>
+<li>
+net2_socket points to a valid <a class="el" href="structnet2__socket__t.html" title="Structure containing the socket and its address structure. ">net2_socket_t</a> structure. </li>
+</ul>
+</dd></dl>
+<dl class="section post"><dt>Postcondition</dt><dd><ul>
+<li>
+ON SUCCESS: net2_socket contains the socket created and connected to the remote socket at the given address and port. </li>
+<li>
+ON FAILURE: net2_socket is left untouched. </li>
+</ul>
+</dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="a3f6ee8dfba4b8eff1695eb2fae7da4f0"></a>
 <div class="memitem">
 <div class="memproto">
@@ -504,49 +573,6 @@ server_socket points to a valid <a class="el" href="structnet2__socket__t.html" 
 ON SUCCESS: server_socket contains the server socket listening on the given port. </li>
 <li>
 ON FAILURE: server_socket is left untouched. </li>
-</ul>
-</dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="ae2de8a69dfe0231f1423fcfe5dba986f"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int net2_create_socket </td>
-          <td>(</td>
-          <td class="paramtype">struct <a class="el" href="structnet2__socket__t.html">net2_socket_t</a> *&#160;</td>
-          <td class="paramname"><em>net2_socket</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Creates a socket used for communication and stores it into the <a class="el" href="structnet2__socket__t.html" title="Structure containing the socket and its address structure. ">net2_socket_t</a> structure pointed by the given pointer. </p>
-<p>This implementation relies on TCP/IPv4 protocols. </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[out]</td><td class="paramname">net2_socket</td><td>A pointer to store the net2 socket created in. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd><ul>
-<li>
-ON SUCCESS : 0. </li>
-<li>
-ON FAILURE : -1. </li>
-</ul>
-</dd></dl>
-<dl class="section pre"><dt>Precondition</dt><dd><ul>
-<li>
-net2_socket points to a valid <a class="el" href="structnet2__socket__t.html" title="Structure containing the socket and its address structure. ">net2_socket_t</a> structure. </li>
-</ul>
-</dd></dl>
-<dl class="section post"><dt>Postcondition</dt><dd><ul>
-<li>
-ON SUCCESS: the <a class="el" href="structnet2__socket__t.html" title="Structure containing the socket and its address structure. ">net2_socket_t</a> structure pointed by net2_socket contains an initialised net2 socket. </li>
-<li>
-ON FAILURE: the <a class="el" href="structnet2__socket__t.html" title="Structure containing the socket and its address structure. ">net2_socket_t</a> structure pointed by net2_socket is left untouched. </li>
 </ul>
 </dd></dl>
 

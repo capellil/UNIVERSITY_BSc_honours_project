@@ -12,14 +12,14 @@ struct \hyperlink{structnet2__socket__t}{net2\+\_\+socket\+\_\+t}
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-int \hyperlink{net2__socket_8h_ae2de8a69dfe0231f1423fcfe5dba986f}{net2\+\_\+create\+\_\+socket} (struct \hyperlink{structnet2__socket__t}{net2\+\_\+socket\+\_\+t} $\ast$net2\+\_\+socket)
-\begin{DoxyCompactList}\small\item\em Creates a socket used for communication and stores it into the \hyperlink{structnet2__socket__t}{net2\+\_\+socket\+\_\+t} structure pointed by the given pointer. \end{DoxyCompactList}\item 
 int \hyperlink{net2__socket_8h_a1cac498404158fd3d2f69fa342e7418c}{net2\+\_\+create\+\_\+and\+\_\+bind\+\_\+socket} (struct \hyperlink{structnet2__socket__t}{net2\+\_\+socket\+\_\+t} $\ast$net2\+\_\+socket, unsigned short int port)
 \begin{DoxyCompactList}\small\item\em Creates a socket and binds it to the given port. Uses T\+C\+P/\+I\+P protocols. \end{DoxyCompactList}\item 
 int \hyperlink{net2__socket_8h_aca53319ef7644b4ea0a1011cff374e97}{net2\+\_\+listen\+\_\+from\+\_\+socket} (struct \hyperlink{structnet2__socket__t}{net2\+\_\+socket\+\_\+t} $\ast$net2\+\_\+socket)
 \begin{DoxyCompactList}\small\item\em Listens on the given socket to accept connections later on. \end{DoxyCompactList}\item 
 int \hyperlink{net2__socket_8h_ae30d2d353f769adc052df97f103c079b}{net2\+\_\+accept\+\_\+from\+\_\+socket} (struct \hyperlink{structnet2__socket__t}{net2\+\_\+socket\+\_\+t} $\ast$server, struct \hyperlink{structnet2__socket__t}{net2\+\_\+socket\+\_\+t} $\ast$client)
 \begin{DoxyCompactList}\small\item\em Accepts a connection from the given server net2 socket and stores it into the given client net2 socket. \end{DoxyCompactList}\item 
+int \hyperlink{net2__socket_8h_a0e4c67bad9113de8bc44adb506a83ce2}{net2\+\_\+create\+\_\+and\+\_\+connect\+\_\+socket} (struct \hyperlink{structnet2__socket__t}{net2\+\_\+socket\+\_\+t} $\ast$net2\+\_\+socket, unsigned int address, unsigned short int port)
+\begin{DoxyCompactList}\small\item\em Creates and connects the given socket to the provided address and port. \end{DoxyCompactList}\item 
 int \hyperlink{net2__socket_8h_a2a1ce497c813f99e4afad9780c4a3a40}{net2\+\_\+connect\+\_\+socket} (struct \hyperlink{structnet2__socket__t}{net2\+\_\+socket\+\_\+t} $\ast$net2\+\_\+socket, unsigned int address, unsigned short int port)
 \begin{DoxyCompactList}\small\item\em Connects the given socket to the provided address and port. \end{DoxyCompactList}\item 
 int \hyperlink{net2__socket_8h_a130d1730a62496990ad05fc25ebf3115}{net2\+\_\+write\+\_\+to\+\_\+socket} (struct \hyperlink{structnet2__socket__t}{net2\+\_\+socket\+\_\+t} $\ast$net2\+\_\+socket, void $\ast$data, unsigned int data\+\_\+length)
@@ -216,6 +216,53 @@ Creates a socket and binds it to the given port. Uses T\+C\+P/\+I\+P protocols.
 \item O\+N F\+A\+I\+L\+U\+R\+E\+: net2\+\_\+socket is left untouched. 
 \end{DoxyItemize}
 \end{DoxyPostcond}
+\hypertarget{net2__socket_8h_a0e4c67bad9113de8bc44adb506a83ce2}{}\index{net2\+\_\+socket.\+h@{net2\+\_\+socket.\+h}!net2\+\_\+create\+\_\+and\+\_\+connect\+\_\+socket@{net2\+\_\+create\+\_\+and\+\_\+connect\+\_\+socket}}
+\index{net2\+\_\+create\+\_\+and\+\_\+connect\+\_\+socket@{net2\+\_\+create\+\_\+and\+\_\+connect\+\_\+socket}!net2\+\_\+socket.\+h@{net2\+\_\+socket.\+h}}
+\subsubsection[{net2\+\_\+create\+\_\+and\+\_\+connect\+\_\+socket(struct net2\+\_\+socket\+\_\+t $\ast$net2\+\_\+socket, unsigned int address, unsigned short int port)}]{\setlength{\rightskip}{0pt plus 5cm}int net2\+\_\+create\+\_\+and\+\_\+connect\+\_\+socket (
+\begin{DoxyParamCaption}
+\item[{struct {\bf net2\+\_\+socket\+\_\+t} $\ast$}]{net2\+\_\+socket, }
+\item[{unsigned int}]{address, }
+\item[{unsigned short int}]{port}
+\end{DoxyParamCaption}
+)}\label{net2__socket_8h_a0e4c67bad9113de8bc44adb506a83ce2}
+
+
+Creates and connects the given socket to the provided address and port. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em net2\+\_\+socket} & A pointer to store the \hyperlink{structnet2__socket__t}{net2\+\_\+socket\+\_\+t} structure once created and connected. \\
+\hline
+\mbox{\tt in}  & {\em address} & The I\+P address to connect to. (Host byte order) \\
+\hline
+\mbox{\tt in}  & {\em port} & The port to connect to. (Host byte order) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\begin{DoxyItemize}
+\item O\+N S\+U\+C\+C\+E\+S\+S \+: 0. 
+\item O\+N F\+A\+I\+L\+U\+R\+E \+: 
+\begin{DoxyItemize}
+\item -\/1\+: Something went wrong in the T\+C\+P/\+Ipv4 socket creation. 
+\item -\/2\+: Socket S\+O\+L\+\_\+\+R\+E\+U\+S\+E\+A\+D\+D\+R option set failed. 
+\item -\/3\+: The socket connection failed. 
+\end{DoxyItemize}
+\end{DoxyItemize}
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondition}
+
+\begin{DoxyItemize}
+\item net2\+\_\+socket points to a valid \hyperlink{structnet2__socket__t}{net2\+\_\+socket\+\_\+t} structure. 
+\end{DoxyItemize}
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+
+\begin{DoxyItemize}
+\item O\+N S\+U\+C\+C\+E\+S\+S\+: net2\+\_\+socket contains the socket created and connected to the remote socket at the given address and port. 
+\item O\+N F\+A\+I\+L\+U\+R\+E\+: net2\+\_\+socket is left untouched. 
+\end{DoxyItemize}
+\end{DoxyPostcond}
 \hypertarget{net2__socket_8h_a3f6ee8dfba4b8eff1695eb2fae7da4f0}{}\index{net2\+\_\+socket.\+h@{net2\+\_\+socket.\+h}!net2\+\_\+create\+\_\+client\+\_\+socket@{net2\+\_\+create\+\_\+client\+\_\+socket}}
 \index{net2\+\_\+create\+\_\+client\+\_\+socket@{net2\+\_\+create\+\_\+client\+\_\+socket}!net2\+\_\+socket.\+h@{net2\+\_\+socket.\+h}}
 \subsubsection[{net2\+\_\+create\+\_\+client\+\_\+socket(char $\ast$ip\+\_\+address, unsigned short int port, struct net2\+\_\+socket\+\_\+t $\ast$client\+\_\+socket)}]{\setlength{\rightskip}{0pt plus 5cm}int net2\+\_\+create\+\_\+client\+\_\+socket (
@@ -306,42 +353,6 @@ This function creates a net2\+\_\+socket and opens a server on the given port.
 \begin{DoxyItemize}
 \item O\+N S\+U\+C\+C\+E\+S\+S\+: server\+\_\+socket contains the server socket listening on the given port. 
 \item O\+N F\+A\+I\+L\+U\+R\+E\+: server\+\_\+socket is left untouched. 
-\end{DoxyItemize}
-\end{DoxyPostcond}
-\hypertarget{net2__socket_8h_ae2de8a69dfe0231f1423fcfe5dba986f}{}\index{net2\+\_\+socket.\+h@{net2\+\_\+socket.\+h}!net2\+\_\+create\+\_\+socket@{net2\+\_\+create\+\_\+socket}}
-\index{net2\+\_\+create\+\_\+socket@{net2\+\_\+create\+\_\+socket}!net2\+\_\+socket.\+h@{net2\+\_\+socket.\+h}}
-\subsubsection[{net2\+\_\+create\+\_\+socket(struct net2\+\_\+socket\+\_\+t $\ast$net2\+\_\+socket)}]{\setlength{\rightskip}{0pt plus 5cm}int net2\+\_\+create\+\_\+socket (
-\begin{DoxyParamCaption}
-\item[{struct {\bf net2\+\_\+socket\+\_\+t} $\ast$}]{net2\+\_\+socket}
-\end{DoxyParamCaption}
-)}\label{net2__socket_8h_ae2de8a69dfe0231f1423fcfe5dba986f}
-
-
-Creates a socket used for communication and stores it into the \hyperlink{structnet2__socket__t}{net2\+\_\+socket\+\_\+t} structure pointed by the given pointer. 
-
-This implementation relies on T\+C\+P/\+I\+Pv4 protocols. 
-\begin{DoxyParams}[1]{Parameters}
-\mbox{\tt out}  & {\em net2\+\_\+socket} & A pointer to store the net2 socket created in. \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-
-\begin{DoxyItemize}
-\item O\+N S\+U\+C\+C\+E\+S\+S \+: 0. 
-\item O\+N F\+A\+I\+L\+U\+R\+E \+: -\/1. 
-\end{DoxyItemize}
-\end{DoxyReturn}
-\begin{DoxyPrecond}{Precondition}
-
-\begin{DoxyItemize}
-\item net2\+\_\+socket points to a valid \hyperlink{structnet2__socket__t}{net2\+\_\+socket\+\_\+t} structure. 
-\end{DoxyItemize}
-\end{DoxyPrecond}
-\begin{DoxyPostcond}{Postcondition}
-
-\begin{DoxyItemize}
-\item O\+N S\+U\+C\+C\+E\+S\+S\+: the \hyperlink{structnet2__socket__t}{net2\+\_\+socket\+\_\+t} structure pointed by net2\+\_\+socket contains an initialised net2 socket. 
-\item O\+N F\+A\+I\+L\+U\+R\+E\+: the \hyperlink{structnet2__socket__t}{net2\+\_\+socket\+\_\+t} structure pointed by net2\+\_\+socket is left untouched. 
 \end{DoxyItemize}
 \end{DoxyPostcond}
 \hypertarget{net2__socket_8h_acf56d3eb79a05ec075aa8751920dca9d}{}\index{net2\+\_\+socket.\+h@{net2\+\_\+socket.\+h}!net2\+\_\+get\+\_\+ip\+\_\+of\+\_\+socket@{net2\+\_\+get\+\_\+ip\+\_\+of\+\_\+socket}}
