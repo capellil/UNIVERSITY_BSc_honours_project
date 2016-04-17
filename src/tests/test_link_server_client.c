@@ -52,32 +52,21 @@ int main(int argc, char* argv[])
                     printf("yes.\n");
                     struct net2_socket_t socket;
                     
-                    printf("Did the socket creation succeed...");
-                    if(net2_create_socket(&socket) >= 0)
+                    printf("Did the socket creation & connection succeed...");
+                    if(net2_create_and_connect_socket(&socket, htonl(ip_address.s_addr), atoi(argv[2])))
                     {
                         printf("yes.\n");
+                        signed char data;
+                        unsigned int data_length = sizeof(signed char);
                         
-                        printf("Did the socket connection succeed...");
-                        if(!net2_connect_socket(&socket, htonl(ip_address.s_addr), atoi(argv[2])))
+                        printf("Did the socket read succeed...");
+                        if(net2_read_from_socket(&socket, (void*)&data, data_length) >= 0)
                         {
                             printf("yes.\n");
-                            signed char data;
-                            unsigned int data_length = sizeof(signed char);
-                            
-                            printf("Did the socket read succeed...");
-                            if(net2_read_from_socket(&socket, (void*)&data, data_length) >= 0)
+                            printf("Has the connection been allowed...");
+                            if(!data)
                             {
                                 printf("yes.\n");
-                                printf("Has the connection been allowed...");
-                                if(!data)
-                                {
-                                    printf("yes.\n");
-                                }
-                                else
-                                {
-                                    printf("no.\n");
-                                    result = EXIT_FAILURE;
-                                }
                             }
                             else
                             {

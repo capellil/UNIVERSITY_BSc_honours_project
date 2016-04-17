@@ -23,25 +23,6 @@ struct net2_socket_t
 };
 
 /**
- * @brief Creates a socket used for communication and stores it into the net2_socket_t structure pointed by the given pointer. 
- *
- * This implementation relies on TCP/IPv4 protocols.
- * @param[out] net2_socket A pointer to store the net2 socket created in.
- * @return <ul>
- *             <li>ON SUCCESS : 0.</li>
- *             <li>ON FAILURE : -1.</li>
- *         </ul>
- * @pre <ul>
- *          <li>net2_socket points to a valid net2_socket_t structure.</li>
- *      </ul>
- * @post <ul>
- *           <li>ON SUCCESS: the net2_socket_t structure pointed by net2_socket contains an initialised net2 socket.</li>
- *           <li>ON FAILURE: the net2_socket_t structure pointed by net2_socket is left untouched.</li>
- *       </ul>
- **/
-int net2_create_socket(struct net2_socket_t* net2_socket);
-
-/**
  * @brief Creates a socket and binds it to the given port. Uses TCP/IP protocols.
  * @param[out] net2_socket A pointer to store the created net2 socket in.
  * @param[in] port The port to be used. (Host byte order)
@@ -103,6 +84,31 @@ int net2_listen_from_socket(struct net2_socket_t* net2_socket);
  *       </ul>
  **/
 int net2_accept_from_socket(struct net2_socket_t* server, struct net2_socket_t* client);
+
+/**
+ * @brief Creates and connects the given socket to the provided address and port.
+ * @param[out] net2_socket A pointer to store the net2_socket_t structure once created and connected.
+ * @param[in] address The IP address to connect to. (Host byte order)
+ * @param[in] port The port to connect to. (Host byte order)
+ * @return <ul>
+ *             <li>ON SUCCESS : 0.</li>
+ *             <li>ON FAILURE : 
+ *             <ul>
+ *                 <li>-1: Something went wrong in the TCP/Ipv4 socket creation.</li>
+ *                 <li>-2: Socket SOL_REUSEADDR option set failed.</li>
+ *                 <li>-3: The socket connection failed.</li>
+ *             </ul>
+ *             </li>
+ *         </ul>
+ * @pre <ul>
+ *          <li>net2_socket points to a valid net2_socket_t structure.</li>
+ *      </ul>
+ * @post <ul>
+ *           <li>ON SUCCESS: net2_socket contains the socket created and connected to the remote socket at the given address and port.</li>
+ *           <li>ON FAILURE: net2_socket is left untouched.</li>
+ *       </ul>
+ **/
+int net2_create_and_connect_socket(struct net2_socket_t* net2_socket, unsigned int address, unsigned short int port);
 
 /**
  * @brief Connects the given socket to the provided address and port.

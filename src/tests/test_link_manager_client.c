@@ -60,33 +60,22 @@ int main(int argc, char* argv[])
                         {
                             printf("yes.\n");
                             
-                            printf("Checks the socket creation. Did the socket creation succeed...");
-                            if(net2_create_socket(&socket) >= 0)
+                            printf("Checks the socket creation & connection. Did the socket creation & connection succeed...");
+                            if(net2_create_and_connect_socket(&socket, ip_address.sin_addr.s_addr, atoi(argv[2])))
                             {
                                 printf("yes.\n");
+                                struct net2_link_t link;
+                                net2_link_create(&link, &socket);
                                 
-                                printf("Checks the socket connection. Did the socket connection succeed...");
-                                if(!net2_connect_socket(&socket, ip_address.sin_addr.s_addr, atoi(argv[2])))
+                                printf("Calls the link manager method to check if an address and port are already used by a link. Did the function succeed...");
+                                if(!net2_link_manager_check_address_and_port(ip_address.sin_addr.s_addr, atoi(argv[2]), &found))
                                 {
-                                    printf("yes.\n");
-                                    struct net2_link_t link;
-                                    net2_link_create(&link, &socket);
-                                    
-                                    printf("Calls the link manager method to check if an address and port are already used by a link. Did the function succeed...");
-                                    if(!net2_link_manager_check_address_and_port(ip_address.sin_addr.s_addr, atoi(argv[2]), &found))
+                                    printf("yes.\n");      
+                                              
+                                    printf("Checks if an occurence has been found. Is this address and port busy...");
+                                    if(!found)
                                     {
-                                        printf("yes.\n");      
-                                                  
-                                        printf("Checks if an occurence has been found. Is this address and port busy...");
-                                        if(!found)
-                                        {
-                                            printf("yes.\n");
-                                        }
-                                        else
-                                        {
-                                            printf("no.\n");
-                                            programme_return = EXIT_FAILURE;
-                                        }
+                                        printf("yes.\n");
                                     }
                                     else
                                     {

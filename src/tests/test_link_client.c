@@ -45,51 +45,40 @@ int main(int argc, char* argv[])
                 printf("yes.\n");            
                 struct net2_socket_t socket;
                 
-                printf("Checking the socket creation. Did the socket creation succeed..."); fflush(stdout);
-                if(net2_create_socket(&socket) >= 0)
+                printf("Checking the socket creation & connection. Did the socket creation & connection succeed..."); fflush(stdout);
+                if(net2_create_and_connect_socket(&socket, htonl(ip_address.s_addr), atoi(argv[2])))
                 {
                     printf("yes.\n");
+                    printf("The client is now connected to the server.\n");
                     
-                    printf("Check the socket connection. Did the socket connection succeed..."); fflush(stdout);
-                    if(!net2_connect_socket(&socket, htonl(ip_address.s_addr), atoi(argv[2])))
+                    struct net2_link_t client;
+                    net2_link_create(&client, &socket);                        
+		            
+                    char data[13] = "Hello server\0";
+                    unsigned int data_length = 13;
+                    
+                    printf("Test the connection by sending \"%s\" to the server. Has the message been correctly sent...", data); fflush(stdout);
+                    if(net2_link_write(&client, (void*)data, data_length) != -1)
                     {
                         printf("yes.\n");
-                        printf("The client is now connected to the server.\n");
                         
-                        struct net2_link_t client;
-                        net2_link_create(&client, &socket);                        
-			            
-	                    char data[13] = "Hello server\0";
-	                    unsigned int data_length = 13;
-	                    
-	                    printf("Test the connection by sending \"%s\" to the server. Has the message been correctly sent...", data); fflush(stdout);
-	                    if(net2_link_write(&client, (void*)data, data_length) != -1)
-	                    {
-	                        printf("yes.\n");
-	                        
-	                        printf("Waits for the feedback from the server. Has the feedback been well received..."); fflush(stdout);
-	                        if(net2_link_read(&client, (void*)data, data_length) >= 0)
-	                        {
-	                            printf("yes.\n");
-	                            printf("The server says : \"%s\".\n", data);
-	                        }
-	                        else
-	                        {
-	                            printf("no.\n");
-    			                programme_return = EXIT_FAILURE;
-	                        }
-	                    }
-	                    else
-	                    {
-	                        printf("no.\n");
-    			            programme_return = EXIT_FAILURE;
-	                    }	
+                        printf("Waits for the feedback from the server. Has the feedback been well received..."); fflush(stdout);
+                        if(net2_link_read(&client, (void*)data, data_length) >= 0)
+                        {
+                            printf("yes.\n");
+                            printf("The server says : \"%s\".\n", data);
+                        }
+                        else
+                        {
+                            printf("no.\n");
+			                programme_return = EXIT_FAILURE;
+                        }
                     }
                     else
                     {
                         printf("no.\n");
-                        programme_return = EXIT_FAILURE;
-                    }
+			            programme_return = EXIT_FAILURE;
+                    }	
                 }
                 else
                 {

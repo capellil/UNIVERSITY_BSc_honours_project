@@ -40,6 +40,23 @@ static int create_tcp_ipv4_socket(int* socket_descriptor)
     return 0;
 }
 
+/**
+ * @brief Creates a socket used for communication and stores it into the net2_socket_t structure pointed by the given pointer. 
+ *
+ * This implementation relies on TCP/IPv4 protocols.
+ * @param[out] net2_socket A pointer to store the net2 socket created in.
+ * @return <ul>
+ *             <li>ON SUCCESS : 0.</li>
+ *             <li>ON FAILURE : -1.</li>
+ *         </ul>
+ * @pre <ul>
+ *          <li>net2_socket points to a valid net2_socket_t structure.</li>
+ *      </ul>
+ * @post <ul>
+ *           <li>ON SUCCESS: the net2_socket_t structure pointed by net2_socket contains an initialised net2 socket.</li>
+ *           <li>ON FAILURE: the net2_socket_t structure pointed by net2_socket is left untouched.</li>
+ *       </ul>
+ **/
 int net2_create_socket(struct net2_socket_t* net2_socket)
 {
     int socket_descriptor;
@@ -125,6 +142,38 @@ int net2_accept_from_socket(struct net2_socket_t* server, struct net2_socket_t* 
 
     client->_socket = socket_descriptor;
     client->_address = address;
+    net2_debug_success();
+    return 0;
+}
+
+int net2_create_and_connect_socket(struct net2_socket_t* net2_socket, unsigned int address, unsigned short int port)
+{
+    int socket_descriptor;
+    int option_value = 1;
+    struct sockaddr_in server;
+    server.sin_family = AF_INET; // IPv4
+    server.sin_addr.s_addr = htonl(address);
+    server.sin_port = htons(port);
+    socklen_t server_length = sizeof(struct sockaddr_in);
+    
+    if(create_tcp_ipv4_socket(&socket_descriptor) == -1)
+    {
+        net2_debug_failure("Something went wrong in the TCP/Ipv4 socket creation.");
+        return -1;
+    }    
+    
+    if(setsockopt(socket_descriptor, SOL_SOCKET, SO_REUSEADDR, &option_value, sizeof(int)) == -1)
+    {   
+        net2_debug_failure("Socket SOL_REUSEADDR option set failed.");    
+        return -2;
+    }
+
+    if(connect(socket_descriptor, (struct sockaddr*)&server, server_length) == -1)
+    {
+        net2_debug_failure("The socket connection failed.");
+        return -3;
+    }
+
     net2_debug_success();
     return 0;
 }
