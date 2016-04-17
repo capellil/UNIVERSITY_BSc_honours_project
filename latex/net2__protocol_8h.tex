@@ -1,38 +1,6 @@
 \hypertarget{net2__protocol_8h}{}\section{src/net2/net2\+\_\+protocol.h File Reference}
 \label{net2__protocol_8h}\index{src/net2/net2\+\_\+protocol.\+h@{src/net2/net2\+\_\+protocol.\+h}}
 {\ttfamily \#include \char`\"{}net2\+\_\+link.\+h\char`\"{}}\\*
-\subsection*{Classes}
-\begin{DoxyCompactItemize}
-\item 
-struct \hyperlink{structnet2__message__t}{net2\+\_\+message\+\_\+t}
-\begin{DoxyCompactList}\small\item\em Contains a message in a defined format. \end{DoxyCompactList}\item 
-struct \hyperlink{structnet2__message__linked__element__t}{net2\+\_\+message\+\_\+linked\+\_\+element\+\_\+t}
-\begin{DoxyCompactList}\small\item\em A linked element composing a linked list. \end{DoxyCompactList}\end{DoxyCompactItemize}
-\subsection*{Enumerations}
-\begin{DoxyCompactItemize}
-\item 
-\hypertarget{net2__protocol_8h_a32e806bd01b8a2ef773fedaba0c930cf}{}enum {\bfseries net2\+\_\+protocol\+\_\+e} \{ \\*
-{\bfseries N\+O\+T\+H\+I\+N\+G} = 0, 
-{\bfseries S\+E\+N\+D} = 1, 
-{\bfseries A\+C\+K} = 2, 
-{\bfseries R\+E\+J\+E\+C\+T\+\_\+\+C\+H\+A\+N\+N\+E\+L} = 8, 
-\\*
-{\bfseries O\+P\+E\+N} = 14, 
-{\bfseries R\+E\+Q\+U\+E\+S\+T\+\_\+\+A\+C\+K} = 22
- \}\label{net2__protocol_8h_a32e806bd01b8a2ef773fedaba0c930cf}
-
-\end{DoxyCompactItemize}
-\subsection*{Functions}
-\begin{DoxyCompactItemize}
-\item 
-void \hyperlink{net2__protocol_8h_a7d2d0d48bd251ede9b5c2a4456a5860d}{net2\+\_\+message\+\_\+print} (struct \hyperlink{structnet2__message__t}{net2\+\_\+message\+\_\+t} $\ast$net2\+\_\+message)
-\begin{DoxyCompactList}\small\item\em Displays the description of the given net2 message. \end{DoxyCompactList}\end{DoxyCompactItemize}
-\subsection*{Variables}
-\begin{DoxyCompactItemize}
-\item 
-\hypertarget{net2__protocol_8h_aca685cca57a452e590816f112564a58a}{}const unsigned int {\bfseries N\+E\+T2\+\_\+\+M\+E\+S\+S\+A\+G\+E\+\_\+\+M\+A\+X\+\_\+\+L\+E\+N\+G\+T\+H}\label{net2__protocol_8h_aca685cca57a452e590816f112564a58a}
-
-\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
@@ -45,22 +13,3 @@ Capelli, Ludovic
 \begin{DoxyDate}{Date}
 24/01/2015 
 \end{DoxyDate}
-
-
-\subsection{Function Documentation}
-\hypertarget{net2__protocol_8h_a7d2d0d48bd251ede9b5c2a4456a5860d}{}\index{net2\+\_\+protocol.\+h@{net2\+\_\+protocol.\+h}!net2\+\_\+message\+\_\+print@{net2\+\_\+message\+\_\+print}}
-\index{net2\+\_\+message\+\_\+print@{net2\+\_\+message\+\_\+print}!net2\+\_\+protocol.\+h@{net2\+\_\+protocol.\+h}}
-\subsubsection[{net2\+\_\+message\+\_\+print(struct net2\+\_\+message\+\_\+t $\ast$net2\+\_\+message)}]{\setlength{\rightskip}{0pt plus 5cm}void net2\+\_\+message\+\_\+print (
-\begin{DoxyParamCaption}
-\item[{struct {\bf net2\+\_\+message\+\_\+t} $\ast$}]{net2\+\_\+message}
-\end{DoxyParamCaption}
-)}\label{net2__protocol_8h_a7d2d0d48bd251ede9b5c2a4456a5860d}
-
-
-Displays the description of the given net2 message. 
-
-
-\begin{DoxyParams}{Parameters}
-{\em net2\+\_\+message} & The message to display. \\
-\hline
-\end{DoxyParams}

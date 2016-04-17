@@ -130,7 +130,7 @@ Functions</h2></td></tr>
 <tr class="memitem:a30dc7efe75a03bab92e0beae8dd1fcc8"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="net2__link_8h.html#a30dc7efe75a03bab92e0beae8dd1fcc8">net2_link_write</a> (struct <a class="el" href="structnet2__link__t.html">net2_link_t</a> *net2_link, void *data, unsigned int data_length)</td></tr>
 <tr class="memdesc:a30dc7efe75a03bab92e0beae8dd1fcc8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes to a link.  <a href="#a30dc7efe75a03bab92e0beae8dd1fcc8">More...</a><br /></td></tr>
 <tr class="separator:a30dc7efe75a03bab92e0beae8dd1fcc8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a97f7c3ae331de194349d1d0278b3d851"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="net2__link_8h.html#a97f7c3ae331de194349d1d0278b3d851">net2_link_send</a> (struct <a class="el" href="structnet2__link__t.html">net2_link_t</a> *net2_link, struct <a class="el" href="structnet2__message__t.html">net2_message_t</a> *net2_message)</td></tr>
+<tr class="memitem:a97f7c3ae331de194349d1d0278b3d851"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="net2__link_8h.html#a97f7c3ae331de194349d1d0278b3d851">net2_link_send</a> (struct <a class="el" href="structnet2__link__t.html">net2_link_t</a> *net2_link, struct net2_message_t *net2_message)</td></tr>
 <tr class="memdesc:a97f7c3ae331de194349d1d0278b3d851"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts the given net2 message into raw bytes and write them to the link through net2_link_write function.  <a href="#a97f7c3ae331de194349d1d0278b3d851">More...</a><br /></td></tr>
 <tr class="separator:a97f7c3ae331de194349d1d0278b3d851"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa28459abf4463b360b9264873ec0350a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="net2__link_8h.html#aa28459abf4463b360b9264873ec0350a">net2_link_create</a> (struct <a class="el" href="structnet2__link__t.html">net2_link_t</a> *net2_link, struct <a class="el" href="structnet2__socket__t.html">net2_socket_t</a> *net2_socket)</td></tr>
@@ -567,7 +567,7 @@ FAILED : -1, errno is set appropriately. </li>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">struct <a class="el" href="structnet2__message__t.html">net2_message_t</a> *&#160;</td>
+          <td class="paramtype">struct net2_message_t *&#160;</td>
           <td class="paramname"><em>net2_message</em>&#160;</td>
         </tr>
         <tr>

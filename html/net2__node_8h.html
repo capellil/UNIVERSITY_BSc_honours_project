@@ -109,7 +109,7 @@ Classes</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a0a97fc79964936cab4d97af1204dd3b3"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structnet2__node__t.html">net2_node_t</a> **&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="net2__node_8h.html#a0a97fc79964936cab4d97af1204dd3b3">net2_node_get_instance</a> (void)</td></tr>
-<tr class="memdesc:a0a97fc79964936cab4d97af1204dd3b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a pointer on the node (which is itself a pointer on the singleton instance, hence "**").  <a href="#a0a97fc79964936cab4d97af1204dd3b3">More...</a><br /></td></tr>
+<tr class="memdesc:a0a97fc79964936cab4d97af1204dd3b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function initiates a unique instance of the node.  <a href="#a0a97fc79964936cab4d97af1204dd3b3">More...</a><br /></td></tr>
 <tr class="separator:a0a97fc79964936cab4d97af1204dd3b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1bbc7a6857fc1e4665142d73cbac1786"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="net2__node_8h.html#a1bbc7a6857fc1e4665142d73cbac1786">net2_node_create</a> (unsigned short port)</td></tr>
 <tr class="memdesc:a1bbc7a6857fc1e4665142d73cbac1786"><td class="mdescLeft">&#160;</td><td class="mdescRight">If the net2 node singleton has not been instanced yet, it is created. That means it instances the link manager, also the link server on the given port.  <a href="#a1bbc7a6857fc1e4665142d73cbac1786">More...</a><br /></td></tr>
@@ -247,8 +247,8 @@ FAILURE : -1 </li>
       </table>
 </div><div class="memdoc">
 
-<p>Returns a pointer on the node (which is itself a pointer on the singleton instance, hence "**"). </p>
-<dl class="section return"><dt>Returns</dt><dd>A pointer on the node. </dd></dl>
+<p>This function initiates a unique instance of the node. </p>
+<p>This implement a singleton pattern and relies on a unique instance of the node. </p><dl class="section return"><dt>Returns</dt><dd>A pointer on the node. </dd></dl>
 
 </div>
 </div>

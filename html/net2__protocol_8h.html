@@ -85,11 +85,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 </div><!-- top -->
 <div class="header">
-  <div class="summary">
-<a href="#nested-classes">Classes</a> &#124;
-<a href="#enum-members">Enumerations</a> &#124;
-<a href="#func-members">Functions</a> &#124;
-<a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
 <div class="title">net2_protocol.h File Reference</div>  </div>
 </div><!--header-->
@@ -97,72 +92,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="textblock"><code>#include &quot;<a class="el" href="net2__link_8h_source.html">net2_link.h</a>&quot;</code><br />
 </div>
 <p><a href="net2__protocol_8h_source.html">Go to the source code of this file.</a></p>
-<table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
-Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structnet2__message__t.html">net2_message_t</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contains a message in a defined format.  <a href="structnet2__message__t.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structnet2__message__linked__element__t.html">net2_message_linked_element_t</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A linked element composing a linked list.  <a href="structnet2__message__linked__element__t.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
-Enumerations</h2></td></tr>
-<tr class="memitem:a32e806bd01b8a2ef773fedaba0c930cf"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a32e806bd01b8a2ef773fedaba0c930cf"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>net2_protocol_e</b> { <br />
-&#160;&#160;<b>NOTHING</b> = 0, 
-<b>SEND</b> = 1, 
-<b>ACK</b> = 2, 
-<b>REJECT_CHANNEL</b> = 8, 
-<br />
-&#160;&#160;<b>OPEN</b> = 14, 
-<b>REQUEST_ACK</b> = 22
-<br />
- }<tr class="separator:a32e806bd01b8a2ef773fedaba0c930cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
-Functions</h2></td></tr>
-<tr class="memitem:a7d2d0d48bd251ede9b5c2a4456a5860d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="net2__protocol_8h.html#a7d2d0d48bd251ede9b5c2a4456a5860d">net2_message_print</a> (struct <a class="el" href="structnet2__message__t.html">net2_message_t</a> *net2_message)</td></tr>
-<tr class="memdesc:a7d2d0d48bd251ede9b5c2a4456a5860d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Displays the description of the given net2 message.  <a href="#a7d2d0d48bd251ede9b5c2a4456a5860d">More...</a><br /></td></tr>
-<tr class="separator:a7d2d0d48bd251ede9b5c2a4456a5860d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
-Variables</h2></td></tr>
-<tr class="memitem:aca685cca57a452e590816f112564a58a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aca685cca57a452e590816f112564a58a"></a>
-const unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>NET2_MESSAGE_MAX_LENGTH</b></td></tr>
-<tr class="separator:aca685cca57a452e590816f112564a58a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><dl class="section author"><dt>Author</dt><dd>Capelli, Ludovic </dd></dl>
 <dl class="section version"><dt>Version</dt><dd>2.0 </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>24/01/2015 </dd></dl>
-</div><h2 class="groupheader">Function Documentation</h2>
-<a class="anchor" id="a7d2d0d48bd251ede9b5c2a4456a5860d"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void net2_message_print </td>
-          <td>(</td>
-          <td class="paramtype">struct <a class="el" href="structnet2__message__t.html">net2_message_t</a> *&#160;</td>
-          <td class="paramname"><em>net2_message</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Displays the description of the given net2 message. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">net2_message</td><td>The message to display. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-</div><!-- contents -->
+</div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

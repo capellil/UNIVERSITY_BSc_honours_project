@@ -90,52 +90,43 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 <a href="net2__protocol_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#ifndef NET2_PROTOCOL_INCLUDED </span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#define NET2_PROTOCOL_INCLUDED</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="net2__link_8h.html">net2_link.h</a>&quot;</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keyword">extern</span> <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> NET2_MESSAGE_MAX_LENGTH;</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#ifndef NET2_LINK_INCLUDED</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="net2__link_8h.html">net2_link.h</a>&quot;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#ifndef NET2_PROTOCOL_INCLUDED </span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#define NET2_PROTOCOL_INCLUDED</span></div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">enum</span> net2_protocol_e { NOTHING = 0, </div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;                       SEND = 1,</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;                       ACK = 2,</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;                       REJECT_CHANNEL = 8,</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;                       OPEN = 14,</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;                       REQUEST_ACK = 22};</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div>
-<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="structnet2__message__t.html">   25</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structnet2__message__t.html">net2_message_t</a></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;{</div>
-<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="structnet2__message__t.html#adbbcead2b82a531c89222ee6c0ffbc2c">   27</a></span>&#160;    <span class="keyword">enum</span> net2_protocol_e <a class="code" href="structnet2__message__t.html#adbbcead2b82a531c89222ee6c0ffbc2c">_type</a>; </div>
-<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="structnet2__message__t.html#a391092232c3e5103f92632e192b31a71">   28</a></span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="structnet2__message__t.html#a391092232c3e5103f92632e192b31a71">_source</a>; </div>
-<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="structnet2__message__t.html#a86405418417e82e30ab57a5d35ee3fc9">   29</a></span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="structnet2__message__t.html#a86405418417e82e30ab57a5d35ee3fc9">_destination</a>; </div>
-<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="structnet2__message__t.html#a29ff000a3e877e88c84500a952fed7d1">   30</a></span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="structnet2__message__t.html#a29ff000a3e877e88c84500a952fed7d1">_data_length</a>; </div>
-<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="structnet2__message__t.html#a157cea10e17c189684e71e2f4c30b217">   31</a></span>&#160;    <span class="keywordtype">void</span>* <a class="code" href="structnet2__message__t.html#a157cea10e17c189684e71e2f4c30b217">_data</a>; </div>
-<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="structnet2__message__t.html#ad3c6032953e3934d4e833daae04051ae">   32</a></span>&#160;    <span class="keyword">struct </span><a class="code" href="structnet2__link__t.html">net2_link_t</a>* <a class="code" href="structnet2__message__t.html#ad3c6032953e3934d4e833daae04051ae">_link</a>; </div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;};</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
-<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="structnet2__message__linked__element__t.html">   38</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structnet2__message__linked__element__t.html">net2_message_linked_element_t</a></div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;{</div>
-<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="structnet2__message__linked__element__t.html#a6ef66e03a7c837615a5fc44d05e10da9">   40</a></span>&#160;    <span class="keyword">struct </span><a class="code" href="structnet2__message__t.html">net2_message_t</a>* <a class="code" href="structnet2__message__linked__element__t.html#a6ef66e03a7c837615a5fc44d05e10da9">_my_message</a>; </div>
-<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="structnet2__message__linked__element__t.html#a4456c5695189635ab7db61a66a706e03">   41</a></span>&#160;    <span class="keyword">struct </span><a class="code" href="structnet2__message__linked__element__t.html">net2_message_linked_element_t</a>* <a class="code" href="structnet2__message__linked__element__t.html#a4456c5695189635ab7db61a66a706e03">_next_message</a>; </div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;};</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="keywordtype">void</span> <a class="code" href="net2__protocol_8h.html#a7d2d0d48bd251ede9b5c2a4456a5860d">net2_message_print</a>(<span class="keyword">struct</span> <a class="code" href="structnet2__message__t.html">net2_message_t</a>* net2_message);</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="preprocessor">#endif // NET2_NETWORK_PROTOCOL_INCLUDED INCLUDED</span></div>
-<div class="ttc" id="structnet2__message__t_html"><div class="ttname"><a href="structnet2__message__t.html">net2_message_t</a></div><div class="ttdoc">Contains a message in a defined format. </div><div class="ttdef"><b>Definition:</b> net2_protocol.h:25</div></div>
-<div class="ttc" id="structnet2__message__t_html_a157cea10e17c189684e71e2f4c30b217"><div class="ttname"><a href="structnet2__message__t.html#a157cea10e17c189684e71e2f4c30b217">net2_message_t::_data</a></div><div class="ttdeci">void * _data</div><div class="ttdoc">Data to be sent. </div><div class="ttdef"><b>Definition:</b> net2_protocol.h:31</div></div>
-<div class="ttc" id="structnet2__message__t_html_a391092232c3e5103f92632e192b31a71"><div class="ttname"><a href="structnet2__message__t.html#a391092232c3e5103f92632e192b31a71">net2_message_t::_source</a></div><div class="ttdeci">unsigned int _source</div><div class="ttdoc">Source channel number. </div><div class="ttdef"><b>Definition:</b> net2_protocol.h:28</div></div>
-<div class="ttc" id="structnet2__message__t_html_a86405418417e82e30ab57a5d35ee3fc9"><div class="ttname"><a href="structnet2__message__t.html#a86405418417e82e30ab57a5d35ee3fc9">net2_message_t::_destination</a></div><div class="ttdeci">unsigned int _destination</div><div class="ttdoc">Destination channel number. </div><div class="ttdef"><b>Definition:</b> net2_protocol.h:29</div></div>
-<div class="ttc" id="structnet2__message__linked__element__t_html_a6ef66e03a7c837615a5fc44d05e10da9"><div class="ttname"><a href="structnet2__message__linked__element__t.html#a6ef66e03a7c837615a5fc44d05e10da9">net2_message_linked_element_t::_my_message</a></div><div class="ttdeci">struct net2_message_t * _my_message</div><div class="ttdoc">Contained message. </div><div class="ttdef"><b>Definition:</b> net2_protocol.h:40</div></div>
-<div class="ttc" id="structnet2__message__linked__element__t_html_a4456c5695189635ab7db61a66a706e03"><div class="ttname"><a href="structnet2__message__linked__element__t.html#a4456c5695189635ab7db61a66a706e03">net2_message_linked_element_t::_next_message</a></div><div class="ttdeci">struct net2_message_linked_element_t * _next_message</div><div class="ttdoc">Next message. </div><div class="ttdef"><b>Definition:</b> net2_protocol.h:41</div></div>
-<div class="ttc" id="structnet2__link__t_html"><div class="ttname"><a href="structnet2__link__t.html">net2_link_t</a></div><div class="ttdoc">Contains the two links to send and receive data as well as the two function to deal with both...</div><div class="ttdef"><b>Definition:</b> net2_link.h:59</div></div>
-<div class="ttc" id="net2__protocol_8h_html_a7d2d0d48bd251ede9b5c2a4456a5860d"><div class="ttname"><a href="net2__protocol_8h.html#a7d2d0d48bd251ede9b5c2a4456a5860d">net2_message_print</a></div><div class="ttdeci">void net2_message_print(struct net2_message_t *net2_message)</div><div class="ttdoc">Displays the description of the given net2 message. </div><div class="ttdef"><b>Definition:</b> net2_protocol.c:7</div></div>
-<div class="ttc" id="structnet2__message__t_html_ad3c6032953e3934d4e833daae04051ae"><div class="ttname"><a href="structnet2__message__t.html#ad3c6032953e3934d4e833daae04051ae">net2_message_t::_link</a></div><div class="ttdeci">struct net2_link_t * _link</div><div class="ttdoc">The link that received the message, used to send back the ACK through the same link. </div><div class="ttdef"><b>Definition:</b> net2_protocol.h:32</div></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">extern</span> <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> NET2_MESSAGE_MAX_LENGTH;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">enum</span> net2_protocol_e { NOTHING = 0, </div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;                       SEND = 1,</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;                       ACK = 2,</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;                       REJECT_CHANNEL = 8,</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;                       OPEN = 14,</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;                       REQUEST_ACK = 22};</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">struct </span>net2_message_t</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;{</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keyword">enum</span> net2_protocol_e _type; </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> _source; </div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> _destination; </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> _data_length; </div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keywordtype">void</span>* _data; </div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keyword">struct </span><a class="code" href="structnet2__link__t.html">net2_link_t</a>* _link; </div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;};</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="keyword">struct </span>net2_message_linked_element_t</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;{</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keyword">struct </span>net2_message_t* _my_message; </div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keyword">struct </span>net2_message_linked_element_t* _next_message; </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;};</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="keywordtype">void</span> net2_message_print(<span class="keyword">struct</span> net2_message_t* net2_message);</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="preprocessor">#endif // NET2_NETWORK_PROTOCOL_INCLUDED INCLUDED</span></div>
+<div class="ttc" id="structnet2__link__t_html"><div class="ttname"><a href="structnet2__link__t.html">net2_link_t</a></div><div class="ttdoc">Contains the two links to send and receive data as well as the two function to deal with both...</div><div class="ttdef"><b>Definition:</b> net2_link.h:58</div></div>
 <div class="ttc" id="net2__link_8h_html"><div class="ttname"><a href="net2__link_8h.html">net2_link.h</a></div></div>
-<div class="ttc" id="structnet2__message__t_html_a29ff000a3e877e88c84500a952fed7d1"><div class="ttname"><a href="structnet2__message__t.html#a29ff000a3e877e88c84500a952fed7d1">net2_message_t::_data_length</a></div><div class="ttdeci">unsigned int _data_length</div><div class="ttdoc">Data length. </div><div class="ttdef"><b>Definition:</b> net2_protocol.h:30</div></div>
-<div class="ttc" id="structnet2__message__t_html_adbbcead2b82a531c89222ee6c0ffbc2c"><div class="ttname"><a href="structnet2__message__t.html#adbbcead2b82a531c89222ee6c0ffbc2c">net2_message_t::_type</a></div><div class="ttdeci">enum net2_protocol_e _type</div><div class="ttdoc">SEND / ACK ... </div><div class="ttdef"><b>Definition:</b> net2_protocol.h:27</div></div>
-<div class="ttc" id="structnet2__message__linked__element__t_html"><div class="ttname"><a href="structnet2__message__linked__element__t.html">net2_message_linked_element_t</a></div><div class="ttdoc">A linked element composing a linked list. </div><div class="ttdef"><b>Definition:</b> net2_protocol.h:38</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

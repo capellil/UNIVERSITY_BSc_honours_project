@@ -27,7 +27,7 @@ int \hyperlink{net2__link_8h_ae12b0ce31d9c1597ba6dfd45ee6a71e7}{net2\+\_\+link\+
 \begin{DoxyCompactList}\small\item\em Reads from a link. \end{DoxyCompactList}\item 
 int \hyperlink{net2__link_8h_a30dc7efe75a03bab92e0beae8dd1fcc8}{net2\+\_\+link\+\_\+write} (struct \hyperlink{structnet2__link__t}{net2\+\_\+link\+\_\+t} $\ast$net2\+\_\+link, void $\ast$data, unsigned int data\+\_\+length)
 \begin{DoxyCompactList}\small\item\em Writes to a link. \end{DoxyCompactList}\item 
-int \hyperlink{net2__link_8h_a97f7c3ae331de194349d1d0278b3d851}{net2\+\_\+link\+\_\+send} (struct \hyperlink{structnet2__link__t}{net2\+\_\+link\+\_\+t} $\ast$net2\+\_\+link, struct \hyperlink{structnet2__message__t}{net2\+\_\+message\+\_\+t} $\ast$net2\+\_\+message)
+int \hyperlink{net2__link_8h_a97f7c3ae331de194349d1d0278b3d851}{net2\+\_\+link\+\_\+send} (struct \hyperlink{structnet2__link__t}{net2\+\_\+link\+\_\+t} $\ast$net2\+\_\+link, struct net2\+\_\+message\+\_\+t $\ast$net2\+\_\+message)
 \begin{DoxyCompactList}\small\item\em Converts the given net2 message into raw bytes and write them to the link through net2\+\_\+link\+\_\+write function. \end{DoxyCompactList}\item 
 void \hyperlink{net2__link_8h_aa28459abf4463b360b9264873ec0350a}{net2\+\_\+link\+\_\+create} (struct \hyperlink{structnet2__link__t}{net2\+\_\+link\+\_\+t} $\ast$net2\+\_\+link, struct \hyperlink{structnet2__socket__t}{net2\+\_\+socket\+\_\+t} $\ast$net2\+\_\+socket)
 \begin{DoxyCompactList}\small\item\em Creates a link \+: stores the given net2 socket in the link and assigns all function pointers on the link as well as on its link R\+X and T\+X. \end{DoxyCompactList}\item 
@@ -311,7 +311,7 @@ net2\+\_\+link\+\_\+rx != N\+U\+L\+L
 \subsubsection[{net2\+\_\+link\+\_\+send(struct net2\+\_\+link\+\_\+t $\ast$net2\+\_\+link, struct net2\+\_\+message\+\_\+t $\ast$net2\+\_\+message)}]{\setlength{\rightskip}{0pt plus 5cm}int net2\+\_\+link\+\_\+send (
 \begin{DoxyParamCaption}
 \item[{struct {\bf net2\+\_\+link\+\_\+t} $\ast$}]{net2\+\_\+link, }
-\item[{struct {\bf net2\+\_\+message\+\_\+t} $\ast$}]{net2\+\_\+message}
+\item[{struct net2\+\_\+message\+\_\+t $\ast$}]{net2\+\_\+message}
 \end{DoxyParamCaption}
 )}\label{net2__link_8h_a97f7c3ae331de194349d1d0278b3d851}
 

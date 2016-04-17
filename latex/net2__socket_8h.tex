@@ -233,7 +233,11 @@ This function creates a net2\+\_\+socket and connects it to the given remote soc
 \hline
 \mbox{\tt in}  & {\em port} & The port number of the remote socket in host byte order. \\
 \hline
-\mbox{\tt out}  & {\em client\+\_\+socket} & A pointer to the \hyperlink{structnet2__socket__t}{net2\+\_\+socket\+\_\+t} structure to use to store the remote net2 socket. return 
+\mbox{\tt out}  & {\em client\+\_\+socket} & A pointer to the \hyperlink{structnet2__socket__t}{net2\+\_\+socket\+\_\+t} structure to use to store the remote net2 socket. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
 \begin{DoxyItemize}
 \item O\+N S\+U\+C\+C\+E\+S\+S\+: 0. 
 \item O\+N F\+A\+I\+L\+U\+R\+E\+: 
@@ -243,9 +247,8 @@ This function creates a net2\+\_\+socket and connects it to the given remote soc
 \item -\/3\+: The client socket creation failed. 
 \item -\/4\+: The socket connection failed. 
 \end{DoxyItemize}
-\end{DoxyItemize}\\
-\hline
-\end{DoxyParams}
+\end{DoxyItemize}
+\end{DoxyReturn}
 \begin{DoxyPrecond}{Precondition}
 
 \begin{DoxyItemize}

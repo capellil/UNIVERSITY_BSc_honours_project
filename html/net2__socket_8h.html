@@ -408,7 +408,11 @@ ON FAILURE: net2_socket is left untouched. </li>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">ip_address</td><td>ASCII representation of an IPv4 address in host byte order. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">port</td><td>The port number of the remote socket in host byte order. </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">client_socket</td><td>A pointer to the <a class="el" href="structnet2__socket__t.html" title="Structure containing the socket and its address structure. ">net2_socket_t</a> structure to use to store the remote net2 socket. return <ul>
+    <tr><td class="paramdir">[out]</td><td class="paramname">client_socket</td><td>A pointer to the <a class="el" href="structnet2__socket__t.html" title="Structure containing the socket and its address structure. ">net2_socket_t</a> structure to use to store the remote net2 socket. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><ul>
 <li>
 ON SUCCESS: 0. </li>
 <li>
@@ -424,10 +428,7 @@ ON FAILURE: <ul>
 </ul>
 </li>
 </ul>
-</td></tr>
-  </table>
-  </dd>
-</dl>
+</dd></dl>
 <dl class="section pre"><dt>Precondition</dt><dd><ul>
 <li>
 ip_address contains a '\0' terminated character string. </li>

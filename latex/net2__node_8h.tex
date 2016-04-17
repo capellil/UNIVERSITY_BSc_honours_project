@@ -13,7 +13,7 @@ struct \hyperlink{structnet2__node__t}{net2\+\_\+node\+\_\+t}
 \begin{DoxyCompactItemize}
 \item 
 struct \hyperlink{structnet2__node__t}{net2\+\_\+node\+\_\+t} $\ast$$\ast$ \hyperlink{net2__node_8h_a0a97fc79964936cab4d97af1204dd3b3}{net2\+\_\+node\+\_\+get\+\_\+instance} (void)
-\begin{DoxyCompactList}\small\item\em Returns a pointer on the node (which is itself a pointer on the singleton instance, hence \char`\"{}$\ast$$\ast$\char`\"{}). \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em This function initiates a unique instance of the node. \end{DoxyCompactList}\item 
 int \hyperlink{net2__node_8h_a1bbc7a6857fc1e4665142d73cbac1786}{net2\+\_\+node\+\_\+create} (unsigned short port)
 \begin{DoxyCompactList}\small\item\em If the net2 node singleton has not been instanced yet, it is created. That means it instances the link manager, also the link server on the given port. \end{DoxyCompactList}\item 
 int \hyperlink{net2__node_8h_a27dd8d200cd218537c2af076d5d53a61}{net2\+\_\+node\+\_\+init} (unsigned short port)
@@ -116,9 +116,9 @@ If the net2 node singleton has not been instanced yet, it is created. That means
 )}\label{net2__node_8h_a0a97fc79964936cab4d97af1204dd3b3}
 
 
-Returns a pointer on the node (which is itself a pointer on the singleton instance, hence \char`\"{}$\ast$$\ast$\char`\"{}). 
+This function initiates a unique instance of the node. 
 
-\begin{DoxyReturn}{Returns}
+This implement a singleton pattern and relies on a unique instance of the node. \begin{DoxyReturn}{Returns}
 A pointer on the node. 
 \end{DoxyReturn}
 \hypertarget{net2__node_8h_a27dd8d200cd218537c2af076d5d53a61}{}\index{net2\+\_\+node.\+h@{net2\+\_\+node.\+h}!net2\+\_\+node\+\_\+init@{net2\+\_\+node\+\_\+init}}
