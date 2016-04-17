@@ -251,6 +251,24 @@ int net2_create_client_socket(char* ip_address, unsigned short int port, struct 
     return 0;
 }
 
+int net2_create_server_socket(unsigned short int port, struct net2_socket_t* server_socket)
+{
+    if(net2_create_and_bind_socket(server_socket, port) < 0)
+    {
+        net2_debug_failure("Something went wrong in the creation & binding process.");
+        return -1;
+    }
+
+    if(net2_listen_from_socket(server_socket) == -1)
+    {
+        net2_debug_failure("Something went wrong in the listening process.");
+        return -2;
+    }
+
+    net2_debug_success();
+    return 0;
+}
+
 void net2_print_socket(char* heading, struct net2_socket_t* net2_socket)
 {
     if(heading)

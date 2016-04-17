@@ -233,6 +233,29 @@ unsigned short int net2_get_port_of_socket(struct net2_socket_t* net2_socket);
 int net2_create_client_socket(char* ip_address, unsigned short int port, struct net2_socket_t* client_socket);
 
 /**
+ * @brief This function creates a net2_socket and opens a server on the given port.
+ * @param[in] port The port number to use for the server in host byte order.
+ * @param[out] server_socket A pointer to the net2_socket_t structure to use to store the server net2 socket.
+ * @return <ul>
+ *            <li>ON SUCCESS: 0.</li>
+ *            <li>ON FAILURE:
+ *            <ul>
+ *                <li>-1: Something went wrong in the creation & binding process.</li>
+ *                <li>-2: Something went wrong in the listening process.</li>
+ *            </ul>
+ *            </li>
+ *        </ul>
+ * @pre <ul>
+ *          <li>server_socket points to a valid net2_socket_t structure.</li>
+ *      </ul>
+ * @post <ul>
+ *           <li>ON SUCCESS: server_socket contains the server socket listening on the given port.</li>
+ *           <li>ON FAILURE: server_socket is left untouched.</li>
+ *       </ul>
+ **/
+int net2_create_server_socket(unsigned short int port, struct net2_socket_t* server_socket);
+
+/**
  * @brief Prints out all the information in the given net2_socket next to the given header.
  * @param heading The message to be displayed as a heading.
  * @param net2_socket The socket to be printed out.

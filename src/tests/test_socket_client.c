@@ -27,74 +27,24 @@
 int main(int argc, char* argv[])
 {
 	int programme_return = EXIT_SUCCESS;
-	
-	printf("Checking the number of parameters...");
-	if(argc == 3)
-    {
-        printf("right number.\n");
+    struct net2_socket_t my_socket;
+
+    printf("Tries to create a client socket. Has the client socket creation succeeded...");
+    if(net2_create_client_socket(argv[1], atoi(argv[2]), &my_socket) == 0)
+	{
+		printf("yes.\n");
+		char data[13] = "Hello server\0";
+        unsigned int data_length = 13;
         
-        struct in_addr ip_address;
-        printf("Checking the first parameter given : is \"%s\" a valid IPv4 address...", argv[1]);
-        if(inet_pton(AF_INET, argv[1], &ip_address) > 0)
+        printf("Test the connection by sending \"%s\" to the server. Has the message been correctly sent...", data);
+        if(net2_write_to_socket(&my_socket, (void*)data, data_length) != -1)
         {
             printf("yes.\n");
-            
-            printf("Checking the port number : is %d a valid port number...", atoi(argv[2]));
-            if(atoi(argv[2]) >= 0 && atoi(argv[2]) < 65536)
+            printf("Waits for the feedback from the server. Has the feedback been well received...");
+            if(net2_read_from_socket(&my_socket, (void*)data, data_length) >= 0)
             {
                 printf("yes.\n");
-
-	            struct net2_socket_t client_socket;
-	            int result = net2_create_socket(&client_socket); 
-	
-	            printf("Checking the socket creation : did it succeed...");
-	            if(result >= 0)
-	            {
-		            printf("yes.\n");
-		            printf("The client socket is now created.\n");
-		
-		            printf("Tries to connect to the server. Did the connection succeed...");
-		            if(!net2_connect_socket(&client_socket, ntohl(ip_address.s_addr), atoi(argv[2])))
-		            {
-			            printf("yes.\n");
-			            printf("The client is now connected to the server.\n");
-			            
-			            char data[13] = "Hello server\0";
-			            unsigned int data_length = 13;
-			            
-			            printf("Test the connection by sending \"%s\" to the server. Has the message been correctly sent...", data);
-			            if(net2_write_to_socket(&client_socket, (void*)data, data_length) != -1)
-			            {
-			                printf("yes.\n");
-			                printf("Waits for the feedback from the server. Has the feedback been well received...");
-			                if(net2_read_from_socket(&client_socket, (void*)data, data_length) >= 0)
-			                {
-			                    printf("yes.\n");
-			                    printf("The server says : \"%s\".\n", data);
-			                }
-			                else
-			                {
-			                    printf("no.\n");
-    			                programme_return = EXIT_FAILURE;
-			                }
-			            }
-			            else
-			            {
-			                printf("no.\n");
-    			            programme_return = EXIT_FAILURE;
-			            }			            
-		            }
-		            else
-		            {
-                        printf("no.\n");
-			            programme_return = EXIT_FAILURE;
-		            }
-	            }
-	            else
-	            {
-		            printf("no.\n");
-		            programme_return = EXIT_FAILURE;
-	            }
+                printf("The server says : \"%s\".\n", data);
             }
             else
             {
@@ -106,14 +56,13 @@ int main(int argc, char* argv[])
         {
             printf("no.\n");
             programme_return = EXIT_FAILURE;
-        }
-    }
-    else
-    {
-        printf("wrong number of parameters.\n");
-        printf("%d parameters have been received instead of %d.\n", argc - 1, 2);
+        }	
+	}
+	else
+	{
+		printf("no.\n");
         programme_return = EXIT_FAILURE;
-    }
+	}
 	
 	return programme_return;
 }

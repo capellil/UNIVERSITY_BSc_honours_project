@@ -38,69 +38,57 @@ int main(int argc, char* argv[])
             printf("yes.\n");
 
             struct net2_socket_t server_socket;
-            int result = net2_create_and_bind_socket(&server_socket, atoi(argv[1])); 
+            int result = net2_create_server_socket(atoi(argv[1]), &server_socket);
 
-            printf("Checking the socket creation : did it succeed...");
-            if(result >= 0)
+            printf("Tries to establish a server socket on port %d. Has the server establishment succeed...", atoi(argv[1]));
+			if(result == 0)
             {
 	            printf("yes.\n");
-	            printf("The server socket is now created.\n");
-	
-	            printf("Tries to listen on the server. Did the listening succeed...");
-	            if(!net2_listen_from_socket(&server_socket))
+	            
+	            struct net2_socket_t client_socket;
+	            printf("Tries to accept a connection. Has the connection acceptation succeed...");
+	            if(net2_accept_from_socket(&server_socket, &client_socket) >= 0)
 	            {
-		            printf("yes.\n");
-		            
-		            struct net2_socket_t client_socket;
-		            printf("Tries to accept a connection. Has the connection acceptation succeed...");
-		            if(net2_accept_from_socket(&server_socket, &client_socket) >= 0)
-		            {
-		                printf("yes.\n");
-		                printf("The server is now connected to the client.\n");
-		            
-		                char data[13];
-		                unsigned int data_length = 13;
-		                
-		                printf("Waits for client to send a message. Has the message been well received...");
-                        if(net2_read_from_socket(&client_socket, (void*)data, data_length) >= 0)
-                        {
-                            printf("yes.\n");
-                            printf("The client said : \"%s\".\n", data);
-                            
-                            strcpy(data, "Hello client\0");
-                            
-                            printf("Reply by sending \"%s\". Has the reply been sent...", data);
-		                    if(net2_write_to_socket(&client_socket, (void*)data, data_length) != -1)
-		                    {
-		                        printf("yes.\n");
-	                        }
-	                        else
-	                        {
-	                            printf("no.\n");
-	                            programme_return = EXIT_FAILURE;
-                            }
+	                printf("yes.\n");
+	                printf("The server is now connected to the client.\n");
+	            
+	                char data[13];
+	                unsigned int data_length = 13;
+	                
+	                printf("Waits for client to send a message. Has the message been well received...");
+                    if(net2_read_from_socket(&client_socket, (void*)data, data_length) >= 0)
+                    {
+                        printf("yes.\n");
+                        printf("The client said : \"%s\".\n", data);
+                        
+                        strcpy(data, "Hello client\0");
+                        
+                        printf("Reply by sending \"%s\". Has the reply been sent...", data);
+	                    if(net2_write_to_socket(&client_socket, (void*)data, data_length) != -1)
+	                    {
+	                        printf("yes.\n");
                         }
                         else
                         {
                             printf("no.\n");
-	                        programme_return = EXIT_FAILURE;
+                            programme_return = EXIT_FAILURE;
                         }
-		            }
-	                else
-	                {
-	                    printf("no.\n");
-		                programme_return = EXIT_FAILURE;
-	                }			            
+                    }
+                    else
+                    {
+                        printf("no.\n");
+                        programme_return = EXIT_FAILURE;
+                    }
 	            }
-	            else
-	            {
+                else
+                {
                     printf("no.\n");
-		            programme_return = EXIT_FAILURE;
-	            }
+	                programme_return = EXIT_FAILURE;
+                }			            
             }
             else
             {
-	            printf("no.\n");
+                printf("no.\n");
 	            programme_return = EXIT_FAILURE;
             }
         }
