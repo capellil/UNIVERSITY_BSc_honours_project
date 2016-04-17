@@ -21,7 +21,7 @@
  *           <li>FAILURE: left untouched.</li>
  *       </ul>
  **/
-static int create_ipv4_tcp_socket(int* socket_descriptor)
+static int create_tcp_ipv4_socket(int* socket_descriptor)
 {
     int family = AF_INET; // IPv4
     int type = SOCK_STREAM; // Stream, suitable for TCP.
@@ -44,7 +44,7 @@ int net2_create_socket(struct net2_socket_t* net2_socket)
 {
     int socket_descriptor;
     
-    if(create_ipv4_tcp_socket(&socket_descriptor) == -1)
+    if(create_tcp_ipv4_socket(&socket_descriptor) == -1)
     {       
         net2_debug_failure("Socket creation failed");
         return -1;
@@ -65,7 +65,7 @@ int net2_create_and_bind_socket(struct net2_socket_t* net2_socket, unsigned shor
     socklen_t socket_length = sizeof(struct sockaddr_in);
     int option_value = 1;
     
-    if(create_ipv4_tcp_socket(&socket_descriptor) == -1)
+    if(create_tcp_ipv4_socket(&socket_descriptor) == -1)
     {
         net2_debug_failure("Socket creation failed.");
         return -1;
