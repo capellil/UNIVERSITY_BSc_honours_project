@@ -20,8 +20,8 @@
  */
 struct net2_node_id_t
 {
-    unsigned int _address; ///< The node IP address
-    unsigned short _port; ///< The node port number
+    unsigned int _address; ///< The node IP address in host byte order.
+    unsigned short int _port; ///< The node port number
 };
 
 /**
@@ -33,7 +33,9 @@ struct net2_node_t
 };
 
 /**
- * @brief Returns a pointer on the node (which is itself a pointer on the singleton instance, hence "**").
+ * @brief This function initiates a unique instance of the node.
+ *
+ * This implement a singleton pattern and relies on a unique instance of the node.
  * @return A pointer on the node.
  **/
 struct net2_node_t** net2_node_get_instance(void);
