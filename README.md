@@ -1,1 +1,1 @@
-An entire documentation has been generated using Doxygen, please open html/index.html file in your browser to open it.
+An entire documentation has been generated using [Doxygen](http://www.stack.nl/~dimitri/doxygen/), please download the repository and open html/index.html file in your browser to open it.
