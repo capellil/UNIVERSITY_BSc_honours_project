@@ -1,4 +1,4 @@
-CC=gcc-5
+CC=gcc
 CFLAGS=-Wall -O2 -std=c99
 LIBS=-pthread
 
